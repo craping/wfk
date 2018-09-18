@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta name="renderer" content="webkit">
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	
+	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
+	<script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="js/plug/checkfile.js"></script>
+	<script type="text/javascript" src="js/common_.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/capacitys.js"></script>
+	<script type="text/javascript" src="js/product.js"></script>
+	
+</head>
+<body>
+	<div class="content">
+		<div class="header">
+			<img class="logo" src="images/logo.png"/>
+			<div class="head_nav fl">
+				<img class="head_nav_img" src="images/title.png"/>
+				<div class="head_nav_div">
+					<div class="head_nav_div_li ">软通动力<img src="images/jt_x.png"/></div>
+					<div class="head_nav_div_li on">消息<img style="position:relative;" src="images/xx.png"/><p class="num">1</p></div>
+					<div class="head_nav_div_li">文档<img src="images/wjj.png"/></div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<img class="search_b" src="images/secher.png"/>
+			<input class="search" type="text" placeholder="输入产品名称搜索"/>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="content">
+			<div class="left">
+				<ul id="left_menu">
+					<li class="img1 lefton" name="#product">产品</li>
+					<li class="img2" name="#report">报告</li>
+					<li class="img3" name="#document">文档</li>
+					<li class="img4" name="#community">交流</li>
+					<li class="img5" name="#app" style="border-top:4px solid #34e265;width:165px">应用</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="right_margin">
+					<div class="tab-content">
+						<div class="tab-pane active" id="product">
+							<!-- 产品模块 -->
+							<div class="tab-content">
+								<!-- 产品 > 产品列表 -->
+								<div class="tab-pane active" id="productList">
+									<a class="name" name="productList" href="#productList" data-toggle="tab">产品管理</a><span class="jt_blue">>></span><a class="name">产品清单</a>
+									<div class="fr">
+										<input type="button" value="添加产品" class="tbutton_b" id="addProductButton" style="background-color:#e3746f;"/>
+										<a name="addProduct" href="#productDetail" data-toggle="tab"></a>
+									</div>
+									<div class="clear"></div>
+									<div class="bg_w" id="listview_products"></div>
+									<div class="page" id="pageset_products"></div>
+								</div>
+								<!-- 产品 > 产品详细 -->
+								<div class="tab-pane" id="productDetail">
+									<a class="name" href="#productList" data-toggle="tab">产品管理</a><span class="jt_blue">>></span><a class="name" id="productFunction">添加产品</a>
+									<div class="fr" id="copyProduct_div" style="display:block;">
+										<input type="button" value="复制产品" class="tbutton_b" id="copyProduct" style="background-color:#e3746f;"/>
+									</div>
+									<div class="clear"></div>
+									<div class="fl" style="width:1055px!important;margin-bottom:40px;">
+										<div class="bg_w margintop" style="min-height:475px;">
+											<div class="paddingt20">
+												<div class="information"><span class="blue_y">&nbsp;&nbsp;</span>基本信息</div>
+											</div>
+											<form id="product_infoForm" action="" method="post" enctype="multipart/form-data">
+												<div class="margin30">
+													<div class="input_div">
+														<label class="fl"><font>*</font>产品编码</label>
+														<span></span>
+														<div class="fl" style="position:relative;">
+															<input type="text" name="code" id="code" readonly="readonly"/>
+															<input type="hidden" value="" name="productId" id="productId">
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div class="input_div" name="validate_serviceCode">
+														<label class="fl"><font>*</font>服务编码</label>
+														<span></span>
+														<div class="fl" style="position:relative;">
+															<input type="text"  placeholder="请输入产品服务编码" name="serviceCode" id="serviceCode"  autocomplete="off"/>
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div class="input_div" name="validate_productName">
+														<label class="fl"><font>*</font>产品名称</label>
+														<span></span>
+														<div class="fl" style="position:relative;">
+															<input placeholder="为您添加的产品起个名字" type="text" name="productName" id="productName" autocomplete="off" />
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div class="input_div" name="validate_model">
+														<label class="fl"><font>*</font>产品型号</label>
+														<span></span>
+														<div class="fl" style="position:relative;">
+															<input placeholder="请输入产品设置上的型号" type="text" name="model" id="model" autocomplete="off"/>
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div style="width:580px;" class="input_div" name="validate_producttypeId">
+														<label class="fl"><font>*</font>产品类型</label>
+														<span></span>
+														<div style="position:relative;" class="fl" name="productTypeDrop" type="drop" >
+															<input type="hidden" name="producttypeId" id="producttypeId" value="" />
+															<input type="text" style="width:440px;float:left;padding:7px 0 6px 15px;" placeholder="其他" class="cate_inp" id="productTypeList" readonly="readonly" autocomplete="off"/>
+															<s class="xl_bg" name="xl_productType"></s>
+															<div style="display: none;" class="cate_drop" id="productType">
+															</div>
+															<div class="clear"></div>
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div class="input_div" name="validate_chip">
+														<label class="fl"><font>*</font>主控芯片</label>
+														<span></span>
+														<div class="fl" style="position:relative;">
+															<input placeholder="请输入产品对应的主控芯片型号" type="text" name="chip" id="chip" autocomplete="off"/>
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div class="input_div" style="padding-bottom:40px;">
+														<label class="fl">产品描述</label>
+														<span></span>
+														<div class="fl" style="position:relative;">
+															<textarea placeholder="请输入产品详情" name="description" id="description" maxlength="225"></textarea>
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div class="file_div" name="validate_image">
+														<p class="fl"><font style="color:red; padding-right:5px; text-algin:center;">*</font>产品图标</p>
+														<img class="fl" src="/firewire.page/images/tubiao.png" id="icon"/>
+														<div class="fl" id="uploadImage_div">
+															<input type="hidden" name="copyFlag" id="copyFlag" value="0"/>
+															<input type="file" style="display:none" name="iconFile" id="iconFile" />
+															<input class="sbutton" type="button" value="本地上传" id="uploadImage"/>
+														</div>
+														<div class="clear"></div>
+														<p class="white_p">尺寸100*100，大小20K内，jpg、png格式，图标不需要切圆角</p>
+													</div>
+													
+												</div>
+												<div class="">
+													<div class="information"><span class="blue_y">&nbsp;&nbsp;</span>接入信息</div>
+												</div>
+												<div class="margin30">
+													<div class="input_div noborder">
+														<label class="fl"><font>*</font>接入方式</label>
+														<span></span>
+														<div style="position:relative;" class="input_che fl" id="joinType">
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div class="input_div noborder">
+														<label class="fl"><font>*</font>解析方式</label>
+														<span></span>
+														<input type="hidden" name="analyticalwayId" value="" />
+														<input type="hidden" name="createtime" value="" />
+														<div style="position:relative;" class="input_che fl" id="analyticalWay">
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div style="padding-top:10px;" id="excelTemplet">
+														<a href="excel/temp.xls" style="text-decoration:underline;" >点击下载产品鉴权列表模板temp.xls</a>
+													</div>
+													
+													<div class="input_div" id="deviceAuthorization" name="validate_excelName">
+														<label class="fl"><font>*</font>产品鉴权</label>
+														<span></span>
+														<div style="position:relative;" class="fl">
+															<input type="file" name="authFile" id="authFile" style="display:none;"/>					
+															<input type="text" id="excelName" name="excelName" style="width:353px;float:left;padding:7px 0 6px 15px;" readonly="readonly">
+															<p class="bu_wz" id="uploadExcel">上传设备列表</p>
+															<div class="clear"></div>
+														</div>
+														<div class="clear"></div>
+													</div>
+												</div>
+												<div class="center" style="padding-bottom:20px; width:920px;" id="saveAndCancel">
+													<input type="button" name="save" class="tbutton" value="保存" />
+													<input type="button" name="cancel" class="tbutton_z" value="取消" />
+												</div>
+											</form>
+											<div class="clear"></div>
+											<div id="deviceAuthorizationList" style="display:none;">
+												<div class="">
+													<div class="information"><span class="blue_y">&nbsp;&nbsp;</span>产品鉴权列表</div>
+												</div>
+												<div class="clear" style="height:5px;"></div>
+												<div class="bg_w" id="listview_deviceAuthorization"></div>
+												<div class="page" id="pageset_deviceAuthorization"></div>
+												<div class="center"><input type="button" name="cancel" class="tbutton_z" value="取消" /></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- 产品 > 功能列表 -->
+								<div class="tab-pane" id="capacitysList">
+									<a class="name" href="#productList" data-toggle="tab">产品管理</a><span class="jt_blue">>></span><a class="name"  href="#capacitysList" data-toggle="tab">功能清单</a>
+									<div class="fr">
+										<input id="capacitysAdd" type="button" value="添加功能" class="tbutton"/>
+										<input id="capacitysCopy" type="button" value="复制功能" class="tbutton_b"/>
+									</div>
+									<div class="clear"></div>
+									<div class="fl" style="width:750px!important;padding-bottom:40px;">
+										<div class="bg_w" id="listview_capacitys"></div>
+										<div class="page" id="pageset_capacitys"></div>
+									</div>
+									<div class="fr" style="width:270px!important;">
+										<div class="bg_w">
+											<div class="paddingt20">
+												<div class="information"><span class="blue_y">&nbsp;&nbsp;</span>产品信息</div>
+											</div>
+											<div class="margin30">
+												<img class="paddingt20" name="capacitys_product_iconurl" src="images/tubiao.png"/>
+												<ul class="info_ul">
+													<li>产品编码：<span name="capacitys_product_code"></span></li>
+													<li>产品名称：<span name="capacitys_product_name"></span></li>
+													<li>产品型号：<span name="capacitys_product_model"></span></li>
+													<li>产品类型：<span name="capacitys_product_typeName"></span></li>
+													<li>产品芯片：<span name="capacitys_product_chip"></span></li>
+													<li>产品描述：<span name="capacitys_product_description"></span></li>
+													<li>接入方式：<span name="capacitys_product_joinType"></span></li>
+													<li>解析方式：<span name="capacitys_product_analyticalWay"></span></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<!-- 产品 > 功能详细 -->
+								<div class="tab-pane" id="capacitysDetail">
+									<a class="name" href="#productList" data-toggle="tab">产品管理</a><span class="jt_blue">>></span><a id="capacitysMap" class="name">添加功能</a>
+									<div class="clear"></div>
+									<div class="fl" style="width:700px!important;">
+										<div class="bg_w" style="min-height:330px;">
+											<div class="paddingt20">
+												<div class="information"><span class="blue_y">&nbsp;&nbsp;</span>基本信息</div>
+											</div>
+											<form id="capacitysInfoForm" class="margin30">
+												<input name="id" type="hidden"/>
+												<div class="input_div" name="validate_name">
+													<label class="fl">功能名称</label>
+													<span></span>
+													<div class="fl" style="position:relative;">
+														<input name="name" placeholder="为您添加的产品起个名字" type="text"/>
+													</div>
+													<div class="clear"></div>
+												</div>
+												
+												<div class="input_div" style="width:580px;" name="validate_dataType">
+													<label class="fl">数据类型</label>
+													<span></span>
+													<div style="position:relative;" class="fl" name="dataTypeDrop" type="drop">
+														<input type="hidden" name="dataType"/>
+														<input type="text" name="dropDisplay" style="width:440px;float:left;padding:7px 0 6px 15px;" readonly="readonly" placeholder="请选择" class="cate_inp"/>
+														<i class="xl_bg" name="dropBtn"></i>
+														<div style="display: none;" class="cate_drop">
+															<span tabindex="0">其他</span>
+															<span tabindex="1">整形</span>
+															<span tabindex="2">浮点型</span>
+															<span tabindex="3">字符串</span>
+															<span tabindex="4">布尔型</span>
+														</div>
+														<div class="clear"></div>
+													</div>
+													
+													<div class="clear"></div>
+													
+												</div>
+												
+												<div class="input_div" name="validate_type">
+													<label class="fl">功能类型</label>
+													<span></span>
+													<div class="input_che fl" style="position:relative;">
+														<input id="radio-3-1" name="type" type="radio" value="0" checked="checked"/><label for="radio-3-1"></label><span class="pp">显示</span>
+														<input id="radio-3-2" name="type" type="radio" value="1"/><label for="radio-3-2"></label><span class="pp">控制</span>
+														<input id="radio-3-3" name="type" type="radio" value="2"/><label for="radio-3-3"></label><span class="pp">控制显示</span>
+													</div>
+													<div class="clear"></div>
+												</div>
+												
+												<div class="input_div" style="padding-bottom:40px;">
+													<label class="fl">功能描述</label>
+													<span></span>
+													<div class="fl" style="position:relative;">
+														<textarea name="description" placeholder="请输入产品对应的主控芯片型号"></textarea>
+													</div>
+													<div class="clear"></div>
+												</div>
+												
+											</form>
+										</div>
+										<div id="reqs"></div>
+										<button id="reqAdd" name="reqAdd" class="btn btn-warning btn-block" type="button">添加请求</button>
+										
+										<div class="center" style="padding-bottom:20px;">
+											<button type="button" class="tbutton" name="save" id="capacitys_submit">保存</button>
+											<button type="button" class="tbutton_z" name="cancel" id="capacitys_cancel">取消</button>
+										</div>
+									</div>
+									<div class="fr" style="width:320px!important;">
+										<div class="bg_w" style="min-height:175px;">
+											<div class="paddingt20">
+												<div class="information"><span class="blue_y fl">&nbsp;&nbsp;</span>产品信息<a class="add_div" href="#productDetail" data-toggle="tab"><div class="add_tb fl">+</div>添加产品</a><div class="clear"></div></div>
+											</div>
+											<div class="margin30">
+												<img class="paddingt20" name="capacitys_product_iconurl" src="images/tubiao.png"/>
+												<ul class="info_ul">
+													<li>产品编码：<span name="capacitys_product_code"></span></li>
+													<li>产品名称：<span name="capacitys_product_name"></span></li>
+													<li>产品型号：<span name="capacitys_product_model"></span></li>
+													<li>产品芯片：<span name="capacitys_product_chip"></span></li>
+													<li>接入方式：<span name="capacitys_product_joinType"></span></li>
+													<li>解析方式：<span name="capacitys_product_analyticalWay"></span></li>
+												</ul>
+											</div>
+										</div>
+										<div class="bg_w" style="min-height:175px;margin:20px 0;">
+											<div class="paddingt20">
+												<div class="information"><span class="blue_y fl">&nbsp;&nbsp;</span>应用信息<a class="add_div" href="#app" data-toggle="tab" id="appCreate"><div class="add_tb fl">+</div>添加应用</a><div class="clear"></div></div>
+											</div>
+											<div class="margin30">
+												<ul class="info_ul" style="padding-bottom:0px;" name="appList"></ul>
+												<div class="feature_list"><img src="images/three_g.png"/><a id="app_href" href="#app" data-toggle="tab">应用清单</a></div>
+											</div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+
+							</div>
+						</div>
+						<div class="tab-pane" id="report">
+							报告
+						</div>
+						<div class="tab-pane" id="document">
+							文档
+						</div>
+						<div class="tab-pane" id="community">
+							交流
+						</div>
+						<div class="tab-pane" id="app">
+							<iframe id="app_iframe" frameborder="0" style="width:100%;height:800px;border:none;overflow-y:auto;"></iframe>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</body>
+</html>

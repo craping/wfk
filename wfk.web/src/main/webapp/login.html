@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>login</title>
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="css/common.css"/>
+
+	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
+	<script type="text/javascript" src="js/plug/crypto.js"></script>
+	<script type="text/javascript" src="js/common_.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+
+<div class="box-img"></div>
+<div class="login_index">
+	<form class="login_neirong" style="z-index:3">
+		<div style="position:absolute;margin:10px 40px;">
+			<h1 class="h2">登陆 login</h1>
+			<p class="come">欢迎使用火线物联智能硬件网平台</p>
+			<div class="sigName">
+				<div>
+					<input type="text" tabindex="1" name="uid" id="login_userId" localstring="signIn_uid" placeholder="用户名" maxlength="50">
+				</div>
+				<a href="#" class="login_clear clear_icon ui-link"></a>
+				<span class="uidIco"></span>
+			</div>
+			<div class="sigName">
+				<div>
+					<input type="password" tabindex="2" name="password" id="login_password" maxlength="50" localstring="signIn_password" placeholder="密码">
+				</div>
+				<a href="#" class="login_clear clear_icon ui-link"></a>
+				<span class="passIco"></span>
+			</div>
+			<button type="button" class="login_buttom" id="login">登录</button>	
+			<span class="zc"><a href="reg.html">我要注册</a></span><span class="zc"><a href="#">忘记密码?</a></span>
+		</div>
+		<div class="login_ceng">&nbsp;</div>
+	</form>	
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wfk.process.dao.sql.service.TCmdParamMapper" >
+  <resultMap id="BaseResultMap" type="wfk.process.dao.sql.entity.TCmdParam" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="paramName" property="paramname" jdbcType="VARCHAR" />
+    <result column="isEmpty" property="isempty" jdbcType="INTEGER" />
+    <result column="isFunction" property="isfunction" jdbcType="INTEGER" />
+    <result column="msgType" property="msgtype" jdbcType="INTEGER" />
+    <result column="regExpre" property="regexpre" jdbcType="VARCHAR" />
+    <result column="analyticalWay_id" property="analyticalwayId" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, paramName, isEmpty, isFunction, msgType, regExpre, analyticalWay_id, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cmd_param
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cmd_param
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="wfk.process.dao.sql.entity.TCmdParam" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_cmd_param (paramName, isEmpty, isFunction, 
+      msgType, regExpre, analyticalWay_id, 
+      state)
+    values (#{paramname,jdbcType=VARCHAR}, #{isempty,jdbcType=INTEGER}, #{isfunction,jdbcType=INTEGER}, 
+      #{msgtype,jdbcType=INTEGER}, #{regexpre,jdbcType=VARCHAR}, #{analyticalwayId,jdbcType=INTEGER}, 
+      #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="wfk.process.dao.sql.entity.TCmdParam" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_cmd_param
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paramname != null" >
+        paramName,
+      </if>
+      <if test="isempty != null" >
+        isEmpty,
+      </if>
+      <if test="isfunction != null" >
+        isFunction,
+      </if>
+      <if test="msgtype != null" >
+        msgType,
+      </if>
+      <if test="regexpre != null" >
+        regExpre,
+      </if>
+      <if test="analyticalwayId != null" >
+        analyticalWay_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paramname != null" >
+        #{paramname,jdbcType=VARCHAR},
+      </if>
+      <if test="isempty != null" >
+        #{isempty,jdbcType=INTEGER},
+      </if>
+      <if test="isfunction != null" >
+        #{isfunction,jdbcType=INTEGER},
+      </if>
+      <if test="msgtype != null" >
+        #{msgtype,jdbcType=INTEGER},
+      </if>
+      <if test="regexpre != null" >
+        #{regexpre,jdbcType=VARCHAR},
+      </if>
+      <if test="analyticalwayId != null" >
+        #{analyticalwayId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="wfk.process.dao.sql.entity.TCmdParam" >
+    update t_cmd_param
+    <set >
+      <if test="paramname != null" >
+        paramName = #{paramname,jdbcType=VARCHAR},
+      </if>
+      <if test="isempty != null" >
+        isEmpty = #{isempty,jdbcType=INTEGER},
+      </if>
+      <if test="isfunction != null" >
+        isFunction = #{isfunction,jdbcType=INTEGER},
+      </if>
+      <if test="msgtype != null" >
+        msgType = #{msgtype,jdbcType=INTEGER},
+      </if>
+      <if test="regexpre != null" >
+        regExpre = #{regexpre,jdbcType=VARCHAR},
+      </if>
+      <if test="analyticalwayId != null" >
+        analyticalWay_id = #{analyticalwayId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="wfk.process.dao.sql.entity.TCmdParam" >
+    update t_cmd_param
+    set paramName = #{paramname,jdbcType=VARCHAR},
+      isEmpty = #{isempty,jdbcType=INTEGER},
+      isFunction = #{isfunction,jdbcType=INTEGER},
+      msgType = #{msgtype,jdbcType=INTEGER},
+      regExpre = #{regexpre,jdbcType=VARCHAR},
+      analyticalWay_id = #{analyticalwayId,jdbcType=INTEGER},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

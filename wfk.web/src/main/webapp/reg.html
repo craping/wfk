@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta name="renderer" content="webkit">
+	<title>注册</title>
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min_.css" />
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css" />
+	
+	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
+	<script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/plug/crypto.js"></script>
+	<script type="text/javascript" src="js/common_.js"></script>
+	<script type="text/javascript" src="js/reg.js"></script>
+	<style>
+	body,html,div,h1,h2,h3,h4,h5,h6,ol,ul,li,p,input,label,a{font-family: "微软雅黑";font-size: 14px;font-weight: normal;margin: 0; padding: 0;color:#464e78;}
+	.proAlert{
+		position:absolute;
+		z-index:100001;
+		display:none;
+	}
+	.alertModal{
+		width: 100%;
+		height: 100%;
+		background: white;
+		z-index:100000;
+		position:absolute;
+		display:none;
+	}
+	.form-signin {
+	 	max-width: 420px;
+	 	margin:0 auto;
+	 	background-color:transparent;
+	 	position: relative;
+	}
+	.form-signin .form-control {
+	  display:inline;
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  width: 250px;
+	  padding: 10px;
+	  -webkit-box-sizing: border-box;
+	     -moz-box-sizing: border-box;
+	          box-sizing: border-box;
+	}
+	
+	
+	.form-signin .form-control:focus {
+	  z-index: 2;
+	}
+	.form-signin input[type="email"] {
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+	}
+	.form-signin input[type="password"] {
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+	
+	 h1 {
+		font-weight: 500;
+		text-align: center;
+		font-size: 28px;
+		border-bottom: 1px solid #eee;
+		margin: 0 -15px;
+		margin-bottom: 20px;
+		color: #1f84d9;
+		line-height: 1;
+	}
+	
+	.control-group{
+	    margin-bottom: 10px
+	}
+	label,input,button,select,textarea {
+	    font-size: 14px;
+	    font-weight: normal;
+	    line-height: 20px;
+	    color:#fff
+	}
+	h1 small{
+		font-size: 16px;
+	    font-weight: 400;
+	}
+	.input-group .input-group-addon{
+	    padding:0px;
+	    background: none
+	}
+	.btn-group{
+		padding-left:2px
+	}
+	.help-block{
+		display: none;
+	}
+	.help-block,.help-block p{
+		margin:0px;
+	}
+	.intro dd {
+		height: 25px;
+		font: 12px/25px arial;
+		color: #999;
+	}
+	
+	#regFromDiv-sm form>div>input,#regFromDiv-sm form>div>button{
+		width:100%;
+	}
+	
+	.b_l{
+		border:1px solid red;
+	}
+	.box-img{background-attachment: fixed; background-position: center 0; background-repeat: no-repeat; background-size: cover; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: -2; background-image:url(images/bg5.jpg);}
+	.login_ceng {  background-color: #000;  position: absolute; left: 0; top: 0; z-index: -1; height: 100%; width: 100%; border-radius: 4px;  filter: alpha(opacity = 30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3;}
+	</style>
+</head>
+<body class="box-img">
+	<!-- 注册表单 -->
+			 
+	<div class="container" id="regDiv">
+		<h1 style="margin-top:20px;padding-bottom: 5px;">用户注册</h1>
+		<form class="form-inline form-signin thumbnail" style="border: 0px;">
+	        <div class="control-group">
+       	 		<label class="control-label" for="reg_userName" style="width: 100px;text-align: right;">用户名：</label>
+       	 		<input type="text" id="reg_userName" class="form-control" maxlength="20" placeholder="用户名">
+       	 	    <span id="reg_errUserName"  class="help-block">
+        	 	    <p class="text-danger" style="margin-left:120px;">
+        	 	    	请输入6-20位的数字下划线和字符的组合
+        	 	    </p>
+       	 	    </span>
+       	 	</div>
+			<div class="control-group">
+				<label class="control-label" for="reg_password" style="width: 100px;text-align: right;">密码：</label>
+				<input type="password" id="reg_password" class="form-control" maxlength="20" placeholder="新密码" >
+				 <span id="reg_passworderror" class="help-block ">
+				 	<p  class="text-danger" style="margin-left:120px;">
+				 		请输入6-20位的数字下划线和字符的组合
+				 	</p>
+				 </span>
+			</div>
+			<div class="control-group">
+	    		<label class="control-label" for="regp_password" style="width: 100px;text-align: right;">确认密码：</label>
+	    		<input type="password" id="regp_password" class="form-control" maxlength="20" placeholder="确认密码">
+	    		<span id="regp_passworderror" class="help-block">
+		    		<p  class="text-danger" style="margin-left:120px;">
+		    			两次输入的密码不一致请重新输入
+		    		</p>
+	    		</span>
+	    	</div>
+	    	<div class="control-group">
+       	 		<label class="control-label" for="reg_name" style="width: 100px;text-align: right;">真实姓名：</label>
+       	 		<input type="text" id="reg_name" class="form-control" maxlength="10" placeholder="真实姓名">
+       	 	    <span id="reg_nameerror"  class="help-block">
+        	 	    <p class="text-danger" style="margin-left:120px;">
+        	 	    	请输入合法的真实姓名
+        	 	    </p>
+       	 	    </span>
+       	 	</div>
+	    	<div class="control-group">
+       	 		<label class="control-label" for="reg_mobilenum" style="width: 100px;text-align: right;">手机号码：</label>
+       	 		<input type="text" id="reg_mobilenum" class="form-control" maxlength="11" placeholder="手机号码">
+       	 	    <span id="reg_mobilenumerror"  class="help-block">
+        	 	    <p class="text-danger" style="margin-left:120px;">
+        	 	    	请输入正确的11位电话号码
+        	 	    </p>
+       	 	    </span>
+       	 	</div>
+       	 	<div class="control-group">
+       	 		<label class="control-label" for="reg_email" style="width: 100px;text-align: right;">Email：</label>
+       	 		<input type="text" id="reg_email" class="form-control" maxlength="20" placeholder="Email">
+       	 	    <span id="reg_emailerror"  class="help-block">
+        	 	    <p class="text-danger" style="margin-left:120px;">
+        	 	    	请输入常用的Email地址
+        	 	    </p>
+       	 	    </span>
+       	 	</div>
+       	 	<div class="control-group">
+       	 		 <button id="regBotton" class="btn btn-lg btn-primary btn-block" type="button" style="width: 250px;margin-left: 25%;">同意协议并注册</button>
+       	 	</div>
+       	 	<div class="login_ceng"></div>
+		</form>
+	</div>
+</body>
+</html>

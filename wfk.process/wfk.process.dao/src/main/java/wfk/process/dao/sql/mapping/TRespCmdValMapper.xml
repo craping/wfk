@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wfk.process.dao.sql.service.TRespCmdValMapper" >
+  <resultMap id="BaseResultMap" type="wfk.process.dao.sql.entity.TRespCmdVal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="respCmd_id" property="respcmdId" jdbcType="INTEGER" />
+    <result column="cmdParam_id" property="cmdparamId" jdbcType="INTEGER" />
+    <result column="cmdParamVal" property="cmdparamval" jdbcType="VARCHAR" />
+    <result column="valAnalytical_id" property="valanalyticalId" jdbcType="INTEGER" />
+    <result column="valCalc_id" property="valcalcId" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, respCmd_id, cmdParam_id, cmdParamVal, valAnalytical_id, valCalc_id, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_resp_cmd_val
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_resp_cmd_val
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="wfk.process.dao.sql.entity.TRespCmdVal" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_resp_cmd_val (respCmd_id, cmdParam_id, cmdParamVal, 
+      valAnalytical_id, valCalc_id, state
+      )
+    values (#{respcmdId,jdbcType=INTEGER}, #{cmdparamId,jdbcType=INTEGER}, #{cmdparamval,jdbcType=VARCHAR}, 
+      #{valanalyticalId,jdbcType=INTEGER}, #{valcalcId,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="wfk.process.dao.sql.entity.TRespCmdVal" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_resp_cmd_val
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="respcmdId != null" >
+        respCmd_id,
+      </if>
+      <if test="cmdparamId != null" >
+        cmdParam_id,
+      </if>
+      <if test="cmdparamval != null" >
+        cmdParamVal,
+      </if>
+      <if test="valanalyticalId != null" >
+        valAnalytical_id,
+      </if>
+      <if test="valcalcId != null" >
+        valCalc_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="respcmdId != null" >
+        #{respcmdId,jdbcType=INTEGER},
+      </if>
+      <if test="cmdparamId != null" >
+        #{cmdparamId,jdbcType=INTEGER},
+      </if>
+      <if test="cmdparamval != null" >
+        #{cmdparamval,jdbcType=VARCHAR},
+      </if>
+      <if test="valanalyticalId != null" >
+        #{valanalyticalId,jdbcType=INTEGER},
+      </if>
+      <if test="valcalcId != null" >
+        #{valcalcId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="wfk.process.dao.sql.entity.TRespCmdVal" >
+    update t_resp_cmd_val
+    <set >
+      <if test="respcmdId != null" >
+        respCmd_id = #{respcmdId,jdbcType=INTEGER},
+      </if>
+      <if test="cmdparamId != null" >
+        cmdParam_id = #{cmdparamId,jdbcType=INTEGER},
+      </if>
+      <if test="cmdparamval != null" >
+        cmdParamVal = #{cmdparamval,jdbcType=VARCHAR},
+      </if>
+      <if test="valanalyticalId != null" >
+        valAnalytical_id = #{valanalyticalId,jdbcType=INTEGER},
+      </if>
+      <if test="valcalcId != null" >
+        valCalc_id = #{valcalcId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="wfk.process.dao.sql.entity.TRespCmdVal" >
+    update t_resp_cmd_val
+    set respCmd_id = #{respcmdId,jdbcType=INTEGER},
+      cmdParam_id = #{cmdparamId,jdbcType=INTEGER},
+      cmdParamVal = #{cmdparamval,jdbcType=VARCHAR},
+      valAnalytical_id = #{valanalyticalId,jdbcType=INTEGER},
+      valCalc_id = #{valcalcId,jdbcType=INTEGER},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

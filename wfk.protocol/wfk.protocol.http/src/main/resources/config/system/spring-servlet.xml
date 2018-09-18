@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd ">
+
+	<context:annotation-config />
+	<!-- controller convert to bean -->
+	<context:component-scan base-package="wfk.protocol.http.core.web"  use-default-filters="false">
+		<context:include-filter type="regex" expression="wfk.protocol.http.core.web.*Controller"/>
+	</context:component-scan>
+	
+	<!-- http view list -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="ignoreAcceptHeader" value="true"/>
+        <property name="defaultContentType" value="text/html;charset=UTF-8"/>
+        <property name="favorParameter" value="true"/>
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html;charset=UTF-8" />
+				<entry key="xml" value="application/xml" />
+				<entry key="json" value="application/json" />
+				<entry key="stream" value="application/octet-stream" />
+				<entry key="image" value="image/gif" />
+			</map>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<!-- for text/html -->
+				<bean name="HtmlView" class="wfk.protocol.http.core.override.view.HtmlView" >
+					<property name="modelKey" value="result"/>
+					<property name="domain" value="192.168.1.111"/>
+				</bean>
+				<!-- for application/xml -->
+				<bean name="XmlView" class="org.springframework.web.servlet.view.xml.MarshallingView" >
+					<property name="modelKey" value="result" />
+					<property name="marshaller">
+						<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+							<property name="autodetectAnnotations" value="true"/>
+							<!-- <property name="converters">
+							    <list>
+							    	<bean class="wfk.protocol.http.define.bean.entity.converter.DateTimeConverter"></bean>
+								</list>
+							</property> -->
+						</bean>
+					</property>
+				</bean>
+				<!-- for application/json && application/javascript -->
+				<bean name="JsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+					<property name="extractValueFromSingleKeyModel" value="true" />
+					<property name="modelKeys" value="result" />
+					<property name="jsonpParameterNames">
+						<set>
+							<value>jsonp</value>
+							<value>callback</value>
+						</set>
+					</property>
+				</bean>
+				<!-- for application/octet-stream -->
+				<bean name="StreamView" class="wfk.protocol.http.core.override.view.OctetStreamView">
+					<property name="modelKey" value="result"/>
+				</bean>
+				<!-- for image/gif -->
+				<bean name="imageView" class="wfk.protocol.http.core.override.view.ImageView">
+					<property name="modelKey" value="result"/>
+					<property name="disposition" value="false"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- exception catch -->
+	<bean id="handlerExceptionResolver" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
+		<!-- <property name="messageConverters" ref="messageConverters"/> -->
+	</bean>
+	
+	<!-- interceptors -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<bean class="org.framework.web.Interceptor.ServiceInterceptor" />
+			</list>
+		</property>
+	</bean> -->
+	
+</beans>
+
