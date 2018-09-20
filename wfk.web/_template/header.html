@@ -1,0 +1,201 @@
+<div>
+	<style>
+	#downBOEgw{width:100%;height:46px;background:rgb(77, 77, 79);}
+	#downBOEgw ul li{list-style: none;float: left;}
+	#downBOEgw ul li:nth-child(1){ width:10%;position: absolute;left: 0;top: 0;}
+	#downBOEgw ul li:nth-child(1) img{width:80%;line-height: 46px;margin: 8px;}
+	#downBOEgw ul li:nth-child(2) img{width:9%;margin:12px;position: absolute;top: -6%;left: 10%;}
+	#downBOEgw ul li:nth-child(2) span{position: absolute;top: 12%;left: 24%;font-size: 14px;color:#FFFFFF;}
+	#downBOEgw ul li:nth-child(3) div{width: 24%;height: 34%;position: absolute;left: 72%;font-size: 14px;background: #0091af;border-radius: 5px;top: 4%;line-height: 34%;text-align: center;}
+	#downBOEgw ul li:nth-child(3) div span{color: #ffffff;position: absolute;top: 30%;left: 0%;width: 100%;line-height: 100%;}
+	</style>
+<div class="container-fluid index-shadow-bottom nav-parent-box parent-fixed">
+    <div id="downBOEgw" style="display:none">
+    	<ul>
+    		<li>
+    			<img class="closeDownBOEgw" src="images/g1/index/icon-close-banner.png"/>
+    		</li>
+    		<li>
+    			<img src="images/g1/index/BOEcenter.png"/><span>京东方官网APP</span>
+    		</li>
+    		<li>
+    			<div id="boegwtop"><span>打开APP</span></div>
+    		</li>
+    	</ul>
+    </div>
+    <div class="container nav-box">
+        <div class="row nav">
+            <div class="col-lg-6 col-md-6 col-sm-5 col-xs-3">
+                <ul class="row list-unstyled list-inline text-center  nav-list1 list-navbar">
+                    <li class="col-lg-3 col-md-3 col-sm-3 text-left ">
+                        <a href="/index/pi.html"><span class="logo header-logo"></span></a>
+                    </li>
+                    <li v-for="v in todos" class="col-lg-2 col-md-2 col-sm-2 bg hidden-xs hidden-sm list1-li-list nav-list1-hover">
+                        <a class="nav-size" v-bind:href="v.href">{{v.text}}</a>
+                        <span class="nav-hover"></span>
+                        <div class="container-fluid ">
+                            <div class="container nav-menu">
+                                <ul class="row list-unstyled text-left  header-9-20">
+                                    <li v-for="vv in v.menu" class="col-lg-3 col-md-4 col-lg-offset-1">
+                                        <!-- 二级menu-->
+                                        <ul class="row list-unstyled text-left in-nav-menu">
+                                            <li class="clearfix "></li>
+                                            <li class="col-lg-12 col-md-12 col-sm-12 h4 nav-menu-after sm-menu-after">
+                                                <a class="three-size"  v-bind:href="vv.href">{{vv.text}}</a>
+                                            </li>
+                                            <li v-for="vvv in vv.menu" class="col-lg-12 col-md-12 col-sm-6 two-menu-list">
+                                                <ul class="row list-unstyled text-left">
+                                                    <li class="col-lg-12 col-md-12 col-sm-12 nav-menu-list">
+                                                        <a class="nav-size" v-bind:href="vvv.href">{{vvv.text}}</a>
+                                                        <!-- 三级menu-->
+                                                        <ul class="row list-unstyled nav-menu-menu">
+                                                            <li v-for="vvvv in vvv.menu" class="col-lg-12 col-md-12 col-sm-12">
+                                                                <a class="nav-size" v-bind:href="vvvv.href">{{vvvv.text}}</a>
+                                                            </li>
+                                                            <li class="after"></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li v-for="v in list" class="col-lg-2 col-md-2 col-sm-2 bg hidden-xs hidden-sm  list1-li-list nav-list1-hover header-nav-last">
+                        <a class="nav-size"  v-bind:href="v.href">{{v.text}}</a>
+                        <span class="nav-hover"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-5  col-md-5 col-sm-7 col-lg-offset-1  col-md-offset-1  col-xs-9 sm-nav-box">
+                <ul class="row list-unstyled list-inline text-left nav-list2 hidden-xs  hidden-sm vue-navBar-right">
+                    <li v-for="v in todos" class="">
+                        <a class="nav-size"  v-bind:href="v.href">{{v.text}}</a>
+                    </li>
+                </ul>
+                <ul class="row list-unstyled list-inline nav-list3">
+                    <li class="col-lg-7  col-md-7 col-sm-7 col-xs-7 xs-search">
+                        <div class="search-box">
+                            <input type="text" class="form-control nav-search" aria-describedby="basic-addon2"  id="_q">
+                            <a href="javascript:trackFn('search-btn','/search/ps.html?_q='+document.getElementById('_q').value);"><span id="basic-addon2"></span></a>
+                        </div>
+                    </li>
+                    <li class="col-lg-4  col-md-4 col-sm-5 col-lg-offset-1 col-md-offset-1 col-xs-5">
+                        <!-- 点击下拉的按钮-->
+                        <div class="xs-list-box hidden-lg hidden-md  ">
+                            <i class="i-1" aria-hidden="true"></i>
+                            <i class="i-2"></i>
+                        </div>
+                        <div class="text-center lg-lang  hidden-xs hidden-sm">
+                          <a href="javascript:trackFn('header-en','/en/')">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 手机/pad 端-->
+<div class="container-fluid hidden-lg hidden-md xs-menu-list nav-parent-box ">
+        <ul class="row list-unstyled xs-list list-navbar2 vue-navBar-right listDown">
+            <li v-for="v in todos" class="col-xs-12">
+                <div class="clickObj"><a v-bind:href="v.href">{{v.text}}</a>
+                    <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                </div>
+
+                <ul class="row list-unstyled xs-tier xs-tier-2">
+                    <li v-for="vv in v.menu" class="col-xs-12">
+                        <div class="clickObj"><a v-bind:href="vv.href">{{vv.text}}</a>
+
+                            <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                        </div>
+                        <ul class="row list-unstyled xs-tier xs-tier-3">
+                            <li v-for="vvv in vv.menu" class="col-xs-12">
+                                <div class="clickObj"> <a v-bind:href="vvv.href">{{vvv.text}}</a>
+
+                                    <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                                </div>
+                                <ul class="row list-unstyled xs-tier xs-tier-4">
+                                    <li v-for="vvvv in vvv.menu" class="col-xs-12">
+                                        <div class="clickObj">
+                                            <a v-bind:href="vvvv.href">{{vvvv.text}}</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li v-for="v in todoss" class="col-xs-12  xs-mall">
+                <div class="clickObj" ><a v-bind:href="v.href">{{v.text}}</a>
+
+                    <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                </div>
+                <ul class="row list-unstyled xs-tier xs-tier-2">
+                    <li v-for="vv in v.menu" class="col-xs-12">
+                        <div class="clickObj twoNavList" ><a v-bind:href="vv.href">{{vv.text}}</a>
+
+                            <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                        </div>
+                        <!-- <ul class="row list-unstyled xs-tier xs-tier-3">
+                            <li v-for="vvv in vv.menu" class="col-xs-12">
+                                <div class="clickObj">
+                                    <a v-bind:href="vvv.href">{{vvv.text}}</a>
+
+                                    <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                                </div>
+                                <ul class="row list-unstyled xs-tier xs-tier-4">
+                                    <li v-for="vvvv in vvv.menu" class="col-xs-12">
+                                        <div class="clickObj">
+                                            <a v-bind:href="vvvv.href">{{vvvv.text}}</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                    </li>
+                </ul>
+            </li>
+            <li v-for="v in list" class="col-xs-12">
+                <div class="clickObj">
+                    <a v-bind:href="v.href">{{v.text}}</a>
+
+                    <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                </div>
+                <ul class="row list-unstyled xs-tier xs-tier-2">
+                    <li v-for="vv in v.menu" class="col-xs-12">
+                        <div class="clickObj twoNavList">
+                            <a v-bind:href="vv.href">{{vv.text}}</a>
+
+                            <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                        </div>
+                        <!-- <ul class="row list-unstyled xs-tier xs-tier-3">
+                            <li v-for="vvv in vv.menu" class="col-xs-12">
+                                <div class="clickObj" >
+                                    <a v-bind:href="vvv.href">{{vvv.text}}</a>
+
+                                    <span class="glyphicon glyphicon-menu-down xs-tier-down"></span>
+                                </div>
+                                <ul class="row list-unstyled xs-tier xs-tier-4">
+                                    <li v-for="vvvv in vvv.menu" class="col-xs-12">
+                                        <div class="clickObj">
+                                            <a v-bind:href="vvvv.href">{{vvvv.text}}</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                    </li>
+                </ul>
+            </li>
+            <li class="col-xs-12 language-box">
+            	<div class="clickObj twoNavList" >
+                	<a href="javascript:trackFn('header-en','/en/')">English</a>
+            	</div>
+            </li>
+        </ul>
+    </div>
+</div>

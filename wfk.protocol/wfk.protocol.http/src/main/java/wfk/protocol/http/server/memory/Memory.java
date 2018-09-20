@@ -3,13 +3,8 @@ package wfk.protocol.http.server.memory;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
-
-import wfk.process.dao.sql.entity.TUser;
 
 public class Memory {
 
@@ -27,15 +22,6 @@ public class Memory {
 	{
 		mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
 		mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-	}
-
-
-	public static TUser getSessionUser(HttpServletRequest request){
-		HttpSession session = request.getSession();
-		if(session == null)
-			return null;
-		TUser sessionUser = (TUser) session.getAttribute("user");
-		return sessionUser;
 	}
 	
 }
