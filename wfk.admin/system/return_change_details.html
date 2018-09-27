@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>换货详情</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../resources/js/system/sys_return_details.js"></script>
+</head>
+<body>
+<div class="system-substance">
+    <h1>换货详情</h1>
+    <div class="system-order">
+        <div class="system-order-c">
+            <h2>原订单详情</h2>
+            <div class="system-order-list">
+                <div class="system-order-h3">订单基本信息</div>
+                <table class="system-order-table order_field">
+                    <tr>
+                        <td width="33%" type="show" name="orderId">订单号：</td>
+                        <td width="33%" type="show" name="userId">用户名：</td>
+                        <td type="date" name="orderTime">下单时间：</td>
+                    </tr>
+                    <tr>
+                        <td type="enum" name="userPayWay">支付方式：</td>
+                        <td type="enum" name="orderType">订单类型：</td>
+                        <td type="enum" name="orderChannel">下单渠道：</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>订单商品</h2>
+            <div class="system-order-list" >
+                <div class="system-table">
+                	<table>
+                        <tr>
+                            <td width="10%">商品名称</td>
+                            <td width="10%">商品编号</td>
+                            <td width="15%">商品属性</td>
+                            <td width="7%">单价</td>
+                            <td width="7%">商品数量</td>
+                            <td width="7%">快递费用</td>
+                            <td width="7%">订单总额</td>
+                            <td width="7%">支付现金</td>
+                            <td width="7%">支付积分</td>
+                            <td width="7%">退货标识</td>
+                            <td>退换货订单号</td>
+                        </tr>
+                        <tr>
+                            <td id="proNameProduct"></td>
+                            <td id="proCodeProduct"></td>
+                            <td id="proAttProduct"></td>
+                            <td id="realPriceProduct"></td>
+                            <td id="numProduct"></td>
+                            <td type="show" name="logisticsFee"></td>
+                            <td type="show" name="realAmount"></td>
+                            <td type="show" name="payCash"></td>
+                            <td type="show" name="payIntegral"></td>
+                            <td id="returnLabelProduct"></td>
+                            <td id="orderIdProduct"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>收件人信息</h2>
+            <div class="system-order-list">
+                <ul class="system-order-ul clearfix">
+                    <li type="show" name="consigneeName" style="margin-right: 200px;">收货人：</li>
+                 <li type="show" name="consigneeMobile" style="margin-right: 200px;">手机号码：</li>
+                    <li type="show" name="consigneeAddress">收货地址：</li>
+                </ul>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>换货详情</h2>
+            <div class="system-order-list">
+                <div class="system-table system-order-t">
+                    <table>
+                        <tdead>
+                        <tr>
+                            <td width="25%">商品名称</td>
+                            <td width="25%">商品编号</td>
+                            <td width="25%">商品属性</td>
+                            <td>申请日期</td>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td id="proNameReturn"></td>
+                            <td id="proIdReturn"></td>
+                            <td id="proAttrReturn"></td>
+                            <td id="addTimeReturn"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="system-order-return">
+                    <p id="problemReturn">退/换货理由：</p>
+                    <p><span id="picReturn">退货图片：</span><a href="#">查看</a></p>
+                    <p id="acceptOfferReturn">处理意见：</p>
+                    <p id="statusReturn">当前状态：</p>
+                    <p id="newOrderIdReturn">新订单编号：</p>
+                    <p id="logisticsTypeNewOrd">快递类型：</p>
+                    <p id="logisticsCodeNewOrd">快递单号：</p>
+                    <p id="consigneeNameNewOrd">收件人：</p>
+                    <p id="consigneeAddressNewOrd">收件地址：</p>
+                </div>
+            </div>
+            <div class="system-order-c">
+                <h2>操作记录</h2>
+                <div class="system-order-list">
+                    <div class="system-table" id="listview_order_logs">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="system-order-btn">
+            <a href="javascript:void(0);" id="backButton">返回</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

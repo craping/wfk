@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改一级分类属性</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/layer.css"/>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/validate_methods.js"></script>
+	<script type="text/javascript" src="../resources/js/common/layer.js"></script>
+    <script type="text/javascript" src="../resources/js/common/select.js"></script>
+	<script type="text/javascript" src="../resources/js/system/classfiy/updateClassOne.js"></script>
+</head>
+<body>
+ <div class="hiddensd" id="hiddensd"></div>
+ <div class="system-substance">
+     <h1>修改一级分类属性</h1>
+     <classId value=""></classId>
+     <div class="system-form-add">
+         <form id="updateOne">
+         <div class="system-form-input">
+             <span class="block left tr f18">分类名称：</span>
+             <input type="text" class="system-form-box left f16" stringCheck="true" required="" aria-required="true" placeholder="请输入分类名称" id="classsName" name="classsName">
+             <label class="system-form-hint error" for="classsName"  style="display: none;"></label>
+         </div>
+         <div class="system-form-input">
+             <span class="block left tr f18">排序：</span>
+             <input type="text" class="system-form-box left f16" noZore="true" level="1" isSeq="true" placeholder="请输入排序" maxlength="9"  id="seql" name="seql" number="true" required="" aria-required="true">
+             <label id="seq_msg" class="system-form-hint error" for="seql" style="display: none;">排序不可用</label>
+         </div>
+         <div class="system-form-input">
+             <span class="block left tr f18">是否有效：</span>
+             <div class="dropdown2 left">
+                 <dl>
+                    <dt value="" id="status" class="selectValve" >有效</dt>
+	                <dd class="selectOption">
+	                    <ul>
+	                        <li value="1"><a href="#">有效</a></li>
+	                        <li value="0"><a href="#">无效</a></li>
+	                    </ul>
+	                </dd>
+                 </dl>
+             </div>
+             <label class="system-form-hint error" for="status" style="display: none;">至少选择一项</label>
+         </div>
+         <div class="system-form-btn">
+             <a href="javascript:;" id="closeWindeos">取消</a>
+             <button type="button" class="system-btn-c" id="ClassOk">确定</button>
+         </div>
+       </form>
+     </div>
+
+ </div>
+        
+</body>
+</html>

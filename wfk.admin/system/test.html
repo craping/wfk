@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>物流设置--添加</title>
+<link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+<link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.css" />
+
+<script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+<script type="text/javascript" src="../resources/js/common/base.js"></script>
+<script src="../resources/libs/ueditor/ueditor.config.js"></script>
+<script src="../resources/libs/ueditor/ueditor.all.js"></script>
+<script src="../js/payment.js"></script>
+<script src="../js/layer.js"></script>
+<style type="text/css">
+    .system-radio label{ display: inline-block; margin-right: 20px; height: 45px; line-height: 45px; font-size: 18px;}
+    .system-radio input{ vertical-align: middle; margin-right: 5px;}
+</style>
+</head>
+<body>
+<div class="system-container">
+    <div class="system-header">
+        <div class="system-logo"></div>
+        <div class="system-top-nav">
+            <ul>
+                <li class="system-nav-01"><a href="#" class="system-nav-a1">礼舍商城首页</a> </li>
+                <li class="system-nav-02"><a href="#" class="system-nav-a2">欢迎<br>哈哈哈哈</a></li>
+                <li><a href="#" class="system-nav-a3">我的站点</a></li>
+                <li><a href="#" class="system-nav-a4">退出</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="system-content clearfix">
+        <div class="system-subNav" >
+            <div class="system-subNav-box">
+                <ul>
+                    <li class="system-subNav-lv1">
+                        <span class="system-subNav-sp1">企业管理</span>
+                        <ul>
+                            <li class="system-subNav-lv2"><i>&gt;</i>商品分类管理</li>
+                            <li class="system-subNav-lv2"><i>&gt;</i>商品属性管理</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="system-fold"></div>
+        </div>
+        <div class="system-right">
+            <div class="system-substance">
+                <div class="site-template-title">物流添加<a href="#">返回</a></div>
+                <div class="system-form-add" id="pay_div">
+                    <textarea name="description" id="ueditor"></textarea><br>
+			        <script>
+			            var editor = UE.getEditor('ueditor');
+			        </script>
+                </div >
+            </div>
+            
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $('#goToPay').click(function () {
+                    layer.msg('数据提交中....', {icon: 16,shade: (0.8)});
+                    setTimeout(function(){
+                        layer.closeAll('loading');
+                    }, 2000);
+                })
+            })
+		    </script>
+            <a href="#" id="goToPay">返回</a>
+            
+            
+            
+            <script type="text/javascript">
+            
+            </script>
+        </div>
+    </div>
+    <div class="system-footer">
+    
+        © 2005-2014 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备15033641号-1<span>礼舍科技-版权所有</span>
+    </div>
+</div>
+</body>
+</html>

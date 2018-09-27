@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../resources/js/system/sys_comCapital.js"></script>
+</head>
+<body>
+ <div class="system-substance" id="test">
+                              <h2 class="mt20">企业资金明细管理</h2>
+                <div class="system-operate clearfix mt20 mb20" >
+                    <div class="system-operate-s left ml20">
+                        <span class="system-operate-span block left">企业名称：</span>
+                        <input type="text" id="coName" class="site-template-box block left">
+                        <input type="hidden" id="comId">
+                    </div>
+                    <div class="system-operate-s left ml20">
+                        <span class="system-operate-span block left">操作账户：</span>
+                        <input type="text" id="operAcc" class="site-template-box block left">
+                    </div>
+                    <div class="system-operate-s left ml20">
+                        <span class="system-operate-span block left">交易类型：</span>
+                        <div class="dropdown left">
+                            <dl class="select">
+                                <dt id="tranType">交易类型</dt>
+                                <dd>
+                                    <ul>
+                                        <li><a  href="javascript:void(0);">全部</a></li>
+                                        <li><a  href="javascript:void(0);" value="0">系统积分充值</a></li>
+                                        <li><a  href="javascript:void(0);" value="1">系统积分返利</a></li>
+                                        <li><a  href="javascript:void(0);" value="2">企业发放充值积分</a></li>
+                                        <li><a  href="javascript:void(0);" value="3">企业发放返利积分</a></li>
+                                        <li><a  href="javascript:void(0);" value="4">企业积分撤销</a></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="system-operate-s left ml20">
+                        <span class="system-operate-span block left">状态：</span>
+                        <div class="dropdown left">
+                            <dl class="select">
+                                <dt id="status">状态</dt>
+                                <dd>
+                                    <ul>
+                                        <li><a  href="javascript:void(0);">全部</a></li>
+                                        <li><a  href="javascript:void(0);" value="0">失败</a></li>
+                                        <li><a  href="javascript:void(0);" value="1">成功</a></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="system-operate-i left ml20" >
+                        <span class="block left">交易日期：</span>
+                        <input type="text" class="site-template-box block left" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});">
+                        <i class=" site-template-i block left">—</i>
+                        <input type="text" class="site-template-box block left" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});">
+                    </div>
+                    <a href="javascript:;" id="search_button" class="site-template-query block left f16">搜索</a>
+                </div>
+                <h2></h2>
+                <div id="listview" class="system-table">
+                
+                </div>
+                <div class="system-operate-s2 clearfix">
+		        <div class="dropdown left">
+		            <dl class="select" onclick="Web.Method.getSelectValues(this,'bulkExport',1)">
+		                <dt id="select_button">请选择...</dt>
+		                <dd>
+		                    <ul>
+		                    	<li><a href="javascript:void(0);">请选择...</a></li>
+		                    </ul>
+		                </dd>
+		            </dl>
+		        </div>
+		        <button type="button" id="submit_button" disabled="disabled" onclick="operate()" style="background:#898989;" class="system-btn left f16">确定</button>
+		       </div>
+                <div id="pageset" class="system-page">
+                </div>
+</div>
+</body>
+</html>

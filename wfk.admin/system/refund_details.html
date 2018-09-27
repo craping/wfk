@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>退款详情</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../resources/js/system/sys_refund_details.js"></script>
+</head>
+<body>
+<div class="system-substance">
+    <h1>退货详情</h1>
+    <div class="system-order">
+        <div class="system-order-c">
+            <h2>原订单详情</h2>
+            <div class="system-order-list">
+                <div class=system-order-h3>订单基本信息</div>
+                <table class="system-order-table">
+                    <tr>
+                        <td width="33%" type="show" name="orderId">订单号：</td>
+                        <td width="33%" type="show" name="userId">用户名：</td>
+                        <td type="date" name="orderTime">下单时间：</td>
+                    </tr>
+                    <tr>
+                        <td type="enum" name="userPayWay">支付方式：</td>
+                        <td type="enum" name="orderType">订单类型：</td>
+                        <td type="enum" name="orderChannel">下单渠道：</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>订单商品</h2>
+            <div class="system-order-list">
+                <div class="system-table">
+                	<div class="system-table">
+                	<table>
+                        <tr>
+                            <td width="10%">商品名称</td>
+                            <td width="10%">商品编号</td>
+                            <td width="15%">商品属性</td>
+                            <td width="7%">单价</td>
+                            <td width="7%">商品数量</td>
+                            <td width="7%">快递费用</td>
+                            <td width="7%">订单总额</td>
+                            <td width="7%">支付现金</td>
+                            <td width="7%">支付积分</td>
+                            <td width="7%">退货标识</td>
+                            <td>退货订单号</td>
+                        </tr>
+                        <tr>
+                            <td id="proNameProduct"></td>
+                            <td id="proCodeProduct"></td>
+                            <td id="proAttProduct"></td>
+                            <td id="realPriceProduct"></td>
+                            <td id="numProduct"></td>
+                            <td type="show" name="logisticsFee"></td>
+                            <td type="show" name="realAmount"></td>
+                            <td type="show" name="payCash"></td>
+                            <td type="show" name="payIntegral"></td>
+                            <td id="returnLabelProduct"></td>
+                            <td type="show" name="orderId"></td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>收件人信息</h2>
+            <div class="system-order-list">
+                <ul class="system-order-ul clearfix">
+                    <li type="show" name="consigneeName" style="margin-right: 200px;">收货人：</li>
+                  <li type="show" name="consigneeMobile" style="margin-right: 200px;">手机号码：</li>
+                    <li type="show" name="consigneeAddress">收货地址：</li>
+                </ul>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>退货详情</h2>
+            <div class="system-order-list">
+                <div class="system-table system-order-t">
+                    <table>
+                        <tr>
+                            <td width="10%">商品名称</td>
+                            <td width="10%">商品编号</td>
+                            <td width="15%">商品属性</td>
+                            <td width="6%">退货数量</td>
+                            <td width="6%">单价</td>
+                            <td width="6%">数量</td>
+                            <td width="6%">邮费</td>
+                            <td width="6%">小计</td>
+                            <td width="6%">支付现金</td>
+                            <td width="6%">支付积分</td>
+                            <td width="6%">应退现金</td>
+                            <td width="6%">应退积分</td>
+                        </tr>
+	                        <tr>
+                        	<td id="proNameRefund"></td>
+                            <td id="proIdRefund"></td>
+                            <td id="proAttrRefund"></td>
+                            <td id="numRefund"></td>
+                            <td id="realPriceRefund"></td>
+                            <td id="buyNumRefund"></td>
+                            <td id="logisticsAmountRefund"></td>
+                            <td id="totalRefund"></td>
+                            <td id="payCashRefund"></td>
+                            <td id="payIntegralRefund"></td>
+                            <td id="ableCashRefund"></td>
+                            <td id="ableIntegralRefund"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="system-order-return">
+                    <p id="refundReasonRefund">退款理由：</p>
+                    <p id="checkOfferRefund">处理意见：</p>
+                    <p id="refundStatusRefund">当前状态：</p>
+                    <p id="refundTimeRefund">退款日期：</p>
+                </div>
+            </div>
+            <div class="system-order-c">
+                <h2>操作记录</h2>
+                <div class="system-order-list">
+                    <div class="system-table" id="listview_order_logs">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="system-order-btn">
+            <a href="javascript:void(0);" id="backButton">返回</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>供应商管理</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/validate_methods.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="../resources/js/system/sys_setSupParams.js"></script>
+</head>
+<body>
+<div class="system-substance">
+                <h2 class="mt20 mb20">惩罚系数设置</h2>
+                <form id="supplier_form" method="get" action="" novalidate="novalidate">
+                    <div class="system-business-form">
+                        <input type="hidden" name="supId">
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">入驻金</span>
+                            <input type="text" name="settledAmount" isFloatGteZero="true"  class="error system-business-input2 left sup_details">
+                            <div class="system-business-m left">元</div>
+                            <div class="system-business-hint"><label  for="settledAmount" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">保证金</span>
+                            <input type="text" name="bondAmount" isFloatGteZero="true" class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">元</div>
+                            <div class="system-business-hint"><label  for="bondAmount" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">订单受理时间</span>
+                            <input type="text" name=ordAcceptTime number="true" class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">小时</div>
+                            <div class="system-business-hint"><label  for="ordAcceptTime" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">惩罚基数</span>
+                            <input type="text" name="punishAmount" number="true"  minlength="2" class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">元</div>
+                            <div  class="system-business-hint"><label id="punishAmount-error" for="punishAmount" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">订单受理惩罚系数</span>
+                            <input type="text" name="ordAcceptPercent" number="true" class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">%</div>
+                            <div class="system-business-hint"><label  for="ordAcceptPercent" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">退换货处理时间</span>
+                            <input type="text" name="ordReturnsTime" number="true" class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">小时</div>
+                            <div class="system-business-hint"><label  for="ordReturnsTime" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">退换货处理惩罚系数</span>
+                            <input type="text" name="ordReturnsPercent" number="true" class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">%</div>
+                            <div class="system-business-hint"><label  for="ordReturnsPercent" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">是否同意仲裁订单处理</span>
+                            <div class="system-business-dropdown system-business-dropdown2 left sup_details">
+                                <span class="system-business-arrow2 "></span>
+                                <dl class="select">
+                                    <dt id="ordArbitration" class="sup_selects">请选择</dt>
+                                    <dd class="">
+                                        <ul>
+                                            <li id="ord0"><a href="javascript:void(0);" value="0">同意</a></li>
+                                            <li id="ord1"><a href="javascript:void(0);" value="1">拒绝</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <input type="hidden" name="ordArbitration">
+                            </div>
+                            <div class="system-business-hint"></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">仲裁订单处理惩罚系数</span>
+                            <input type="text" name="ordArbitrationPercent" number="true" class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">%</div>
+                            <div class="system-business-hint"><label  for="ordArbitrationPercent" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">结算周期</span>
+                            <div class="system-business-dropdown system-business-dropdown2 left sup_details">
+                                <span class="system-business-arrow2 "></span>
+                                <dl class="select">
+                                    <dt id="setPeriod" class="sup_selects">请选择</dt>
+                                    <dd >
+                                        <ul>
+                                            <li><a href="javascript:void(0);" value="0">日结</a></li>
+                                            <li><a href="javascript:void(0);" value="1">月结</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <input type="hidden" name="setPeriod">
+                            </div>
+                            <div class="system-business-hint"></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">天结日期</span>
+                            <input type="text" name="setPeriodDay" number="true" class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">天</div>
+                            <div class="system-business-hint"><label  for="setPeriodDay" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">客户投诉罚款</span>
+                            <input type="text" name="complaintAmount" number="true"  class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">小时</div>
+                            <div class="system-business-hint"><label  for="complaintAmount" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">违反协议规定</span>
+                            <input type="text" name="againstAmount" number="true"  class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">元/次</div>
+                            <div class="system-business-hint"><label  for="againstAmount" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">提供资料不真实</span>
+                            <input type="text" name="errInfoAmount" number="true"  class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">元/次</div>
+                            <div class="system-business-hint"><label  for="errInfoAmount" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span"> 商业违法</span>
+                            <input type="text" name="illegalAmount" number="true"  class="system-business-input2 left sup_details">
+                            <div class="system-business-m left">元/次</div>
+                            <div class="system-business-hint"><label  for="illegalAmount" class="error"  style="display: none;"></label></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">供应商级别</span>
+                            <div class="system-business-dropdown system-business-dropdown2 left">
+                                <span class="system-business-arrow2 "></span>
+                                <dl class="select">
+                                    <dt id="supLevel" class="sup_selects">请选择</dt>
+                                    <dd>
+                                        <ul>
+                                            <li><a href="javascript:void(0);" value="0">品牌</a></li>
+                                            <li><a href="javascript:void(0);" value="1">非品牌</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <input type="hidden" name="supLevel">
+                            </div>
+                            <div class="system-business-hint"></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">供应商类型</span>
+                            <div class="system-business-dropdown system-business-dropdown2 left">
+                                <span class="system-business-arrow2 "></span>
+                                <dl class="select">
+                                    <dt id="supType" class="sup_selects">请选择</dt>
+                                    <dd>
+                                        <ul>
+                                            <li><a href="javascript:void(0);" value="0">站点</a></li>
+                                            <li><a href="javascript:void(0);" value="1">非站点</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                 <input type="hidden" name="supType">
+                            </div>
+                            <div class="system-business-hint"></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span">供应商采购权限</span>
+                            <div class="system-business-dropdown system-business-dropdown2 left">
+                                <span class="system-business-arrow2 "></span>
+                                <dl class="select">
+                                    <dt id="supBuyRole" class="sup_selects">请选择</dt>
+                                    <dd>
+                                        <ul>
+                                            <li><a href="javascript:void(0);" value="0">采购</a></li>
+                                            <li><a href="javascript:void(0);" value="1">非采购</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <input type="hidden" name="supBuyRole">
+                            </div>
+                            <div class="system-business-hint"></div>
+                        </div>
+                        <div class="system-business-box">
+                            <span class="block left system-business-span"> 供应商推送权限</span>
+                            <div class="system-business-dropdown system-business-dropdown2 left">
+                                <span class="system-business-arrow2 " name="b_details"></span>
+                                <dl class="select">
+                                    <dt id="supRole" class="sup_selects">请选择</dt>
+                                    <dd>
+                                        <ul>
+                                            <li><a href="javascript:void(0);" value="0">推送</a></li>
+                                            <li><a href="javascript:void(0);" value="1">非推送</a></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <input type="hidden" name="supRole">
+                            </div>
+                            <div class="system-business-hint"></div>
+                        </div>
+                    <div class="system-business-btn">
+                        <button type="button" id="return_suplist" class="system-business-btn1">取&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;消</button>
+                        <button type="button" id="sup_conf" class="system-business-btn2">确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+ </body>
+ </html>

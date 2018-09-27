@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>角色列表</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../resources/js/system/man_role_add_update.js"></script>
+    <style type="text/css">
+        .system-radio label{ display: inline-block; margin-right: 20px; height: 45px; line-height: 45px; font-size: 18px;}
+        .system-radio input{ vertical-align: middle; margin-right: 5px;}
+    </style>
+</head>
+<body>
+	<div class="system-substance system-substance-2 " id="test">
+         <div class="site-template-title">角色添加<a href="man_role.html" target="iframe" class="">返回</a></div><br/>
+         <div class="system-form-add">
+             <div class="system-form-input clearfix">
+                 <span class="block left tr f18">角色名称：</span>
+                 <input type="text" class="system-form-box left f16" id="roleName" placeholder="">
+                 <div class="system-form-hint" style="display: none;" value="false"></div>
+             </div>
+             <div class="system-form-input clearfix">
+                 <span class="block left tr f18">角色描述：</span>
+                 <input type="text" class="system-form-box left f16" id="roleDesc" placeholder="">
+                 <div class="system-form-hint" style="display: none;" value="false"></div>
+             </div>
+             <div class="system-form-input">
+                 <span class="block left tr f18">是否有效：</span>
+                 <div class="system-radio">
+                     <label><input type="radio" name="defRole" value="1"  checked>是</label>
+                     <label><input type="radio" name="defRole" value="0">否</label>
+                 </div>
+             </div>
+             <div class="system-form-btn">
+                 <a href="man_role.html" target="iframe">取消</a>
+                 <button class="system-btn-c" id="addRole">确定</button>
+             </div>
+         </div>
+	</div>
+</body>

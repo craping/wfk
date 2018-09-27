@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>平台公告管理</title>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/manage/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/manage/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/libs/bootstrap/css/bootstrap.css"/>
+	
+    <script type="text/javascript" src="../../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/common/common_.js"></script>
+    <script type="text/javascript" src="../../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../../resources/libs/validate/validate_methods.js"></script>
+    <script type="text/javascript" src="../../resources/js/common/select.js"></script>
+	<script type="text/javascript" src="../../resources/libs/My97DatePicker/WdatePicker.js"></script>
+	
+	<script type="text/javascript" src="../../resources/js/system/informtion/manageInformationAnnoun.js"></script>
+</head>
+<body>
+	<div class="system-substance">
+		<h2 class="mt20">平台公告管理</h2>
+		<form action="">
+		<div class="system-operate clearfix mt20 mb20">
+			<div class="system-operate-s left ml20">
+				<span class="system-operate-span block left">标题内容：</span> 
+				<input type="text" class="site-template-box block left" id="title" name="title">
+			</div>
+			<div class="system-operate-s left ml20">
+				<span class="system-operate-span block left">发布人：</span> 
+				<input type="text" class="site-template-box block left" id="issue" name="issue">
+			</div>
+			<div class="system-operate-i left ml20">
+				<span class="block left">状态：</span>
+				<div class="dropdown left">
+					<dl class="select">
+						<dt class="selectValve" id="status" value="" >请选择</dt>
+		                <dd class="selectOption">
+							<ul>
+								<li value=""><a href="javascript:;">请选择</a></li>
+								<li value="0"><a href="javascript:;">有效</a></li>
+								<li value="1"><a href="javascript:;">无效</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="system-operate-i left ml20">
+				<span class="block left">添加日期：</span>
+				<input type="text" id="statusTime" name="statusTime" id="statusTime" class="site-template-box block left" onclick="WdatePicker({maxDate: '#F{$dp.$D(\'endTime\')}' ,dateFmt:'yyyy-MM-dd'})" >
+	            <i class=" site-template-i block left">—</i>
+	            <input type="text" id="endTime" name="endTime" id="endTime" class="site-template-box block left" onclick="WdatePicker({minDate: '#F{$dp.$D(\'statusTime\')}' ,dateFmt:'yyyy-MM-dd'})" >
+			</div>
+			<a href="javascript:;" class="site-template-query block left" id="OK">查询</a>
+			<a href="info_AddInformationAnnoun.html" class="site-template-query block left ml20" id="ADD">添加</a>
+		</div>
+		</form>
+		<div class="system-table" id="system-table">
+			<h2></h2>
+			
+		</div>
+		<div class="system-page" id="system-page">
+		</div>
+	</div>
+</body>
+</html>

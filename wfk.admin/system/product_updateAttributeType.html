@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>修改属性组信息</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/layer.css"/>	
+	<script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/validate_methods.js"></script>
+	<script type="text/javascript" src="../resources/js/common/layer.js"></script>
+    <script type="text/javascript" src="../resources/js/common/select.js"></script>
+	
+	<script type="text/javascript" src="../resources/js/system/attribute/updateAttributeType.js"></script> 
+</head>
+<body>
+<div class="hiddensd" id="hiddensd"></div>
+<div class="system-substance">
+    <h1 id="attId" value="0">修改属性组信息</h1>
+    <form action="" id="att_form">
+    <div class="system-form-add">
+        <div class="system-form-input">
+            <span class="block left tr f18" >属性名称：</span>
+            <input type="text" class="system-form-box left f16" placeholder="属性名称" required="true" name="att_name" id="att_name">
+            <label id="brandName_msg" class="system-form-hint error" for="att_name" style="display: none;">输入信息不正确</label>
+        </div>
+        <div class="system-form-btn">
+            <a href="javascript:;" id="closeWindos">取消</a>
+            <button class="system-btn-c" id="updateAttTypeOK" type="button">确定</button>
+        </div>
+    </div>
+    </form>
+</div>
+</body>
+</html>

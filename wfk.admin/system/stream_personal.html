@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人用户操作流水</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../resources/js/system/stream_oper.js"></script>
+</head>
+<body>
+<form action="">
+	<input type="hidden" name="operUserType" value="3">
+    <div class="system-substance">
+        <h2 class="mt20">个人用户操作流水</h2>
+        <div class="system-operate clearfix mt20 mb20" >
+            <div class="system-operate-s left">
+                <span class="system-operate-span block left pl15">用户名：</span>
+                <input type="text" class="site-template-box block left" name="operUserName">
+            </div>
+            <div class="system-operate-s left ml20">
+                <span class="system-operate-span block left">注册手机：</span>
+                <input type="text" class="site-template-box block left" name="operTable">
+            </div>
+            <div class="system-operate-s left ml20">
+                <span class="system-operate-span block left">所属企业名称：</span>
+                <input type="text" class="site-template-box block left" name="relationId">
+            </div>
+            <div class="system-operate-s left ml20">
+                <span class="system-operate-span block left">操作描述：</span>
+                <input type="text" class="site-template-box block left" name="operDesc">
+            </div>
+            <div class="system-operate-i left ml20" >
+                <span class="block left">操作日期：</span>
+                <input type="text" class="site-template-box block left" name="startOperTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'});">
+                <i class=" site-template-i block left">—</i>
+                <input type="text" class="site-template-box block left" name="endOperTime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'});">
+            </div>
+            <a href="javascript:void(0);" class="site-template-query block left f16" id="query_submit">搜索</a>
+        </div>
+        <h2></h2>
+		<div class="system-table " id="listview_stream">
+		 
+		</div>
+        <div class="system-operate-2 clearfix">
+            <div class="dropdown left">
+                <dl class="select">
+                   <dt><a href="javascript:void(0);" value="">请选择</a></dt>
+             <dd>
+                 <ul>
+                     <li><a href="javascript:void(0);" value="">请选择</a></li>
+                     <li><a href="javascript:void(0);" name="batchConfirm" value="3">批量导出</a></li>
+                 </ul>
+             </dd>
+                </dl>
+            </div>
+            <button type="button" class="system-btn left f16" style="background:#898989;" disabled="disabled" id="handler_submit">确定</button>
+        </div>
+        <div class="system-page" id="system-page">
+        </div>
+    </div>
+</form>
+</body>
+</html>

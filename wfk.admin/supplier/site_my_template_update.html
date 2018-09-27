@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>修改模板</title>
+<link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+<link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+<script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+<script type="text/javascript" src="../resources/js/common/base.js"></script>
+<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+<script type="text/javascript" src="../resources/js/system/template/sup_template_update.js"></script>
+</head>
+<body>
+	<div class="system-substance">
+		<div class="site-template-caption">商品、广告位管理</div>
+		<div class="site-template-block clearfix">
+			<div id="productAdpositionidList" name="productAdpositionidList"
+				class="system-table"></div>
+			<div class="system-operate-s2 clearfix">
+				<div class="dropdown left">
+					<dl class="select">
+						<dt>请选择</dt>
+						<dd>
+							<ul>
+								<li onclick="toSub('1')"><a href="javascript:void(0);">设为有效</a></li>
+								<li onclick="toSub('2')"><a href="javascript:void(0);">设为无效</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<button class="system-btn left f16" onclick="padpostitionidSub()">确定</button>
+				<input type="hidden" id="leis" name="leis" value="" />
+			</div>
+
+		</div>
+		<div class="site-template-caption">广告位管理</div>
+		<div class="site-template-block clearfix">
+			<div id="adpositionidList" name="adpositionidList"
+				class="system-table"></div>
+			<div class="system-operate-s2 clearfix">
+				<div class="dropdown left">
+					<dl class="select">
+						<dt>请选择</dt>
+						<dd>
+							<ul>
+								<li onclick="toSubad('1')"><a href="javascript:void(0);">设为有效</a></li>
+								<li onclick="toSubad('2')"><a href="javascript:void(0);">设为无效</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<button class="system-btn left f16" onclick="adpostitionidSub()">确定</button>
+				<input type="hidden" id="pleis" name="pleis" value="" />
+			</div>
+		</div>
+	</div>
+
+	<input type="hidden" id="status" name="status" value="" />
+	<div class="site-template-btn clearfix">
+		<button class="left site-template-btn1" onclick="toUpdateStatus()">发布</button>
+		<button class="left site-template-btn2" id="cancel" >取消</button>
+	</div>
+</body>
+</html>

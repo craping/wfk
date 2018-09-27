@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品管理列表——审核商品</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.ext.css"/>
+	
+	<script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+    <script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/validate_methods.js"></script>
+    <script type="text/javascript" src="../resources/js/common/select.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="../resources/js/common/layer.js"></script>
+	<script type="text/javascript" src="../resources/js/system/product/audiProduct.js"></script>
+	<style type="text/css">
+		.error{
+			color:red;
+			float: left;
+		}
+		.system-form-edit{position:relative;}
+		.system-form-edit .system-form-hint{ position:absolute;top:110px;}
+		.pro_details p:after{content:"\200B"; display:block; height:0; clear:both;}
+		.pro_details p{*zoom:1;}
+	</style>
+</head>
+<body>
+<div class="system-substance">
+      <div class="site-template-title">商品详情<a href="product_productManage.html">返回</a></div>
+      <div class="system-order">
+          <div class="system-order-c">
+              <h2>商品基本信息</h2>
+              <div class="system-order-list">
+                  <input type="hidden" name="proId" id="proId">
+                  <table class="system-order-table">
+                      <tr>
+                          <td width="33%">商品名称：<i name="proName" class="pro_details"></i></td>
+                          <td width="33%">一级分类：<i name="clsIdZr" class="pro_details"></i></td>
+                          <td>商品编号：<i name="proNumber"></i></td>
+                      </tr>
+                      <tr>
+                      	  <td>商品产地：<i name="ProArea" class="ProArea"></i></td>
+                          <td>二级分类：<i name="clsIdSt" class="pro_details"></i></td>
+                          <td>商品所在地:
+                          <i name="locusPro" class=""></i>
+                          <i name="locusCity" class=""></i>
+                          <i name="locusArea" class=""></i>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>商品品牌：<i name="brand" class="pro_details"></i></td>
+                          <td>三级分类：<i name="clsIdNd" class="pro_details"></i></td>
+                          <td>商品价格：<i name="priceLishe" class="priceLishe"></i></td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+          <div class="system-order-c">
+              <h2>商品图片信息</h2>
+              <div class="system-manage-msg">
+                  <dl class="clearfix">
+                      <dt>商品相册图：</dt>
+                      <dd>
+                          <p><a name="proPics" class="see_pic" href="javascript:void(0)">查看</a></p>
+                      </dd>
+                  </dl>
+                  <dl class="clearfix">
+                      <dt>商品详情描述图：</dt>
+                      <dd>
+                          <p><a name="broPics" class="see_pic" href="javascript:void(0)">查看</a></p>
+                      </dd>
+                  </dl>
+              </div>
+          </div>
+          <div class="system-order-c" id="systemAtt">
+              
+          </div>
+          <div class="system-order-c">
+              <h2>包装清单</h2>
+              <div class="system-manage-msg pro_details" name="packBill">
+              
+              </div>    
+          </div>
+         <div class="system-order-c">
+              <h2>物流配送/邮费</h2>
+              <div class="system-order-c">
+                  <div class="system-order-list">
+                      <div class="system-table">
+                          <table>
+                              <thead id="areaTemp">
+	                              <tr>
+	                                  <th width="50%">地区</th>
+	                                  <th>邮费</th>
+	                              </tr>
+                              </thead>
+                              
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="system-order-c">
+              <h2>售后服务</h2>
+              <div class="system-manage-msg pro_details" name="afterService">
+              </div>
+          </div>
+          <div class="system-order-c">
+              <h2>其他相关</h2>
+              <div class="system-order-list">
+                  <p>商品返利方式：<i name="rebateType" id="rebateType"></i></p>
+                  <p>商品返利系数：<i name="proRebate" class="pro_details"></i></p>
+                  <p>是否可提供发票：<i name="faPiao" id="faPiao"></i></p>
+              </div>
+          </div>
+         <form id="product_form">
+         <div class="system-order-c">
+             <h2>商品价格</h2>
+             <div class="product-examine">
+             	<div class="system-form-input clearfix">
+	             	<span class="block left tr ">供货价：</span>
+	                <input type="text" name="priceSupply" number="true" class="audi_msg system-form-box left" required="true" aria-required="true" placeholder="输入供货价">
+             		<label  for="priceSupply" class="error" style="display: none;">输入不正确</label>
+             	</div>
+             	<div class="system-form-input clearfix">
+	             	<span class="block left tr ">礼舍价：</span>
+	                <input type="text" name="priceLishe" number="true" class="audi_msg system-form-box left " required="true" aria-required="true" placeholder="输入礼舍价">
+	                <label  for="priceLishe" class="error" style="display: none;">输入不正确</label>
+             	</div>
+             </div>
+         </div>
+         <div class="system-order-c">
+             <h2>商品检索</h2>
+             <div class="product-examine">
+                 <input type="hidden" name="proId" id="productId">
+                 <input type="hidden" name="checkStatus" class="checkStatus">
+                 <div class="system-form-input clearfix">
+                     <span class="block left tr ">是否支持货到付款：</span>
+                     <div class="dropdown2 left">
+                         <input type="hidden" name=supportCash class="supportCash">
+                         <dl >
+                         	<dt class="selectValve" id="supportCash" value="">请选择</dt>
+		                    <dd class="selectOption">
+		                        <ul>
+		                        	<li value=""><a  href="javascript:void(0);">请选择</a></li>
+		                         	<li value="0"><a  href="javascript:void(0);">是</a></li>
+		                         	<li value="1"><a  href="javascript:void(0);">否</a></li>
+		                        </ul>
+		                    </dd>
+                         </dl>
+                     </div>
+                     <label id="supportCash" class="product-list-hint error" for="supportCash" style="display: none;">至少选择一项</label>
+                 </div>
+                 <div class="system-form-input clearfix">
+                     <span class="block left tr ">页面标题：</span>
+                     <input type="text" name="seoTitle"  class="audi_msg system-form-box  left " placeholder="输入页面标题"/>
+                     <div class="product-list-hint">浏览器顶部页面标题</div>
+                 </div>
+                 <div class="system-form-edit clearfix">
+                     <span class="block left tr ">标题关键字：</span>
+                     <div class="product-manage-editBox left">
+                         <textarea name="seoKeyword" class="audi_msg" style="width: 480px; height: 110px; resize: none;" aria-required="true" ></textarea>
+                     </div>
+                     <div class="product-list-hint left">浏览器页面标题关键字</div>
+ 
+                 </div>
+                 <div class="system-form-edit clearfix">
+                     <span class="block left tr ">审核意见：</span>
+                     <div class="product-manage-editBox left">
+                         <textarea name="checkMemo" class="audi_msg" style="width: 480px; height: 110px; resize: none;"></textarea>
+                     </div>
+                 </div>
+                 <div class="site-template-btn clearfix">
+                     <button type="button" class="site-template-btn2" id="cancel_submit">取消</button>
+                     <button type="button" class="site-template-btn1 suc_submit" value="3">审核不通过</button>
+                     <button type="button" class="site-template-btn3 suc_submit" value="2">审核通过</button>
+                 </div>
+             </div>
+         </div>
+         </form>
+     </div>
+ </div>
+</body>
+</html>

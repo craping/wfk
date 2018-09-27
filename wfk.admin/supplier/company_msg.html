@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>企业信息</title>	
+	<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.ext.css" />
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/validate_methods.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/js/common/area.js"></script>
+	<script type="text/javascript" src="../resources/js/common/layer.js"></script>
+	<script type="text/javascript" src="../resources/js/common/select.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../resources/js/supplier/company_msg.js"></script>
+  
+</head>
+<body>
+<!--头部开始-->
+<div class="hiddensd" id="hiddensd"></div>
+    <div class="header">
+        <div class="header-content clearfix">
+            <div class="logo left"></div>
+            <div class="header-right right" id="header">
+            </div>
+        </div>
+    </div>
+<!--头部结束-->
+<!--主体内容开始-->
+<div class="msg-container outBox">
+    <div class="msg-contact" style="display:none">
+     <p>企业审核未通过，请您完善企业信息，如果您存在疑问，请您拨打客服电话400-883-9916，或联系客服QQ <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2851363750&amp;site=qq&amp;menu=yes" target="_blank" class="customer-service">QQ客服</a></p>
+    </div>
+    <form id="supplier_form" method="post">
+    <input type="hidden" id="supId" name="supId">
+    <div class="msg-nav clearfix">
+        <ul>
+            <li id="company_li" class="on">企业信息</li>
+            <li id="person_li">联系人信息</li>
+            <li id="finance_li">财务信息</li>
+        </ul>
+    </div>
+    <div class="msg-content" id="company_msg">
+        <div class="msg-box" >
+            <div class="msg-title-company f16">企业基本信息<i>带<em>*</em>为必填</i></div>
+            <div class="msg-input clearfix">
+                <span class="msg-span"><i>*</i>公司全称：</span>
+                <input type="text" id="coName" name="coName" required="" aria-required="true"  stringCheck="true" class="msg-input-box1 sup_details">
+                <div class="msg-problem left">
+                    <div class="msg-problem-pic"></div>
+                    <div class="msg-problem-content" style="display:none">
+                        营业执照需通过最新年检（如当年上半年提交的
+                        必须是有前年年度的年检记录，当年下半年提交
+                        的必须有去年年度的年度记录）所售商品属于经
+                        营范围内。
+                    </div>
+                </div>
+                <div class="msg-error-hint"><label for="coName" class="error" style="display: none;"></label></div>
+                
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span">公司注册资金：</span>
+                <input type="text" id="coRegAmount" name="coRegAmount" isFloatGteZero="true" class="msg-input-box3 sup_details">
+                <strong class="left f16">万元</strong>
+                <div class="msg-problem left">
+                    <div class="msg-problem-pic"></div>
+                    <div class="msg-problem-content" style="display:none">
+                        营业执照需通过最新年检（如当年上半年提交的
+                        必须是有前年年度的年检记录，当年下半年提交
+                        的必须有去年年度的年度记录）所售商品属于经
+                        营范围内。
+                    </div>
+                </div>
+                <div class="msg-error-hint"><label for="coRegAmount" class="error" style="display: none;"></label></div>
+                
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span"><i>*</i>企业法人身份证：</span>
+                <input type="text" id="coIdNum" name="coIdNum"  required="" aria-required="true"  isIdCardNo="ture" class="msg-input-box1 sup_details">
+                <div class="msg-checkbox left">
+                </div>
+                <div class="msg-error-hint"><label  for="coIdNum" class="error" style="display: none;"></label></div>
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span">企业法人身份证：</span>
+                <div class="msg-upload left">
+                    <input type="file" id="coIdPic" name="coIdPicFile" class="sel_pic" style="min-width:52px;">
+                    <div id="coIdPicName" class="msg-upload-span f16">上传</div>
+                    <input type="hidden" name="coIdPic" class="sup_details">
+                    <img class="show_coIdPic" style="width:40px;height:40px;cursor:pointer;"/>
+                    <div class="msg-error-hint"><label  for="coIdPic" class="error" style="display: none;"></label></div>
+                </div>
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span"><i>*</i>营业执照所在地：</span>
+                <div class="msg-choose left">
+                    <div class="msg-select">
+                        <i class="msg-select-i2"></i>
+                        <dl class="">
+                            <dt class="selectValve" value="" id="regProvince">请选择省</dt>
+                  		       <dd class="selectOption">
+                                    <ul class="one_area textUl">
+                                    </ul>
+                                </dd>
+                        </dl>
+                    </div>
+                    <div class="msg-select ">
+                        <i class="msg-select-i2"></i>
+                        <dl class="">
+                            <dt class="selectValve" value="" id="regCity">请选择市</dt>
+                  		        <dd class="selectOption">
+                                    <ul class="two_area textUl" >
+                                    </ul>
+                                </dd>
+                        </dl>
+                    </div>
+                    <div class="msg-select " id="selArea">
+                        <i class="msg-select-i2"></i>
+                        <dl class="">
+                           <dt class="selectValve" value="" id="regArea">请选择区</dt>
+               		        <dd class="selectOption">
+                                 <ul class="three_area textUl" >
+                                    
+                                 </ul>
+                             </dd>
+                        </dl>
+                    </div>
+                </div>
+                    <input type="hidden" name="regProvince">
+                    <input type="hidden" name="regCity">
+                    <input type="hidden" name="regArea" >
+                 <em></em>
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span"><i>*</i>营业执照详细地址：</span>
+                <input type="text" id="regAddress" stringCheck="true" required="" aria-required="true" name="regAddress" class="msg-input-box1 sup_details">
+                <div class="msg-error-hint"><label  for="regAddress" class="error" style="display: none;"></label></div>
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span"><i>*</i>公司办公地址：</span>
+                <div class="msg-choose left">
+                    <div class="msg-select">
+                        <i class="msg-select-i2"></i>
+                        <dl class="">
+                            <dt class="selectValve" value="" id="wrkProvince">请选择省</dt>
+                  		       <dd class="selectOption">
+                                    <ul class="onearea textUl">
+                                    </ul>
+                                </dd>
+                        </dl>
+                    </div>
+                    <div class="msg-select">
+                        <i class="msg-select-i2"></i>
+                        <dl class="">
+                            <dt class="selectValve" value="" id="wrkCity">请选择市</dt>
+                  		        <dd class="selectOption">
+                                    <ul class="twoarea textUl" >
+                                    </ul>
+                                </dd>
+                        </dl>
+                    </div>
+                    <div class="msg-select " id="ququ">
+                        <i class="msg-select-i2"></i>
+                        <dl class="">
+                           <dt class="selectValve" value="" id="wrkArea">请选择区</dt>
+               		        <dd class="selectOption">
+                                 <ul class="threearea textUl">
+                                    
+                                 </ul>
+                             </dd>
+                        </dl>
+                    </div>
+                </div>
+                    <input type="hidden" name="wrkProvince">
+                    <input type="hidden" name="wrkCity">
+                    <input type="hidden" name="wrkArea">
+                <em></em>
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span"><i>*</i>公司办公详细地址：</span>
+                <input type="text" id="wrkAddress" stringCheck="true"  required="" aria-required="true"  name="wrkAddress"  class="msg-input-box1 sup_details">
+                 <div class="msg-error-hint"><label  for="wrkAddress" class="error" style="display: none;"></label></div>
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span"><i>*</i>公司电话：</span>
+                <input type="text" id="phoneNum" name="phoneNum" required="" aria-required="true" isTel="true" class="msg-input-box1 sup_details">
+                <div class="msg-error-hint"><label  for="phoneNum" class="error" style="display: none;"></label></div>
+            </div>
+            <div class="msg-input clearfix">
+                <span class="msg-span">企业QQ：</span>
+                <input type="text" id="coQq" name="coQq" isQq="true" class="msg-input-box1 sup_details">
+                <div class="msg-error-hint"><label  for="coQq" class="error" style="display: none;"></label></div>
+            </div>
+            <div class="msg-input clearfix msg-textarea">
+                <span class="msg-span">经营范围：</span>
+                <textarea name="busiScope" stringCheck="true"  class="sup_details"></textarea>
+                <div class="msg-error-hint" style="top:123px;"><label  for="busiScope" class="error" style="display: none;"></label></div>
+            </div>
+        </div>
+        <div class="msg-box-h">证件上传</div>
+        <input type="hidden" id="time_hidden" name="coTimeLimit">
+        <div class="msg-patent">
+            <div class="msg-license clearfix inHd">
+                <ul>
+                    <li class="on" id="old" value="0">旧版多证件</li>
+                    <li id="new" value="1">新版三证合一</li>
+                </ul>
+            </div>
+            <div class="inBd">
+                <input type="hidden" name="paperType">
+                <div id="msg_old" class="msg-patent-odd">
+                    <div class="msg-box-h">营业执照</div>
+                    <div class="msg-box">
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>营业执照编号：</span>
+                            <input type="text" id="coLicenseNum_old" fileName="coLicenseNum" required="" aria-required="true" isCoNum="true" class="msg-input-box1 sup_details">
+                            <div class="msg-error-hint"><label  for="coLicenseNum_old" class="error" style="display: none;"></label></div>
+                            <div class="msg-problem left">
+                                <div class="msg-problem-pic"></div>
+                                <div class="msg-problem-content" style="display:none">
+                                                                                                 营业执照编号长度为15位数字
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-input clearfix">
+                            <span class="msg-span">有效期：</span>
+                            <div class="msg-date left">
+                                <label class="block left f16"><input type="radio" id="radio1" name="timeLimit" onclick="hide_time()" value="1" class="middle">永久有效</label>
+                                <label class="block left f16"><input type="radio" id="radio2" name="timeLimit" onclick="show_time()" value="2" class="middle">有效截止日期：</label>
+                                <div class="input-date left sel_time">
+                                    <input class="time_Li msg-input-box4" fileName="time_Li" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'});">
+                                    <div class="input-date-btn block"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>上传营业执照：</span>
+                            <div class="msg-upload left">
+                                <input id="coLicensePic" fileName="coLicensePicFile" type="file" class="sel_pic">
+                                <div id="colPicName" class="msg-upload-span f16">选择文件</div>
+                                <input type="hidden" id="coLicensePic_old" fileName="coLicensePic" required="" aria-required="true" class="sup_details">
+                                <img class="show_coLicensePic" style="width:40px;height:40px;cursor:pointer;"/>
+                                <div class="msg-upload-hint" style="font-size: 15px;"><label  for="coLicensePic_old" class="error" style="display: none;"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="msg-box-h"> 组织结构代码证</div>
+                    <div class="msg-box">
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>组织机构代码证号：</span>
+                            <input type="text" fileName="coInstNum" required="" aria-required="true" iscoInstNum="true" class="msg-input-box1 sup_details">
+                            <div class="msg-error-hint"><label  for="coInstNum" class="error" style="display: none;"></label></div>
+                            <div class="msg-problem left">
+                                <div class="msg-problem-pic"></div>
+                                <div class="msg-problem-content" style="display:none">
+                                                                                                组织机构代码证号长度为9位数字
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>上传组织结构代码证：</span>
+                            <div class="msg-upload left">
+                                <input type="file" id="coInstPic" fileName="coInstPicFile" class="sel_pic">
+                                <div class="msg-upload-span f16">选择文件</div>
+                                <input type="hidden" fileName="coInstPic" required="" aria-required="true" class="sup_details">
+                                <img class="show_coInstPic" style="width:40px;height:40px;cursor:pointer;"/>
+                                <div class="msg-upload-hint" style="font-size: 15px;"><label  for="coInstPic" class="error" style="display: none;"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="msg-box-h"> 税务登记证</div>
+                    <div class="msg-box">
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>税务登记证编号：</span>
+                            <input type="text" fileName="coTaxNum" iscoTaxNum="true" required="" aria-required="true" class="msg-input-box1 sup_details">
+                            <div class="msg-error-hint"><label  for="coTaxNum" class="error" style="display: none;"></label></div>
+                            <div class="msg-problem left">
+                                <div class="msg-problem-pic"></div>
+                                <div class="msg-problem-content" style="display:none">
+                                                                                                税务登记证编号长度为20位数字
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>上传税务登记证：</span>
+                            <div class="msg-upload left">
+                                <input type="file" id="coTaxPic" fileName="coTaxPicFile" class="sel_pic ">
+                                <div class="msg-upload-span f16">选择文件</div>
+                                <input type="hidden" fileName="coTaxPic" required="" aria-required="true" class="sup_details">
+                                <img class="show_coTaxPic" style="width:40px;height:40px;cursor:pointer;"/>
+                                <div class="msg-upload-hint" style="font-size: 15px;"><label  for="coTaxPic" class="error" style="display: none;"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="msg-box-h"> 纳税人信息</div>
+                    <div class="msg-box">
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>纳税标示：</span>
+                            <div class="system-admin-box clearfix">
+		                      <div class="dropdown5 left">
+		                          <dl class="select">
+		                              <dt class="coTaxerLab" id="coTaxerLab_old"><a href="javascript:void(0);" value="一般纳税人">一般纳税人</a></dt>
+		                              <dd>
+		                                  <ul>
+		                                      <li><a href="javascript:void(0);" value="一般纳税人">一般纳税人</a></li>
+		                                      <li><a href="javascript:void(0);" value="小规模纳税人">小规模纳税人</a></li>
+		                                      <li><a href="javascript:void(0);" value="农副产品免税专用">农副产品免税专用</a></li>
+		                                  </ul>
+		                              </dd>
+		                          </dl>
+		                      </div>
+		                      <input type="hidden" fileName="coTaxerLab">
+		                     </div>
+                            <div class="msg-error-hint"></div>
+                            <div class="msg-problem left">
+                                <div class="msg-problem-pic"></div>
+                                <div class="msg-problem-content" style="display:none">
+                                                                                                 纳税人标识类型为:一般纳税人,小规模纳税人,农副产品免税专用
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>一般纳税人证明：</span>
+                            <div class="msg-upload left">
+                                <input type="file" fileName="coTaxerPicFile" class="sel_pic">
+                                <div class="msg-upload-span f16">选择文件</div>
+                                <input type="hidden" id="coTaxerPic_old" fileName="coTaxerPic" required="" aria-required="true" class="sup_details">
+                                <img class="show_coTaxerPic" style="width:40px;height:40px;cursor:pointer;"/>
+                                <div class="msg-upload-hint" style="font-size: 15px;"><label  for="coTaxerPic_old" class="error" style="display: none;"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="msg_new" class="msg-patent-odd" style="display:none;">
+                    <div class="msg-box-h">营业执照</div>
+                    <div class="msg-box">
+                        <div class="msg-input clearfix">
+                            <span class="msg-span">营业执照编号：</span>
+                            <input type="text" fileName="coLicenseNum" id="coLicenseNum1" isCoNum="true" class="msg-input-box1 sup_details">
+                            <div class="msg-error-hint"><label  for="coLicenseNum1" class="error" style="display: none;"></label></div>
+                            <div class="msg-problem left">
+                                <div class="msg-problem-pic"></div>
+                                <div class="msg-problem-content" style="display:none">
+                                                                                                 营业执照编号长度为15位数字
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-input clearfix">
+                            <span class="msg-span">有效期：</span>
+                            <div class="msg-date left">
+                                <label class="block left f16"><input type="radio" id="radio3" name="timeLimit" onclick="hide_time()" value="1" class="middle">永久有效</label>
+                                <label class="block left f16"><input type="radio" id="radio4" name="timeLimit" onclick="show_time()" value="2" class="middle">有效截止日期：</label>
+                                <div class="input-date left sel_time">
+                                    <input class="time_Li msg-input-box4" fileName="time_Li" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'});">
+                                    <div class="input-date-btn block"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>上传营业执照：</span>
+                            <div class="msg-upload left">
+                                <input type="file" id="coLicenseNum" fileName="coLicensePicFile"  class="sel_pic" class="sup_details">
+                                <div class="msg-upload-span f16">选择文件</div>
+                                <input type="hidden" fileName="coLicensePic" required="" aria-required="true" class="sup_details">
+                                <img class="show_coLicensePic" style="width:40px;height:40px;cursor:pointer;"/>
+                                <div class="msg-upload-hint" style="font-size: 15px;"><label  for="coLicensePic" class="error" style="display: none;"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="msg-box-h"> 纳税人信息</div>
+                    <div class="msg-box">
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>纳税标示：</span>
+                           <div class="system-admin-box clearfix">
+		                      <div class="dropdown5 left">
+		                          <dl class="select">
+		                              <dt class="coTaxerLab" id="coTaxerLab_new"><a href="javascript:void(0);" value="一般纳税人">一般纳税人</a></dt>
+		                              <dd>
+		                                  <ul>
+		                                      <li><a href="javascript:void(0);" value="一般纳税人">一般纳税人</a></li>
+		                                      <li><a href="javascript:void(0);" value="小规模纳税人">小规模纳税人</a></li>
+		                                      <li><a href="javascript:void(0);" value="农副产品免税专用">农副产品免税专用</a></li>
+		                                  </ul>
+		                              </dd>
+		                          </dl>
+		                      </div>
+		                      <input type="hidden" fileName="coTaxerLab">
+		                     </div>
+                            <div class="msg-error-hint"></div>
+                            <div class="msg-problem left">
+                                <div class="msg-problem-pic"></div>
+                                <div class="msg-problem-content" style="display:none">
+                                    营业执照需通过最新年检（如当年上半年提交的
+                                    必须是有前年年度的年检记录，当年下半年提交
+                                    的必须有去年年度的年度记录）所售商品属于经
+                                    营范围内。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="msg-input clearfix">
+                            <span class="msg-span"><i>*</i>一般纳税人证明：</span>
+                            <div class="msg-upload left">
+                                <input type="file" fileName="coTaxerPicFile" class="sel_pic">
+                                <div class="msg-upload-span f16">选择文件</div>
+                                <input type="hidden" id="coTaxerPic_new" fileName="coTaxerPic" required="" aria-required="true" class="sup_details">
+                                <img class="show_coTaxerPic" style="width:40px;height:40px;cursor:pointer;"/>
+                                <div class="msg-upload-hint" style="font-size: 15px;"><label  for="coTaxerPic_new" class="error" style="display: none;"></label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="msg-btn">
+            <button type="button" id="go_person_msg" class="msg-btn-1">跳过</button>
+            <button type="button" id="company_button" class="msg-btn-2">保存并继续</button>
+        </div>
+    </div>
+    <div class="msg-content" style="display:none;" id="person_msg">
+        <span class="msg-arrow2"></span>
+        <div class="msg-box">
+            <div class="msg-title f18">紧急联系人信息：</div>
+            <div class="msg-input clearfix">
+                <span><i style="color:red">*</i>紧急联系人姓名：</span>
+                <input type="text" name="contUrgName" stringCheck="true" class="msg-input-box2 sup_details urg_details">
+                <div class="msg-error-hint"><label id="contUrgName" for="contUrgName" class="error" style="display: none;"></label></div>
+                <div class="msg-select ml15">
+                    <i class="msg-select-i2"></i>
+                    <dl class="select">
+                        <dt id="contUrgSex"><a href="javascript:void(0);" value="1">先生</a></dt>
+                        <dd>
+                            <ul>
+                                <li><a href="javascript:void(0);" value="0">女士</a></li>
+                                <li><a href="javascript:void(0);" value="1">先生</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <input type="hidden" name="contUrgSex">
+                </div>
+            </div>
+            <div class="msg-input clearfix">
+                <span><i style="color:red">*</i>紧急联系人电话：</span>
+                <input type="text" name="contUrgMobile" isPhone="true" class="msg-input-box1 sup_details urg_details">
+                <div class="msg-error-hint"><label id="contUrgMobile"  for="contUrgMobile" class="error" style="display: none;"></label></div>
+            </div>
+            <div class="msg-input clearfix">
+                <span>紧急联系人QQ：</span>
+                <input type="text" name="contUrgQq" isQq="true" class="msg-input-box1 sup_details">
+                <div class="msg-error-hint"><label  for="contUrgQq" class="error" style="display: none;"></label></div>
+            </div>
+        </div>
+        <div class="msg-btn">
+            <button type="button" id="go_finance_msg" class="msg-btn-1">跳过</button>
+            <button type="button" id="person_button" class="msg-btn-2" >保存并继续</button>
+        </div>
+    </div>
+    <div class="msg-content" style="display:none;" id="finance_msg">
+            <span class="msg-arrow1"></span>
+            <div class="msg-box" >
+                <div class="msg-title f18">对公账号：</div>
+                <div class="msg-input clearfix">
+                    <span>开户名称：</span>
+                    <input type="hidden" name="accId1"  class="supacc_details">
+                    <input type="text" name="accName1" stringCheck="true"  class="msg-input-box1 supacc_details">
+                    <div class="msg-error-hint"><label  for="accName1" class="error" style="display: none;"></label></div>
+                </div>
+                <div class="msg-input clearfix">
+                    <span>开户账号：</span>
+                    <input type="text" name="accNo1" isCard="true" class="msg-input-box1 supacc_details">
+                    <div class="msg-error-hint"><label  for="accNo1" class="error" style="display: none;"></label></div>
+                </div>
+                <div class="msg-input clearfix">
+                    <span>开户行：</span>
+                    <input type="text" name="accBankId1" stringCheck="true"  class="msg-input-box1 supacc_details">
+                    <div class="msg-error-hint"><label  for="accBankId1" class="error" style="display: none;"></label></div>
+                </div>
+            </div>
+            <div class="msg-box">
+                <div class="msg-title f18">对私账号：</div>
+                <div class="msg-input clearfix">
+                    <span>开户人：</span>
+                    <input type="hidden" name="accId2" class="supacc_details">
+                    <input type="text" id="accName2" name="accName2" stringCheck="true"  class="msg-input-box1 supacc_details">
+                    <div class="msg-error-hint"><label  for="accName2" class="error" style="display: none;"></label></div>
+                </div>
+                <div class="msg-input clearfix">
+                    <span>开户账号：</span>
+                    <input type="text" name="accNo2" isCard="true" class="msg-input-box1 supacc_details">
+                    <div class="msg-error-hint"><label  for="accNo2" class="error" style="display: none;"></label></div>
+                </div>
+                <div class="msg-input clearfix">
+                    <span>开户行：</span>
+                    <input type="text" name="accBankId2" stringCheck="true"  class="msg-input-box1 supacc_details">
+                    <div class="msg-error-hint"><label  for="accBankId2" class="error" style="display: none;"></label></div>
+                </div>
+            </div>
+            <div class="msg-btn">
+                <button type="button" id="finance_button" class="msg-btn-2">提交</button>
+            </div>
+        </div>
+
+ </form>
+</div>
+<!--主体内容结束-->
+<!--尾部开始-->
+<div class="footer">
+    <div class="foot-content">
+        <div class="footer-nav clearfix">
+            <ul>
+                <li><a href="#">礼舍首页</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">帮助中心</a></li>
+                <li class="noborder"><a href="#">建议投诉</a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+			© 2005-2014 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备15033641号-1<span>礼舍科技-版权所有</span>
+		</div>
+    </div>
+</div>
+<!--尾部结束-->
+</body>
+</html>

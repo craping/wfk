@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改企业信息</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/validate_methods.js"></script>
+	<script type="text/javascript" src="../resources/js/common/area.js"></script>
+	<script type="text/javascript" src="../resources/js/common/select.js"></script>
+	<script type="text/javascript" src="../resources/js/common/layer.js"></script>
+	<script type="text/javascript" src="../resources/js/supplier/sup_updateP.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+<form id="supplier_form" method="post">
+    <div class="system-substance">
+        <h1>修改企业信息</h1>
+        <div class="system-substance">
+            <h2 class="mt20"></h2>
+            <div class="system-tooltip-content">
+                <p>企业审核未通过，请您完善企业信息，如果您存在疑问，请您拨打客服电话400-883-9916，或联系客服QQ<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2851363750&amp;site=qq&amp;menu=yes" target="_blank" class="customer-service">QQ客服</a></p>
+            </div>
+            <div class="system-business-form">
+                <div class="system-business-box">
+                  <input type="hidden" name="supId">
+                  <span class="block left system-business-span"><i style="color:red">*</i>公司全称</span>
+                  <input type="text" name="coName" stringCheck="true" required="" aria-required="true" class="system-business-input left sup_details">
+                  <div class="system-business-help left"></div>
+                  <div class="system-business-hint"><label  for="coName" class="error" style="display: none;"></label></div>
+              </div>
+              <div class="system-business-box">
+                  <span class="block left system-business-span">公司注册资金</span>
+                  <input type="text" name="coRegAmount" isFloatGteZero="true" class="system-business-input2 left sup_details">
+                  <div class="system-business-m left">万元</div>
+                  <div class="system-business-help left"></div>
+                  <div class="system-business-hint"><label for="coRegAmount" class="error" style="display: none;"></label></div>
+              </div>
+              <div class="system-business-box">
+                  <span class="block left system-business-span"><i style="color:red">*</i>企业法人身份证</span>
+                  <input type="text" name="coIdNum" isIdCardNo="ture" required="" aria-required="true" class="system-business-input left sup_details">
+                  <div class="system-business-c left">
+                  </div>
+                  <div class="system-business-hint"><label  for="coIdNum" class="error" style="display: none;"></label></div>
+              </div>
+              <div class="system-business-box">
+                  <span class="block left system-business-span">企业法人身份证</span>
+                  <div class="system-business-up left">
+                      <input id="coIdPic" name="coIdPicFile" class="sel_pic" type="file">
+                      <input type="hidden" name="coIdPic">
+                      <li>上&nbsp;&nbsp;&nbsp;&nbsp;传</li>
+                  </div>
+                  <img class="show_coIdPic" style="width:40px;height:40px;cursor:pointer;"/>
+                  <div class="system-business-hint"></div>
+              </div>
+           <div class="system-business-box">
+              <span class="block left system-business-span"><i style="color:red">*</i>营业执照所在地</span>
+              <div class="system-business-select">
+                  <div class="system-business-dropdown left">
+                      <span class="system-business-arrow"></span>
+                      <dl class="">
+                         <dt class="selectValve" value="" id="regProvince">请选择省</dt>
+            		       <dd class="selectOption">
+                              <ul class="onearea textUl">
+                              </ul>
+                          </dd>
+                      </dl>
+                  </div>
+                  <div class="system-business-dropdown left">
+                      <span class="system-business-arrow"></span>
+                      <dl class="">
+                          <dt class="selectValve" value="" id="regCity">请选择市</dt>
+            		        <dd class="selectOption">
+                              <ul class="twoarea textUl">
+                              </ul>
+                          </dd>
+                      </dl>
+                  </div>
+                  <div id="ququ" class="system-business-dropdown left">
+                      <span class="system-business-arrow"></span>
+                      <dl class="">
+                          <dt class="selectValve" value="" id="regArea">请选择区</dt>
+            		        <dd class="selectOption">
+                              <ul class="threearea textUl">
+                                 
+                              </ul>
+                          </dd>
+                      </dl>
+                  </div>
+              </div>
+              <input type="hidden" name="regProvince">
+              <input type="hidden" name="regCity">
+              <input type="hidden" name="regArea">
+              <div class="system-business-hint"></div>
+          </div>
+              </div>
+              <div class="system-business-box">
+                  <span class="block left system-business-span"><i style="color:red">*</i>公司办公详细地址</span>
+                  <input type="text" name="wrkAddress" stringCheck="true" required="" aria-required="true" class="system-business-input left sup_details">
+                  <div class="system-business-hint"><label  for="wrkAddress" class="error" style="display: none;"></label></div>
+              </div>
+              <div class="system-business-box">
+                  <span class="block left system-business-span"><i style="color:red">*</i>公司电话</span>
+                  <input type="text" name="phoneNum" isTel="true" required="" aria-required="true" class="system-business-input left sup_details">
+                  <div class="system-business-hint"><label  for="phoneNum" class="error" style="display: none;"></label></div>
+              </div>
+              <div class="system-business-box">
+                  <span class="block left system-business-span">企业QQ</span>
+                  <input type="text" name="coQq" isQq="true" class="system-business-input left sup_details">
+                  <div class="system-business-hint"><label  for="coQq" class="error" style="display: none;"></label></div>
+              </div>
+              <div class="system-business-box">
+                  <span class="block left system-business-span">经营范围</span>
+                  <input type="text" name="busiScope" stringCheck="true" class="system-business-input left sup_details">
+                  <div class="system-business-hint"><label  for="busiScope" class="error" style="display: none;"></label></div>
+                </div>
+                <div class="system-business-btn">
+                  <button type="button" id="return_suplist" class="system-business-btn1">取&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;消</button>
+                  <button type="button" id="supplier_update" class="system-business-btn2">确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="../resources/js/supplier/order_edit.js"></script>
+</head>
+<body>
+<div class="system-substance">
+    <h1>订单详情</h1>
+    <div class="system-order">
+        <div class="system-order-c">
+            <h2>订单基本信息</h2>
+            <div class="system-order-list">
+                <table class="system-order-table">
+                    <tr>
+                        <td width="33%" type="show" name="orderId">订单号：</td>
+                        <td width="33%" type="show" name="userId">用户名：</td>
+                        <td type="date" name="orderTime">下单时间：</td>
+                    </tr>
+                    <tr>
+                        <td type="enum" name="userPayWay">支付方式：</td>
+                        <td type="enum" name="orderType">订单类型：</td>
+                        <td type="enum" name="orderChannel">下单渠道：</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>订单商品</h2>
+            <div class="system-order-list">
+                <div class="system-table" id="listview_order_products">
+                
+                </div>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>收件人信息</h2>
+            <div class="system-order-list">
+                <ul class="system-order-ul clearfix">
+                    <li type="show" name="consigneeName" style="margin-right: 200px;">收货人：</li>
+                 <li type="show" name="consigneeMobile" style="margin-right: 200px;">手机号码：</li>
+                 <li type="show" name="consigneeAddress">收货地址：</li>
+             </ul>
+         </div>
+     </div>
+     <div class="system-order-c">
+         <h2>发票</h2>
+         <div class="system-order-list">
+             <p type="show" name="receiptHead">发票抬头：</p>
+             <p type="show" name="receiptContent">发票内容：</p>
+         </div>
+     </div>
+     <div class="system-order-c">
+         <h2>用户备注</h2>
+         <div class="system-order-list">
+             <p type="show" name="userRemark"></p>
+         </div>
+     </div>
+     <div class="system-order-c">
+         <h2>物流信息</h2>
+         <div class="system-order-list">
+             <ul class="system-order-ul clearfix">
+                 <li type="enum" name="logisticsType" style="margin-right: 200px;">快递类型：</li>
+                 <li type="show" name="logisticsCode" style="margin-right: 200px;">快递单号：</li>
+                </ul>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>操作记录</h2>
+            <div class="system-order-list">
+                <div class="system-table" id="listview_order_logs">
+                </div>
+            </div>
+        </div>
+        <div class="system-order-c">
+            <h2>买家评价</h2>
+            <div class="system-order-list">
+
+            </div>
+        </div>
+    </div>
+    <div class="system-order-btn">
+        <a href="javascript:void(0);" id="backButton">返回</a>
+    </div>
+</div>
+</body>
+</html>

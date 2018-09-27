@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员列表</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../resources/js/system/update_manUser_role.js"></script>
+</head>
+<body>
+<div class="system-substance">
+      <div class="site-template-title">修改管理员角色<a href="#" class="return_man_list">返回</a></div>
+      <div class="system-admin">
+          <div class="system-admin-row clearfix">
+              <span>管理员帐号</span>
+              <div class="system-admin-box" id="manUserId">etst
+              </div>
+          </div>
+          <div class="system-admin-row clearfix">
+              <span>所属角色</span>
+              <form>
+              <input type="hidden" name="userId"/>
+              <div class="system-admin-box" id="roleBox">
+              </div>
+              </form>
+          </div>
+          <div class="system-admin-btn">
+              <button class="system-admin-btn1 return_man_list">取消</button>
+              <button class="system-admin-btn2 update_user_role">确定</button>
+          </div>
+      </div>
+</div>
+	
+</body>
+</html>

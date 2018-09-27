@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会员详情</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+    
+	<script type="text/javascript" src="../resources/js/common/area.js"></script>
+	<script type="text/javascript" src="../resources/js/common/select.js"></script>
+	<script type="text/javascript" src="../resources/js/system/sys_userDetails.js"></script>
+</head>
+<body>
+<form id="user_form" method="post">
+  <div class="system-substance">
+    <div class="site-template-title">会员详情<a href="../system/sys_userList.html" style="background: #aa3231;">返回</a></div>
+    <div class="system-user">
+        <table class="system-user-table ">
+            <thead>
+            <tr>
+                <th colspan="6">会员基本信息</th>
+            </tr>
+            </thead>
+            <tr>
+                <td class="bold">注册用户名</td>
+                <td class="user_details" name="loginName"></td>
+                <td class="bold">真实姓名</td>
+                <td class="user_details" name="userName"></td>
+                <td class="bold">性别</td>
+                <td class="user_details" name="sex"></td>
+            </tr>
+            <tr>
+                <td class="bold">出身日期</td>
+                <td class="user_details" name="birthdate"></td>
+                <td class="bold">年龄</td>
+                <td class="user_details" name="age"></td>
+                <td class="bold">注册邮箱</td>
+                <td class="user_details" name="email"></td>
+            </tr>
+            <tr>
+                <td class="bold">企业名称</td>
+                <td colspan="5" class="user_details" name="userComName"></td>
+            </tr>
+        </table>
+        <table class="system-user-table ">
+            <thead>
+            <tr>
+                <th colspan="7" class="user_details">账户信息</th>
+            </tr>
+            </thead>
+            <tr>
+                <td class="bold">可用积分</td>
+                <td class="user_details" name="availCred"></td>
+                <td class="bold">即将过期积分</td>
+                <td class="user_details" name="willOverCred"></td>
+                <td class="bold">已过期积分</td>
+                <td class="user_details" name="overCred"></td>
+                <td class="bold"><a id="userCred" href="javascript:;" style="color: #1069a7; text-decoration: underline;">查看积分明细</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</form>
+</body>
+</html>

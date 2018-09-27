@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.css" />
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+    <script type="text/javascript" src="../resources/js/common/layer.js"></script>
+    <script type="text/javascript">
+    
+    	var tid = Web.Method.GetQueryString('data');
+    	var vals = Web.Method.GetQueryString('val');//筛选已经添加了的地区!
+    	var id = Web.Method.GetQueryString('ds');
+    	var ds = $("input[d='dval"+id+"']", window.parent.document).val() ;
+        $(document).ready(function () {
+        	 
+        	
+        	$(document).on("click",".middleAll",function(){
+        		if($(this).prop("checked") == false){
+        			$("[datad='"+$(this).next().html()+"']").each(function(i,j){
+        				var $this = $(j);
+        				$this.attr("data","");
+                		$this.prop("checked","");
+        			})
+        			return ;
+        		}
+        		$("[datad='"+$(this).next().html()+"']").each(function(i,j){
+        			var $this = $(j);
+        			Web.Method.ajax("pubArea/getListArea", {
+                		data : {
+                			parentId : $(j).val(),
+                		},
+                		success : function(data) {
+                			if(typeof($this.attr("disabled"))=="undefined"){
+                				var html=$(j).val()+':'+"parentId|"+$(j).val()+",";
+	                			$.each(data.info,function(l,k){
+	                				html+=k.areaNo+"|"+k.areaName+",";
+	                			})
+	                			html= html.substring(0,html.length-1);
+	                			$this.attr("data",html);
+		                		$this.prop("checked","checked");
+	                    	}
+                		}
+        			})
+        		})
+        	})
+        	
+        	$(document).on("click","input[name='provinceArea']",function(){
+        		var $this = $(this);
+        		if(!$this.prop("checked")) {
+            		$this.attr("data","")
+            		$this.attr("dataid","")
+            		$("[data='"+$this.attr("datad")+"']").prop("checked","");
+            		return;
+            	} 
+    			Web.Method.ajax("pubArea/getListArea", {
+            		data : {
+            			parentId : $this.val(),
+            		},
+            		success : function(data) {
+            			var html=$this.val()+':'+"parentId|"+$this.val()+",";
+            			var areaid='';
+                		$.each(data.info,function(l,k){
+                			html+=k.areaNo+"|"+k.areaName+",";
+                			areaid +=k.areaNo+",";
+                		})
+		    			areaid=areaid.substring(0,areaid.length-1);
+		    			$this.attr("dataid",areaid);
+                		
+                		html= html.substring(0,html.length-1);
+                		$this.attr("data",html);
+                		$this.prop("checked","checked");
+                		$("[data='"+$this.attr("datad")+"']").prop("checked","");
+            		}
+    			})
+        	})
+        	
+            $('.freight-box').delegate(".freight-box-arrow","click", function () {
+            	var $this = $(this).prev().children();
+            	var seId = $this.attr("dataid");
+            	if(typeof($this.attr("disabled"))!="undefined"){
+            		return ;
+            	}
+            	
+            	var html = "<div class='freight-box-area'><ul>";
+            	Web.Method.ajax("pubArea/getPubAreaByPid", {
+            		async:false,
+            		data : {
+            			pId : $this.val()
+            		},
+            		success : function(data) {
+            			var check="";
+            			$.each(data.info,function(i,j){
+            				if(seId.indexOf(j.areaNo)>=0){
+            					check="checked";
+            				}else{
+            					check=" ";
+            				}
+            				html += "<li><label><input type='checkbox' "+check+" name='cityArea' value='"+ j.areaNo +"'  class='middle' dataName='"+j.areaName+"' data='"+ $this.val()+"'>" + j.areaName + "</label></li>";
+            			});
+            			html += "</ul></div>"
+            		},
+            		fail : function(data) {
+            			$.confAlert({
+            				size : "sm",
+            				context : data.msg,
+            				noButton : false
+            			})
+            		}
+            	});
+            	
+            	
+                layer.open({
+                    type: 1,
+                    title:false,
+                    shade: [0.1,'#fff'],
+                    area: ['650px', '170px'],
+                    closeBtn: 0,
+                    btn: ['确定', '取消'],
+                    yes: function(index, layero){
+                    	var parHtml='';
+                    	var areaid='';
+                    	var parent = $("[name='cityArea']").attr("data");
+                    	parHtml+=parent+"|"+$("[name='cityArea']:checked").length+":"+"parentId|"+parent+",";
+                    	$("[name='cityArea']:checked").each(function(i,j){
+                    		areaid+=$(j).val()+","
+                    		parHtml+=$(j).val()+"|"+$(j).attr("dataName")+",";
+                    	});
+                    	parHtml = parHtml.substring(0,parHtml.length-1);
+		    			areaid=areaid.substring(0,areaid.length-1);
+		    			$this.attr("dataid",areaid);
+                    	
+                    	$("[name='provinceArea'][value='"+parent+"']").attr("data",parHtml);
+                    	if($("input[name='cityArea']:checked").length >0 ){
+                    		$("[name='provinceArea'][value='"+parent+"']").prop("checked","checked");
+                    	}else{
+                    		$("[name='provinceArea'][value='"+parent+"']").prop("checked","");
+                    	}
+                    	
+                    	layer.close(index);
+                    	
+                    },
+                    cancel: function(index){
+                    	 
+                    },
+                    content: html
+                });
+            });
+            queryRootAreaList();
+            function queryRootAreaList() {
+            	Web.Method.ajax("pubArea/getRootPubArea", {
+            		data : {
+//            			pId : pid,
+            		},
+            		success : function(data) {
+            			var html = "";
+            			$.each(data.info,function(i,j){
+            				html="";
+            				html += "<li class='freight-box-city'>";
+            					html +=	"<label class='freight-box-label'>";
+            						html +="<input type='checkbox'    name='provinceArea' datad='"+j.region+"' value='"+ j.areaNo +"' data='' dataid='' dataName='"+j.areaName+"' class='middle'>" + j.areaName;
+            					html +="</label><span class='freight-box-arrow'></span>" ;
+            				html +="</li>";
+            				
+            				if(j.region == "华东"){
+            					$("#east_china").append(html);
+            				}else if(j.region == "华南"){
+            					$("#south_china").append(html);
+            				}else if(j.region == "华中"){
+            					$("#center_china").append(html);
+            				}else if(j.region == "华北"){
+            					$("#north_china").append(html);
+            				}else if(j.region == "东北"){
+            					$("#north_east").append(html);
+            				}else if(j.region == "西南"){
+            					$("#south_west").append(html);
+            				}else if(j.region == "西北"){
+            					$("#north_west").append(html);
+            				}else if(j.region == "特区"){
+            					$("#special_area").append(html);
+            				} 
+            			});
+            			info();
+            		},
+            		fail : function(data) {
+            			$.confAlert({
+            				size : "sm",
+            				context : data.msg,
+            				noButton : false
+            			})
+            		}
+            	});
+            }
+        })
+        function areaList(params){
+            	var datas ;
+            	Web.Method.ajax("supProduct/areaList",{
+            		async:false,
+            		data:params,
+            		success:function(data){
+            			datas = data.info;
+            		}
+            	});
+            	return datas;
+            }
+        
+		function list(){
+        	 var data={}
+        	$("input[name='provinceArea']:checked").each(function(i,j){
+        		
+        		var key = $(this).attr("dataname");
+        		var val = $(this).attr("data");
+        		var parKey = val.split(":");
+        		//控制全选显示
+        		var province=parKey[0].split("|");
+        		var length=getAreaNum(province[0]);
+        		var selength=parKey[1].split("|").length-2;
+        		
+        		if(length==selength){
+        			data[province[0]+"|"+$(this).attr("dataname")+"|"+"1"]= parKey[1];//全选
+        		}else{
+        			data[province[0]+"|"+$(this).attr("dataname")+"|"+"2"]= parKey[1];
+        		}
+        	})
+        	return data
+		}
+		
+		function info(){
+			if(vals!=null && vals!="null" && vals!="undefined"&&vals.length!=0){
+				$.each(vals.split(","),function(i,j){
+					var $this=$("input[value="+j+"]");
+					$this.prop("disabled","disabled");
+				})
+			}
+			if(ds!=null && ds!=""){
+				//循环得到省列表
+				$.each(ds.split("&"),function(i,j){
+					var sheng =j.split(":");
+					var $this=$("input[value="+sheng[0].split("|")[0]+"]");
+					$this.prop("checked","checked");
+					var areahtml = sheng[0].split("|")[0]+':'+sheng[1];
+    				$this.attr("data",areahtml);
+    				var areaid='';
+					$.each(sheng[1].split(","),function(l,k){
+						areaid += k.split("|")[0]+","
+	    			}) 
+	    			areaid=areaid.substring(0,areaid.length-1);
+	    			$this.attr("dataid",areaid);
+				})
+			}
+    	}
+    	function splitshi(val,num){
+    		var v = val.split("&");
+    		var html ='';
+    		$.each(v,function(i,j){
+    			html+=j.split("|")[num]+",";
+    		})
+    		html=html.substring(0,html.length-1);
+    		return html;
+    	}
+        //获取区域数量
+    	function getAreaNum(proId){
+    		var length='';
+    		Web.Method.ajax("pubArea/getPubAreaByPid", {
+    			async:false,
+    			data : {
+    				pId : proId
+    			},
+    			success : function(data) {
+    				length=data.info.length;
+    			},
+    			fail : function(data) {
+    				$.confAlert({
+    					size : "sm",
+    					context : data.msg,
+    					noButton : false
+    				})
+    			}
+    		});
+    		return length;
+    	}
+    </script>
+</head>
+<body>
+    <div class="freight-box">
+    	<dl class="clearfix">
+            <dt><label><input type="checkbox" class="middleAll" data="华东"><span>华东</span></label></dt>
+            
+            <dd>
+                <ul class="freight-box-ul" id="east_china">
+                </ul>
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt><label><input type="checkbox" class="middleAll" data="华南"><span>华南</span></label></dt>
+            <dd>
+                <ul class="freight-box-ul" id="south_china">
+                </ul>
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt><label><input type="checkbox" class="middleAll" data="华中"><span>华中</span></label></dt>
+            <dd>
+                <ul class="freight-box-ul" id="center_china">
+                </ul>
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt><label><input type="checkbox" class="middleAll" data="华北"><span>华北</span></label></dt>
+            <dd>
+                <ul class="freight-box-ul" id="north_china">
+                </ul>
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt><label><input type="checkbox" class="middleAll" data="东北"><span>东北</span></label></dt>
+            <dd>
+                <ul class="freight-box-ul" id="north_east">
+                </ul>
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt><label><input type="checkbox" class="middleAll" data="西南"><span>西南</span></label></dt>
+            <dd>
+                <ul class="freight-box-ul" id="south_west">
+                </ul>
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt><label><input type="checkbox" class="middleAll" data="西北"><span>西北</span></label></dt>
+            <dd>
+                <ul class="freight-box-ul" id="north_west">
+                </ul>
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt><label><input type="checkbox" class="middleAll" data="特区"><span>特区</span></label></dt>
+            <dd>
+                <ul class="freight-box-ul" id="special_area">
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</body>
+</html>

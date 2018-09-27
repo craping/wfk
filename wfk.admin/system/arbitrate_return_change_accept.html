@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>换货仲裁受理</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    <script type="text/javascript" src="../libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../libs/jquery/jquery.form.js"></script>
+    <script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/common_.js"></script>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script type="text/javascript" src="../js/arbitration_details.js"></script>
+    <script type="text/javascript" src="../libs/My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+<form action="">
+    <div class="system-substance">
+        <h1>换货仲裁受理</h1>
+        <div class="system-order">
+            <div class="system-order-c">
+                <h2>原订单详情</h2>
+                <div class="system-order-list">
+                    <div class=system-order-h3>订单基本信息</div>
+                    <table class="system-order-table">
+                        <tr>
+                            <td width="33%" type="show" name="orderId">订单号：</td>
+                            <td width="33%" type="show" name="userId">用户名：</td>
+                            <td type="date" name="orderTime">下单时间：</td>
+                        </tr>
+                        <tr>
+                            <td type="enum" name="userPayWay">支付方式：</td>
+                            <td type="enum" name="orderType">订单类型：</td>
+                            <td type="enum" name="orderChannel">下单渠道：</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="system-order-c">
+                <h2>订单商品</h2>
+                <div class="system-order-list">
+                    <div class="system-table system-order-t">
+                        <table>
+                            <tr>
+                                <td width="10%">商品名称</th>
+                                <td width="10%">商品编号</th>
+                                <td width="15%">商品属性</th>
+                                <td width="7%">单价</th>
+                                <td width="7%">商品数量</th>
+                                <td width="7%">快递费用</th>
+                                <td width="7%">订单总额</th>
+                                <td width="7%">支付现金</th>
+                                <td width="7%">支付积分</th>
+                                <td width="7%">退货标识</th>
+                                <td>退换货订单号</th>
+                            </tr>
+                            <tr>
+                                <td id="proNameProduct"></td>
+                                <td id="proCodeProduct"></td>
+                                <td id="proAttProduct"></td>
+                                <td id="realPriceProduct"></td>
+                                <td id="numProduct"></td>
+                                <td type="show" name="logisticsFee"></td>
+                                <td type="show" name="realAmount"></td>
+                                <td type="show" name="payCash"></td>
+                                <td type="show" name="payIntegral"></td>
+                                <td id="returnLabelProduct"></td>
+                                <td id="orderIdProduct"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="system-order-c">
+                <h2>收件人信息</h2>
+                <div class="system-order-list">
+                    <ul class="system-order-ul clearfix">
+                        <li type="show" name="consigneeName" style="margin-right: 200px;">收货人：</li>
+                        <li type="show" name="consigneeMobile" style="margin-right: 200px;">手机号码：</li>
+                        <li type="show" name="consigneeAddress">收货地址：</li>
+                    </ul>                        
+                </div>
+            </div>
+            <div class="system-order-c">
+                <h2>换货仲裁受理</h2>
+                <div class="system-order-list">
+                    <div class="system-table system-order-t">
+                        <table>
+                            <tr>
+                                <td width="25%">商品名称</th>
+                                <td width="25%">商品编号</th>
+                                <td width="25%">商品属性</th>
+                                <td>申请日期</th>
+                            </tr>
+                            <tr>
+                                <td id="proNameReturn"></td>
+                                <td id="proIdReturn"></td>
+                                <td id="proAttrReturn"></td>
+                                <td id="addTimeReturn"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="system-order-return">
+                        <p id="problemReturn">退货理由：</p>
+                        <p><span id="picReturn">退货图片：</span><a href="#">查看</a></p>
+                        <p id="acceptOfferReturn">处理意见：</p>
+                        <p id="statusReturn">当前状态：</p>
+                    </div>
+                </div>
+                <div class="system-order-list">
+                    <div class=system-order-h3>供应商操作记录</div>
+                    <div class="system-table system-order-t" id="listview_order_logs">
+                        
+                    </div>
+                    <div class="system-order-return">
+                        <p id="arbitrateReason">仲裁理由：</p>
+                        <p>
+                            <span class="bold left pb10">处理意见：</span>
+                            <textarea name="arbitrateOffer" style="resize: none; width: 93%; height: 150px; padding-left: 10px;" class="left"></textarea>
+                        </p>
+                    </div>
+                </div>
+                <div class="system-order-c">
+                    <h2>管理员备注</h2>
+                    <div class="system-order-list">
+                        <textarea style="resize: none; width: 100%; height: 150px; padding-left: 10px;"></textarea>
+                    </div>
+                </div>
+                <div class="site-template-btn clearfix" style="padding-left: 350px;">
+                    <a href="javascript:void(0);" id="backButton">取消</a>
+                    <button type="button" onclick="checkReturn(1)" class="left site-template-btn3">同意受理</button>
+                    <button type="button" onclick="checkReturn(2)" class="left site-template-btn1">拒绝受理</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

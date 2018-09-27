@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发放返利积分</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../resources/libs/validate/validate_methods.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="../resources/js/system/sys_issue_integral.js"></script>
+    <script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+</head>
+<style type="text/css">
+        .system-period{vertical-align:middle; margin-bottom:2px; *margin-bottom:2px;}
+        .system-period-box{ width: 125px; height: 43px; padding: 0 5px; margin-left: 5px;}
+		.seelctDiv{left: 250px;top: 45px; max-height:270px; border: 1px solid #a0a0a0;outline:medium none;display: none;position:absolute;z-index:100 ;background-color: #fff}
+    	.seelctDiv ul li{cursor: pointer;line-height:30px;}
+    	.seelctDiv ul li:hover{background:#a0a0a0;}
+    </style>
+    <script type="text/javascript">
+		$(function(){
+			$(document).click(function(){
+				$(".seelctDiv").hide();
+			})
+			$(".seelctDiv").width($("#seelctDiv").width())
+		})
+	</script>
+<body>
+       <div class="system-substance">
+       <form id="integral_form">
+                <h1>发放返利积分</h1>
+                <div class="system-form-add">
+                    <div class="system-form-input">
+                        <span class="block left tr f18">发放企业：</span>
+                        <input type="text" id="seelctDiv" required="" aria-required="true" class="system-form-box left" placeholder="企业用户名/企业名/手机号">
+                        <div class="seelctDiv" style="display:none;">
+	                    </div>
+	                    <input type="hidden" id="comId">
+                        <label  for="seelctDiv" class="error system-form-hint" style="display: none;"></label>
+                    </div>
+                    <div class="system-form-input">
+                        <span class="block left tr f18">积分类型：</span>
+                        <div class="dropdown2 left">
+                            <dl class="select">
+                                <dt id="tranType"><a href="javascript:;" value="1">积分返利</a></dt>
+                                <dd>
+                                    <ul>
+                                        <li><a href="javascript:;" value="1">积分返利</a></li>
+                                        <li><a href="javascript:;" value="0">积分充值</a></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="system-form-hint" style="display:none;"></div>
+                    </div>
+                    <div class="system-form-input">
+                        <span class="block left tr f18">发放积分数：</span>
+                        <input type="text" isDigits="true" id="tranNum" required="" aria-required="true" class="system-form-box left ">
+                        <label  for="tranNum" class="error system-form-hint" style="display: none;"></label>
+                    </div>              
+                    <div class="system-form-input" style="height: 200px;">
+                        <span class="block left tr f18">备注：</span>
+                        <textarea style="width: 290px; height: 200px;" id="remark"></textarea>
+                    </div>
+                    <div class="system-form-btn" style="padding-left:300px;">
+                        <button type="button" id="send_button" class="system-btn-c">发送</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+ </body>
+ </html>          

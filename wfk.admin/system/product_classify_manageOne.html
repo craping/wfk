@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看一级分类</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css"/>
+	
+	<script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common/common_.js"></script>
+    <script type="text/javascript" src="../resources/js/common/select.js"></script>
+ 
+    <script type="text/javascript" src="../resources/js/system/classfiy/classiftOneManage.js"></script>
+</head>
+<body>
+ <div class="system-substance">
+ <form action="">
+ <h2 class="mt20 mb20"></h2>
+     <div class="system-operate clearfix mb20">
+         <div class="system-operate-i left">
+             <span class="block left">分类名称：</span><input type="text" class="system-box1 block left" placeholder="请输入分类名称" id="classifyName" name="classifyName">
+         </div>
+         <div class="system-operate-s left ml20">
+             <span class="system-operate-span block left">状态：</span>
+             <div class="dropdown left">
+                 <dl>
+                    <dt value="" id="status" class="selectValve" >全部</dt>
+	                <dd class="selectOption">
+	                    <ul>
+	                     	<li value=""><a href="#">全部</a></li>
+	                        <li value="1"><a href="#">有效</a></li>
+	                        <li value="0"><a href="#">无效</a></li>
+	                    </ul>
+	                </dd>
+                 </dl>
+             </div>
+             <button class="system-btn inblock f16" type="button" id="classOK">查询</button>
+         </div>
+         <div class="system-add block left f16" id="addClasss">添加一级分类</div>
+     </div>
+     </form>
+     <h2></h2>
+     <div class="system-table" id="system-table">
+          
+     </div>
+     <div class="system-operate-2 clearfix">
+         <div class="dropdown left">
+             <dl>
+                <dt value="" id="action" class="selectValve" >请选择操作</dt>
+                <dd class="selectOption">
+                    <ul>
+                    	<li value=""><a href="#">请选择操作</a></li>
+                        <li value="1"><a href="#">有效</a></li>
+                        <li value="0"><a href="#">无效</a></li>
+                    </ul>
+                </dd>
+             </dl>
+         </div>
+         <button class="system-btn left f16" id="caozuo" type="button" disabled style="background: #898989" >确定</button>
+     </div>
+     <div class="system-page" id="system-page"> </div>
+ </div>         
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品发布</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.ext.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/js/common/validate_msg.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.metadata.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script> 
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/js/common/layer.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script src="../resources/libs/ueditor/ueditor.config.js"></script>
+	<script src="../resources/libs/ueditor/ueditor.all.js"></script>
+	<script type="text/javascript" src="../resources/js/supplier/product/editProduct.js"></script>
+	<script type="text/javascript" charset="utf-8" >
+		$(document).ready(function () {
+		     $('#newArea').click(function () {
+		    	 var iframe = "<iframe id='freight' name='freight' width='100%' height='800px' src='freight_new.html' frameborder='0'></iframe>"
+		    	 $(".system-substance").hide();
+		    	 $("body").append(iframe);
+		    	 window.location.href = "#toTop";
+		     })  
+		 
+		});
+		
+	</script>
+	<style type="text/css">
+		.layui-layer-title{ height:40px !important; line-height:40px !important;}	
+		.product-publish-table4 label.system-advert-hint {position: absolute;bottom: -25px;left: 18%;}
+		li.fieldSet label.system-advert-hint{ left:130px; bottom:-3px;}
+		.product-publish-addPic ul { position:relative;}
+		.product-publish-addPic ul label.system-advert-hint{ left:50px; top:70px;}
+	</style>
+</head>
+<body id="toTop">
+<div class="hiddensd" id="hiddensd"></div>
+<div class="system-substance">
+<form id="editProForm" action="" enctype="multipart/form-data" method="post">
+    <div class="product-publish">
+        <div class="product-publish-top clearfix">
+            <ul>
+                <li class="on product-publish-li">第1步：选择类目</li>
+                <li class=" product-publish-li">第2步：填写基本信息</li>
+                <li>第3步：编辑商品描述</li>
+            </ul>
+        </div>
+        <div class="product-publish-select clearfix">
+            <!-- <span class="product-publish-sp">经常选择的类目：</span>
+            <div class="product-publish-pull dropdown">
+                <dl class="select">
+                    <dt>请选择<span></span></dt>
+                    <dd>
+                        <ul id="historyCategory">
+                        </ul>
+                    </dd>
+                </dl>
+            </div> -->
+        </div>
+        <div class="product-publish-cont clearfix">
+        	<div id="oneClassfiy"></div>
+        	<div id="twoClassfiy"></div>
+        	<div id="threeClassfiy"></div>
+        </div>
+        <div class="product-publish-nav"><span>您当前选择的类目：</span><span id="classfiy"></span></div>
+        <div class="product-publish-btnBox">
+            <a class="product-publish-btn" id="next_one" href="javascript:;">下一步</a>
+        </div>
+    </div>
+    
+    <div class="product-publish" style="display:none;">
+        <div class="product-publish-top clearfix">
+            <ul>
+                <li class=" product-publish-li">第1步：选择类目</li>
+                <li class="on product-publish-li">第2步：填写基本信息</li>
+                <li>第3步：编辑商品描述</li>
+            </ul>
+        </div>
+        <div class="product-publish-edit">
+            <table class="product-publish-table1">
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">基本属性</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2">
+                            <tr>
+                                <td width="8%" class="tr">商品类目：</td>
+                                <td class="tl" id="showClassfy">居家生活/床上用品/四件套</td>
+                            </tr>
+                            <tr>
+                                <td class="tr">商品编码：</td>
+                                <td class="tl">
+                                    <input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">品牌：</td>
+                                <td class="tl" style="position:relative">
+                                    <div class="product-publish-pull2 dropdown" id="brands"></div>
+                                    <input id="search_brand" type="text" style="width:220px;height:41px;position:absolute;border:0px;border-right:1px solid #a0a0a0;left:1px;top:16px;z-index:100;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">产地：</td>
+                                <td class="tl">
+                                    <div class="product-publish-radio clearfix">
+                                        <label class="product-publish-label"><input type="radio" value="0" name="proArea">国内</label>
+                                        <label class="product-publish-label"><input type="radio" value="1" name="proArea">国外及港澳台</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">适应场景：</td>
+                                <td class="tl">
+                                    <div class="product-publish-scene clearfix">
+										<input type="hidden" id="proLabel" name="proLabel" />
+                                        <ul>
+                                            <li class="product-publish-scene-li" id="appScen">+添加</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">商品信息</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2">
+                                <tr>
+                                    <td width="9%" class="tr"><i class="product-publish-i">*</i>商品标题：</td>
+                                    <td width="60%" class="tl">
+									<div class="fieldSet">
+                                        <input type="text" name="proName" id="proName" required="true" maxLength="50" class="product-publish-input2">
+                                    </div>
+                                    <td class="tl">
+                                        还能输入<i class="product-publish-i" id="fontNum">50</i>字
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <table class="product-publish-table3">
+                                            <tr>
+                                                <td width="9%" class="tr"><i class="product-publish-i">*</i>礼舍价：</td>
+                                                <td width="10%" class="tl">
+	                                                <div class="fieldSet">
+	                                                    <input type="text" name="priceLishe" id="priceLishe" required="true" number="true" positive="true" min="1" maxlength="9" noZore="true" decimal="true" class="product-publish-input3">
+	                                                </div>
+                                                </td>
+                                                <td width="9%" class="tr"><i class="product-publish-i">*</i>市场价：</td>
+                                                <td width="10%" class="tl">
+	                                                <div class="fieldSet">
+	                                                    <input type="text" name="marketPrice" id="marketPrice" required="true" number="true" positive="true" min="1" maxlength="9" noZore="true" decimal="true" class="product-publish-input3">
+	                                                </div>
+                                                </td>
+                                                <td width="9%" class="tr"><i class="product-publish-i">*</i>采购价：</td>
+                                                <td class="tl">
+	                                                <div class="fieldSet">
+	                                                    <input type="text" name="priceSupply" id="priceSupply" required="true" number="true" positive="true" min="1" maxlength="9" noZore="true" decimal="true" class="product-publish-input3">
+	                                                </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <table class="product-publish-table3">
+                                            <tr>
+                                                <td width="9%" class="tr"><i class="product-publish-i">*</i>返利方式：</td>
+                                                <td width="15%" class="tl">
+                                                    <label class="product-publish-label2"><input name="rebateType" value="0" type="radio">总价返利</label>
+                                                </td>
+                                                <td width="15%" class="tl">
+                                                    <label class="product-publish-label2"><input name="rebateType" value="1" type="radio">底价返利</label>
+                                                </td>
+                                                <td width="10%" class="tr">返利系数：</td>
+                                                <td class="tl">
+	                                                <div class="fieldSet">
+	                                                    <input type="text" name="proRebate" id="proRebate" required="true" number="true" min="0" class="product-publish-input3"><i>%</i>
+	                                                </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">商品规格</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2" id="attr">
+                                <tr>
+                                    <td>
+                                        <div class="product-publish-listEdit">
+                                            <table id="attrGroup" class="product-publish-table4">
+                                            
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="product-publish-title tl">主图设置</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="product-publish-addPic" id="mainPics">
+                                            <ul attr="main" class="clearfix">
+                                                <li class="addPic-li1" style="overflow:hidden;">默认主图</li>
+                                                <li class="main-ico addPic-li3"><i class='addPic-i'>商品主图</i></li>
+                                                <input type="file" required="true" name="def_pic_0" style="display:none;" />
+                                                <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_1" style="display:none;" />
+                                                <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_2" style="display:none;" />
+                                                <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_3" style="display:none;" />
+                                                <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_4" style="display:none;" />
+                                                <!-- <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_5" style="display:none;" /> -->
+                                            </ul>
+                                            <!-- <ul class="clearfix">
+                                                <li class="addPic-li1">默认主图</li>
+                                                <li class="addPic-li2"><p>主图</p><p>800*800</p></li>
+                                                <li class="addPic-li3"></li>
+                                                <li class="addPic-li3"></li>
+                                                <li class="addPic-li3"></li>
+                                                <li class="addPic-li3"></li>
+                                                <li class="addPic-li3"></li>
+                                            </ul> -->
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">物流设置</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2">
+                                <tr>
+                                    <td width="12%" class="tr"><i class="product-publish-i">*</i>商品发货地：</td>
+                                    <td class="tl">
+                                    
+                          				<div class="product-publish-pull3 product-publish-pull2 dropdown left" id="province"></div>
+                          				<div class="product-publish-pull3 product-publish-pull2 dropdown left" id="city"></div>
+                          				<div class="product-publish-pull3 product-publish-pull2 dropdown left" id="area"></div>
+					                  
+                                    
+                                    
+                                       <!--  <div class="product-publish-pull3 dropdown">
+                                            <dl class="select">
+                                                <dt>请选择<span></span></dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li><a href="#">请选择1</a></li>
+                                                        <li><a href="#">请选择2</a></li>
+                                                        <li><a href="#">请选择3</a></li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="product-publish-pull3 dropdown">
+                                            <dl class="select">
+                                                <dt>请选择<span></span></dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li><a href="#">请选择1</a></li>
+                                                        <li><a href="#">请选择2</a></li>
+                                                        <li><a href="#">请选择3</a></li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="product-publish-pull3 dropdown">
+                                            <dl class="select">
+                                                <dt>请选择<span></span></dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li><a href="#">请选择1</a></li>
+                                                        <li><a href="#">请选择2</a></li>
+                                                        <li><a href="#">请选择3</a></li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div> -->
+                                        
+                                        
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="12%" class="tr"><i class="product-publish-i">*</i>运费设置：</td>
+                                    <td class="tl">
+                                    	<div class="product-publish-pull3 product-publish-pull2 dropdown left" id="freightTmpl"></div>
+                                        
+                                        <div class="product-publish-r">
+                                            <a href="javascript:;" onclick="reLoadFeightTmpl()">刷新</a>|<a href="javascript:;" id="newArea">新建</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">售后/其它</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2">
+                                <tr>
+                                    <td width="12%" class="tl"><i class="product-publish-i">*</i>是否需要发票：</td>
+                                    <td class="tl">
+                                        <div class="product-publish-radio clearfix">
+                                            <label class="product-publish-label"><input name="faPiao" value="1" type="radio">是</label>
+                                            <label class="product-publish-label"><input name="faPiao" value="0" type="radio">否</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">搜索设置</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2">
+                                <tr>
+                                    <td width="12%" class="tr">页面标题：</td>
+                                    <td class="tl">
+	                                    <div class="fieldSet">
+	                                        <input type="text" name="seoTitle" id="seoTitle" class="product-publish-input2 left">
+	                                        <span class="product-publish-prompt">浏览器顶部页面标题</span>
+	                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="12%" class="tr" style="height: 108px; vertical-align: top;">标题关键字：</td>
+                                    <td class="tl">
+	                                    <div class="fieldSet">
+	                                        <textarea class="product-publish-text" name="seoKeyword" id="seoKeyword"></textarea>
+	                                        <span class="product-publish-prompt2">浏览器页面标题关键字</span>
+	                                    </div>
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td width="12%" class="tr" style="height: 108px; vertical-align: top;"><i class="product-publish-i">*</i>页面描述：</td>
+                                    <td class="tl">
+	                                    <div class="fieldSet">
+	                                        <textarea class="product-publish-text" name="seoDescription" id="seoDescription" required="true"></textarea>
+	                                        <span class="product-publish-prompt2">浏览器页面标题关键字</span>
+	                                    </div>
+                                    </td>
+                                </tr> -->
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="product-publish-btnBox">
+            	<a class="product-publish-btn1" id="prev_one" href="javascript:;">上一步</a>
+                <a class="product-publish-btn" id="next_two" href="javascript:;">下一步</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="product-publish" style="display:none;">
+        <div class="product-publish-top clearfix">
+            <ul>
+                <li class=" product-publish-li">第1步：选择类目</li>
+                <li class=" product-publish-li">第2步：填写基本信息</li>
+                <li class="on">第3步：编辑商品描述</li>
+            </ul>
+        </div>
+        <div class="product-publish-editor">
+            <div class="product-edit-spec clearfix">
+                <span>商品描述：</span>
+                <div class="product-edit-box">
+					<textarea name="proDetails" id="proDetails"></textarea><br>
+			        <script>
+			        	var proDetails =  UE.getEditor('proDetails');
+			        </script>
+                </div>
+            </div>
+            <div class="product-edit-spec clearfix">
+                <span>规格参数：</span>
+                <div class="product-edit-box2">
+					<textarea name="packBill" id="packBill"></textarea><br>
+			        <script> 
+			       		var packBill = UE.getEditor('packBill');
+			        </script>
+                </div>
+            </div>
+			<!--
+            <div class="product-edit-spec clearfix">
+                <span>规格参数：</span>
+                <textarea class="product-edit-box3">商品报修和售后，描述不得超过300个汉字</textarea>
+            </div>-->
+            <div class="product-edit-spec clearfix">
+                <span>售后服务：</span>
+                <div class="product-edit-box">
+					<textarea rows="10" cols="75" name="afterService" id="afterService"></textarea><br>
+			        <script> 
+			       	 var afterService = UE.getEditor('afterService');
+			        </script>
+                </div>
+            </div>
+        </div>
+        <div class="product-publish-btnBox">
+            <a class="product-publish-btn1" id="prev_two" href="javascript:;">上一步</a>
+            <a class="product-publish-btn2" id="save" href="javascript:;">保存</a>
+            <a class="product-publish-btn2" id="submit" href="javascript:;">提交审核</a>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>

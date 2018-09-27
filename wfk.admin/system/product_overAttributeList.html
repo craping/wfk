@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加属性类别</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css"/>
+		
+	<script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common/common_.js"></script>
+    <script type="text/javascript" src="../resources/js/common/select.js"></script>
+ 
+    <script type="text/javascript" src="../resources/js/system/attribute/overAttributeList.js"></script> 
+</head>
+<body>
+<div class="system-substance">
+<h2 class="mt20 mb20"></h2>
+    <div class="system-operate clearfix mb20">
+    	<form action="">
+        <div class="system-operate-i left">
+            <span class="block left">属性名称：</span>
+            <input type="text" class="system-box1 block left" name="attName" id="attName" placeholder="请输入属性名称">
+        </div>
+        <div class="system-operate-s left ml20">
+            <span class="system-operate-span block left">状态：</span>
+            <div class="dropdown left">
+                <dl class="select">
+                    <dt value="" id="status" class="selectValve" >请选择</dt>
+	                <dd class="selectOption">
+	                    <ul>
+	                    	<li value=""><a href="#">全部</a></li>
+	                        <li value="1"><a href="#">有效</a></li>
+	                        <li value="0"><a href="#">无效</a></li>
+	                    </ul>
+	                </dd>
+                </dl>
+            </div>
+            <button class="system-btn inblock" type="button" id="OK">查询</button>
+        </div>
+        </form>
+        <attId value=""/>
+        <div class="system-add-2 block " id="returnAtt">返回</div>
+        <div class="system-add block " id="addattributebution" >添加属性</div>
+    </div>
+    <h2></h2>
+    <div class="system-table" id="system-table">
+         
+    </div>
+    <div class="system-operate-s2 clearfix">
+        <div class="dropdown left">
+            <dl class="select">
+                <dt value="" id="action" class="selectValve" >请选择</dt>
+                <dd class="selectOption">
+                    <ul>
+                        <li value=""><a href="#">请选择</a></li>
+                        <li value="1"><a href="#">有效</a></li>
+                        <li value="0"><a href="#">无效</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <button class="system-btn left " id="caozuo" disabled style="background: #898989">确定</button>
+    </div>
+    <div class="system-page" ></div>
+</div>
+</body>
+</html>

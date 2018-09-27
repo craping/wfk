@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>平台公告管理--添加资讯</title>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/manage/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/manage/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/libs/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/manage/layer.css"/>
+    <script type="text/javascript" src="../../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../../resources/libs/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../../resources/libs/validate/messages_cn.js"></script>
+	<script type="text/javascript" src="../../resources/libs/validate/validate_methods.js"></script>
+    <script type="text/javascript" src="../../resources/libs/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="../../resources/libs/ueditor/ueditor.all.js"></script>
+	<script type="text/javascript" src="../../resources/js/common/layer.js"></script>
+	<script type="text/javascript" src="../../resources/js/common/select.js"></script>
+	<script type="text/javascript" src="../../resources/js/system/informtion/addInformationAnnoun.js"></script>
+</head>
+<body>
+<div class="hiddensd" id="hiddensd"></div>
+	<div class="system-substance">
+		<div class="site-template-title">
+			添加资讯<a href="info_ManageInformationAnnoun.html">返回</a>
+		</div>
+		<div class="system-admin">
+			<form>
+			<div class="system-admin-row clearfix">
+				<span>公告标题</span>
+				<div class="system-admin-box">
+					<input type="text" class="system-admin-input" placeholder="公告标题" stringCheck="true" required="true" aria-required="true" name="title" id="title">
+					<label class="system-admin-hint error" for="title" style="display: none" >标题内容不能为空</label>
+				</div>
+			</div>
+			<div class="system-admin-row clearfix">
+				<span>公告内容</span>
+				<div class="system-admin-box">
+					<textarea name="context" id="context" style="width: 800px; height: 500px;"></textarea><br>
+			        <script>
+			        	var proDetails = UE.getEditor('context');
+			        </script>
+			        <label class="system-admin-hint error" for="context" style="display: none" >输入信息不能为空</label>
+				</div>
+			</div>
+			<div class="system-admin-row clearfix">
+				<span>有效状态</span>
+				<div class="system-admin-box clearfix">
+					<div class="dropdown5 left">
+						<dl class="select">
+							<dt class="selectValve" id="status">请选择</dt>
+							<dd class="selectOption">
+								<ul>
+									<li value=""><a href="javascript:;">请选择</a></li>
+									<li value="0"><a href="javascript:;">有效</a></li>
+									<li value="1"><a href="javascript:;">无效</a></li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<label class="system-admin-hint error" for="status" style="display: none" >输入信息不能为空</label>
+				</div>
+			</div>
+			<div class="system-admin-btn">
+				<button class="system-admin-btn1" type="button" >取消</button>
+				<button class="system-admin-btn2" type="button" id="OK">确定</button>
+			</div>
+			<input type="hidden" name="id" value=""/>
+			<input type="hidden" name="status" value="" />
+			</form>
+		</div>
+	</div>
+</body>
+</html>

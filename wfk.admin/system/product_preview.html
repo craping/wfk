@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品预览</title> 
+    
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/manage/jqzoom.css"/>
+		
+	<script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common/common_.js"></script>
+    <script type="text/javascript" src="../resources/js/common/select.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.jqzoom.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="../resources/js/system/product/product_sys_preview.js"></script>
+    
+    <script type="text/javascript">
+        //图片放大镜效果
+        function preview(img){
+            $(".jqzoom img").attr("src",$(img).attr("src"));
+            $(".jqzoom img").attr("jqimg",$(img).attr("bimg"));
+        }
+        $(function(){
+            $(".jqzoom").jqueryzoom({
+                xzoom:570,
+                yzoom:486,
+                offset: 30, //离原图的距离(默认是 10)
+                position: "right", //放大图的定位(默认是 "right")
+                preload: 1
+            });
+            jQuery(".product-preview-hd").slide({mainCell:".bd ul",autoPage:true,effect:"left",vis:5});
+            jQuery(".product-preview-details").slide({trigger:"click"});
+            
+            $('.product-preview-dropDown').mouseover(function(){
+                $('.preview-dropDown-em').css('border-bottom',0);
+                $('.product-preview-area').show();
+            })
+            $('.product-preview-dropDown').mouseout(function(){
+                $('.preview-dropDown-em').css('border-bottom','1px solid #a0a0a0');
+                $('.product-preview-area').hide();
+            })
+        });
+
+    </script>
+    <style type="text/css">
+    	.imgmark{
+    		position: absolute;
+    	}
+    	.tb-out-of-stock a{
+	    	cursor: not-allowed;
+			padding: 3px 6px;
+			color: #DEDEDE;
+			border: 1px dashed #DEDEDE;
+			background: #FFF none repeat scroll 0% 0%;
+			
+		}
+    </style>
+</head>
+<body>
+    <div class="product-preview">
+        <h1><a href="javascript:;" id="clsIdZr">一级分类名称</a>&gt;<a href="javascript:;" id="clsIdSt">二级分类名称</a>&gt;<a href="javascript:;" id="clsIdNd">三级分类名称</a>&gt;<a href="javascript:;" id="brand">品牌名称</a></h1>
+		
+		<proid value="">
+        <div class="product-preview-box clearfix">
+            <div class="product-preview-slider left">
+                <div class="jqzoom product-preview-bd">
+                    <img id="mainImg" jqimg="" src=" " >
+                </div>
+                <div class="product-preview-hd">
+                    <a class="prev" href="javascript:;"></a>
+                    <a class="next" href="javascript:;"></a>
+                    <div class="product-preview-ul bd">
+                        <ul class="clearfix" id="imgList">
+                        	
+                        </ul>
+                        <input type="hidden" value="" name="imgList"/>
+                    </div>
+                </div>
+            </div>
+            <div class="product-preview-select left">
+                <div class="product-preview-msg">
+                    <p class="product-preview-p1" id="proName">品牌名称+商品名称最多输入45字</p>
+                    <span class="imgmark"></span>
+                    <p><span class="bold">市场价：</span><i style="text-decoration: line-through;" id="marketPrice">0</i>元</p>
+                    <p><span class="bold">礼舍价：</span><i id="priceLishe">0</i>积分</p>
+                    <div class="clearfix product-preview-place">
+                    	<input id="areaTemp" type="hidden" value=""/>
+                        <span class="bold block left f16">配送至：</span>
+                        <div class="product-preview-dropDown left">
+                            <em class="preview-dropDown-em" id="areaMain">请选择<span></span></em>
+                            <div class="product-preview-area">
+                            
+                                <div class="preview-area-top clearfix hd">
+                                    <ul>
+                                        <li class="on" id="sheng">请选择<em></em></li>
+                                        <li id="shi">请选择<em></em></li>
+                                        <li id="qu">请选择<em></em></li>
+                                    </ul>
+                                </div>
+								
+                                <div class="preview-area-cont bd">
+                                    <div class="preview-area-c clearfix" id="oneDiv">
+                                        <ul id="one">
+                                            <li><a href="javascript:;"></a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="preview-area-c clearfix" id="twoDiv">
+                                        <ul id="two">
+                                        
+                                            <li><a href="javascript:;"> </a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="preview-area-c clearfix" id="threeDiv">
+                                        <ul id="three">
+                                            <li><a href="javascript:;"> </a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left product-preview-ex">
+                            <i>有货</i>，由<i id=addInstName>礼舍</i>负责发货 
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="product-preview-choice">
+                    <div  id="att"> </div>
+                    <input type="hidden" name="attributeLength" id="attributeLength" value=""/>
+                    <div class="product-preview-cart clearfix">
+                        <div class="product-subtract left">
+                            <dl>
+                                <dt><input name="number" id="number" value="1" /></dt>
+                                <dd>
+                                    <a href="javascript:;" id="add" class="product-subtract-a1"></a>
+                                    <a href="javascript:;" id="minus" class="product-subtract-a2"></a>
+                                </dd>
+                            </dl>
+                        </div>
+                        <a class="product-preview-buy" href="javascript:;" style="background:#CCC" value="加入购物车" disabled="disabled">加入购物车</a>
+                        <a class="product-preview-buy" href="javascript:;" style="background:#CCC" value="立即兑换" disabled="disabled" >立即兑换</a>
+                    </div>
+                    <div class="product-preview-hit">温馨提示：<i id="faPiao"></i>可开发票</div>
+                </div>
+            </div>
+        </div>
+        <div class="product-preview-details">
+            <div class="hd">
+                <ul>
+                    <li class="on" id="proDetails" onclick="todiv('proDetailsh');">商品介绍</li>
+                    <input type="hidden" value="" id="proDetailsh" />
+                    <li id="packBill" onclick="todiv('packBillh');">包装清单</li>
+                     <input type="hidden" value="" id="packBillh" />
+                    <li id="afterService" onclick="todiv('afterServiceh');">售后服务</li>
+                     <input type="hidden" value="" id="afterServiceh" />
+                </ul>
+            </div>
+            <div class="bd">
+                <div class="product-preview-d" >
+                    <div class="product-preview-pic" id="mainInfo">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(function(){
+        jQuery(".product-preview-area").slide({trigger:"click"});
+    })
+</script>
+</body>
+</html>

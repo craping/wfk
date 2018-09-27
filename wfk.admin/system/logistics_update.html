@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>物流设置--编辑</title>
+    <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../resources/js/system/logistics_update.js"></script>
+</head>
+<body>
+            <div class="system-substance">
+                <div class="site-template-title">物流编辑<a href="#"  class="return_logist_list">返回</a></div>
+                <form id="logist_form">
+                <input type="hidden" class="system-form-box" id="logistName_history" name="logistName_history">
+                <div class="system-form-add">
+                    <div class="system-form-input clearfix">
+                        <span class="block left tr f18">物流名称：</span>
+                        <input type="text" class="system-form-box left f16" name="logisticsName" id="logisticsName" placeholder="">
+                        <div class="system-form-hint" style="display:none"></div>
+                    </div>
+                    <div class="system-form-input clearfix">
+                        <span class="block left tr f18">URL：</span>
+                        <input type="text" class="system-form-box left f16" name="logisticsUrl" id="logisticsUrl" placeholder="">
+                        <div class="system-form-hint" style="display:none"></div>
+                    </div>
+                    <div class="system-form-input">
+                        <span class="block left tr f18">是否有效：</span>
+                        <div class="dropdown2 left">
+                            <dl class="select">
+                                <dt id="logistStatus" ></dt>
+                                <dd>
+                                    <ul>
+                                        <li><a href="#" name="0">停用</a></li>
+                                        <li><a href="#" name="1">启用</a></li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="system-form-btn">
+                        <a href="javascript:;" class="return_logist_list">取消</a>
+                        <button type="button" class="system-btn-c" id="update_logist">确定</button>
+                    </div>
+                 </div>
+                 </form>
+            </div>
+</body>
+</html>

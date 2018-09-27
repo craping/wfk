@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运费模板设置</title>
+   <link rel="stylesheet" type="text/css" href="../resources/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/crypto.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script>
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+    <script type="text/javascript" src="../resources/js/supplier/areaTmpList.js"></script>
+    
+    <script>
+    $(document).ready(function () {
+        var $thead=$('.freight-template-table table thead ');
+        $(".freight-template-span1").click(function () {
+        	$this = $(this).parent().parent().parent();
+            if($this.find('span').hasClass('freight-template-span1')){
+                $this.next().show();
+                $this.find('span').removeClass('freight-template-span1').addClass('freight-template-span2');
+            }else{
+                $this.next().hide();
+                $this.find('span').removeClass('freight-template-span2').addClass('freight-template-span1');
+            }
+        })
+    })
+    </script>
+    <style type="text/css">
+    	.textalign li{
+    		text-align: left;
+    	}
+    	.error{
+    		color: red;
+    		font-size: 12px;
+    	}
+    </style>
+</head>
+<body>
+   <div class="system-substance">
+       <div class="site-template-title">运费模板设置<a href="freight.html" style="background: #aa3231;">添加运费模板</a></div>
+       <div id="tmpl">
+	        
+       </div>
+   </div>
+</body>
+</html>
