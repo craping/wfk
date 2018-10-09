@@ -1,7 +1,7 @@
 $(function(){
 	$(document).keydown(function(event){
 		if(event.keyCode == 13){
-			querySupList(1);	
+			queryList(1);	
 			return false;
 		}
 	});
@@ -10,9 +10,7 @@ $(function(){
 		$("[name='supId']").val(Web.Method.GetQueryString("supIds"))
 		$("[name='supName']").val(Web.Method.GetQueryString("supNames"));
 	}
-	/*if($("#supName").val()==""){
-		location.href="product_productManage.html";
-	}*/
+	
 	$("#system-table").listview({
 		style:"system-table",
 		headerStyle:"noborder",
@@ -106,7 +104,6 @@ $(function(){
 			return tr;
 		}
 	});
-	classClassThree();
 	
 	$(document).on("click",".operate-icon23",function(){
 		var proId =  $(this).parent().attr("value");
@@ -118,11 +115,11 @@ $(function(){
 	//分页处理
 	$("#system-page").pageset({
 		itemClick:function(page){
-			querySupList(page);
+			queryList(page);
 		}
 	});
 	$(document).on("click","#ok",function(){
-		querySupList(1);
+		queryList(1);
 	})
 	
 	//上架 topshelve
@@ -137,7 +134,7 @@ $(function(){
 							context:"上架成功",
 							noButton:false ,
 							onOk:function(){
-								 querySupList(1);
+								 queryList(1);
 							}
 					})
 				 }
@@ -163,7 +160,7 @@ $(function(){
 							context:"下架成功",
 							noButton:false ,
 							onOk:function(){
-								 querySupList(1);
+								 queryList(1);
 							}
 					})
 				 }
@@ -203,7 +200,7 @@ $(function(){
 								noButton:false ,
 								onOk:function(){
 									$(".allmiddle").prop("checked","")
-									 querySupList(1);
+									 queryList(1);
 								}
 						})
 					 }
@@ -221,7 +218,7 @@ $(function(){
 								noButton:false ,
 								onOk:function(){
 									$(".allmiddle").prop("checked","")
-									 querySupList(1);
+									 queryList(1);
 								}
 						})
 					 } 
@@ -243,7 +240,7 @@ $(function(){
 								noButton:false ,
 								onOk:function(){
 									 $(".allmiddle").prop("checked","")
-									 querySupList(1);
+									 queryList(1);
 								}
 						})
 					 }
@@ -261,7 +258,7 @@ $(function(){
 								noButton:false ,
 								onOk:function(){
 									 $(".allmiddle").prop("checked","")
-									 querySupList(1);
+									 queryList(1);
 								}
 						})
 					 }
@@ -281,62 +278,17 @@ $(function(){
 		 
 	})
 	
-	querySupList(1);
+	queryList(1);
 	
 })
-function getbrand(brand){
-	if(brand == ""){
-		return "--";
-	}
-	var name="";
-	Web.Method.ajax("/brand/selectTProdBrand",{
-		data:{brandId:brand},
-		async: false,
-		success:function(data){
-			if(data.info.length > 0){
-				name = data.info[0].brandName;
-			}
-			
-		} 
-	});
-	return name;
-}
-function getclass(classid){
-	var name="";
-	Web.Method.ajax("/classify/selectBaseClassify",{
-		async: false,
-		data:{
-			classifyLevel:3,
-			classifyId:classid
-		},
-		success:function(data){
-			if(data.info.length>0){
-				name = data.info[0].classifyName;
-			}
-			
-		} 
-	});
-	//alert(name)
-	return name;
-}
-function classClassThree(){
-	Web.Method.ajax("/classify/selectBaseClassify",{
-		data:{
-			classifyLevel:3,
-			status:1
-		},
-		success:function(data){
-			$.each(data.info,function(i,j){
-				rs.clsIdNd[j.classifyId]=j.classifyName;
-			});
-		}
-	});
-}
-function querySupList(page, listview, pageset,params){
+
+
+
+function queryList(page, listview, pageset, params){
 	var options = {
-			page_flag:page,
-			page_num:rs.pageNum
-		};
+		page_flag:page,
+		page_num:rs.pageNum
+	};
 	var datas = $.extend(true,{},options,$("form").serializeJson());
 	
 	listview = listview?listview:$("#system-table");

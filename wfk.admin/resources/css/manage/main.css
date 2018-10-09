@@ -166,7 +166,7 @@
 /*后台管理系统*/
 /*后台头部样式*/
 .system-header{ width: 100%; height: 70px; background: #882828; overflow: hidden; position: absolute; top: 0; left: 0;}
-.system-logo{ position: relative; width: 168px; height: 36px; background: url("../../images/system-logo.png") no-repeat; margin-left: 21px; margin-top: 15px;}
+.system-logo{ position: relative; width: 168px; height: 36px; background: url("../../images/wfk-logo.png") no-repeat; margin-left: 21px; margin-top: 15px;}
 .system-top-nav{position: absolute; right: 0; top: 0;}
 .system-top-nav ul li{ float: left; width: 130px;height: 70px; line-height: 70px; background: #581818; border-left: 1px solid #926b49; color: #fff; cursor: pointer;}
 .system-top-nav .system-nav-01{ border-left: 0; color: #ffe0b4; background: 0;}
@@ -691,8 +691,8 @@ label.system-advert-hint{ position: absolute; left:0; bottom: -30px; height: 30p
 .system-user-audit-td{ position: relative;}
 .system-user-audit-td .system-admin-hint{ position: absolute; left: 400px; top:15px; width: 200px; text-align: left;}
 
-/*鍟嗗搧鍙戝竷*/
-.product-publish{width: 1050px; padding-top: 75px; }
+
+.product-publish{width: 1050px; padding: 5px 0px 15px 20px; }
 .product-publish-top ul li{ float: left; width: 348px; height: 48px; line-height: 48px; border: 1px solid #ffbfa4; background: #ffefef; text-align: center; font-size: 18px;}
 .product-publish-top .product-publish-li{ border-right: 0;}
 .product-publish-top .on{ background: #fff; color: #f38455; border-bottom: 0; font-weight: bold;}
@@ -732,10 +732,10 @@ label.system-advert-hint{ position: absolute; left:0; bottom: -30px; height: 30p
 .product-publish-td{ border-right: 5px solid #fff;}
 .product-publish-right{ padding: 15px 0 15px 45px;}
 .product-publish-table2{ width: 100%;}
-.product-publish-table2 td{ padding:15px 0; }
+.product-publish-table2 td{ padding:5px 0; }
 .product-publish-table3{ width: 100%;}
 .product-publish-table3 td{ padding:0; }
-.product-publish-input1,.product-publish-input2,.product-publish-input3{ width: 268px; border: 1px solid #a0a0a0; height: 43px; line-height: 43px;}
+.product-publish-input1,.product-publish-input2,.product-publish-input3{ width: 168px; border: 1px solid #a0a0a0; height: 30px; line-height: 43px;}
 .product-publish-input2{ width: 458px;}
 .product-publish-input3{ width: 108px;}
 .product-publish-input4{ float: left; width: 78px; height: 23px; line-height: 23px; border: 1px solid #a0a0a0;}

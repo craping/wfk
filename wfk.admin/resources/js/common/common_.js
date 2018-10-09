@@ -1,23 +1,17 @@
-//var serverIp="192.168.1.4";
-//var serverPort="8080";
-isBrowser();
+/*var serverIp="127.0.0.1";
+var serverPort="8080";
 try{
-	//document.domain=serverIp;
+	document.domain="127.0.0.1";
 }catch(e){
 	console.log(e);
-}
+}*/
 var Web = {
 	token:{},
 	Recource:{
 		user:{},
-		server:"/lishe.framework.protocol.http/",
-		serverURL:"/lishe.framework.protocol.http/api/",
-		serverSysURL:"/lishe.framework.protocol.http/api/sys/"
-		
-		//server:"http://"+serverIp+":"+serverPort+"/lishe.framework.protocol.http/",
-		//serverURL:"http://"+serverIp+":"+serverPort+"/lishe.framework.protocol.http/api/",
-		//serverSysURL:"http://"+serverIp+":"+serverPort+"/lishe.framework.protocol.http/api/sys/"
-
+		server:"/web/",
+		serverURL:"/web/api/",
+		serverSysURL:"/web/api/sys/"
 	},
 	Method:{
 		toTxt:function (val) {
@@ -276,44 +270,6 @@ var Web = {
 			});
 		}
 	}
-};
-
-var rs = {
-	bulkExport:["批量导出"],
-	refundFlag:["无退换", "退换处理中", "退换完成"],
-	orderStatus:["未付款", "已付款", "已受理", "已发货", "已完成", "已评价", "已完成退换货"],
-	orderHandler:["批量导出", "批量受理"],
-	returnHandler:["批量导出", "批量受理"],
-	refundHandler:["批量导出", "批量退款 "],
-	arbitrateHandler:["批量导出", "批量受理 "],
-	returnLabel:["无退换", "退货 ", "换货"],
-	orderType:["普通订单", "团购订单", "预售订单", "定制订单"],
-	userPayWay:["在线支付", "备用金账户余额", "转账汇款", "线下店铺支付"],
-	logisticsType:["顺丰快递","申通快递","圆通快递","韵达快递"],
-	refundStatus:["申请退款", "拒绝申请", "审核通过", "退款中", "已退款"],
-	arbitrateStatus:["申请仲裁", "同意仲裁", "拒绝仲裁", "已完成仲裁"],
-	status:["申请退/换货", "同意退/换货", "拒绝退/换货", "退/换货中", "已完成退/换货"],
-	type:["退货", "换货"],
-	adStatus:["有效", "无效"],
-	orderChannel:["web商城"],
-	orderId:Web.Method.GetQueryString('orderId'),
-	returnsId:Web.Method.GetQueryString('returnsId'),
-	refundId:Web.Method.GetQueryString('refundId'),
-	ordProId:Web.Method.GetQueryString('ordProId'),
-	pageNum:10,
-	yujing:{"1":"是","0":"否"},
-	check:["编辑中","待审核","审核通过","审核不通过"],
-	shelve:["下架","上架"],
-	clsIdNd:{},
-	clsIdZr:{},
-	clsIdSt:{},
-	clsIdNd:{},
-	brand:{},
-	attrTstatus:{"0":"有效","1":"无效"},
-	faPiao:{"0":"否","1":"是"},
-	rebateType:{"0":"总结返利","1":"底价折算"},
-	locusPro:{},
-	locusCity:{}
 };
 
 $(function(){
@@ -1922,21 +1878,4 @@ function deleteNullElemnt(params){
 //判断字符串是否为空
 function isNullOrEmpty(str){
 	return (str == null || str == "" || str == undefined);
-}
-//判断浏览器类型
-function isBrowser(){
-    var Sys = {};
-    var ua = navigator.userAgent.toLowerCase();
-    var s;
-    (s = ua.match(/msie ([\d.]+)/))?Sys.ie = s[1]:
-    (s = ua.match(/firefox\/([\d.]+)/))?Sys.firefox = s[1]:
-    (s = ua.match(/chrome\/([\d.]+)/))?Sys.chrome = s[1]:
-    (s = ua.match(/opera.([\d.]+)/))?Sys.opera = s[1]:
-    (s = ua.match(/version\/([\d.]+).*safari/))?Sys.safari = s[1]:0;
-    if(Sys.ie){
-        if(Sys.ie == '6.0'||Sys.ie =='7.0'){
-        	alert("您所用的版本不兼容，推荐您使用Chrome,Firefox,Opera,Safari,IE8及以上");
-        	window.close();
-        }
-    }
 }

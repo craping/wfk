@@ -15,7 +15,7 @@ $(function(){
 		}
 	});
 	
-	Web.Method.ajax("manUser/getUserInfo", {
+	Web.Method.ajax("user/adminLogin", {
 		success:function(data){
 			var user = data.info;
 			Web.token.user = user;
@@ -38,7 +38,7 @@ $(function(){
 		if(!validate("login_name,login_password")){
 			return false; 
 		};
-		Web.Method.ajax("manUser/userLogin",{
+		Web.Method.ajax("user/adminLogin",{
 			safe:true,
 			data:{
 				login_name:loginName,
@@ -63,10 +63,6 @@ $(function(){
 			$("#login").trigger("click");
 		}
 	});
-	
-//	$("#login_name,#login_password,#login_code").bind("blur keyup keypress",function(){
-//		validate(this.id);
-//	});
 	
 });
 var regRule = {

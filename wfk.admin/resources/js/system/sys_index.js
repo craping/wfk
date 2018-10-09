@@ -1,5 +1,5 @@
-$(function(){
-	Web.Method.ajax("manUser/getUserInfo", {
+/*$(function(){
+	Web.Method.ajax("user/userInfo", {
 		success:function(data){
 			var html='<li class="system-nav-01"><a href="#" class="system-nav-a1">礼舍商城首页</a> </li>'
 				+'<li class="system-nav-02"><a href="#" class="system-nav-a2">欢迎<br>'+data.info[0]["loginName"]+'</a></li>'
@@ -39,7 +39,7 @@ $(function(){
 			window.location.href="../system/login.html";
 		}
 	});
-});
+});*/
 
 
 

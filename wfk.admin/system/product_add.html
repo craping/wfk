@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品发布</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/manage/skin/layer.ext.css"/>
+    <script type="text/javascript" src="../resources/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.validate.js"></script>
+	<script type="text/javascript" src="../resources/js/common/validate_msg.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.metadata.js"></script>
+	<script type="text/javascript" src="../resources/libs/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="../resources/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common_.js"></script> 
+	<script type="text/javascript" src="../resources/js/common/base.js"></script>
+	<script type="text/javascript" src="../resources/js/common/layer.js"></script>
+	<script type="text/javascript" src="../resources/libs/plug/checkfile.js"></script>
+	<script src="../resources/libs/ueditor/ueditor.config.js"></script>
+	<script src="../resources/libs/ueditor/ueditor.all.js"></script>
+	<script type="text/javascript" src="../resources/js/system/product_add.js"></script>
+	<style type="text/css">
+		.layui-layer-title{ height:40px !important; line-height:40px !important;}	
+		.product-publish-table4 label.system-advert-hint {position: absolute;bottom: -25px;left: 18%;}
+		li.fieldSet label.system-advert-hint{ left:130px; bottom:-3px;}
+		.product-publish-addPic ul { position:relative;}
+		.product-publish-addPic ul label.system-advert-hint{ left:50px; top:70px;}
+	</style>
+</head>
+<body id="toTop">
+<div class="system-substance">
+<form id="editProForm" action="" enctype="multipart/form-data" method="post">
+    <div class="product-publish" >
+        <div class="product-publish-edit">
+            <table class="product-publish-table1">
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">库存信息</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2">
+                            <tr>
+                                <td width="20%" class="tr">现货编号 stock_id：</td>
+                                <td class="tl"> <input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">面板品牌 brand：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">面板型号 model：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">产品品质 quality：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">通用等级 general_grade：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">ZBD比例 zbd_rate：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">退修政策 rma_policy：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">	
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">现货数量 quantity：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">起  订  量 moq：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">样品提供 sample：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">	
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">现货地点 stock_location：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">交货地点 delivery：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">交货周期 lead_time：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                             <tr>
+                                <td class="tr">价格条款 price_term：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                             <tr>
+                                <td class="tr">销售单价 unit_price：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                        </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">面板信息</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2">
+                            <tr>
+                                <td width="20%" class="tr">面板尺寸 panel_size：</td>
+                                <td class="tl"> <input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">面板类型 panel_type：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">面板组成 composition：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">分  辨  率 resolution：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">显示模式 mode：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">	
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">表面处理 surface：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">面板亮度 brightness：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">对  比  度 contrast_ratio：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">显示颜色 display_color：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">响应时间 response_time：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">可视角度 viewing_angle：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                            <tr>
+                                <td class="tr">扫描频率 frequency：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr">灯管类型 lamp_type：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                             <tr>
+                                <td class="tr">信号类型 signal_type：</td>
+                                <td class="tl"><input type="text" name="proNumber" id="proNumber" class="product-publish-input1"></td>
+                            </tr>
+                             <tr>
+                                <td class="tr">应用产品 application：</td>
+                                <td class="tl">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                	<input type="text" name="proNumber" id="proNumber" class="product-publish-input1">
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="product-publish-tr">
+                    <td width="10%" class="product-publish-td bold">商品图片</td>
+                    <td>
+                        <div class="product-publish-right">
+                            <table class="product-publish-table2" id="attr">
+                                <tr>
+                                    <td>
+                                        <div class="product-publish-listEdit">
+                                            <table id="attrGroup" class="product-publish-table4"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="product-publish-title tl">主图设置</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="product-publish-addPic" id="mainPics">
+                                            <ul attr="main" class="clearfix">
+                                                <li class="addPic-li1" style="overflow:hidden;">默认主图</li>
+                                                <li class="main-ico addPic-li3"><i class='addPic-i'>商品主图</i></li>
+                                                <input type="file" required="true" name="def_pic_0" style="display:none;" />
+                                                <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_1" style="display:none;" />
+                                                <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_2" style="display:none;" />
+                                                <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_3" style="display:none;" />
+                                                <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_4" style="display:none;" />
+                                                <!-- <li class="addPic-li3"></li>
+                                                <input type="file" name="def_pic_5" style="display:none;" /> -->
+                                            </ul>
+                                            <!-- <ul class="clearfix">
+                                                <li class="addPic-li1">默认主图</li>
+                                                <li class="addPic-li2"><p>主图</p><p>800*800</p></li>
+                                                <li class="addPic-li3"></li>
+                                                <li class="addPic-li3"></li>
+                                                <li class="addPic-li3"></li>
+                                                <li class="addPic-li3"></li>
+                                                <li class="addPic-li3"></li>
+                                            </ul> -->
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>        
+            </table>
+            <div class="product-publish-btnBox" style="padding-bottom: 50px;">
+            	<a href="javascript:;" id="ok" class="site-template-query block left "> 确定上传 </a>
+            	<a href="javascript:;" id="cancel" class="site-template-query block left " style="background:#a0a0a0"> 取消上传 </a>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>
