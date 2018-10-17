@@ -5,12 +5,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
@@ -55,6 +59,71 @@ public class ClassUtil {
         }
         return true;
     }
+    
+    /**
+     * 根据params填装对象
+     * @param params
+     * @param obj
+     * @return
+     */
+    public static <T> T fillObject(Map<String, String> params, T obj) {
+		Set<String> set = params.keySet();
+		Iterator<String> iterator = set.iterator();
+		while (iterator.hasNext()) {
+			String key = iterator.next();
+			String val = params.get(key);
+			if(key!=null&&!val.equals("")){
+				setMethod(key, val, obj);
+			}
+		}
+		return obj;
+	}
+    
+    public static void setMethod(String key, String val, Object obj) {
+		Class<? extends Object> c;
+		try {
+			c = obj.getClass();
+			String attrName = key.trim();
+			String realAttrName = "";
+			
+			if (attrName.contains("_") && attrName.split("_").length >= 2) {
+				realAttrName = "";
+				String strs[] = attrName.split("_");
+		    	for (int i = 0; i < strs.length; i++) {
+		    		realAttrName = realAttrName + strs[i].substring(0, 1).toUpperCase() + strs[i].substring(1);
+				}
+			} else if (!Character.isUpperCase(attrName.substring(0, 1).toCharArray()[0])) {
+				realAttrName = attrName.substring(0, 1).toUpperCase() + attrName.substring(1);
+			} else {
+				return;
+			}
+			
+			String method = "set" + realAttrName;
+			String attrType = "";
+			String setAttrName = realAttrName.substring(0, 1).toLowerCase() + realAttrName.substring(1);
+
+			Field[] fields = c.getDeclaredFields();
+			for (Field field : fields) {
+				if (field.getName().equals(setAttrName)) { 
+					attrType = field.getGenericType().toString().substring(6);
+					Class<?>[] types = new Class[1];
+					types[0] = Class.forName(attrType);
+					Method m = c.getMethod(method, types);
+					Constructor<?> clazz = null;
+					if("java.util.Date".equals(attrType)){
+						SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				    	m.invoke(obj,sdf.parse(val));
+				    }else{
+				    	clazz = types[0].getConstructor(String.class);
+				    	m.invoke(obj,clazz.newInstance(val));
+				    }
+					return;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
     /**
      * 
@@ -260,15 +329,5 @@ public class ClassUtil {
 	}
     
     public static void main(String[] args) {
-    	/*Annotation[] as = ServerService.class.getAnnotations();
-    	for (Annotation annotation : as) {
-    		System.out.println(annotation);
-		}
-    	System.out.println(ServerService.class.getAnnotation(Service.class));*/
-		/*Method[] md = ServerService.class.getDeclaredMethods();
-		for (Method method : md) {
-			System.out.println(method.getReturnType().getName());
-			//System.out.println(Arrays.toString(getMethodParamNames(method)));
-		}*/
 	}
 }

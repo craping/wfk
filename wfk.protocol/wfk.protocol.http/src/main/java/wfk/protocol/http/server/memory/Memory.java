@@ -3,6 +3,9 @@ package wfk.protocol.http.server.memory;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -24,4 +27,11 @@ public class Memory {
 		mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
 	}
 	
+	public static Object getSessionUser(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session == null)
+			return null;
+		Object sessionUser = session.getAttribute("user");
+		return sessionUser;
+	}
 }
