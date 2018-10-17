@@ -20,7 +20,8 @@ public enum Logic {
 	AND_NOT("AND NOT"),
 	OR_NOT("OR NOT"),
 	SORT_BY("SORT BY"),
-	GROUP_BY("GROUP BY");
+	GROUP_BY("GROUP BY"),
+	ORDER_BY("ORDER BY ");
 	
 	public enum Sort {
 		ASC("ASC"),
