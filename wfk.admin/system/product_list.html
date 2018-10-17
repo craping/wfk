@@ -12,7 +12,7 @@
     <script type="text/javascript" src="../resources/js/common/common_.js"></script>
     <script type="text/javascript" src="../resources/js/common/select.js"></script>
     <script type="text/javascript" src="../resources/libs/My97DatePicker/WdatePicker.js"></script>
-	<script type="text/javascript" src="../resources/js/system/product/productList.js"></script>
+	<script type="text/javascript" src="../resources/js/system/product_list.js"></script>
 
 </head>
 <body>
@@ -21,24 +21,15 @@
 <h2 class="mt20 mb20"></h2>
     <div class="system-operate clearfix mb20" >
         <div class="system-operate-s left"  style="margin-left: 0;">
-            <span class="system-operate-span block left">商品名称：</span>
+            <span class="system-operate-span block left">产品名称：</span>
             <input type="text" class="site-template-box block left" id="proName" name="proName" >
         </div>
         <div class="system-operate-i left ml15" >
-            <span class="block left">三级分类：</span>
-            <div class="dropdown left">
-                <dl class="select" onclick="Web.Method.getSelectValues(this,'clsIdNd')">
-                    <dt class="selectValve">请选择</dt>
-                    <dd class="selectOption">
-                       <ul class="textUl">
-                             <li><a href="javascript:;">全部</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>
+            <span class="block left">现货编号：</span>
+            <input type="text" class="site-template-box block left" id="proName" name="proName" >
         </div>
         <div class="system-operate-i left ml15" >
-            <span class="block left">返利方式：</span>
+            <span class="block left">面板尺寸：</span>
             <div class="dropdown left">
                 <dl class="select" onclick="Web.Method.getSelectValues(this,'rebateType')">
                     <dt class="selectValve">全部</dt>
@@ -51,56 +42,23 @@
             </div>
         </div>
         <div class="system-operate-i left ml15" >
-            <span class="block left">申请日期：</span>
-            <input type="text" id="statusTime" name="statusTime" id="statusTime" class="site-template-box block left" onclick="WdatePicker({maxDate: '#F{$dp.$D(\'endTime\')}' ,dateFmt:'yyyy-MM-dd'})" >
-            <i class=" site-template-i block left">—</i>
-            <input type="text" id="endTime" name="endTime" id="endTime" class="site-template-box block left" onclick="WdatePicker({minDate: '#F{$dp.$D(\'statusTime\')}' ,dateFmt:'yyyy-MM-dd'})" >
-        </div>
-    </div>
-    
-    
-    <div class="system-operate clearfix mb20" >
-    	<div class="system-operate-s left"  style="margin-left: 0;">
-            <span class="system-operate-span block left">商品编号：</span>
-            <input type="text" class="site-template-box block left" id="proNumber" name="proNumber" >
-        </div>
-        <div class="system-operate-i left ml15">
-            <span class="block left">审核状态：</span>
-            <div class="dropdown left">
-                <dl class="select" onclick="Web.Method.getSelectValues(this,'check')">
-                    <dt class="selectValve">全部</dt>
-                    <dd class="selectOption">
-                        <ul> 
-                            <li ><a href="javascript:;">全部</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-        <div class="system-operate-s left ml15" >
-            <span class="system-operate-span block left">供应商名称：</span>
-            <input type="text" class="site-template-box block left" id="supName" name="supName" >
-        </div>
-        
-        <div class="system-operate-i left ml15 pl15">
-            <span class="block left">上下架：</span>
-            <div class="dropdown left">
-                <dl class="select" onclick="Web.Method.getSelectValues(this,'shelve')">
+            <span class="block left">分 辨 率：</span>
+       		<div class="dropdown left">
+                <dl class="select" onclick="Web.Method.getSelectValues(this,'rebateType')">
                     <dt class="selectValve">全部</dt>
                     <dd class="selectOption">
                         <ul>
-                            <li><a href="javascript:;">全部</a></li>
+                             <li><a href="javascript:;">全部</a></li>
                         </ul>
                     </dd>
                 </dl>
-            </div>
+            </div>     
         </div>
     </div>
     
-    
     <div class="system-operate clearfix mb20" >
         <div class="system-operate-s left"  style="margin-left: 0;">
-            <span class="system-operate-span block left">商品品牌：</span>
+            <span class="system-operate-span block left">产品品牌：</span>
             <input type="text" class="site-template-box block left" id="brand" name="brand">
         </div>
         <a href="javascript:;" id="ok" class="site-template-query block left ">查询</a>
@@ -109,7 +67,8 @@
     <div class="system-table" id="system-table">
          
     </div>
-    <div class="system-operate-s2 clearfix">
+    
+    <!-- <div class="system-operate-s2 clearfix">
         <div class="dropdown left">
             <dl class="select">
                 <dt class="selectValve" value=""  id="action">请选择操作</dt>
@@ -125,7 +84,7 @@
             </dl>
         </div>
         <button class="system-btn left " id="actionOk" type="button" disabled style="background: #898989">确定</button>
-    </div>
+    </div> -->
     
     <div class="system-page" id="system-page">
          
