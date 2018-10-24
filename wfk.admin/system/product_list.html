@@ -22,46 +22,33 @@
     <div class="system-operate clearfix mb20" >
         <div class="system-operate-s left"  style="margin-left: 0;">
             <span class="system-operate-span block left">产品名称：</span>
-            <input type="text" class="site-template-box block left" id="proName" name="proName" >
+            <input type="text" class="site-template-box block left" id="product_name" name="product_name" >
         </div>
         <div class="system-operate-i left ml15" >
             <span class="block left">现货编号：</span>
-            <input type="text" class="site-template-box block left" id="proName" name="proName" >
+            <input type="text" class="site-template-box block left" id="stock_id" name="stock_id" >
         </div>
         <div class="system-operate-i left ml15" >
             <span class="block left">面板尺寸：</span>
-            <div class="dropdown left">
-                <dl class="select" onclick="Web.Method.getSelectValues(this,'rebateType')">
-                    <dt class="selectValve">全部</dt>
-                    <dd class="selectOption">
-                        <ul>
-                             <li><a href="javascript:;">全部</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>
+            <input type="text" class="site-template-box block left" id="panel_size" name="panel_size" >
         </div>
         <div class="system-operate-i left ml15" >
             <span class="block left">分 辨 率：</span>
-       		<div class="dropdown left">
-                <dl class="select" onclick="Web.Method.getSelectValues(this,'rebateType')">
-                    <dt class="selectValve">全部</dt>
-                    <dd class="selectOption">
-                        <ul>
-                             <li><a href="javascript:;">全部</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-            </div>     
+       		<input type="text" class="site-template-box block left" id="resolution" name="resolution" >    
         </div>
     </div>
     
     <div class="system-operate clearfix mb20" >
         <div class="system-operate-s left"  style="margin-left: 0;">
-            <span class="system-operate-span block left">产品品牌：</span>
+            <span class="system-operate-span block left">面板品牌：</span>
             <input type="text" class="site-template-box block left" id="brand" name="brand">
         </div>
+        <div class="system-operate-i left ml15" >
+            <span class="block left">面板型号：</span>
+       		<input type="text" class="site-template-box block left" id="model" name="model" >    
+        </div>
         <a href="javascript:;" id="ok" class="site-template-query block left ">查询</a>
+        <a href="javascript:;" id="clear" class="site-template-query block left " style="background:#707070">清除</a>
     </div>
     <h2></h2>
     <div class="system-table" id="system-table">
