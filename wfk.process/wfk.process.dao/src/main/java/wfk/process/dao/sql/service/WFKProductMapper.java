@@ -2,16 +2,16 @@ package wfk.process.dao.sql.service;
 
 import wfk.process.dao.sql.entity.WFKProduct;
 
-public interface WFKProductMapper extends Mapper<WFKProduct> {
-	int deleteByPrimaryKey(Integer id);
+public interface WFKProductMapper extends Mapper<WFKProduct>{
+    int deleteByPrimaryKey(Integer id);
 
-	int insert(WFKProduct record);
+    int insert(WFKProduct record);
 
-	int insertSelective(WFKProduct record);
+    int insertSelective(WFKProduct record);
 
-	WFKProduct selectByPrimaryKey(Integer id);
+    WFKProduct selectByPrimaryKey(Integer id);
 
-	int updateByPrimaryKeySelective(WFKProduct record);
+    int updateByPrimaryKeySelective(WFKProduct record);
 
-	int updateByPrimaryKey(WFKProduct record);
+    int updateByPrimaryKey(WFKProduct record);
 }

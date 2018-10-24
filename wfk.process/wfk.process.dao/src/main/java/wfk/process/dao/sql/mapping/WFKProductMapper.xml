@@ -3,19 +3,18 @@
 <mapper namespace="wfk.process.dao.sql.service.WFKProductMapper">
   <resultMap id="BaseResultMap" type="wfk.process.dao.sql.entity.WFKProduct">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_name_en" jdbcType="VARCHAR" property="productNameEn" />
     <result column="stock_id" jdbcType="INTEGER" property="stockId" />
     <result column="brand" jdbcType="VARCHAR" property="brand" />
     <result column="model" jdbcType="VARCHAR" property="model" />
     <result column="quality" jdbcType="VARCHAR" property="quality" />
     <result column="quality_en" jdbcType="VARCHAR" property="qualityEn" />
     <result column="general_grade" jdbcType="VARCHAR" property="generalGrade" />
-    <result column="general_grade_en" jdbcType="VARCHAR" property="generalGradeEn" />
     <result column="zbd_rate" jdbcType="VARCHAR" property="zbdRate" />
-    <result column="zbd_rate_en" jdbcType="VARCHAR" property="zbdRateEn" />
     <result column="rma_policy" jdbcType="VARCHAR" property="rmaPolicy" />
-    <result column="rma_policy_en" jdbcType="VARCHAR" property="rmaPolicyEn" />
-    <result column="quantity" jdbcType="VARCHAR" property="quantity" />
-    <result column="moq" jdbcType="VARCHAR" property="moq" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="moq" jdbcType="INTEGER" property="moq" />
     <result column="sample" jdbcType="VARCHAR" property="sample" />
     <result column="sample_en" jdbcType="VARCHAR" property="sampleEn" />
     <result column="stock_location" jdbcType="VARCHAR" property="stockLocation" />
@@ -23,11 +22,11 @@
     <result column="delivery" jdbcType="VARCHAR" property="delivery" />
     <result column="delivery_en" jdbcType="VARCHAR" property="deliveryEn" />
     <result column="lead_time" jdbcType="VARCHAR" property="leadTime" />
-    <result column="lead_time_en" jdbcType="TIMESTAMP" property="leadTimeEn" />
+    <result column="lead_time_en" jdbcType="VARCHAR" property="leadTimeEn" />
     <result column="price_term" jdbcType="VARCHAR" property="priceTerm" />
     <result column="price_term_en" jdbcType="VARCHAR" property="priceTermEn" />
     <result column="unit_price" jdbcType="DECIMAL" property="unitPrice" />
-    <result column="panel_size" jdbcType="VARCHAR" property="panelSize" />
+    <result column="panel_size" jdbcType="DOUBLE" property="panelSize" />
     <result column="panel_type" jdbcType="VARCHAR" property="panelType" />
     <result column="composition" jdbcType="VARCHAR" property="composition" />
     <result column="composition_en" jdbcType="VARCHAR" property="compositionEn" />
@@ -42,8 +41,7 @@
     <result column="response_time" jdbcType="VARCHAR" property="responseTime" />
     <result column="viewing_angle" jdbcType="VARCHAR" property="viewingAngle" />
     <result column="frequency" jdbcType="VARCHAR" property="frequency" />
-    <result column="frequency_en" jdbcType="VARCHAR" property="frequencyEn" />
-    <result column="lamp_type" jdbcType="DOUBLE" property="lampType" />
+    <result column="lamp_type" jdbcType="VARCHAR" property="lampType" />
     <result column="signal_type" jdbcType="VARCHAR" property="signalType" />
     <result column="application" jdbcType="VARCHAR" property="application" />
     <result column="application_en" jdbcType="VARCHAR" property="applicationEn" />
@@ -52,13 +50,13 @@
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, stock_id, brand, model, quality, quality_en, general_grade, general_grade_en, 
-    zbd_rate, zbd_rate_en, rma_policy, rma_policy_en, quantity, moq, sample, sample_en, 
-    stock_location, stock_location_en, delivery, delivery_en, lead_time, lead_time_en, 
-    price_term, price_term_en, unit_price, panel_size, panel_type, composition, composition_en, 
-    resolution, mode, mode_en, surface, surface_en, brightness, contrast_ratio, display_color, 
-    response_time, viewing_angle, frequency, frequency_en, lamp_type, signal_type, application, 
-    application_en, file_url, images, status
+    id, product_name, product_name_en, stock_id, brand, model, quality, quality_en, general_grade, 
+    zbd_rate, rma_policy, quantity, moq, sample, sample_en, stock_location, stock_location_en, 
+    delivery, delivery_en, lead_time, lead_time_en, price_term, price_term_en, unit_price, 
+    panel_size, panel_type, composition, composition_en, resolution, mode, mode_en, surface, 
+    surface_en, brightness, contrast_ratio, display_color, response_time, viewing_angle, 
+    frequency, lamp_type, signal_type, application, application_en, file_url, images, 
+    status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -74,38 +72,38 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into wfk_product (stock_id, brand, model, 
-      quality, quality_en, general_grade, 
-      general_grade_en, zbd_rate, zbd_rate_en, 
-      rma_policy, rma_policy_en, quantity, 
-      moq, sample, sample_en, 
-      stock_location, stock_location_en, delivery, 
-      delivery_en, lead_time, lead_time_en, 
-      price_term, price_term_en, unit_price, 
-      panel_size, panel_type, composition, 
-      composition_en, resolution, mode, 
-      mode_en, surface, surface_en, 
-      brightness, contrast_ratio, display_color, 
-      response_time, viewing_angle, frequency, 
-      frequency_en, lamp_type, signal_type, 
-      application, application_en, file_url, 
-      images, status)
-    values (#{stockId,jdbcType=INTEGER}, #{brand,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, 
-      #{quality,jdbcType=VARCHAR}, #{qualityEn,jdbcType=VARCHAR}, #{generalGrade,jdbcType=VARCHAR}, 
-      #{generalGradeEn,jdbcType=VARCHAR}, #{zbdRate,jdbcType=VARCHAR}, #{zbdRateEn,jdbcType=VARCHAR}, 
-      #{rmaPolicy,jdbcType=VARCHAR}, #{rmaPolicyEn,jdbcType=VARCHAR}, #{quantity,jdbcType=VARCHAR}, 
-      #{moq,jdbcType=VARCHAR}, #{sample,jdbcType=VARCHAR}, #{sampleEn,jdbcType=VARCHAR}, 
-      #{stockLocation,jdbcType=VARCHAR}, #{stockLocationEn,jdbcType=VARCHAR}, #{delivery,jdbcType=VARCHAR}, 
-      #{deliveryEn,jdbcType=VARCHAR}, #{leadTime,jdbcType=VARCHAR}, #{leadTimeEn,jdbcType=TIMESTAMP}, 
-      #{priceTerm,jdbcType=VARCHAR}, #{priceTermEn,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, 
-      #{panelSize,jdbcType=VARCHAR}, #{panelType,jdbcType=VARCHAR}, #{composition,jdbcType=VARCHAR}, 
-      #{compositionEn,jdbcType=VARCHAR}, #{resolution,jdbcType=VARCHAR}, #{mode,jdbcType=VARCHAR}, 
-      #{modeEn,jdbcType=VARCHAR}, #{surface,jdbcType=VARCHAR}, #{surfaceEn,jdbcType=VARCHAR}, 
-      #{brightness,jdbcType=VARCHAR}, #{contrastRatio,jdbcType=VARCHAR}, #{displayColor,jdbcType=VARCHAR}, 
-      #{responseTime,jdbcType=VARCHAR}, #{viewingAngle,jdbcType=VARCHAR}, #{frequency,jdbcType=VARCHAR}, 
-      #{frequencyEn,jdbcType=VARCHAR}, #{lampType,jdbcType=DOUBLE}, #{signalType,jdbcType=VARCHAR}, 
-      #{application,jdbcType=VARCHAR}, #{applicationEn,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, 
-      #{images,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+    insert into wfk_product (product_name, product_name_en, stock_id, 
+      brand, model, quality, 
+      quality_en, general_grade, zbd_rate, 
+      rma_policy, quantity, moq, 
+      sample, sample_en, stock_location, 
+      stock_location_en, delivery, delivery_en, 
+      lead_time, lead_time_en, price_term, 
+      price_term_en, unit_price, panel_size, 
+      panel_type, composition, composition_en, 
+      resolution, mode, mode_en, 
+      surface, surface_en, brightness, 
+      contrast_ratio, display_color, response_time, 
+      viewing_angle, frequency, lamp_type, 
+      signal_type, application, application_en, 
+      file_url, images, status
+      )
+    values (#{productName,jdbcType=VARCHAR}, #{productNameEn,jdbcType=VARCHAR}, #{stockId,jdbcType=INTEGER}, 
+      #{brand,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{quality,jdbcType=VARCHAR}, 
+      #{qualityEn,jdbcType=VARCHAR}, #{generalGrade,jdbcType=VARCHAR}, #{zbdRate,jdbcType=VARCHAR}, 
+      #{rmaPolicy,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, #{moq,jdbcType=INTEGER}, 
+      #{sample,jdbcType=VARCHAR}, #{sampleEn,jdbcType=VARCHAR}, #{stockLocation,jdbcType=VARCHAR}, 
+      #{stockLocationEn,jdbcType=VARCHAR}, #{delivery,jdbcType=VARCHAR}, #{deliveryEn,jdbcType=VARCHAR}, 
+      #{leadTime,jdbcType=VARCHAR}, #{leadTimeEn,jdbcType=VARCHAR}, #{priceTerm,jdbcType=VARCHAR}, 
+      #{priceTermEn,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, #{panelSize,jdbcType=DOUBLE}, 
+      #{panelType,jdbcType=VARCHAR}, #{composition,jdbcType=VARCHAR}, #{compositionEn,jdbcType=VARCHAR}, 
+      #{resolution,jdbcType=VARCHAR}, #{mode,jdbcType=VARCHAR}, #{modeEn,jdbcType=VARCHAR}, 
+      #{surface,jdbcType=VARCHAR}, #{surfaceEn,jdbcType=VARCHAR}, #{brightness,jdbcType=VARCHAR}, 
+      #{contrastRatio,jdbcType=VARCHAR}, #{displayColor,jdbcType=VARCHAR}, #{responseTime,jdbcType=VARCHAR}, 
+      #{viewingAngle,jdbcType=VARCHAR}, #{frequency,jdbcType=VARCHAR}, #{lampType,jdbcType=VARCHAR}, 
+      #{signalType,jdbcType=VARCHAR}, #{application,jdbcType=VARCHAR}, #{applicationEn,jdbcType=VARCHAR}, 
+      #{fileUrl,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="wfk.process.dao.sql.entity.WFKProduct">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -113,6 +111,12 @@
     </selectKey>
     insert into wfk_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productNameEn != null">
+        product_name_en,
+      </if>
       <if test="stockId != null">
         stock_id,
       </if>
@@ -131,20 +135,11 @@
       <if test="generalGrade != null">
         general_grade,
       </if>
-      <if test="generalGradeEn != null">
-        general_grade_en,
-      </if>
       <if test="zbdRate != null">
         zbd_rate,
       </if>
-      <if test="zbdRateEn != null">
-        zbd_rate_en,
-      </if>
       <if test="rmaPolicy != null">
         rma_policy,
-      </if>
-      <if test="rmaPolicyEn != null">
-        rma_policy_en,
       </if>
       <if test="quantity != null">
         quantity,
@@ -230,9 +225,6 @@
       <if test="frequency != null">
         frequency,
       </if>
-      <if test="frequencyEn != null">
-        frequency_en,
-      </if>
       <if test="lampType != null">
         lamp_type,
       </if>
@@ -256,6 +248,12 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productNameEn != null">
+        #{productNameEn,jdbcType=VARCHAR},
+      </if>
       <if test="stockId != null">
         #{stockId,jdbcType=INTEGER},
       </if>
@@ -274,26 +272,17 @@
       <if test="generalGrade != null">
         #{generalGrade,jdbcType=VARCHAR},
       </if>
-      <if test="generalGradeEn != null">
-        #{generalGradeEn,jdbcType=VARCHAR},
-      </if>
       <if test="zbdRate != null">
         #{zbdRate,jdbcType=VARCHAR},
-      </if>
-      <if test="zbdRateEn != null">
-        #{zbdRateEn,jdbcType=VARCHAR},
       </if>
       <if test="rmaPolicy != null">
         #{rmaPolicy,jdbcType=VARCHAR},
       </if>
-      <if test="rmaPolicyEn != null">
-        #{rmaPolicyEn,jdbcType=VARCHAR},
-      </if>
       <if test="quantity != null">
-        #{quantity,jdbcType=VARCHAR},
+        #{quantity,jdbcType=INTEGER},
       </if>
       <if test="moq != null">
-        #{moq,jdbcType=VARCHAR},
+        #{moq,jdbcType=INTEGER},
       </if>
       <if test="sample != null">
         #{sample,jdbcType=VARCHAR},
@@ -317,7 +306,7 @@
         #{leadTime,jdbcType=VARCHAR},
       </if>
       <if test="leadTimeEn != null">
-        #{leadTimeEn,jdbcType=TIMESTAMP},
+        #{leadTimeEn,jdbcType=VARCHAR},
       </if>
       <if test="priceTerm != null">
         #{priceTerm,jdbcType=VARCHAR},
@@ -329,7 +318,7 @@
         #{unitPrice,jdbcType=DECIMAL},
       </if>
       <if test="panelSize != null">
-        #{panelSize,jdbcType=VARCHAR},
+        #{panelSize,jdbcType=DOUBLE},
       </if>
       <if test="panelType != null">
         #{panelType,jdbcType=VARCHAR},
@@ -373,11 +362,8 @@
       <if test="frequency != null">
         #{frequency,jdbcType=VARCHAR},
       </if>
-      <if test="frequencyEn != null">
-        #{frequencyEn,jdbcType=VARCHAR},
-      </if>
       <if test="lampType != null">
-        #{lampType,jdbcType=DOUBLE},
+        #{lampType,jdbcType=VARCHAR},
       </if>
       <if test="signalType != null">
         #{signalType,jdbcType=VARCHAR},
@@ -402,6 +388,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="wfk.process.dao.sql.entity.WFKProduct">
     update wfk_product
     <set>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productNameEn != null">
+        product_name_en = #{productNameEn,jdbcType=VARCHAR},
+      </if>
       <if test="stockId != null">
         stock_id = #{stockId,jdbcType=INTEGER},
       </if>
@@ -420,26 +412,17 @@
       <if test="generalGrade != null">
         general_grade = #{generalGrade,jdbcType=VARCHAR},
       </if>
-      <if test="generalGradeEn != null">
-        general_grade_en = #{generalGradeEn,jdbcType=VARCHAR},
-      </if>
       <if test="zbdRate != null">
         zbd_rate = #{zbdRate,jdbcType=VARCHAR},
-      </if>
-      <if test="zbdRateEn != null">
-        zbd_rate_en = #{zbdRateEn,jdbcType=VARCHAR},
       </if>
       <if test="rmaPolicy != null">
         rma_policy = #{rmaPolicy,jdbcType=VARCHAR},
       </if>
-      <if test="rmaPolicyEn != null">
-        rma_policy_en = #{rmaPolicyEn,jdbcType=VARCHAR},
-      </if>
       <if test="quantity != null">
-        quantity = #{quantity,jdbcType=VARCHAR},
+        quantity = #{quantity,jdbcType=INTEGER},
       </if>
       <if test="moq != null">
-        moq = #{moq,jdbcType=VARCHAR},
+        moq = #{moq,jdbcType=INTEGER},
       </if>
       <if test="sample != null">
         sample = #{sample,jdbcType=VARCHAR},
@@ -463,7 +446,7 @@
         lead_time = #{leadTime,jdbcType=VARCHAR},
       </if>
       <if test="leadTimeEn != null">
-        lead_time_en = #{leadTimeEn,jdbcType=TIMESTAMP},
+        lead_time_en = #{leadTimeEn,jdbcType=VARCHAR},
       </if>
       <if test="priceTerm != null">
         price_term = #{priceTerm,jdbcType=VARCHAR},
@@ -475,7 +458,7 @@
         unit_price = #{unitPrice,jdbcType=DECIMAL},
       </if>
       <if test="panelSize != null">
-        panel_size = #{panelSize,jdbcType=VARCHAR},
+        panel_size = #{panelSize,jdbcType=DOUBLE},
       </if>
       <if test="panelType != null">
         panel_type = #{panelType,jdbcType=VARCHAR},
@@ -519,11 +502,8 @@
       <if test="frequency != null">
         frequency = #{frequency,jdbcType=VARCHAR},
       </if>
-      <if test="frequencyEn != null">
-        frequency_en = #{frequencyEn,jdbcType=VARCHAR},
-      </if>
       <if test="lampType != null">
-        lamp_type = #{lampType,jdbcType=DOUBLE},
+        lamp_type = #{lampType,jdbcType=VARCHAR},
       </if>
       <if test="signalType != null">
         signal_type = #{signalType,jdbcType=VARCHAR},
@@ -548,19 +528,18 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="wfk.process.dao.sql.entity.WFKProduct">
     update wfk_product
-    set stock_id = #{stockId,jdbcType=INTEGER},
+    set product_name = #{productName,jdbcType=VARCHAR},
+      product_name_en = #{productNameEn,jdbcType=VARCHAR},
+      stock_id = #{stockId,jdbcType=INTEGER},
       brand = #{brand,jdbcType=VARCHAR},
       model = #{model,jdbcType=VARCHAR},
       quality = #{quality,jdbcType=VARCHAR},
       quality_en = #{qualityEn,jdbcType=VARCHAR},
       general_grade = #{generalGrade,jdbcType=VARCHAR},
-      general_grade_en = #{generalGradeEn,jdbcType=VARCHAR},
       zbd_rate = #{zbdRate,jdbcType=VARCHAR},
-      zbd_rate_en = #{zbdRateEn,jdbcType=VARCHAR},
       rma_policy = #{rmaPolicy,jdbcType=VARCHAR},
-      rma_policy_en = #{rmaPolicyEn,jdbcType=VARCHAR},
-      quantity = #{quantity,jdbcType=VARCHAR},
-      moq = #{moq,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=INTEGER},
+      moq = #{moq,jdbcType=INTEGER},
       sample = #{sample,jdbcType=VARCHAR},
       sample_en = #{sampleEn,jdbcType=VARCHAR},
       stock_location = #{stockLocation,jdbcType=VARCHAR},
@@ -568,11 +547,11 @@
       delivery = #{delivery,jdbcType=VARCHAR},
       delivery_en = #{deliveryEn,jdbcType=VARCHAR},
       lead_time = #{leadTime,jdbcType=VARCHAR},
-      lead_time_en = #{leadTimeEn,jdbcType=TIMESTAMP},
+      lead_time_en = #{leadTimeEn,jdbcType=VARCHAR},
       price_term = #{priceTerm,jdbcType=VARCHAR},
       price_term_en = #{priceTermEn,jdbcType=VARCHAR},
       unit_price = #{unitPrice,jdbcType=DECIMAL},
-      panel_size = #{panelSize,jdbcType=VARCHAR},
+      panel_size = #{panelSize,jdbcType=DOUBLE},
       panel_type = #{panelType,jdbcType=VARCHAR},
       composition = #{composition,jdbcType=VARCHAR},
       composition_en = #{compositionEn,jdbcType=VARCHAR},
@@ -587,8 +566,7 @@
       response_time = #{responseTime,jdbcType=VARCHAR},
       viewing_angle = #{viewingAngle,jdbcType=VARCHAR},
       frequency = #{frequency,jdbcType=VARCHAR},
-      frequency_en = #{frequencyEn,jdbcType=VARCHAR},
-      lamp_type = #{lampType,jdbcType=DOUBLE},
+      lamp_type = #{lampType,jdbcType=VARCHAR},
       signal_type = #{signalType,jdbcType=VARCHAR},
       application = #{application,jdbcType=VARCHAR},
       application_en = #{applicationEn,jdbcType=VARCHAR},

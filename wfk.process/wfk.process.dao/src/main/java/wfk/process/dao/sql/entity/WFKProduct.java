@@ -1,10 +1,13 @@
 package wfk.process.dao.sql.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class WFKProduct {
     private Integer id;
+
+    private String productName;
+
+    private String productNameEn;
 
     private Integer stockId;
 
@@ -18,19 +21,13 @@ public class WFKProduct {
 
     private String generalGrade;
 
-    private String generalGradeEn;
-
     private String zbdRate;
-
-    private String zbdRateEn;
 
     private String rmaPolicy;
 
-    private String rmaPolicyEn;
+    private Integer quantity;
 
-    private String quantity;
-
-    private String moq;
+    private Integer moq;
 
     private String sample;
 
@@ -46,7 +43,7 @@ public class WFKProduct {
 
     private String leadTime;
 
-    private Date leadTimeEn;
+    private String leadTimeEn;
 
     private String priceTerm;
 
@@ -54,7 +51,7 @@ public class WFKProduct {
 
     private BigDecimal unitPrice;
 
-    private String panelSize;
+    private Double panelSize;
 
     private String panelType;
 
@@ -84,9 +81,7 @@ public class WFKProduct {
 
     private String frequency;
 
-    private String frequencyEn;
-
-    private Double lampType;
+    private String lampType;
 
     private String signalType;
 
@@ -106,6 +101,22 @@ public class WFKProduct {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName == null ? null : productName.trim();
+    }
+
+    public String getProductNameEn() {
+        return productNameEn;
+    }
+
+    public void setProductNameEn(String productNameEn) {
+        this.productNameEn = productNameEn == null ? null : productNameEn.trim();
     }
 
     public Integer getStockId() {
@@ -156,28 +167,12 @@ public class WFKProduct {
         this.generalGrade = generalGrade == null ? null : generalGrade.trim();
     }
 
-    public String getGeneralGradeEn() {
-        return generalGradeEn;
-    }
-
-    public void setGeneralGradeEn(String generalGradeEn) {
-        this.generalGradeEn = generalGradeEn == null ? null : generalGradeEn.trim();
-    }
-
     public String getZbdRate() {
         return zbdRate;
     }
 
     public void setZbdRate(String zbdRate) {
         this.zbdRate = zbdRate == null ? null : zbdRate.trim();
-    }
-
-    public String getZbdRateEn() {
-        return zbdRateEn;
-    }
-
-    public void setZbdRateEn(String zbdRateEn) {
-        this.zbdRateEn = zbdRateEn == null ? null : zbdRateEn.trim();
     }
 
     public String getRmaPolicy() {
@@ -188,28 +183,20 @@ public class WFKProduct {
         this.rmaPolicy = rmaPolicy == null ? null : rmaPolicy.trim();
     }
 
-    public String getRmaPolicyEn() {
-        return rmaPolicyEn;
-    }
-
-    public void setRmaPolicyEn(String rmaPolicyEn) {
-        this.rmaPolicyEn = rmaPolicyEn == null ? null : rmaPolicyEn.trim();
-    }
-
-    public String getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity == null ? null : quantity.trim();
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public String getMoq() {
+    public Integer getMoq() {
         return moq;
     }
 
-    public void setMoq(String moq) {
-        this.moq = moq == null ? null : moq.trim();
+    public void setMoq(Integer moq) {
+        this.moq = moq;
     }
 
     public String getSample() {
@@ -268,12 +255,12 @@ public class WFKProduct {
         this.leadTime = leadTime == null ? null : leadTime.trim();
     }
 
-    public Date getLeadTimeEn() {
+    public String getLeadTimeEn() {
         return leadTimeEn;
     }
 
-    public void setLeadTimeEn(Date leadTimeEn) {
-        this.leadTimeEn = leadTimeEn;
+    public void setLeadTimeEn(String leadTimeEn) {
+        this.leadTimeEn = leadTimeEn == null ? null : leadTimeEn.trim();
     }
 
     public String getPriceTerm() {
@@ -300,12 +287,12 @@ public class WFKProduct {
         this.unitPrice = unitPrice;
     }
 
-    public String getPanelSize() {
+    public Double getPanelSize() {
         return panelSize;
     }
 
-    public void setPanelSize(String panelSize) {
-        this.panelSize = panelSize == null ? null : panelSize.trim();
+    public void setPanelSize(Double panelSize) {
+        this.panelSize = panelSize;
     }
 
     public String getPanelType() {
@@ -420,20 +407,12 @@ public class WFKProduct {
         this.frequency = frequency == null ? null : frequency.trim();
     }
 
-    public String getFrequencyEn() {
-        return frequencyEn;
-    }
-
-    public void setFrequencyEn(String frequencyEn) {
-        this.frequencyEn = frequencyEn == null ? null : frequencyEn.trim();
-    }
-
-    public Double getLampType() {
+    public String getLampType() {
         return lampType;
     }
 
-    public void setLampType(Double lampType) {
-        this.lampType = lampType;
+    public void setLampType(String lampType) {
+        this.lampType = lampType == null ? null : lampType.trim();
     }
 
     public String getSignalType() {
