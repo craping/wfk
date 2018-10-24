@@ -2,11 +2,7 @@ package wfk.protocol.http.server.service;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,37 +22,19 @@ import wfk.protocol.http.core.util.ClassUtil;
 import wfk.protocol.http.core.validate.annotation.Parameter;
 import wfk.protocol.http.core.validate.annotation.ServiceMethod;
 import wfk.protocol.http.core.web.handler.ServiceHandler;
-import wfk.protocol.http.define.param.TokenParam;
 import wfk.protocol.http.server.util.ImageUtil;
 
 @Controller("product")
 public class ProductService extends ServiceHandler {
 	
-	// 系统上传路径
-	private static final String SERVER_PATH = Configuration.getSysProp("sys.uploadPath"); 
-	
 	@Autowired
 	private IProductServer productServer;
-
-	public List<String> picesList(String htmlCode) {
-		List<String> imageSrcList = new ArrayList<String>();
-		Pattern p = Pattern.compile("<img\\b[^>]*\\bsrc\\b\\s*=\\s*('|\")?([^'\"\n\r\f>]+(\\.jpg|\\.bmp|\\.eps|\\.gif|\\.mif|\\.miff|\\.png|\\.tif|\\.tiff|\\.svg|\\.wmf|\\.jpe|\\.jpeg|\\.dib|\\.ico|\\.tga|\\.cut|\\.pic)\\b)[^>]*>", Pattern.CASE_INSENSITIVE);
-		Matcher m = p.matcher(htmlCode);
-		String quote = null;
-		String src = null;
-		while (m.find()) {
-			quote = m.group(1);
-			src = (quote == null || quote.trim().length() == 0) ? m.group(2).split("\\s+")[0] : m.group(2);
-			imageSrcList.add(src);
-		}
-		return imageSrcList;
-	}
 
 	@ServiceMethod(
 		value = "delProduct", 
 		desc = "删除商品", 
 		params = { 
-			@Parameter(type = TokenParam.class),
+			//@Parameter(type = TokenParam.class),
 			@Parameter(value = "id", desc = "商品ID") 
 		}
 	)
@@ -70,7 +48,7 @@ public class ProductService extends ServiceHandler {
 		value = "getInfoById", 
 		desc = "根据ID查看商品详情", 
 		params = { 
-			@Parameter(type = TokenParam.class),
+			//@Parameter(type = TokenParam.class),
 			@Parameter(value="id", desc="商品ID")
 		}
 	)
@@ -120,26 +98,55 @@ public class ProductService extends ServiceHandler {
 		if(sb != null && !"".equals(sb.toString())) 
 			product.setImages(sb.toString());
 		
-		Errcode es = null;
-		try {
-			es = productServer.add(product);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new Result(Errors.EXCEPTION_UNKNOW);
-		}
-	
+		productServer.add(product);
 		return new Result(Errors.OK);
 	}
 	
 	
 	@ServiceMethod(
-			value = "updatePro", 
+			value = "updateProduct", 
 			desc = "更新商品"
 	)
 	public Errcode updatePro(HttpServletRequest request, Map<String, String> params) throws IOException, ServletException, URISyntaxException{
 		
-		String proId = params.get("proId");
+		String pid = params.get("id");
+		WFKProduct product = ClassUtil.fillObject(params, productServer.getInfoById(Integer.parseInt(pid)));
 		
+		String[] def_pic = request.getParameterValues("def_pic");
+		String stock_id = product.getStockId().toString();
+		
+		String file_url = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", "specification", stock_id);
+		if (file_url != null && file_url !="") {
+			product.setFileUrl(file_url);
+		}
+		
+		StringBuffer sb = new StringBuffer();
+		int n = 0;
+		for(int i = 0; i < 5; i++){
+			String pic_name = "def_pic_" + i;
+			String pic_path = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", pic_name, pic_name);
+			if(pic_path != null && !"".equals(pic_path)) {
+				if(n != 0) sb.append(",");
+				sb.append(pic_path);
+				n ++;
+			}
+		}
+		if(sb != null && !"".equals(sb.toString())) 
+			product.setImages(sb.toString());
+		
+		if(def_pic != null && def_pic.length > 0){
+			for(String pic : def_pic){
+				if(sb.length() > 0) sb.append(",");
+				sb.append(pic);
+			}
+		}
+		if(sb != null && !"".equals(sb.toString())) {
+			product.setImages(sb.toString());
+	    } else {
+	    	product.setImages("");
+		}
+	
+		productServer.update(product);
 		return new Result(Errors.OK);
 	}
 

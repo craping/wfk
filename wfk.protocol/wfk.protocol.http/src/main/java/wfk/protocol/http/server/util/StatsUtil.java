@@ -18,6 +18,11 @@ public class StatsUtil {
 	
 	public static void main(String[] args) throws ParseException {
 		new SimpleDateFormat("yyyy-MM-dd").parse("2015-05-04");
-		
+		String a = "a,b,,,c";
+		System.out.println(a.split(",").length);
+		String as[] = a.split(",");
+		for (int i = 0; i < as.length; i++) {
+			System.out.println(as[i]);
+		}
 	}
 }
