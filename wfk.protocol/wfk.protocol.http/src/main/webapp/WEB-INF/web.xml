@@ -26,10 +26,19 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<servlet-name>UpFileServlet</servlet-name>
+		<display-name>UpFileServlet</display-name>
+		<description></description>
+		<servlet-class>wfk.protocol.http.server.servlet.UpFileServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
-	
+	<servlet-mapping>
+		<servlet-name>UpFileServlet</servlet-name>
+		<url-pattern>/UpFileServlet</url-pattern>
+	</servlet-mapping>
 </web-app>

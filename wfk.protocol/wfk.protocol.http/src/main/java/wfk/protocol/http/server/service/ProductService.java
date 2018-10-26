@@ -35,12 +35,13 @@ public class ProductService extends ServiceHandler {
 		desc = "删除商品", 
 		params = { 
 			//@Parameter(type = TokenParam.class),
-			@Parameter(value = "id", desc = "商品ID") 
+			@Parameter(value = "id", desc = "商品ID"),
+			@Parameter(value = "status", desc = "状态") 
 		}
 	)
 	public Errcode delProduct(HttpServletRequest request, Map<String, String> params) {
 		WFKProduct product = productServer.getInfoById(Integer.parseInt(params.get("id")));
-		product.setStatus(0);
+		product.setStatus(Integer.parseInt(params.get("status")));
 		return productServer.update(product);
 	}
 
@@ -52,7 +53,7 @@ public class ProductService extends ServiceHandler {
 			@Parameter(value="id", desc="商品ID")
 		}
 	)
-	public Errcode getProductById(HttpServletRequest request, Map<String, String> params) {
+	public Errcode getInfoById(HttpServletRequest request, Map<String, String> params) {
 		WFKProduct product = productServer.getInfoById(Integer.parseInt(params.get("id")));
 		return new DataResult(Errors.OK, new Data(product));
 	}
@@ -64,7 +65,7 @@ public class ProductService extends ServiceHandler {
 			//@Parameter(type = TokenParam.class)
 		}
 	)
-	public Errcode getProductList(HttpServletRequest request, Map<String, String> params) {
+	public Errcode getList(HttpServletRequest request, Map<String, String> params) {
 		return productServer.getList(params);
 	}
 
@@ -104,10 +105,10 @@ public class ProductService extends ServiceHandler {
 	
 	
 	@ServiceMethod(
-			value = "updateProduct", 
-			desc = "更新商品"
+		value = "updateProduct", 
+		desc = "更新商品"
 	)
-	public Errcode updatePro(HttpServletRequest request, Map<String, String> params) throws IOException, ServletException, URISyntaxException{
+	public Errcode updateProduct(HttpServletRequest request, Map<String, String> params) throws IOException, ServletException, URISyntaxException{
 		
 		String pid = params.get("id");
 		WFKProduct product = ClassUtil.fillObject(params, productServer.getInfoById(Integer.parseInt(pid)));
@@ -157,6 +158,4 @@ public class ProductService extends ServiceHandler {
 	public void setProductServer(IProductServer productServer) {
 		this.productServer = productServer;
 	}
-	
-	
 }

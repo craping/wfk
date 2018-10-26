@@ -273,6 +273,25 @@ public class SqlColumn implements SqlConditionFilter {
 		return this.filter;
 	}
 
+	public SqlFilter startData(Object value) {
+		if(value != null) {
+			this.values = new Object[]{value};
+			this.condition = " >= date_format(?,'%Y%m%d')";
+		} else {
+			this.condition = "";
+		}
+		return this.filter;
+	}
+	public SqlFilter endData(Object value) {
+		if(value != null) {
+			this.values = new Object[]{value};
+			this.condition = " <= (date_format(?,'%Y%m%d')+1)";
+		} else {
+			this.condition = "";
+		}
+		return this.filter;
+	}
+	
 	class ConditionFilter implements SqlFilter {
 		
 		@Override

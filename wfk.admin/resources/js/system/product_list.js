@@ -10,17 +10,18 @@ $(function(){
 		style:"system-table",
 		headerStyle:"noborder",
 		module:[
-	        {name:"<input type='checkbox' class='allmiddle'  >全选 ",width:"4%"},
+	        //{name:"<input type='checkbox' class='allmiddle'  >全选 ",width:"4%"},
 	        {name:"现货编号",width:"5%"},
-	        {name:"产品名称",width:"28%"},
-	        {name:"面板品牌",width:"4%"},
+	        {name:"产品名称",width:"25%"},
+	        {name:"面板品牌",width:"8%"},
 	        {name:"面板型号",width:"10%"},
-			{name:"面板尺寸",width:"3%"},
-			{name:"面板组成",width:"5%"},
-			{name:"分  辨  率",width:"4%"},
-			{name:"对  比  度",width:"5%"},
+			{name:"面板尺寸",width:"5%"},
+			{name:"面板组成",width:"8%"},
+			{name:"分  辨  率",width:"6%"},
+			{name:"对  比  度",width:"8%"},
 			{name:"显示颜色",width:"5%"},
-			{name:"应用产品",width:"4%"},
+			{name:"应用产品",width:"5%"},
+			{name:"状态",width:"4%"},
 			{name:"操作"},
 		],
 		eachItem:function(ui, item){
@@ -32,22 +33,32 @@ $(function(){
 			
 			var page = $("#system-page").data("lishe.pageSet").options.pageSet.page-1;
 			var html="<tr>";
-			html+="<td width='3%'><input type='checkbox' accept='" + item.checkStatus + "' class='middle' value='"+item.id+"'></label></td>" ;
+			//html+="<td width='3%'><input type='checkbox' accept='" + item.checkStatus + "' class='middle' value='"+item.id+"'></label></td>" ;
 			html+="<td >"+ item.stockId +"</td>";
-			html+="<td width='10%'>"+ item.productName +"</td>";
-			html+="<td width='10%'>"+ item.brand +"</td>";
-			html+="<td width='6%'>"+ item.model +"</td>";
-			html+="<td width='6%' >"+ item.panelSize +"</td>";
-			html+="<td width='6%' >"+ item.panelType +"</td>";
-			html+="<td width='6%'>"+ item.resolution +"</td>";
-			html+="<td width='6%'>"+ item.contrastRatio +"</td>";
-			html+="<td width='6%'>"+ item.displayColor +"</td>";
-			html+="<td width='6%'>"+ item.application +"</td>";
+			html+="<td>"+ item.productName +"</td>";
+			html+="<td>"+ item.brand +"</td>";
+			html+="<td>"+ item.model +"</td>";
+			html+="<td>"+ item.panelSize +"</td>";
+			html+="<td>"+ item.panelType +"</td>";
+			html+="<td>"+ item.resolution +"</td>";
+			html+="<td>"+ item.contrastRatio +"</td>";
+			html+="<td>"+ item.displayColor +"</td>";
+			html+="<td>"+ item.application +"</td>";
+			if(item.status == 1){
+				html+="<td>有效</td>";
+			} else {
+				html+="<td>无效 </td>";
+			}
+			
 			
 			html+="<td><div class='system-table-list'>";
 			html+="<ul>";
 			html+="<li value='"+item.id+"'><a target='iframe' href='javascript:;'  class='operate-icon23' target='iframe' title='详情'></a></li>";
-			html+="<li><a target='iframe' href='product_audiProduct.html?proId="+ item.id +"' target='iframe' class='operate-icon4' title='删除'></a></li>";
+			if(item.status == 1){
+				html+="<li><a target='iframe' href='javascript:;' onclick='oprStatus(" + item.id + ", 0)' target='iframe' class='operate-icon26' title='置为无效'></a></li>";
+			} else {
+				html+="<li><a target='iframe' href='javascript:;' onclick='oprStatus(" + item.id + ", 1)' target='iframe' class='operate-icon25' title='置为有效'></a></li>";
+			}
 			html+="<li><a target='iframe' href='product_edit.html?id="+ item.id +"' target='iframe' class='operate-icon17' title='修改'></a></li>";
 			html+="</ul>";
 			html+="</div> </td>";
@@ -57,10 +68,6 @@ $(function(){
 		}
 	});
 	
-	$(document).on("click",".operate-icon23",function(){
-		var proId =  $(this).parent().attr("value");
-		window.open("product_preview.html?proId="+ proId+"")
-	})
 	$(document).on("change","#supName",function(){
 		 $("[name='supId']").val("");
 	})
@@ -80,8 +87,32 @@ $(function(){
 	})
 	
 	queryList(1);
-	
 })
+
+function oprStatus(id, status) {
+	Web.Method.ajax("/product/delProduct",{
+		data:{id:id,status:status},
+		success:function(data){
+			 if(data.errcode == "0"){
+				 $.confAlert({
+					size:"sm",
+					context:"操作成功",
+					noButton:false ,
+					onOk:function(){
+						 queryList(1);
+					}
+				})
+			 }
+		},
+		fail:function(data){
+			$.confAlert({
+				size:"sm",
+				context:data.msg,
+				noButton:false
+			})
+		}
+	});
+}
 
 function queryList(page, listview, pageset, params){
 	var options = {

@@ -643,12 +643,12 @@ label.system-advert-hint{ position: absolute; left:0; bottom: -30px; height: 30p
 /*管理员*/
 .system-admin{ padding-top: 30px; width: 1000px; padding-bottom: 100px;}
 .system-admin-row{ margin-bottom: 30px;}
-.system-admin-row span{ font-weight: bold; display: block; float: left; width: 180px; padding-right: 20px; height: 35px; line-height: 35px; text-align: right;}
+.system-admin-row span{ font-weight: bold; display: block; float: left; padding-right: 20px; height: 35px; line-height: 35px;}
 .system-admin-box{ float: left; position: relative;}
 .system-admin-input{ width: 778px; height: 33px; line-height: 33px; border: 1px solid #898989;}
 .system-admin-row textarea{ float: left; width:798px; height:460px;border: 1px solid #898989; resize: none;}
 .system-admin-hint{ position: absolute; padding-left: 15px; left: 0; color: #ff0000; bottom: -30px; height: 30px; line-height: 30px; background: url("../../images/help-block.jpg")no-repeat 0 50%;}
-.system-admin-btn{ padding: 20px 0; text-align: center;}
+.system-admin-btn{ padding: 20px 0;}
 .system-admin-btn1,.system-admin-btn2{display:inline-block; width: 160px; height: 35px; line-height: 35px; text-align: center; background: #aa3231; color: #fff; padding: 0 10px; border-radius: 5px; }
 .system-admin-btn1{ background: #535353; margin-right: 25px;}
 .system-admin-check{ width: 780px; height: 460px;}

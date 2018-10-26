@@ -88,7 +88,9 @@ function hideLayer(){
 
 //表单提交
 function formSubmit(){
-	
+	var title_pic = $("#specification");
+	alert(title_pic);
+	return false;
 	showLayer();
 	$("#addProductForm").ajaxSubmit({
 		iframe:true,

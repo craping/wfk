@@ -19,10 +19,9 @@ public class StatsUtil {
 	public static void main(String[] args) throws ParseException {
 		new SimpleDateFormat("yyyy-MM-dd").parse("2015-05-04");
 		String a = "a,b,,,c";
-		System.out.println(a.split(",").length);
-		String as[] = a.split(",");
-		for (int i = 0; i < as.length; i++) {
-			System.out.println(as[i]);
-		}
+		String url = "C:/Users/Administrator/git/wfk/wfk.admin/uploadfile/html/1540542798561.html";
+		String imgurl = url.substring(url.lastIndexOf("/uploadfile"), url.length());
+		System.out.println(imgurl);
+		
 	}
 }
