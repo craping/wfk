@@ -22,6 +22,7 @@ import wfk.protocol.http.core.util.ClassUtil;
 import wfk.protocol.http.core.validate.annotation.Parameter;
 import wfk.protocol.http.core.validate.annotation.ServiceMethod;
 import wfk.protocol.http.core.web.handler.ServiceHandler;
+import wfk.protocol.http.define.param.TokenParam;
 import wfk.protocol.http.server.util.ImageUtil;
 
 @Controller("product")
@@ -34,7 +35,7 @@ public class ProductService extends ServiceHandler {
 		value = "delProduct", 
 		desc = "删除商品", 
 		params = { 
-			//@Parameter(type = TokenParam.class),
+			@Parameter(type = TokenParam.class),
 			@Parameter(value = "id", desc = "商品ID"),
 			@Parameter(value = "status", desc = "状态") 
 		}
@@ -49,7 +50,6 @@ public class ProductService extends ServiceHandler {
 		value = "getInfoById", 
 		desc = "根据ID查看商品详情", 
 		params = { 
-			//@Parameter(type = TokenParam.class),
 			@Parameter(value="id", desc="商品ID")
 		}
 	)
@@ -62,19 +62,24 @@ public class ProductService extends ServiceHandler {
 		value = "getList", 
 		desc = "获取产品列表", 
 		params = { 
-			//@Parameter(type = TokenParam.class)
+			@Parameter(value="product_name", desc="产品名称", required=false),
+			@Parameter(value="stock_id", desc="产品编号", required=false),
+			@Parameter(value="panel_size", desc="面板尺寸", required=false),
+			@Parameter(value="resolution", desc="分辨率", required=false),
+			@Parameter(value="brand", desc="品牌", required=false),
+			@Parameter(value="model", desc="面板型号", required=false),
+			@Parameter(value="status", desc="商品状态1有效0无效", required=false)
 		}
 	)
 	public Errcode getList(HttpServletRequest request, Map<String, String> params) {
 		return productServer.getList(params);
 	}
 
-	
 	@ServiceMethod(
 		value = "addProduct", 
 		desc = "保存商品",
 		params={
-			//@Parameter(type = TokenParam.class),
+			@Parameter(type = TokenParam.class),
 		}
 	)
 	public Errcode addProduct(HttpServletRequest request, Map<String, String> params) throws IOException, ServletException, URISyntaxException{
@@ -103,10 +108,12 @@ public class ProductService extends ServiceHandler {
 		return new Result(Errors.OK);
 	}
 	
-	
 	@ServiceMethod(
 		value = "updateProduct", 
-		desc = "更新商品"
+		desc = "更新商品",
+		params={
+			@Parameter(type = TokenParam.class),
+		}
 	)
 	public Errcode updateProduct(HttpServletRequest request, Map<String, String> params) throws IOException, ServletException, URISyntaxException{
 		

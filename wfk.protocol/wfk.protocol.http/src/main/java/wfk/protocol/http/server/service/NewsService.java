@@ -1,6 +1,5 @@
 package wfk.protocol.http.server.service;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Date;
@@ -24,6 +23,7 @@ import wfk.protocol.http.core.util.ClassUtil;
 import wfk.protocol.http.core.validate.annotation.Parameter;
 import wfk.protocol.http.core.validate.annotation.ServiceMethod;
 import wfk.protocol.http.core.web.handler.ServiceHandler;
+import wfk.protocol.http.define.param.TokenParam;
 import wfk.protocol.http.server.util.FileUtil;
 import wfk.protocol.http.server.util.ImageUtil;
 import wfk.protocol.http.server.util.Tools;
@@ -40,7 +40,7 @@ public class NewsService extends ServiceHandler {
 		value = "oprNews", 
 		desc = "操作新闻", 
 		params = { 
-			//@Parameter(type = TokenParam.class),
+			@Parameter(type = TokenParam.class),
 			@Parameter(value = "id", desc = "新闻id"),
 			@Parameter(value = "status", desc = "状态") 
 		}
@@ -55,7 +55,6 @@ public class NewsService extends ServiceHandler {
 		value = "getInfoById", 
 		desc = "根据ID查看新闻详情", 
 		params = { 
-			//@Parameter(type = TokenParam.class),
 			@Parameter(value="id", desc="商品ID")
 		}
 	)
@@ -72,8 +71,10 @@ public class NewsService extends ServiceHandler {
 	@ServiceMethod(
 		value = "getList", 
 		desc = "获取新闻列表", 
-		params = { 
-			//@Parameter(type = TokenParam.class)
+		params = {
+			@Parameter(value = "type", desc = "新闻类别", required=false),
+			@Parameter(value = "title", desc = "新闻标题", required=false),
+			@Parameter(value = "status", desc = "新闻状态,1有效，0无效", required=false)
 		}
 	)
 	public Errcode getList(HttpServletRequest request, Map<String, String> params) {
@@ -85,6 +86,7 @@ public class NewsService extends ServiceHandler {
 		value = "addNews", 
 		desc = "新增新闻",
 		params={
+			@Parameter(type = TokenParam.class),
 			@Parameter(value = "type", desc = "新闻类别"),
 			@Parameter(value = "title", desc = "新闻标题"),
 			@Parameter(value = "context", desc = "新闻内容")
@@ -117,6 +119,7 @@ public class NewsService extends ServiceHandler {
 		value = "updateNews", 
 		desc = "修改新闻",
 		params={
+			@Parameter(type = TokenParam.class),
 			@Parameter(value = "id", desc = "新闻id"),
 			@Parameter(value = "type", desc = "新闻类别"),
 			@Parameter(value = "title", desc = "新闻标题"),

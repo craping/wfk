@@ -59,6 +59,7 @@ public class ProductServerImpl implements IProductServer{
 				new SqlColumn(Logic.AND, "panel_size").contanis(params.get("panel_size")),
 				new SqlColumn(Logic.AND, "resolution").contanis(params.get("resolution")),
 				new SqlColumn(Logic.AND, "brand").contanis(params.get("brand")),
+				new SqlColumn(Logic.AND, "status").equal(params.get("status")),
 				new SqlColumn(Logic.AND, "model").contanis(params.get("model"))),
 			new Profile(params));
 		DataResult result = serviceDao.queryForDataResult(builder, WFKProduct.class);
