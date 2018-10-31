@@ -28,7 +28,7 @@ public class CodeParam extends StringParam {
 
 		boolean validated = false;
 		try {
-			validated = SystemService.captchaService.validateResponseForID(request.getSession().getId(), paramString.toLowerCase()).booleanValue();
+			//validated = SystemService.captchaService.validateResponseForID(request.getSession().getId(), paramString.toLowerCase()).booleanValue();
 		} catch (CaptchaServiceException e) {
 			e.printStackTrace();
 		}
