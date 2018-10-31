@@ -5,10 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import com.octo.captcha.service.image.ImageCaptchaService;
 
 import wfk.common.define.bean.medium.JsonPublicKey;
 import wfk.common.define.bean.result.Errcode;
