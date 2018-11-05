@@ -60,10 +60,18 @@ public class ProductServerImpl implements IProductServer{
 				new SqlColumn(Logic.AND, "resolution").contanis(params.get("resolution")),
 				new SqlColumn(Logic.AND, "brand").contanis(params.get("brand")),
 				new SqlColumn(Logic.AND, "status").equal(params.get("status")),
+				new SqlColumn(Logic.AND, "app_type").equal(params.get("app_type")),
 				new SqlColumn(Logic.AND, "model").contanis(params.get("model"))),
 			new Profile(params));
 		DataResult result = serviceDao.queryForDataResult(builder, WFKProduct.class);
 		return result;
 	}
 
+	@Override
+	public DataResult getProductFileList(Map<String, String> params) {
+		String sql = "SELECT id,product_name,product_name_en,file_url FROM wfk_product WHERE file_url !='';";
+		QueryBuilder builder = new QueryBuilder(sql, new Profile(params));
+		DataResult result = serviceDao.queryForMapDataResult(builder);
+		return result;
+	}
 }

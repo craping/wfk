@@ -74,6 +74,14 @@ public class ProductService extends ServiceHandler {
 	public Errcode getList(HttpServletRequest request, Map<String, String> params) {
 		return productServer.getList(params);
 	}
+	
+	@ServiceMethod(
+		value = "getProductFileList", 
+		desc = "获取产品文档列表"
+	)
+	public Errcode getProductFileList(HttpServletRequest request, Map<String, String> params) {
+		return productServer.getProductFileList(params);
+	}
 
 	@ServiceMethod(
 		value = "addProduct", 
@@ -87,7 +95,8 @@ public class ProductService extends ServiceHandler {
 		product = ClassUtil.fillObject(params, product);
 		
 		String stock_id = params.get("stock_id");
-		String file_url = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", "specification", stock_id);
+		String model = params.get("model");
+		String file_url = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", "specification", model);
 		product.setFileUrl(file_url);
 	
 		StringBuffer sb = new StringBuffer();
@@ -122,8 +131,9 @@ public class ProductService extends ServiceHandler {
 		
 		String[] def_pic = request.getParameterValues("def_pic");
 		String stock_id = product.getStockId().toString();
+		String model = params.get("model");
 		
-		String file_url = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", "specification", stock_id);
+		String file_url = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", "specification", model);
 		if (file_url != null && file_url !="") {
 			product.setFileUrl(file_url);
 		}

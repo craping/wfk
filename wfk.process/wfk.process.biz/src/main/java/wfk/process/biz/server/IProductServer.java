@@ -19,5 +19,8 @@ public interface IProductServer {
 
 	// 商品对象 - 获取商品
 	public DataResult getList(Map<String, String> params);
+	
+	// 查询产品文档列表
+	public DataResult getProductFileList(Map<String, String> params);
 
 }
