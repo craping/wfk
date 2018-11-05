@@ -68,7 +68,8 @@ public class ProductService extends ServiceHandler {
 			@Parameter(value="resolution", desc="分辨率", required=false),
 			@Parameter(value="brand", desc="品牌", required=false),
 			@Parameter(value="model", desc="面板型号", required=false),
-			@Parameter(value="status", desc="商品状态1有效0无效", required=false)
+			@Parameter(value="status", desc="商品状态1有效0无效", required=false),
+			@Parameter(value="app_type", desc="应用类别：1笔记本2工控3安防4监控5医疗设备6广告机", required=false)
 		}
 	)
 	public Errcode getList(HttpServletRequest request, Map<String, String> params) {
