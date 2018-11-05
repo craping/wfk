@@ -89,6 +89,8 @@ public class WFKProduct {
 
     private String applicationEn;
 
+    private Integer appType;
+
     private String fileUrl;
 
     private String images;
@@ -437,6 +439,14 @@ public class WFKProduct {
 
     public void setApplicationEn(String applicationEn) {
         this.applicationEn = applicationEn == null ? null : applicationEn.trim();
+    }
+
+    public Integer getAppType() {
+        return appType;
+    }
+
+    public void setAppType(Integer appType) {
+        this.appType = appType;
     }
 
     public String getFileUrl() {

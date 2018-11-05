@@ -45,6 +45,7 @@
     <result column="signal_type" jdbcType="VARCHAR" property="signalType" />
     <result column="application" jdbcType="VARCHAR" property="application" />
     <result column="application_en" jdbcType="VARCHAR" property="applicationEn" />
+    <result column="app_type" jdbcType="INTEGER" property="appType" />
     <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
     <result column="images" jdbcType="VARCHAR" property="images" />
     <result column="status" jdbcType="INTEGER" property="status" />
@@ -55,8 +56,8 @@
     delivery, delivery_en, lead_time, lead_time_en, price_term, price_term_en, unit_price, 
     panel_size, panel_type, composition, composition_en, resolution, mode, mode_en, surface, 
     surface_en, brightness, contrast_ratio, display_color, response_time, viewing_angle, 
-    frequency, lamp_type, signal_type, application, application_en, file_url, images, 
-    status
+    frequency, lamp_type, signal_type, application, application_en, app_type, file_url, 
+    images, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -86,8 +87,8 @@
       contrast_ratio, display_color, response_time, 
       viewing_angle, frequency, lamp_type, 
       signal_type, application, application_en, 
-      file_url, images, status
-      )
+      app_type, file_url, images, 
+      status)
     values (#{productName,jdbcType=VARCHAR}, #{productNameEn,jdbcType=VARCHAR}, #{stockId,jdbcType=INTEGER}, 
       #{brand,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{quality,jdbcType=VARCHAR}, 
       #{qualityEn,jdbcType=VARCHAR}, #{generalGrade,jdbcType=VARCHAR}, #{zbdRate,jdbcType=VARCHAR}, 
@@ -102,8 +103,8 @@
       #{contrastRatio,jdbcType=VARCHAR}, #{displayColor,jdbcType=VARCHAR}, #{responseTime,jdbcType=VARCHAR}, 
       #{viewingAngle,jdbcType=VARCHAR}, #{frequency,jdbcType=VARCHAR}, #{lampType,jdbcType=VARCHAR}, 
       #{signalType,jdbcType=VARCHAR}, #{application,jdbcType=VARCHAR}, #{applicationEn,jdbcType=VARCHAR}, 
-      #{fileUrl,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
-      )
+      #{appType,jdbcType=INTEGER}, #{fileUrl,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="wfk.process.dao.sql.entity.WFKProduct">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -236,6 +237,9 @@
       </if>
       <if test="applicationEn != null">
         application_en,
+      </if>
+      <if test="appType != null">
+        app_type,
       </if>
       <if test="fileUrl != null">
         file_url,
@@ -373,6 +377,9 @@
       </if>
       <if test="applicationEn != null">
         #{applicationEn,jdbcType=VARCHAR},
+      </if>
+      <if test="appType != null">
+        #{appType,jdbcType=INTEGER},
       </if>
       <if test="fileUrl != null">
         #{fileUrl,jdbcType=VARCHAR},
@@ -514,6 +521,9 @@
       <if test="applicationEn != null">
         application_en = #{applicationEn,jdbcType=VARCHAR},
       </if>
+      <if test="appType != null">
+        app_type = #{appType,jdbcType=INTEGER},
+      </if>
       <if test="fileUrl != null">
         file_url = #{fileUrl,jdbcType=VARCHAR},
       </if>
@@ -570,6 +580,7 @@
       signal_type = #{signalType,jdbcType=VARCHAR},
       application = #{application,jdbcType=VARCHAR},
       application_en = #{applicationEn,jdbcType=VARCHAR},
+      app_type = #{appType,jdbcType=INTEGER},
       file_url = #{fileUrl,jdbcType=VARCHAR},
       images = #{images,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
