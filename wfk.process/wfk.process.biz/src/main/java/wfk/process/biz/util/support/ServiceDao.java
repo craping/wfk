@@ -76,9 +76,9 @@ public class ServiceDao extends CommonDao implements IServiceDao {
 		List<Object[]> totalnumList = this.query(builder.getCountSql(), builder.getSqlParams());
 		if(totalnumList == null){
 			page.setTotalnum(0);
-		}else if(totalnumList.size() == 1){
+		}/*else if(totalnumList.size() == 1){
 			page.setTotalnum(((Number)totalnumList.get(0)[0]).intValue());
-		}else{
+		}*/else{
 			page.setTotalnum(totalnumList.size());
 		}
 		
@@ -148,9 +148,9 @@ public class ServiceDao extends CommonDao implements IServiceDao {
 		List<Object[]> totalnumList = this.query(builder.getCountSql(), builder.getSqlParams());
 		if(totalnumList == null){
 			page.setTotalnum(0);
-		}else if(totalnumList.size() == 1){
+		}/*else if(totalnumList.size() == 1){
 			page.setTotalnum(((Number)totalnumList.get(0)[0]).intValue());
-		}else{
+		}*/else{
 			page.setTotalnum(totalnumList.size());
 		}
 		
@@ -242,9 +242,9 @@ public class ServiceDao extends CommonDao implements IServiceDao {
 		List<Object[]> totalnumList = this.query(builder.getCountSql(), builder.getSqlParams());
 		if(totalnumList == null){
 			page.setTotalnum(0);
-		}else if(totalnumList.size() == 1){
+		}/*else if(totalnumList.size() == 1){
 			page.setTotalnum(((Number)totalnumList.get(0)[0]).intValue());
-		}else{
+		}*/else{
 			page.setTotalnum(totalnumList.size());
 		}
 		
@@ -337,9 +337,9 @@ public class ServiceDao extends CommonDao implements IServiceDao {
 		List<Object[]> totalnumList = this.query(builder.getCountSql(), builder.getSqlParams());
 		if(totalnumList == null){
 			page.setTotalnum(0);
-		}else if(totalnumList.size() == 1){
+		}/*else if(totalnumList.size() == 1){
 			page.setTotalnum(((Number)totalnumList.get(0)[0]).intValue());
-		}else{
+		}*/else{
 			page.setTotalnum(totalnumList.size());
 		}
 		
