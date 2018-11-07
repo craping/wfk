@@ -3,19 +3,11 @@
     <div class="container-fluid weixin-bg">
         <div class="container">
             <div class="weixin-box">
-                <p class="footer-size">在社交媒体上关注我们 :</p>
+                <p class="footer-size">{{NAVI["在社交媒体上关注我们"]}} :</p>
             <span class="row">
                 <a class="col-lg-6 col-sm-6 col-md-6 col-xs-6 xin-icon" href="javascript:void(0);">
                     <img class="img2" src="images/g1/index/weixin-icon01.png" alt=""/>
                     <img class="img1" src="images/g1/index/weixin-icon02.png" alt=""/>
-                </a>
-                <a class="col-lg-6 col-sm-6 col-md-6 col-xs-6 yl-icon hidden-xs" href="javascript:void(0);">
-                    <img class="img2" src="images/g1/index/yl.png" alt=""/>
-                    <img class="img1" src="images/g1/index/yl2.png" alt=""/>
-                </a>
-                <a class="col-lg-6 col-sm-6 col-md-6 col-xs-6 yl-icon hidden-sm hidden-lg hidden-md " href="http://www.linkedin.com/company/boe-technology-group/careers?trk=top_nav_careers">
-                    <img class="img2" src="images/g1/index/yl.png" alt=""/>
-                    <img class="img1" src="images/g1/index/yl2.png" alt=""/>
                 </a>
             </span>
             </div>
@@ -49,112 +41,18 @@
                                 <li class="footer1129-child"  v-for="vv in v.text"><a v-bind:href="vv.href">{{vv.text}}</a></li>
                             </ul>
                         </li>
-                        <li v-for="v in todoss[2].newsData" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-xs ">
-                            <ul class="row list-unstyled">
-                                <li><a :href="v.href">{{v.title}}</a></li>
-                                <li v-for="vv in v.text"><a v-bind:href="vv.href">{{vv.text}}</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12 footer-img-box footer1129-li">
-                        <div class="hidden-lg hidden-md hidden-sm footer1129-click"><a class="footer1130-a" href="javascript:void(0);">BOE应用中心</a><span class="glyphicon glyphicon-menu-down xs-tier-down yewei" style="display: block;line-height: 25px;text-align: center"></span></div>
-                        <ul class="row list-unstyled ewmImg footer1129-ul">
-                        <li class="col-lg-3 col-md-3 col-sm-3 hidden-sm hidden-xs">
-                            
-                        </li>
-                        <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4 footer-erweima footer1129-child">
-                            <img class="hidden-xs" src="images/g1/index/qrcode1.png" alt="">
-                            <a class="hidden-lg hidden-md hidden-sm" id="boegw">
-                              <img src="images/g1/index/BOEgw.png" alt="">
-                            </a>
-                            <p class="text-center">BOE官网</p>
-                        </li>
-                        <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4  footer-erweima footer1129-child">
-                            <img class="hidden-xs" src="images/g1/index/qrcode2.png" alt="">
-                            <a class="hidden-lg hidden-md hidden-sm" id="huaping">
-                              <img src="images/g1/index/hp.png" alt="">
-                            </a>
-                            <p class="text-center">画屏</p>
-                        </li>
-                        <li class="col-lg-3 col-md-3 col-sm-4 col-xs-4  footer-erweima footer1129-child">
-                            <img class="hidden-xs" src="images/g1/index/qrcode3.png" alt="">
-                            <a class="hidden-lg hidden-md hidden-sm" id="boehealth">
-                              <img src="images/g1/index/ydjk.png" alt="">
-                            </a>
-                            <p class="text-center">移动健康</p>
-                        </li>
                     </ul>
                 </div>
             </div>
             <ul class="row list-unstyled footer-lilst2 text-center">
                 <li class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <ul class="row list-unstyled list-inline footer-fl">
-                        <li><a href="javascript:trackFn('footer-map','/wzdt/')">网站地图</a></li>
-                        <li>|</li>
-                        <li><a href="javascript:trackFn('footer-privacy','/ystk/')">隐私条款</a></li>
-                        <li>|</li>
-                        <li><a href="javascript:trackFn('footer-deleted','/cmcx/')">除名查询</a></li>
-                        <li>|</li>
-                        <li><a   data-toggle="modal" data-target="#footermyModal" href="javascript:trackFn('footer-fast','javascript:void(0);')">快速链接</a></li>
                     </ul>
                 </li>
-                <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Copyright©2018京东方科技集团股份有限公司 版权所有</li>
-                <li class="col-lg-5 col-md-5 col-sm-12 col-xs-12">京ICP证140608号.<a href="http://www.miibeian.gov.cn" target="_blank">京ICP备12041691号-2.</a><a href="http://gawa.bjchy.gov.cn/websearch/index.php" target="_blank">京公网安备11010502026582</a></li>
+                <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Copyright©2018深圳市微方凯科技有限公司 版权所有</li>
+                <li class="col-lg-5 col-md-5 col-sm-12 col-xs-12">粤ICP备13081708号-1.</li>
             </ul>
         </div>
         <!--<a class="goTop" href="javascript:void(0);">回到顶部 <span><</span></a>-->
     </div>
-    
-    <!--video Modal -->
-<div class="modal fade" id="footermyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div  class="modal-body">
-            <div class="container products pctop pcbottom ">
-                <h3 class="two-size">快速链接</h3>
-            </div>
-
-            <ul class="list-unstyled text-left text-size">
-                <li>
-                    <a href="http://boe.co.jp/" target="_blank">京东方日本有限公司></a>
-                </li>
-                <li>
-                    <a href="http://www.ubpchina.com" target="_blank">恒通国际商务园></a>
-                </li>
-                <li>
-                    <a href="http://www.ucpchina.com" target="_blank">恒通国际创新园></a>
-                </li>
-                <li>
-                    <a href="http://www.oasishealth.cn/l-cn/index.html" target="_blank">北京明德医院></a>
-                </li>
-                <li>
-                    <a href="http://varitronix.com/" target="_blank">香港精电国际有限公司></a>
-                </li>
-                <li>
-                    <a href="http://chinabov.com.cn/" target="_blank">北京京东方真空电器有限责任公司></a>
-                </li>
-                <li>
-                    <a href="http://www.boezk.com/" target="_blank">北京京东方真空技术有限公司></a>
-                </li>
-                <li>
-                    <a href="http://www.boesemi.com/" target="_blank">北京京东方半导体有限公司></a>
-                </li>
-                <li>
-                    <a href="http://www.baebj.com/" target="_blank">北京北旭电子材料有限公司></a>
-                </li>
-                <li>
-                    <a href="http://bjnissin.com/" target="_blank">北京日伸电子精密部件有限公司></a>
-                </li>
-                <li>
-                    <a href="http://www.bjnt.com/" target="_blank">北京日端电子有限公司></a>
-                </li>
-            </ul>
-            </div>
-        </div>
-    </div>
-</div>
 </div>

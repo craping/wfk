@@ -3,12 +3,12 @@
     <div class="content">
         <!-- 回到顶部 -->
         <div class="goTop">
-            <a href="javascript:trackFn('index-gotop','javascript:void(0);')"></a>
+            <a href="javascript:void(0);"></a>
         </div>
 
         <!-- 联系我们 -->
-        <div class="contact"   data-toggle="" data-target="">
-            <a href="javascript:trackFn('index-contact','javascript:void(0);')"></a>
+        <div class="contact" data-toggle="" data-target="">
+            <a href="javascript:void(0);)"></a>
         </div>
 
         <!-- 多媒体中心 -->
@@ -17,33 +17,23 @@
         </div>
 
         <!-- 订阅公告 -->
-        <div class="subscription"  data-toggle="" data-target="">
+        <div class="subscription" data-toggle="" data-target="">
             <a href="javascript:trackFn('index-subscription','javascript:void(0);')"></a>
         </div>
 
         <!-- 销售网络 -->
-        <div class="sales"   data-toggle="modal" data-target="#sales">
+        <div class="sales" data-toggle="modal" data-target="#sales">
             <a href="javascript:trackFn('index-sales','javascript:void(0);')"></a>
         </div>
 
-        <!-- 下载资料 -->
-        <!-- <div class="down"  data-toggle="modal" data-target="#download">
-            <a href="javascript:trackFn('index-xinhua-com','javascript:void(0);')"></a>
-        </div> -->
-
-        <!-- BOE商城 pc pad -->
+        <!-- WUFK商城 pc pad -->
         <div class="mall hidden-xs">
-            <a href="javascript:trackFn('index-mall','http://www.boemall.cn/store/mall.html')"></a>
+            <a href="javascript:;"></a>
         </div>
-      
-      	<!-- phone -->
+
+        <!-- phone -->
         <div class="mall hidden-lg hidden-md hidden-sm">
             <a href="javascript:trackFn('index-mall','javascript:void(0);')"></a>
-        </div>
-
-        <!-- 新华网 -->
-        <div class="xinhua-com">
-            <a href="javascript:trackFn('index-xinhua-com','http://www.bj.xinhuanet.com/bjwq/qywq1/boe2017/boe.html')"></a>
         </div>
 
     </div>
@@ -51,136 +41,75 @@
     <!-- 对应的项 -->
     <div class="fixed-display text-center text-size">
 
-
         <!-- 首页 -->
         <div class="contact" id="index">
-            <p><span>销售热线</span>：400-668-1000</p>
-            <p><span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>：400@boe.com.cn</p>
-            <hr/>
-            <p><span>校园招聘</span>：recruit@boe.com.cn</p>
-            <p><span>社会招聘</span>：zhaopin@boe.com.cn</p>
-            <hr/>
-            <p><span>投资者咨询</span>：86-10-64318888 转 董事会秘书室</p>  
-            <p><span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>：web.master@boe.com.cn</p>
+            <p><span>{{NAVI["销售热线"]}}</span>：13809888864</p>
+            <p><span v-html="NAVI['邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱']"></span>：wufkjcp@139.com</p>
+            <hr />
+            <p><span>{{NAVI["校园招聘"]}}</span>：2811760827@qq.com</p>
+            <p><span>{{NAVI["社会招聘"]}}</span>：wufkyx@139.com</p>
+            <hr />
+            <p><span>{{NAVI["微信号"]}}</span>：wufk168</p>
         </div>
 
-
-        <!-- 产品与服务--> 
+        <!-- 产品与服务-->
 
         <!--销售热线：400-668-1000 -->
         <div class="contact text-center" id="product-service-page">
-            <p>销售热线</p>
-            <p>400-668-1000</p>
         </div>
 
         <!-- 创新科技点击联系我们后，浮现的窗口中的信息是一个： -->
-        <!-- BOE创客实验室  邮箱：chuangyizhengji@boe.com.cn -->
         <div class="contact chongke" id="innovate-page">
-            <img src="images/g1/index/experiment.jpg" alt=""/>
-            <p class="three-size">BOE创客实验室</p>
-            <p class="contentText">
-                作为创想空间的运营和维护方，为鼓励创新、助力研发，京东方创客实验室面向全球创客进行创意的挖掘和孵化。经过多年探索和积累，京东方已成功挖掘和孵化出众多优秀的创意成果。京东方 诚邀全球创客，参与创意孵化，共同推动科技创新。
-            </p>
-            <p>邮箱：chuangyizhengji@boe.com.cn</p>
         </div>
 
         <!-- 投资者关系点击联系我们后，浮现的窗口中的信息是一个： -->
-        <!-- 投资者咨询：86-10-64318888 转 董事会秘书室  邮箱：web.master@boe.com.cn -->
         <div class="contact" id="investor-page">
-            <p><span>投资者咨询</span>：86-10-64318888 转 董事会秘书室</p>
-            <p><span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>：web.master@boe.com.cn</p>
         </div>
 
         <!-- 加入我们点击联系我们后，浮现的窗口中的信息是一个： -->
-        <!-- 人力资源：86-10-64318888  邮箱：hr@boe.com.cn -->
         <div class="contact text-center join-right-click" id="join-page">
-            <p>
-                关注“BOE招聘”官方微信及“BOE招聘”Linkedin主页<br/>了解京东方招聘实时动态
-            </p>
-            <img src="images/g1/index/join-right01.png" alt=""/>
-            <img src="images/g1/index/join-right02.png" alt=""/>
-            <P>
-                发送您的简历至
-            </P>
-            <p>
-                <a href="javascript:void(0);">recruit@boe.com.cn</a> （校园招聘）
-            </p>
-            <P>
-                <a href="javascript:void(0);">zhaopin@boe.com.cn</a>（社会招聘）
-            </P>
-            <p>
-                并注明您申请的职位<br/>我们期待您的加入
-            </p>
         </div>
 
         <!-- 新闻中心 -->
         <div class="contact" id="news-center-page">
-            <p><span>人力资源</span>：86-10-67855688</p>
-            <p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：hr@boe.com.cn</p>
         </div>
 
         <!-- 关于我们 -->
         <div class="contact" id="about-page">
-            <p><span>人力资源</span>：86-10-67855688</p>
-            <p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：hr@boe.com.cn</p>
         </div>
 
         <!-- 多媒体中心  -->
         <div class="contact" id="media-center-page">
-            <p><span>人力资源</span>：86-10-67855688</p>
-            <p>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：hr@boe.com.cn</p>
         </div>
 
         <!-- 订阅公告 -->
         <div class="subscription pc-subscription">
-            <p>请在下方输入您的邮件地址，<br/>订阅邮件以获取最新的公司公告</p>
-
-            <form onsubmit="return false">
-                <div class="input-group">
-                    <input type="email" placeholder="邮件地址" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
-                    <a href="javascript:trackFn('index-subscription-btn','javascript:void(0);')" class="input-group-addon">订阅</a>
-                </div>
-                <div class="checkbox">
-                    <label> 验证码：  </label>
-                    <input placeholder="验证码" class="varicode" id="varicode">
-               		<img class="verifyCode" id="verifyCode" src="" />
-                </div>
-                <div class="checkbox">
-                   <!--  <label>
-                        <input type="checkbox"> 我同意共享个人信息
-                    </label> -->
-                </div>
-            </form>
         </div>
     </div>
-    
-        <!-- 下载资料弹层 -->
-	    <div class="modal fade" id="download" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	        <div class="modal-dialog" role="document">
-	            <div class="modal-content">
-	                <div class="modal-header">
-	                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                </div>
-	                <div  class="modal-body text-size">
-	                    <h3 class="two-size">{{title}}</h3>
-	                    <ul class="list-unstyled">
-	                        <li v-for="v in todos">
-	                            <p>{{v.text}}</p>
-	                            <a :href="v.downLink" download>下载</a>
-	                        </li>
-	                    </ul>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-        <!-- 订阅公告弹层-->
+
+    <!-- 下载资料弹层 -->
+    <div class="modal fade" id="download" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body text-size">
+                    <h3 class="two-size">{{title}}</h3>
+                    <ul class="list-unstyled">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 订阅公告弹层-->
     <div class="modal fade" id="subscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <div  class="modal-body text-size">
+                <div class="modal-body text-size">
 
                 </div>
             </div>
@@ -194,110 +123,24 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <div  class="modal-body">
-                    
+                <div class="modal-body">
+
                 </div>
             </div>
         </div>
     </div>
-        
-        <!--销售网络弹层 -->
-<div class="modal fade" id="sales" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div  class="modal-body text-left text-size">
-                <h3 class="three-size">北京京东方营销有限公司</h3>
-              <p>地址：中国北京市北京经济技术开发区西环中路12号</p>
-              <p>邮政编码：100176</p>
-              <p>电话：+86-10-60965867</p>
-              <h3 class="three-size">北京分公司</h3>
-              <p>地址：中国北京市北京经济技术开发区西环中路12号</p>
-              <p>邮政编码：100176</p>
-              <p>电话：+86-10-60965867</p>
-              <h3 class="three-size">上海分公司</h3>
-              <p>地址：上海市闵行区吴中路1799号万象城D座6楼06室</p>
-              <p>邮政编码：201103</p>
-              <p>电话：+86-21-60292757</p>
-              <p>传真：+86-21-60292758</p>
-              <h3 class="three-size">深圳分公司</h3>
-              <p>地址：中国广东省深圳市南山区科苑南路3099号中国储能大厦37层</p>
-              <p>邮政编码：518052</p>
-              <p>电话：+86-755-82934491</p>
-              <p>传真：+86-755-83038990</p>
-              <h3 class="three-size">成都分公司</h3>
-              <p>地址：四川省成都市高新西区合作路1188号</p>
-              <p>邮政编码：611731</p>
-              <p>电话：+86-28-61771197</p>
 
-              <h3 class="three-size">京东方韩国有限公司</h3>
-              <p>地址：韩国京畿道城南市盆唐区菽内洞Hwangsaeul路 216 HUMAX Village 3层 301室</p>
-              <p>邮政编码：13595</p>
-              <p>电话：+82-31-778-8063</p>
-
-              <h3 class="three-size">台湾京东方有限公司</h3>
-              <p>地址：台北市内湖区瑞光路392号7楼  </p>
-              <p>邮政编码：11492</p>
-              <p>电话：+886-2-8798-2828</p>
-
-              <h3 class="three-size">京东方日本有限公司</h3>
-              <p>地址：日本东京都港区港南2-16-1 品川East One Tower 4F  </p>
-              <p>邮政编码：1080075</p>
-              <p>电话：+81-(0)3-6712-3960</p>
-
-              <h3 class="three-size">京东方新加坡有限公司</h3>
-              <p>地址：新加坡淡马锡林荫大道8号新达城第三大厦#14-02A  </p>
-              <p>邮政编码：038988</p>
-              <p>电话：+65-6835-7295</p>
-
-              <h3 class="three-size">京东方美国有限公司</h3>
-              <p>地址：美国加利福尼亚州圣克拉拉市米申学院大道2350号1000室</p>
-              <p>邮政编码：95054</p>
-              <p>电话：+1-408-338-0606</p>
-
-              <h3 class="three-size">美国圣地亚哥办公室</h3>
-              <p>地址：美国加利福尼亚州圣地亚哥Suite1070，La Jolla村，4660</p>
-              <p>邮政编码：92122</p>
-              <p>电话：+1-650-667-9258</p>
-
-              <h3 class="three-size">美国休斯顿办公室</h3>
-              <p>地址：美国德克萨斯州休斯顿市2039州际公路249号180室</p>
-              <p>邮政编码：77070</p>
-              <p>电话：+1-408-834-5652</p>
-
-              <h3 class="three-size">美国波士顿办公室</h3>
-              <p>地址：美国马萨诸塞州剑桥市剑桥公园大道55号105室</p>
-              <p>邮政编码：2142</p>
-
-              <h3 class="three-size">京东方欧洲有限公司</h3>
-              <p>地址：德国黑森州埃施波恩市根海姆大街6号</p>
-              <p>邮政编码：65760</p>
-              <p>电话：+49(0)-6196-5869-40</p>
-
-              <h3 class="three-size">京东方印度有限公司</h3>
-              <p>地址：印度哈里亚纳邦古尔冈甘地路瓦提卡城市办公楼9楼902  </p>
-              <p>邮政编码：122002</p>
-              <p>电话：+91-124-406-6047</p>
-
-              <h3 class="three-size">京东方巴西咨询服务有限责任公司</h3>
-              <p>地址：巴西圣保罗市维拉奥林匹亚区奥林匹克公园大厦第51号戈麦斯德卡瓦略路1329号 </p>
-              <p>邮政编码：04547-005</p>
-
-              <h3 class="three-size">京东方俄罗斯有限责任公司</h3>
-              <p>地址：俄罗斯联邦莫斯科州克拉斯诺郭尔斯基区普济尔科沃工业园区格林伍德办公园区7号楼110室楼110室</p>
-              <p>邮政编码：143441</p>
-              <p>电话：+7-985-5869755</p>
-
-              <h3 class="three-size">京东方中东有限责任公司</h3>
-              <p>地址：阿联酋迪拜朱美拉湖塔朱美拉商业中心1，3502</p>
-              <!-- <p>邮政编码：POBOX</p> -->
-              <p>电话：971-503854282</p>
-
+    <!--销售网络弹层 -->
+    <div class="modal fade" id="sales" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body text-left text-size">
+                </div>
             </div>
         </div>
     </div>
-</div>
-    
+
 </div>

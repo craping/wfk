@@ -532,6 +532,21 @@ var UTIL={
 			}
 		}
 		return a;
+	},
+	getUrlData:function(url){
+		var dataString = url?url.split("?")[1]:window.location.href.split("?")[1];
+		var result = new Object();
+		if(dataString){
+			dataString = decodeURI(dataString);
+			var dataArray = new Array();
+			dataArray = dataString.split("&");
+			 
+			for(var key in dataArray){
+				var data = dataArray[key].split("=");
+				result[data[0]] = data[1];
+			}
+		}
+		return result;
 	}
 };
 
