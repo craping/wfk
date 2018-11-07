@@ -1,0 +1,133 @@
+
+
+
+/*=========  banner 图高度解决方案 */
+/*
+////////////////////////////////////////
+***********************************************************
+  common-height.css只写关于banner图的高度，其他css样式不要写到这里
+***********************************************************
+///////////////////////////////////////
+*/
+
+/*----------*/
+@media all and (max-width: 2000px){
+    #myCarousel .item{
+        height:555px;
+    }
+}
+
+
+/*----------*/
+@media all and (max-width: 1850px){
+    #myCarousel .item{
+        height:530px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1750px){
+    #myCarousel .item{
+        height:510px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1650px){
+    #myCarousel .item{
+        height:480px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1550px){
+    #myCarousel .item{
+        height:450px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1450px){
+    #myCarousel .item{
+        height:420px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1350px){
+    #myCarousel .item{
+        height:390px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1250px){
+    #myCarousel .item{
+        height:360px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1180px){
+    #myCarousel .item{
+        height:340px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1110px){
+    #myCarousel .item{
+        height:320px;
+    }
+}
+
+/*----------*/
+@media all and (max-width: 1040px){
+    #myCarousel .item{
+        height:300px;
+    }
+}
+
+/*-------------- 992 pad*/
+@media all and (max-width: 992px){
+    #myCarousel .item{
+        height:240px;
+    }
+
+}
+@media all and (max-width: 767px){
+    #myCarousel .item{
+        height:auto;
+    }
+}
+
+
+/*=================================  视频高度*/
+@media (min-width: 1200px){
+    #video-img-modal .item{
+       /*  height:411px; */
+    }
+}
+
+
+/*---iphone6 plus*/
+@media all and (max-width: 416px){
+    #video-img-modal .item{
+        /* height:207px; */
+    }
+}
+
+/*---iphone6*/
+@media all and (max-width: 377px){
+    #video-img-modal .item{
+        /* height:187px; */
+    }
+}
+
+/*---iphone-5*/
+@media all and (max-width: 322px){
+    #video-img-modal .item{
+       /*  height:162px; */
+    }
+}
+
