@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="" three-size="keywords" content="WUFK地址,WUFK电话,WUFK电视客服电话,WUFK电邮">
+    <meta name="" three-size="description" content="我们的联系信息业务分别为：商城购物咨询服务、公共联系信息、业务联系信息、海外业务联系信息、社交媒体平台。具体联系方式请关注WUFK官网。">
+    <title>WUFK官网_发展</title>
+    <link rel="stylesheet" href="library/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/about.css">
+    <style type="text/css">
+        #allmap {
+            width: 100%;
+            height: 500px;
+        }
+
+        p {
+            margin-left: 5px;
+            font-size: 14px;
+        }
+    </style>
+    <link rel="icon" href="/_images/favicon.ico">
+    <style></style>
+    <style>#data_base_id,.data_unit{display:none;}</style>
+</head>
+
+<body style="width: auto;">
+    <h1 style="display:none;">关于我们</h1>
+    <!--导航-->
+    <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
+    <div id="header"></div><!-- 点击路径 -->
+    <div class="container-fluid path" id="map">
+        <div class="container  text-size" >
+            <a href="javascript:trackFn('index.html')">{{NAVI["首页"]}}</a> <span>&gt;</span> <a href="javascript:trackFn('development.html')">{{NAVI["发展"]}}</a>
+        </div>
+    </div><!-- 第一屏大图 -->
+    <div class="container-fluid focus-box ab-box">
+        <div id="myCarousel" class="carousel slide focus-img dynamic">
+            <ol class="carousel-indicators ">
+                <li v-for="(v,index) in todos" data-target="#myCarousel" v-bind:data-slide-to="index"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div v-for="v in todos" class="item">
+                    <a v-bind:href="v.href">
+                        <img class="hidden-xs banner-lg-img" v-bind:src="v.imgSrc1" alt="">
+                        <img class="hidden-lg hidden-md hidden-sm " v-bind:src="v.imgSrc2" alt="">
+                    </a>
+                    <div class="focus-text">
+                        <div class="container first-size">
+                            <p class="p1" v-cloak="">{{v.text}}</p>
+                            <p class="p1" v-cloak="">{{v.text2}}</p>
+                            <p class="p1" v-cloak="">{{v.text3}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- 预览 -->
+    <div id="page-nav" class="container-fluid preview" style="">
+        <div class="container">
+            <ul class="list-unstyled list-inline">
+                <li v-for="v in todos" class="text-size"><a :href="v.href">{{v.text}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="fixed-nav" class="container-fluid hidden-xs" style="top: -55px;">
+        <div class="container">
+            <ul class="list-unstyled list-inline">
+                <li v-for="v in todos" class="text-size"><a :href="v.href">{{v.text}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="include_template" lang="portal_about_template_part_component_1.html"><input class="templateId" value="portal_about_template_part_component_1"
+            type="hidden">
+        <div class="container text-center products wufkqq  pctop">
+            <h3 class="two-size editable" style="word-break: break-all;">发展</h3>
+        </div>
+        <div class="container pctop pcbottom">
+            <p class="text-size editable" style="word-break:break-all; line-height:200%">深圳微方凯科技电子有限公司成立于2013年，华南地区液晶屏产品的行业先驱之一，作为该领域的优秀企业拥有多年的专业知识，为全球数十万企业和个人用户提供专业的产品和服务。总部设在中国经济最前沿城市深圳。</p>
+            <p class="text-size editable" style="word-break:break-all; line-height:200%">公司具有丰富的专业经验和技术人才,在激烈的市场竞争中始终走在行业前列,凭借不懈的努力实现了持续稳定发展, 通过与全球知名行业领军企业合作，公司长期提供现货库存，为客户寻求最新最速最好的产品体验。</p>
+            <p class="text-size editable" style="word-break:break-all; line-height:200%">我们将一如既往的为客户提供优质的液晶产品和服务。客户至上，服务一流</p>
+        </div>
+        <div class="container text-size about-idea idea1205-bg">
+            <ul class="row list-unstyled pctop">
+                <li class="col-sm-5 col-sm-offset-2 col-xs-12">
+                    <h3 class="three-size editable" style="word-break: break-all;">企业精神</h3>
+                    <p class="editable" style="word-break: break-all;"> 不断完善对客户的服务，更好为您服务 </p>
+                </li>
+                <li class="col-sm-4 col-xs-12">
+                    <h3 class="three-size editable" style="word-break: break-all;">我们的共同理想</h3>
+                    <p class="editable" style="word-break: break-all;"> 创民族企业品牌，打造液晶行业新星 </p>
+                </li>
+            </ul>
+            <div class="col-sm-9 col-sm-offset-2 col-xs-12 hidden-xs about-idea-border shadowtop shadowbottom"></div>
+            <ul class="row list-unstyled">
+                <li class="col-sm-5 col-sm-offset-2 col-xs-12">
+                    <h3 class="three-size editable" style="word-break: break-all;">经理人精神</h3>
+                    <p class="editable" style="word-break: break-all;"> 管理不仅是要管、 </p>
+                    <p class="editable" style="word-break: break-all;"> 还要做好一件大事=做好许多小事×管理统筹能力 </p>
+                </li>
+                <li class="col-sm-4 col-xs-12">
+                    <h3 class="three-size editable" style="word-break: break-all;">员工精神</h3>
+                    <p class="editable" style="word-break: break-all;"> 努力开拓 发展自我 </p>
+                    <p class="editable" style="word-break: break-all;"> 和蔼、虔诚对问题不回避，不推托 </p>
+                    <p class="editable" style="word-break: break-all;"> 坚持合作、稳定为基础，改善不足，锐意革新 </p>
+                    <p class="editable" style="word-break: break-all;"> 发现问题，及时解决 </p>
+                </li>
+            </ul>
+            <div class="col-sm-9 col-sm-offset-2 col-xs-12 hidden-xs about-idea-border shadowtop shadowbottom"></div>
+            <ul class="row list-unstyled">
+                <li class="col-sm-5 col-sm-offset-2 col-xs-12">
+                    <h3 class="three-size editable" style="word-break: break-all;">我们的价值观</h3>
+                    <p class="editable" style="word-break: break-all;"> 为社会服务，劳动者最光荣 </p>
+                    <p class="editable" style="word-break: break-all;"> 客户就是我们的上帝 </p>
+                    <p class="editable" style="word-break: break-all;"> 损害公司利益，就是损害每一个在职员工的利益，因此每个员工都应与这种行为做斗争</p>
+                    <p class="editable" style="word-break: break-all;"> 一个人的价值=他自己的价值（正）+他带给团队中他人的价值（正或负）区别可就大了</p>
+                </li>
+                <li class="col-sm-4 col-xs-12">
+                    <h3 class="three-size editable" style="word-break: break-all;">我们的团队观</h3>
+                    <p class="editable" style="word-break: break-all;"> 把困难视为：是在考验自己的一种方式 </p>
+                    <p class="editable" style="word-break: break-all;"> 合作大于对抗 是我们成功的基础 </p>
+                    <p class="editable" style="word-break: break-all;"> 个人的缺点并不可怕，关键是要看到别人的优点，对照自己 </p>
+                    <p class="editable" style="word-break: break-all;"> 不要狂大不勒，成功是因为一群人都很伟大 </p>
+                    <p class="editable" style="word-break: break-all;"> 自大往往是因为自己的表现超出了自己的预期，应该看的更远 </p>
+                </li>
+            </ul>
+            <div class="col-sm-9 col-sm-offset-2 col-xs-12 hidden-xs about-idea-border shadowtop shadowbottom"></div>
+            <ul class="row list-unstyled">
+                <li class="col-sm-5 col-sm-offset-2 col-xs-12">
+                    <h3 class="three-size editable" style="word-break: break-all;">我们的工作观</h3>
+                    <p class="editable" style="word-break: break-all;"> 没有把工作做好，等于没有工作 </p>
+                    <p class="editable" style="word-break: break-all;"> 一个对工作不负责的人不值得他人的信赖 </p>
+                    <p class="editable" style="word-break: break-all;"> 你的小失误可能带给他人大麻烦 </p>
+                </li>
+            </ul>
+        </div>
+        <div class="tv-shadow-b pctop"></div>
+        <div id="data_base_id" style="display:none;">window.data_base={"aroundProduct_band":"","aroundProduct_type":"","category":"","createTime":"2017-12-28
+            10:03","id":1322,"instance_id":1354,"mainContent":"11","miniatureUrl":"","newsSource":"","product_qa_tag":"","product_qa_type":"guanyuwomenshouye","subtitle":"","summary":"","templateCode":"guanyuwomenshouye","title":"发展"};</div>
+    </div><!-- 我们的业务文字 -->
+    <div id="footer"></div>
+    <div id="fixed" style="opacity: 1;"></div>
+    <!--===========library============-->
+    <script src="library/jQuery.2.4.1.min.js"></script>
+    <script src="library/jquery.mobile.custom.min.js"></script>
+    <script src="library/vue.min.js"></script>
+    <script src="library/bootstrap.min.js"></script>
+    <script src="core/var.js"></script>
+    <!--公用-->
+    <script src="js/common/common.js"></script>
+    <!--头部导航及页尾数据-->
+    <script src="js/common/headerData.js"></script>
+    <script src="js/common/footerData.js"></script>
+    <!--首页数据-->
+    <script src="js/data/about.js"></script>
+    <!--页面逻辑-->
+    <script src="js/logic/index.js"></script> 
+    <script src="_scripts/constants.js" type="text/javascript"></script> <input id="instance_id" value="1616" type="hidden">
+</body>
+<html>
+
+</html>

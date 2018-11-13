@@ -1,10 +1,3 @@
-/**
- * Created by chenzha on 2017/5/15.
- */
-///////////////////////////////////////////////////
-////////////////  在index.js中开发读取后台数据，然后将数据set进对应的数据位置？
-///////////////    是的，
-////////////////////////////////////////////////////
 var videoFocusBox;
 $(function(){
 
@@ -12,18 +5,7 @@ $(function(){
     var focusImgData = new Vue({
         el:"#myCarousel",
         data:{
-            todos:[
-             
-//                {
-//                    dataSlideTo:0,
-//                    imgSrc1:"images/g1/index/focus-img03.jpg",
-//                    imgSrc2:"images/g1/index/phone-banner.png",
-//                    href:"javascript:trackFn('index-banner3','javascript:void(0);')",
-//                    text:"为信息交互和人类健康",
-//                    text2:"提供智慧端口产品和专业服务",
-//                    text3:"的物联网公司"
-//                }
-            ]
+            todos:[]
         }
     });
     
@@ -37,7 +19,7 @@ $(function(){
 			"astate": "2",
 			"color": "黑",
 			"id": 74,
-			"link": "http://all.vic.sina.com.cn/210711jingdongfangboe/index.html",
+			"link": "index.html",
 			"margin": "左",
 			"name": "IPC 2",
 			"opentype": "标签页",
@@ -58,7 +40,7 @@ $(function(){
 			"astate": "2",
 			"color": "黑",
 			"id": 6,
-			"link": "",
+			"link": "index.html",
 			"margin": "左",
 			"name": "首页1",
 			"opentype": "当前页",
@@ -79,7 +61,7 @@ $(function(){
 			"astate": "2",
 			"color": "",
 			"id": 3,
-			"link": "http://www.boemall.cn/store/product/product!detail.html?id=10144",
+			"link": "index.html",
 			"margin": "左",
 			"name": "首页 2",
 			"opentype": "标签页",
@@ -109,7 +91,7 @@ $(function(){
 			dataSlideTo:i,//每条数据都要加此项，值依次累加
 			imgSrc1:lgImgSrc,
 			imgSrc2:xsImgSrc,
-			href:"javascript:trackFn('index-banner"+(i+1)+"','"+result.advertInfo[i].link+"')",
+			href:"javascript:trackFn('"+result.advertInfo[i].link+"')",
 			text:result.advertInfo[i].wordone,
 			text2:result.advertInfo[i].wordtwo,
 			text3:result.advertInfo[i].wordthree
@@ -129,16 +111,6 @@ $(function(){
         el:"#video-img-modal",
         data:{
             todos:[
-//                {
-//                    dataSlideTo:0,//每条数据都要加此项，值依次累加
-//                    href:"/cxkj/pc.html",
-//                    imgSrc:"images/g1/index/video-banner.jpg",
-//                    videoPoster:"images/g1/index/video01.png",
-//                    videoSrc:"https://mediasvcd78g02jdpn2c3.blob.core.chinacloudapi.cn/asset-814d435d-1500-80c4-d8ba-f1e5342dec75/%E4%BA%AC%E4%B8%9C%E6%96%B9%EF%BC%88BOE%EF%BC%89%EF%BC%9A%E6%98%BE%E7%A4%BA%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A84K_H264_4500kbps_AAC_und_ch2_128kbps.mp4?sv=2012-02-12&sr=c&si=0fa65556-a6cd-4212-addd-7182eff55dd9&sig=B31k%2FDvals2qJuNrNLK4i9Wo20p1R2GOkKewG%2FX%2FT%2B4%3D&st=2015-07-28T03:26:36Z&se=2115-07-04T03:26:36Z",
-//                    startSrc:"",//设置刚进来的时候视频的
-//                    title:"量子点显示 更安全、高效的显示",
-//                    text:"AMQLED 具有高色域的优点，可取代部分LCD 产品，而且可以开发多种新型显示产品及照明产品，具有巨大市场潜力。"
-//                }
             ]
         }
     });
@@ -151,7 +123,7 @@ $(function(){
 			"astate": "2",
 			"color": "",
 			"id": 69,
-			"link": "http://newwww.boe.com/cxkj/pc.html",
+			"link": "javascript:trackFn('index.html')",
 			"margin": "",
 			"name": "1",
 			"opentype": "标签页",
@@ -188,7 +160,7 @@ $(function(){
 			text:result.advertInfo[i].wordtwo
 		});
 	}
-//				videoFocusBox.todos.shift();
+
 	setTimeout(function(){
 
 		$("#myCarouse2").find(".carousel-indicators").find("li").eq(0).addClass("active");
@@ -213,4 +185,48 @@ $(function(){
 	 $("#myCarouse2").find(".carousel-inner").find(".item").eq(0).addClass("active");
 
 
+	 Web.Method.ajax("news/getList", {
+        data:{
+            page_flag:1,
+            page_num:3
+        },
+        success: function (data) {
+            console.log(data);
+            var todos = [];
+            for (let i = 0; i < data.info.length; i++) {
+                const item = data.info[i];
+                todos.push({
+                    href: "javascript:trackFn('newsDetail.html?type="+item.type+"&id="+item.id+"')",
+                    text: item.title,
+                    imgSrc: item.titleFile,
+                    time: new Date(item.pulishTime).format("yyyy-MM-dd")
+                });
+            }
+            new Vue({
+				el:"#hotNews",
+				data:{
+					todos:todos
+				}
+			});
+        },
+        fail: function(){
+            console.log("热点新闻据的读取fail");
+        },
+        error: function(){
+            console.log("热点新闻数据的读取error");
+        }
+	});
+	
+	new Vue({
+		el:".lang"
+	});
+	new Vue({
+		el:".lang1"
+	});
+	new Vue({
+		el:".lang2"
+	});
+	new Vue({
+		el:".lang3"
+	});
 });

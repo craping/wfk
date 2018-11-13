@@ -1377,7 +1377,7 @@
     }
     .weixin-box {
         width: 290px;
-        padding-left: 20px;
+        /* padding-left: 20px; */
         height: 60px;
         line-height: 60px;
         margin: 0 auto;
@@ -1957,7 +1957,7 @@
       /* top:-39px; */
       left:7px;
     }
-    .boeInnovateContent p:before{
+    .wufkInnovateContent p:before{
       top:0;
     }
     /*.time-filter,*/
@@ -2508,7 +2508,7 @@
         margin:0;
     }
     .logo {
-        background: url(../../images/g1/index/headerLogo.jpg) no-repeat 0px -6px;
+        background: url(../images/g1/index/headerLogo.jpg) no-repeat 0px 11px;
         background-size: 90%;
     }
     .small-min-font {
@@ -2769,8 +2769,8 @@
 
     }
     .logo {
-        background: url(../../images/g1/index/nav-icon.png) no-repeat -5px -3px;
-        background-size: 243%;
+        background: url(../images/g1/index/headerLogo.jpg) no-repeat 0px 10px;
+        background-size: 95%;
     }
     .icon-box > div .icon-text .p1 {
 
@@ -2931,8 +2931,8 @@
         margin-right: 45px;
     }
     .logo {
-        background: url(../../images/g1/index/nav-icon.png) no-repeat -5px -2px;
-        background-size: 231%;
+        background: url(../images/g1/index/headerLogo.jpg) no-repeat 0px 11px;
+        background-size: 80%;
     }
     .xs-list-box i {
         width: 28px;

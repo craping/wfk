@@ -12,14 +12,14 @@ $(function(){
     });
 
 
-        $(".video-arc").click(function(){
-            var index = $(this).parents(".item").index();
-            var video = $("#myModal").find("video");
-            //指定视频的src
-            videoFocusBox.todos[index].startSrc = videoFocusBox.todos[index].videoSrc;
-            video.css("display","none");
-            video.eq(index).css("display","block");
-        });
+    $(".video-arc").click(function(){
+        var index = $(this).parents(".item").index();
+        var video = $("#myModal").find("video");
+        //指定视频的src
+        videoFocusBox.todos[index].startSrc = videoFocusBox.todos[index].videoSrc;
+        video.css("display","none");
+        video.eq(index).css("display","block");
+    });
 
 
 //    摸态框 index
@@ -44,38 +44,6 @@ $(function(){
             }
         }
     }
-
-    // 手势滑动
-    setTimeout(function(){
-
-        /*$("#myCarousel").swipeleft(function() {
-            $(this).carousel('next');
-        });
-        $("#myCarousel").swiperight(function() {
-            $(this).carousel('prev');
-        });
-
-        
-        $("#myCarouse2").swipeleft(function() {
-            $(this).carousel('next');
-        });
-        $("#myCarouse2").swiperight(function() {
-            $(this).carousel('prev');
-        });*/
-        // 控制轮播小点的显示
-        /*rotation("#myCarousel","#myCarouse2");*/
-    },1000);
-
- // 控制轮播小点的显示
-    //rotation("#myCarousel","#myCarouse2");
-//关于贴边 media subscription sales xinhua-com
-    // 联系我们 contact
-    // BOE商城 mall
-    // 多媒体中心 media/
-    // 订阅公告 subscription/
-    // 销售网络 sales/
-    // 新华网 xinhua-com/
-    //下载 down/
     $(window).load(function(){
     	setTimeout(function(){
 	        pageFixedBlock(".contact");
@@ -88,16 +56,6 @@ $(function(){
             "bottom":"10px"
           });
         }
-
-        //隐藏贴边
-        // 首页：index  
-        // 产品与服务 product-service-page
-        // 创新科技 innovate-page 
-        // 投资者关系 investor-page 
-        // 加入我们 join-page
-        // 新闻中心 news-center-page
-        // 关于我们 about-page
-        // 多媒体中心 media-center-page
         setTimeout(function(){
         fixedModel("#product-service-page",
             "#innovate-page",

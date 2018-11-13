@@ -1,0 +1,8 @@
+.nav-size{font-size: 13px;}
+.fixed-display #index p:nth-child(1) span{
+    letter-spacing:0px;
+  }
+  .fixed-display #index p:nth-child(3) span,
+  .fixed-display #index p:nth-child(4) span{
+    letter-spacing:0px;
+  }

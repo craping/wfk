@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="" three-size="keywords" content="WUFK地址,WUFK电话,WUFK电视客服电话,WUFK电邮">
+    <meta name="" three-size="description" content="我们的联系信息业务分别为：商城购物咨询服务、公共联系信息、业务联系信息、海外业务联系信息、社交媒体平台。具体联系方式请关注WUFK官网。">
+    <title>WUFK官网_产品中心</title>
+    <link rel="stylesheet" href="library/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/news.css">
+    <style type="text/css">
+        #data_base_id,.data_unit{display:none;}
+    </style>
+    <link rel="icon" href="/_images/favicon.ico">
+    <style></style>
+    <style>#data_base_id,.data_unit{display:none;}</style>
+</head>
+
+<body style="width: auto;">
+    <h1 style="display:none;">产品中心</h1>
+    <!--导航-->
+    <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
+    <div id="header"></div><!-- 点击路径 -->
+    <div class="container-fluid path">
+        <div id="map" class="container  text-size">
+            <a href="index.html">{{NAVI["首页"]}}</a> <span>&gt;</span> <a href="products.html">{{NAVI["产品中心"]}}</a>
+        </div>
+    </div>
+    <div id="page-nav"></div>
+    <div id="fixed-nav" class="container-fluid hidden-xs" style="top: -55px;">
+        <div class="container">
+            <ul class="list-unstyled list-inline">
+                <li v-for="v in todos" class="text-size"><a :href="v.href">{{v.text}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container pctop pcbottom newCenterRotation">
+        <ul class="row list-unstyled dynamic">
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data1">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["笔记本液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}} </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('productList.html?type=1')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+            <li class="col-md-12 col-sm-12 col-xs-12 hidden-lg hidden-md">
+                <br/><div class="container borderCCC"></div><br/>
+            </li>
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data2">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["工控液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('productList.html?type=2')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+            <li class="col-md-12 col-sm-12 col-xs-12">
+                <br/><div class="container borderCCC"></div><br/>
+            </li>
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data3">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["安防液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('productList.html?type=3')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+            <li class="col-md-12 col-sm-12 col-xs-12 hidden-lg hidden-md">
+                <br/><div class="container borderCCC"></div><br/>
+            </li>
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data4">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["监控液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('productList.html?type=4')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+            <li class="col-md-12 col-sm-12 col-xs-12">
+                <br/><div class="container borderCCC"></div><br/>
+            </li>
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data5">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["医疗设备屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('productList.html?type=5')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+            <li class="col-md-12 col-sm-12 col-xs-12 hidden-lg hidden-md">
+                <br/><div class="container borderCCC"></div><br/>
+            </li>
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data6">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["广告机液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('productList.html?type=6')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="container borderCCC"></div>
+    <div class="container pctop pcbottom newCenterRotation">
+        <ul class="row list-unstyled dynamic">
+            <li class="col-md-12 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data2">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["工控液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('information.html?type=2')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container borderCCC"></div>
+    <div class="container pctop pcbottom newCenterRotation">
+        <ul class="row list-unstyled dynamic">
+            <li class="col-md-12 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data3">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["安防液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('information.html?type=3')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container borderCCC"></div>
+    <div class="container pctop pcbottom newCenterRotation">
+        <ul class="row list-unstyled dynamic">
+            <li class="col-md-12 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data4">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["监控液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('information.html?type=3')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container borderCCC"></div>
+    <div class="container pctop pcbottom newCenterRotation">
+        <ul class="row list-unstyled dynamic">
+            <li class="col-md-12 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data5">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["医疗设备屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('information.html?type=3')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container borderCCC"></div>
+    <div class="container pctop pcbottom newCenterRotation">
+        <ul class="row list-unstyled dynamic">
+            <li class="col-md-12 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data6">
+                <div class="newCenterTitleBox">
+                    <h3 class="two-size h31205">{{NAVI["广告机液晶屏"]}}</h3>
+                    <ul class="list-unstyled text-black text-size">
+                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}}  </a> </li>
+                    </ul>
+                </div>
+                <a href="javascript:trackFn('information.html?type=3')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
+            </li>
+        </ul>
+    </div> -->
+
+    <div class="include_template" lang="portal_about_template_part_component_1.html">
+    </div><!-- 我们的业务文字 -->
+    <div id="footer"></div>
+    <div id="fixed" style="opacity: 1;"></div>
+    <!--===========library============-->
+    <script src="library/jQuery.2.4.1.min.js"></script>
+    <script src="library/jquery.mobile.custom.min.js"></script>
+    <script src="library/vue.min.js"></script>
+    <script src="library/bootstrap.min.js"></script>
+    <script src="core/var.js"></script>
+    <!--公用-->
+    <script src="js/common/common.js"></script>
+    <!--头部导航及页尾数据-->
+    <script src="js/common/headerData.js"></script>
+    <script src="js/common/footerData.js"></script>
+    <!--首页数据-->
+    <script src="js/data/products.js"></script>
+    <!--页面逻辑-->
+    <script src="js/logic/index.js"></script> 
+    <script src="_scripts/constants.js" type="text/javascript"></script>
+</body>
+</html>
