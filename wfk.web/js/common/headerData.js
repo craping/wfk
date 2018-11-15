@@ -11,11 +11,11 @@ $("#header").load("_template/header.html", function () {
         href: "javascript:void(0)",
         menu: [{
             text: NAVI["关于我们"],
-            href: "javascript:trackFn('about.html')"
+            href: "javascript:trackFn('about.html', 'openNewWindow')"
         },
         {
             text: NAVI["发展"],
-            href: "javascript:trackFn('development.html')"
+            href: "javascript:trackFn('development.html', 'openNewWindow')"
         },
         /* {
             text: NAVI["技术优势"],
@@ -23,56 +23,56 @@ $("#header").load("_template/header.html", function () {
         }, */
         {
             text: NAVI["品牌"],
-            href: "javascript:trackFn('brand.html')"
+            href: "javascript:trackFn('brand.html', 'openNewWindow')"
         }]
     }, {
         text: NAVI["产品中心"],
-        href: "javascript:trackFn('products.html');",
+        href: "javascript:trackFn('products.html', 'openNewWindow');",
         //二级
         menu: [{
             text: NAVI["显示和传感器件"],
-            href: "javascript:void(0);",
+            href: "javascript:void(0)",
 
             //三级
             menu: [{
                 text: NAVI["笔记本液晶屏"],
-                href: "javascript:void(0);"
+                href: "javascript:trackFn('productList.html?type=1', 'openNewWindow')"
             },
             {
                 text: NAVI["工控液晶屏"],
-                href: "javascript:void(0);"
+                href: "javascript:trackFn('productList.html?type=2', 'openNewWindow')"
             },
             {
                 text: NAVI["安防液晶屏"],
-                href: "javascript:void(0);"
+                href: "javascript:trackFn('productList.html?type=3', 'openNewWindow')"
             },
             {
                 text: NAVI["监控液晶屏"],
-                href: "javascript:void(0);"
+                href: "javascript:trackFn('productList.html?type=4', 'openNewWindow')"
             },
             {
                 text: NAVI["医疗设备屏"],
-                href: "javascript:void(0);"
+                href: "javascript:trackFn('productList.html?type=5', 'openNewWindow')"
             },
             {
                 text: NAVI["广告机液晶屏"],
-                href: "javascript:void(0);"
+                href: "javascript:trackFn('productList.html?type=6', 'openNewWindow')"
             }]
         }]
     }, {
         text: NAVI["新闻中心"],
-        href: "javascript:trackFn('news.html')",
+        href: "javascript:trackFn('news.html', 'openNewWindow')",
         menu: [{
             text: NAVI["公司新闻"],
-            href: "javascript:trackFn('information.html?type=1')"
+            href: "javascript:trackFn('information.html?type=1', 'openNewWindow')"
         },
         {
             text: NAVI["行业新闻"],
-            href: "javascript:trackFn('information.html?type=2')"
+            href: "javascript:trackFn('information.html?type=2', 'openNewWindow')"
         },
         {
             text: NAVI["社会热点"],
-            href: "javascript:trackFn('information.html?type=3')"
+            href: "javascript:trackFn('information.html?type=3', 'openNewWindow')"
         }]
     }];
 
@@ -98,11 +98,11 @@ $("#header").load("_template/header.html", function () {
         },
         {
             text: NAVI["联系我们"],
-            href: "javascript:trackFn('contact.html')"
+            href: "javascript:trackFn('contact.html', 'openNewWindow')"
         },
         {
             text: NAVI["加入我们"],
-            href: "javascript:trackFn('join.html')"
+            href: "javascript:trackFn('join.html', 'openNewWindow')"
         },
         {
             text: NAVI["多媒体"],

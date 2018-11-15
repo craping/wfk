@@ -389,9 +389,9 @@ p>span.ddd,
   display: inline-block;
   width: 120px;
   height: 35px;
-  background: url("../images/g1/index/headerLogo.jpg") no-repeat 0px 5px;
+  background: url("../images/g1/index/headerLogo.jpg") no-repeat 0px 0px;
   cursor: pointer;
-  background-size: 100%;
+  background-size: 90%;
 }
 .nav-list1 {
   height: 100%;

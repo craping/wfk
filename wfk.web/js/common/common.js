@@ -87,7 +87,6 @@ $(function () {
 
             //二维码的left common
             $(".wx").css("left", $(".weixin-box").find("a").eq(0).offset().left - 8 + "px");
-            $(".yl").css("left", $(".weixin-box").find("a").eq(1).offset().left - 25 + "px");
 
             //common
             $("#clear-nav").css({ "height": $(".parent-fixed").height() + "px", "background": "rgba(0,0,0,0)" });
