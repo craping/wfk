@@ -2,6 +2,7 @@ package wfk.protocol.http.server.service;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -18,15 +19,19 @@ import wfk.common.define.bean.result.criteria.DataResult;
 import wfk.common.define.error.support.Errors;
 import wfk.process.biz.server.IProductServer;
 import wfk.process.dao.sql.entity.WFKProduct;
+import wfk.process.dao.sql.entity.WFKProductFile;
 import wfk.protocol.http.core.util.ClassUtil;
 import wfk.protocol.http.core.validate.annotation.Parameter;
 import wfk.protocol.http.core.validate.annotation.ServiceMethod;
 import wfk.protocol.http.core.web.handler.ServiceHandler;
 import wfk.protocol.http.define.param.TokenParam;
+import wfk.protocol.http.server.util.FileUtil;
 import wfk.protocol.http.server.util.ImageUtil;
 
 @Controller("product")
 public class ProductService extends ServiceHandler {
+	
+	private static final String SERVER_PATH = Configuration.getSysProp("sys.uploadPath");
 	
 	@Autowired
 	private IProductServer productServer;
@@ -63,7 +68,6 @@ public class ProductService extends ServiceHandler {
 		desc = "获取产品列表", 
 		params = { 
 			@Parameter(value="product_name", desc="产品名称", required=false),
-			@Parameter(value="stock_id", desc="产品编号", required=false),
 			@Parameter(value="panel_size", desc="面板尺寸", required=false),
 			@Parameter(value="resolution", desc="分辨率", required=false),
 			@Parameter(value="brand", desc="品牌", required=false),
@@ -95,26 +99,42 @@ public class ProductService extends ServiceHandler {
 		WFKProduct product = new WFKProduct();
 		product = ClassUtil.fillObject(params, product);
 		
-		String stock_id = params.get("stock_id");
-		String model = params.get("model");
-		String file_url = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", "specification", model);
-		product.setFileUrl(file_url);
-	
-		StringBuffer sb = new StringBuffer();
-		int n = 0;
-		for(int i = 0; i < 5; i++){
-			String pic_name = "def_pic_" + i;
-			String pic_path = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", pic_name, pic_name);
-			if(pic_path != null && !"".equals(pic_path)) {
-				if(n != 0) sb.append(",");
-				sb.append(pic_path);
-				n ++;
-			}
-		}
-		if(sb != null && !"".equals(sb.toString())) 
-			product.setImages(sb.toString());
+		String content = params.get("context"); // 产品详情
+		String htmlFileName = params.get("panel_model") + ".html"; // 详情文件名
+		String content_file = FileUtil.writeHtml(content, SERVER_PATH + Configuration.getSysProp("sys.html"), htmlFileName);
 		
-		productServer.add(product);
+		product.setContent(content_file);
+		try {
+			// 插入产品基本信息
+			productServer.add(product);
+		} catch (Exception ex) {
+			return new Result(Errors.EXCEPTION_UNKNOW, ex.getMessage());
+		}
+		return new Result(Errors.OK);
+	}
+	
+	@ServiceMethod(
+		value = "addProductFile", 
+		desc = "保存产品文档",
+		params={
+			@Parameter(type = TokenParam.class),
+		}
+	)
+	public Errcode addProductFile(HttpServletRequest request, Map<String, String> params) throws IOException, ServletException, URISyntaxException{
+		WFKProduct product = new WFKProduct();
+		product = ClassUtil.fillObject(params, product);
+		
+		String content = params.get("context"); // 产品详情
+		String htmlFileName = params.get("panel_model") + ".html"; // 详情文件名
+		String content_file = FileUtil.writeHtml(content, SERVER_PATH + Configuration.getSysProp("sys.html"), htmlFileName);
+		
+		product.setContent(content_file);
+		try {
+			// 插入产品基本信息
+			productServer.add(product);
+		} catch (Exception ex) {
+			return new Result(Errors.EXCEPTION_UNKNOW, ex.getMessage());
+		}
 		return new Result(Errors.OK);
 	}
 	
@@ -131,19 +151,19 @@ public class ProductService extends ServiceHandler {
 		WFKProduct product = ClassUtil.fillObject(params, productServer.getInfoById(Integer.parseInt(pid)));
 		
 		String[] def_pic = request.getParameterValues("def_pic");
-		String stock_id = product.getStockId().toString();
+		//String stock_id = product.getStockId().toString();
 		String model = params.get("model");
 		
-		String file_url = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", "specification", model);
+		String file_url = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + "stock_id" + "/", "specification", model);
 		if (file_url != null && file_url !="") {
-			product.setFileUrl(file_url);
+			//product.setFileUrl(file_url);
 		}
 		
 		StringBuffer sb = new StringBuffer();
 		int n = 0;
 		for(int i = 0; i < 5; i++){
 			String pic_name = "def_pic_" + i;
-			String pic_path = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + stock_id + "/", pic_name, pic_name);
+			String pic_path = ImageUtil.saveImages(request, Configuration.getSysProp("sys.img") + "stock_id" + "/", pic_name, pic_name);
 			if(pic_path != null && !"".equals(pic_path)) {
 				if(n != 0) sb.append(",");
 				sb.append(pic_path);
@@ -151,7 +171,7 @@ public class ProductService extends ServiceHandler {
 			}
 		}
 		if(sb != null && !"".equals(sb.toString())) 
-			product.setImages(sb.toString());
+			//product.setImages(sb.toString());
 		
 		if(def_pic != null && def_pic.length > 0){
 			for(String pic : def_pic){
@@ -160,9 +180,9 @@ public class ProductService extends ServiceHandler {
 			}
 		}
 		if(sb != null && !"".equals(sb.toString())) {
-			product.setImages(sb.toString());
+			//product.setImages(sb.toString());
 	    } else {
-	    	product.setImages("");
+	    	//product.setImages("");
 		}
 	
 		productServer.update(product);
