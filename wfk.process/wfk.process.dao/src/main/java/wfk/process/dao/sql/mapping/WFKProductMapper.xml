@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wfk.process.dao.sql.service.WFKProductMapper">
+  <resultMap id="BaseResultMap" type="wfk.process.dao.sql.entity.WFKProduct">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="panel_brand" jdbcType="VARCHAR" property="panelBrand" />
+    <result column="panel_model" jdbcType="VARCHAR" property="panelModel" />
+    <result column="panel_size" jdbcType="VARCHAR" property="panelSize" />
+    <result column="panel_type" jdbcType="VARCHAR" property="panelType" />
+    <result column="resolution" jdbcType="VARCHAR" property="resolution" />
+    <result column="pixel_format" jdbcType="VARCHAR" property="pixelFormat" />
+    <result column="display__area" jdbcType="VARCHAR" property="displayArea" />
+    <result column="outline_size" jdbcType="VARCHAR" property="outlineSize" />
+    <result column="surface" jdbcType="VARCHAR" property="surface" />
+    <result column="brightness" jdbcType="VARCHAR" property="brightness" />
+    <result column="contrast_ratio" jdbcType="VARCHAR" property="contrastRatio" />
+    <result column="viewing_angle" jdbcType="VARCHAR" property="viewingAngle" />
+    <result column="display_mode" jdbcType="VARCHAR" property="displayMode" />
+    <result column="best_view" jdbcType="VARCHAR" property="bestView" />
+    <result column="response_time" jdbcType="VARCHAR" property="responseTime" />
+    <result column="display_color" jdbcType="VARCHAR" property="displayColor" />
+    <result column="lamp_type" jdbcType="VARCHAR" property="lampType" />
+    <result column="frequency" jdbcType="VARCHAR" property="frequency" />
+    <result column="touch_screen" jdbcType="VARCHAR" property="touchScreen" />
+    <result column="shape_style" jdbcType="VARCHAR" property="shapeStyle" />
+    <result column="application" jdbcType="VARCHAR" property="application" />
+    <result column="signal_interface" jdbcType="VARCHAR" property="signalInterface" />
+    <result column="input_voltage" jdbcType="VARCHAR" property="inputVoltage" />
+    <result column="app_type" jdbcType="INTEGER" property="appType" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, product_name, panel_brand, panel_model, panel_size, panel_type, resolution, pixel_format, 
+    display__area, outline_size, surface, brightness, contrast_ratio, viewing_angle, 
+    display_mode, best_view, response_time, display_color, lamp_type, frequency, touch_screen, 
+    shape_style, application, signal_interface, input_voltage, app_type, status, add_time, 
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wfk_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wfk_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="wfk.process.dao.sql.entity.WFKProduct">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into wfk_product (product_name, panel_brand, panel_model, 
+      panel_size, panel_type, resolution, 
+      pixel_format, display__area, outline_size, 
+      surface, brightness, contrast_ratio, 
+      viewing_angle, display_mode, best_view, 
+      response_time, display_color, lamp_type, 
+      frequency, touch_screen, shape_style, 
+      application, signal_interface, input_voltage, 
+      app_type, status, add_time, 
+      content)
+    values (#{productName,jdbcType=VARCHAR}, #{panelBrand,jdbcType=VARCHAR}, #{panelModel,jdbcType=VARCHAR}, 
+      #{panelSize,jdbcType=VARCHAR}, #{panelType,jdbcType=VARCHAR}, #{resolution,jdbcType=VARCHAR}, 
+      #{pixelFormat,jdbcType=VARCHAR}, #{displayArea,jdbcType=VARCHAR}, #{outlineSize,jdbcType=VARCHAR}, 
+      #{surface,jdbcType=VARCHAR}, #{brightness,jdbcType=VARCHAR}, #{contrastRatio,jdbcType=VARCHAR}, 
+      #{viewingAngle,jdbcType=VARCHAR}, #{displayMode,jdbcType=VARCHAR}, #{bestView,jdbcType=VARCHAR}, 
+      #{responseTime,jdbcType=VARCHAR}, #{displayColor,jdbcType=VARCHAR}, #{lampType,jdbcType=VARCHAR}, 
+      #{frequency,jdbcType=VARCHAR}, #{touchScreen,jdbcType=VARCHAR}, #{shapeStyle,jdbcType=VARCHAR}, 
+      #{application,jdbcType=VARCHAR}, #{signalInterface,jdbcType=VARCHAR}, #{inputVoltage,jdbcType=VARCHAR}, 
+      #{appType,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="wfk.process.dao.sql.entity.WFKProduct">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into wfk_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="panelBrand != null">
+        panel_brand,
+      </if>
+      <if test="panelModel != null">
+        panel_model,
+      </if>
+      <if test="panelSize != null">
+        panel_size,
+      </if>
+      <if test="panelType != null">
+        panel_type,
+      </if>
+      <if test="resolution != null">
+        resolution,
+      </if>
+      <if test="pixelFormat != null">
+        pixel_format,
+      </if>
+      <if test="displayArea != null">
+        display__area,
+      </if>
+      <if test="outlineSize != null">
+        outline_size,
+      </if>
+      <if test="surface != null">
+        surface,
+      </if>
+      <if test="brightness != null">
+        brightness,
+      </if>
+      <if test="contrastRatio != null">
+        contrast_ratio,
+      </if>
+      <if test="viewingAngle != null">
+        viewing_angle,
+      </if>
+      <if test="displayMode != null">
+        display_mode,
+      </if>
+      <if test="bestView != null">
+        best_view,
+      </if>
+      <if test="responseTime != null">
+        response_time,
+      </if>
+      <if test="displayColor != null">
+        display_color,
+      </if>
+      <if test="lampType != null">
+        lamp_type,
+      </if>
+      <if test="frequency != null">
+        frequency,
+      </if>
+      <if test="touchScreen != null">
+        touch_screen,
+      </if>
+      <if test="shapeStyle != null">
+        shape_style,
+      </if>
+      <if test="application != null">
+        application,
+      </if>
+      <if test="signalInterface != null">
+        signal_interface,
+      </if>
+      <if test="inputVoltage != null">
+        input_voltage,
+      </if>
+      <if test="appType != null">
+        app_type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="panelBrand != null">
+        #{panelBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="panelModel != null">
+        #{panelModel,jdbcType=VARCHAR},
+      </if>
+      <if test="panelSize != null">
+        #{panelSize,jdbcType=VARCHAR},
+      </if>
+      <if test="panelType != null">
+        #{panelType,jdbcType=VARCHAR},
+      </if>
+      <if test="resolution != null">
+        #{resolution,jdbcType=VARCHAR},
+      </if>
+      <if test="pixelFormat != null">
+        #{pixelFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="displayArea != null">
+        #{displayArea,jdbcType=VARCHAR},
+      </if>
+      <if test="outlineSize != null">
+        #{outlineSize,jdbcType=VARCHAR},
+      </if>
+      <if test="surface != null">
+        #{surface,jdbcType=VARCHAR},
+      </if>
+      <if test="brightness != null">
+        #{brightness,jdbcType=VARCHAR},
+      </if>
+      <if test="contrastRatio != null">
+        #{contrastRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="viewingAngle != null">
+        #{viewingAngle,jdbcType=VARCHAR},
+      </if>
+      <if test="displayMode != null">
+        #{displayMode,jdbcType=VARCHAR},
+      </if>
+      <if test="bestView != null">
+        #{bestView,jdbcType=VARCHAR},
+      </if>
+      <if test="responseTime != null">
+        #{responseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="displayColor != null">
+        #{displayColor,jdbcType=VARCHAR},
+      </if>
+      <if test="lampType != null">
+        #{lampType,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null">
+        #{frequency,jdbcType=VARCHAR},
+      </if>
+      <if test="touchScreen != null">
+        #{touchScreen,jdbcType=VARCHAR},
+      </if>
+      <if test="shapeStyle != null">
+        #{shapeStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="application != null">
+        #{application,jdbcType=VARCHAR},
+      </if>
+      <if test="signalInterface != null">
+        #{signalInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="inputVoltage != null">
+        #{inputVoltage,jdbcType=VARCHAR},
+      </if>
+      <if test="appType != null">
+        #{appType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="wfk.process.dao.sql.entity.WFKProduct">
+    update wfk_product
+    <set>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="panelBrand != null">
+        panel_brand = #{panelBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="panelModel != null">
+        panel_model = #{panelModel,jdbcType=VARCHAR},
+      </if>
+      <if test="panelSize != null">
+        panel_size = #{panelSize,jdbcType=VARCHAR},
+      </if>
+      <if test="panelType != null">
+        panel_type = #{panelType,jdbcType=VARCHAR},
+      </if>
+      <if test="resolution != null">
+        resolution = #{resolution,jdbcType=VARCHAR},
+      </if>
+      <if test="pixelFormat != null">
+        pixel_format = #{pixelFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="displayArea != null">
+        display__area = #{displayArea,jdbcType=VARCHAR},
+      </if>
+      <if test="outlineSize != null">
+        outline_size = #{outlineSize,jdbcType=VARCHAR},
+      </if>
+      <if test="surface != null">
+        surface = #{surface,jdbcType=VARCHAR},
+      </if>
+      <if test="brightness != null">
+        brightness = #{brightness,jdbcType=VARCHAR},
+      </if>
+      <if test="contrastRatio != null">
+        contrast_ratio = #{contrastRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="viewingAngle != null">
+        viewing_angle = #{viewingAngle,jdbcType=VARCHAR},
+      </if>
+      <if test="displayMode != null">
+        display_mode = #{displayMode,jdbcType=VARCHAR},
+      </if>
+      <if test="bestView != null">
+        best_view = #{bestView,jdbcType=VARCHAR},
+      </if>
+      <if test="responseTime != null">
+        response_time = #{responseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="displayColor != null">
+        display_color = #{displayColor,jdbcType=VARCHAR},
+      </if>
+      <if test="lampType != null">
+        lamp_type = #{lampType,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null">
+        frequency = #{frequency,jdbcType=VARCHAR},
+      </if>
+      <if test="touchScreen != null">
+        touch_screen = #{touchScreen,jdbcType=VARCHAR},
+      </if>
+      <if test="shapeStyle != null">
+        shape_style = #{shapeStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="application != null">
+        application = #{application,jdbcType=VARCHAR},
+      </if>
+      <if test="signalInterface != null">
+        signal_interface = #{signalInterface,jdbcType=VARCHAR},
+      </if>
+      <if test="inputVoltage != null">
+        input_voltage = #{inputVoltage,jdbcType=VARCHAR},
+      </if>
+      <if test="appType != null">
+        app_type = #{appType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="wfk.process.dao.sql.entity.WFKProduct">
+    update wfk_product
+    set product_name = #{productName,jdbcType=VARCHAR},
+      panel_brand = #{panelBrand,jdbcType=VARCHAR},
+      panel_model = #{panelModel,jdbcType=VARCHAR},
+      panel_size = #{panelSize,jdbcType=VARCHAR},
+      panel_type = #{panelType,jdbcType=VARCHAR},
+      resolution = #{resolution,jdbcType=VARCHAR},
+      pixel_format = #{pixelFormat,jdbcType=VARCHAR},
+      display__area = #{displayArea,jdbcType=VARCHAR},
+      outline_size = #{outlineSize,jdbcType=VARCHAR},
+      surface = #{surface,jdbcType=VARCHAR},
+      brightness = #{brightness,jdbcType=VARCHAR},
+      contrast_ratio = #{contrastRatio,jdbcType=VARCHAR},
+      viewing_angle = #{viewingAngle,jdbcType=VARCHAR},
+      display_mode = #{displayMode,jdbcType=VARCHAR},
+      best_view = #{bestView,jdbcType=VARCHAR},
+      response_time = #{responseTime,jdbcType=VARCHAR},
+      display_color = #{displayColor,jdbcType=VARCHAR},
+      lamp_type = #{lampType,jdbcType=VARCHAR},
+      frequency = #{frequency,jdbcType=VARCHAR},
+      touch_screen = #{touchScreen,jdbcType=VARCHAR},
+      shape_style = #{shapeStyle,jdbcType=VARCHAR},
+      application = #{application,jdbcType=VARCHAR},
+      signal_interface = #{signalInterface,jdbcType=VARCHAR},
+      input_voltage = #{inputVoltage,jdbcType=VARCHAR},
+      app_type = #{appType,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
