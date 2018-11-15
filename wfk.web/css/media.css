@@ -2508,8 +2508,8 @@
         margin:0;
     }
     .logo {
-        background: url(../images/g1/index/headerLogo.jpg) no-repeat 0px 11px;
-        background-size: 90%;
+        background: url(../images/g1/index/headerLogo.jpg) no-repeat 0px 8px;
+        background-size: 75%;
     }
     .small-min-font {
 
@@ -2770,7 +2770,7 @@
     }
     .logo {
         background: url(../images/g1/index/headerLogo.jpg) no-repeat 0px 10px;
-        background-size: 95%;
+        background-size: 65%;
     }
     .icon-box > div .icon-text .p1 {
 

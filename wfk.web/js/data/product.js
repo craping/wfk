@@ -53,17 +53,30 @@ $(function () {
                     }
                 }, 100);
 
+                var imgs = product.images.split(",");
+                var todos = [];
+                for (let i = 0; i < imgs.length; i++) {
+                    const el = imgs[i];
+                    todos.push({
+                        imgSrc1: el,
+                        imgSrc2: el,
+                        href: "javascript:void(0);",
+                        text: "",
+                        text2: "",
+                        text3: ""
+                    });
+                }
                 var banner06 = new Vue({
                     el: ".mobile-banner",
                     data: {
-                        todos: [{
+                        todos: todos/* [{
                             imgSrc1: "http://portimg.boe.com/displayimages/f3c12438-8efc-4a18-9b5f-802d566a1d41.jpeg",
                             imgSrc2: "http://portimg.boe.com/displayimages/a85c6329-38b1-4adb-8f08-b0a9f54f0177.jpeg",
                             href: "javascript:void(0);",
                             text: "",
                             text2: "",
                             text3: ""
-                        }]
+                        }] */
                     }
                 });
                 $('[data-toggle="tooltip"]').tooltip({
