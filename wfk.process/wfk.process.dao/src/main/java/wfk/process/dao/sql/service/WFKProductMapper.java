@@ -2,7 +2,7 @@ package wfk.process.dao.sql.service;
 
 import wfk.process.dao.sql.entity.WFKProduct;
 
-public interface WFKProductMapper {
+public interface WFKProductMapper extends Mapper<WFKProduct>{
     int deleteByPrimaryKey(Integer id);
 
     int insert(WFKProduct record);

@@ -17,6 +17,7 @@ import wfk.process.biz.util.sql.support.QueryBuilder;
 import wfk.process.biz.util.sql.support.filter.SqlColumn;
 import wfk.process.biz.util.support.ServiceDao;
 import wfk.process.dao.sql.entity.WFKProduct;
+import wfk.process.dao.sql.entity.WFKProductFile;
 
 @Service
 public class ProductServerImpl implements IProductServer{
@@ -73,5 +74,31 @@ public class ProductServerImpl implements IProductServer{
 		QueryBuilder builder = new QueryBuilder(sql, new Profile(params));
 		DataResult result = serviceDao.queryForMapDataResult(builder);
 		return result;
+	}
+
+	@Override
+	public WFKProduct getInfoByModel(String model) {
+		String sql ="SELECT * FROM wfk_product WHERE panel_model=?";
+		return serviceDao.get(sql, WFKProduct.class, new Object[] { model });
+	}
+
+	@Override
+	public DataResult getFileList(int id) {
+		String sql = "SELECT * FROM wfk_product_file WHERE pid =" + id ;
+		
+		DataResult result = serviceDao.queryForMapDataResult(sql);
+		return result;
+	}
+
+	@Override
+	public Errcode addFile(WFKProductFile file) {
+		serviceDao.getMapper().save(file);
+		return new Result(Errors.OK);
+	}
+
+	@Override
+	public Errcode updateFile(WFKProductFile file) {
+		serviceDao.getMapper().update(file);
+		return new Result(Errors.OK);
 	}
 }
