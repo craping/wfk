@@ -108,23 +108,6 @@ public class ProductService extends ServiceHandler {
 	}
 
 	@ServiceMethod(
-		value = "getSimpleList", 
-		desc = "获取产品列表(后台专用)", 
-		params = { 
-			@Parameter(value="product_name", desc="产品名称", required=false),
-			@Parameter(value="panel_size", desc="面板尺寸", required=false),
-			@Parameter(value="resolution", desc="分辨率", required=false),
-			@Parameter(value="panel_brand", desc="品牌", required=false),
-			@Parameter(value="panel_model", desc="面板型号", required=false),
-			@Parameter(value="status", desc="商品状态1有效0无效", required=false),
-			@Parameter(value="app_type", desc="应用类别：1笔记本2工控3安防4监控5医疗设备6广告机", required=false)
-		}
-	)
-	public Errcode getSimpleList(HttpServletRequest request, Map<String, String> params) {
-		return productServer.getList(params);
-	}
-	
-	@ServiceMethod(
 		value = "getList", 
 		desc = "获取产品列表", 
 		params = { 
@@ -137,10 +120,8 @@ public class ProductService extends ServiceHandler {
 			@Parameter(value="app_type", desc="应用类别：1笔记本2工控3安防4监控5医疗设备6广告机", required=false)
 		}
 	)
-	public Errcode getList(HttpServletRequest request, Map<String, String> params) {
-		DataResult result = productServer.getList(params);
-		
-		return result;
+	public Errcode getSimpleList(HttpServletRequest request, Map<String, String> params) {
+		return productServer.getList(params);
 	}
 	
 	@ServiceMethod(
