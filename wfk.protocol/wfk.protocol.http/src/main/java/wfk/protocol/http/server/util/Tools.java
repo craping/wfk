@@ -759,13 +759,14 @@ public class Tools {
     }
 
 	public static void main(String args[]) throws Exception {
-		String a = "/uploadfile/NV156FHM-N48/NV156FHM-N48.doc";
+		/*String a = "/uploadfile/NV156FHM-N48/NV156FHM-N48.doc";
 		String as[] = a.split("/");
 		//System.out.println(a.split("/").length);
 		for (int i = 0; i < as.length; i++) {
 			System.out.println(as[i]);
-		}
-		System.out.println(as[as.length-1]);
+		}*/
+		Integer a = null;
+		System.out.println(a);
 	}
 
 	/**

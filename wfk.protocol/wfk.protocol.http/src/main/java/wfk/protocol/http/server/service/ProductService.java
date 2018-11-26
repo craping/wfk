@@ -3,11 +3,13 @@ package wfk.protocol.http.server.service;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,6 +19,7 @@ import wfk.common.define.bean.result.Result;
 import wfk.common.define.bean.result.criteria.Data;
 import wfk.common.define.bean.result.criteria.DataResult;
 import wfk.common.define.error.support.Errors;
+import wfk.process.biz.pojo.ProductPOJO;
 import wfk.process.biz.server.IProductServer;
 import wfk.process.dao.sql.entity.WFKProduct;
 import wfk.process.dao.sql.entity.WFKProductFile;
@@ -47,52 +50,80 @@ public class ProductService extends ServiceHandler {
 		}
 	)
 	public Errcode delProduct(HttpServletRequest request, Map<String, String> params) {
-		WFKProduct product = productServer.getInfoById(Integer.parseInt(params.get("id")));
+		WFKProduct product = productServer.getSimpleInfo(Integer.parseInt(params.get("id")), null);
 		product.setStatus(Integer.parseInt(params.get("status")));
 		return productServer.update(product);
 	}
+	
+	@ServiceMethod(
+		value = "getSimpleInfo", 
+		desc = "获取产品简略信息，不包含文档信息", 
+		params = { 
+			@Parameter(value="id", desc="商品ID")
+		}
+	)
+	public Errcode getSimpleInfo(HttpServletRequest request, Map<String, String> params) {
+		WFKProduct product = productServer.getSimpleInfo((Integer.parseInt(params.get("id"))), null);
+		return new DataResult(Errors.OK, new Data(product));
+	}
+	
+	@ServiceMethod(
+		value = "getFileInfo", 
+		desc = "查看产品文档信息", 
+		params = { 
+			@Parameter(value="model", desc="产品型号")
+		}
+	)
+	public Errcode getFileInfo(HttpServletRequest request, Map<String, String> params) {
+		WFKProduct product = productServer.getSimpleInfo(null, params.get("model"));
+		if (product == null)
+			return new DataResult(Errors.DATA_NOT_EXIST);
+
+		List<WFKProductFile> result = productServer.getFileList(product.getId());
+		return new DataResult(Errors.OK, new Data(result));
+	}
 
 	@ServiceMethod(
-		value = "getInfoById", 
-		desc = "根据ID查看商品详情", 
+		value = "getInfo", 
+		desc = "获取完整产品信息", 
 		params = { 
 			@Parameter(value="id", desc="商品ID")
 		}
 	)
 	public Errcode getInfoById(HttpServletRequest request, Map<String, String> params) {
-		WFKProduct product = productServer.getInfoById(Integer.parseInt(params.get("id")));
-		return new DataResult(Errors.OK, new Data(product));
-	}
-	
-	@ServiceMethod(
-		value = "getInfoByModel", 
-		desc = "根据Model查看商品详情", 
-		params = { 
-			@Parameter(value="model", desc="产品型号")
-		}
-	)
-	public Errcode getInfoByModel(HttpServletRequest request, Map<String, String> params) {
-		WFKProduct product = productServer.getInfoByModel(params.get("model"));
-		if (product == null) {
-			return new DataResult(Errors.DATA_NOT_EXIST);
+		WFKProduct product = productServer.getSimpleInfo(Integer.parseInt(params.get("id")), null);
+		ProductPOJO pojo = new ProductPOJO();
+		BeanUtils.copyProperties(product, pojo);
+		
+		// 解析产品详情
+		if (!Tools.isStrEmpty(product.getContent())){
+			String file_url = SERVER_PATH + product.getContent();
+			String real_content = FileUtil.getString(file_url);
+			pojo.setContent(real_content);
 		}
 		
-		DataResult result = productServer.getFileList(product.getId());
-		return result;
-	}
-	
-	@ServiceMethod(
-		value = "getFileList", 
-		desc = "查看产品文档信息", 
-		params = { 
-			@Parameter(value="id", desc="产品id")
-		}
-	)
-	public Errcode getFileList(HttpServletRequest request, Map<String, String> params) {
-		WFKProduct product = productServer.getInfoByModel(params.get("model"));
-		return new DataResult(Errors.OK, new Data(product));
+		List<WFKProductFile> result = productServer.getFileList(product.getId());
+		pojo.setFileList((List<WFKProductFile>) result);
+		return new DataResult(Errors.OK, new Data(pojo));
 	}
 
+	@ServiceMethod(
+		value = "getSimpleList", 
+		desc = "获取产品列表(后台专用)", 
+		params = { 
+			@Parameter(value="product_name", desc="产品名称", required=false),
+			@Parameter(value="panel_size", desc="面板尺寸", required=false),
+			@Parameter(value="resolution", desc="分辨率", required=false),
+			@Parameter(value="panel_brand", desc="品牌", required=false),
+			@Parameter(value="panel_model", desc="面板型号", required=false),
+			@Parameter(value="status", desc="商品状态1有效0无效", required=false),
+			@Parameter(value="app_type", desc="应用类别：1笔记本2工控3安防4监控5医疗设备6广告机", required=false)
+		}
+	)
+	public Errcode getSimpleList(HttpServletRequest request, Map<String, String> params) {
+		return productServer.getList(params);
+	}
+	
 	@ServiceMethod(
 		value = "getList", 
 		desc = "获取产品列表", 
@@ -100,14 +131,16 @@ public class ProductService extends ServiceHandler {
 			@Parameter(value="product_name", desc="产品名称", required=false),
 			@Parameter(value="panel_size", desc="面板尺寸", required=false),
 			@Parameter(value="resolution", desc="分辨率", required=false),
-			@Parameter(value="brand", desc="品牌", required=false),
-			@Parameter(value="model", desc="面板型号", required=false),
+			@Parameter(value="panel_brand", desc="品牌", required=false),
+			@Parameter(value="panel_model", desc="面板型号", required=false),
 			@Parameter(value="status", desc="商品状态1有效0无效", required=false),
 			@Parameter(value="app_type", desc="应用类别：1笔记本2工控3安防4监控5医疗设备6广告机", required=false)
 		}
 	)
 	public Errcode getList(HttpServletRequest request, Map<String, String> params) {
-		return productServer.getList(params);
+		DataResult result = productServer.getList(params);
+		
+		return result;
 	}
 	
 	@ServiceMethod(
@@ -156,7 +189,7 @@ public class ProductService extends ServiceHandler {
 	public Errcode addProductFile(HttpServletRequest request, Map<String, String> params) throws IOException, ServletException, URISyntaxException{
 		String model = params.get("model");
 		WFKProduct product = new WFKProduct();
-		product = productServer.getInfoByModel(model);
+		product = productServer.getSimpleInfo(null, model);
 		if (product == null) {
 			return new Result(Errors.DATA_NOT_EXIST);
 		}
@@ -213,7 +246,7 @@ public class ProductService extends ServiceHandler {
 	public Errcode updateProduct(HttpServletRequest request, Map<String, String> params) throws IOException, ServletException, URISyntaxException{
 		
 		String pid = params.get("id");
-		WFKProduct product = ClassUtil.fillObject(params, productServer.getInfoById(Integer.parseInt(pid)));
+		WFKProduct product = ClassUtil.fillObject(params, productServer.getSimpleInfo(Integer.parseInt(pid), null));
 		
 		String[] def_pic = request.getParameterValues("def_pic");
 		//String stock_id = product.getStockId().toString();
