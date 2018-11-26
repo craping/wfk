@@ -61,6 +61,36 @@ public class WFKProduct {
 
     private String content;
 
+    private String productNameEn;
+
+    private String panelBrandEn;
+
+    private String panelTypeEn;
+
+    private String pixelFormatEn;
+
+    private String displayAreaEn;
+
+    private String outlineSizeEn;
+
+    private String surfaceEn;
+
+    private String contrastRatioEn;
+
+    private String displayModeEn;
+
+    private String bestViewEn;
+
+    private String lampTypeEn;
+
+    private String touchScreenEn;
+
+    private String shapeStyleEn;
+
+    private String applicationEn;
+
+    private String signalInterfaceEn;
+
     public Integer getId() {
         return id;
     }
@@ -291,5 +321,125 @@ public class WFKProduct {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public String getProductNameEn() {
+        return productNameEn;
+    }
+
+    public void setProductNameEn(String productNameEn) {
+        this.productNameEn = productNameEn == null ? null : productNameEn.trim();
+    }
+
+    public String getPanelBrandEn() {
+        return panelBrandEn;
+    }
+
+    public void setPanelBrandEn(String panelBrandEn) {
+        this.panelBrandEn = panelBrandEn == null ? null : panelBrandEn.trim();
+    }
+
+    public String getPanelTypeEn() {
+        return panelTypeEn;
+    }
+
+    public void setPanelTypeEn(String panelTypeEn) {
+        this.panelTypeEn = panelTypeEn == null ? null : panelTypeEn.trim();
+    }
+
+    public String getPixelFormatEn() {
+        return pixelFormatEn;
+    }
+
+    public void setPixelFormatEn(String pixelFormatEn) {
+        this.pixelFormatEn = pixelFormatEn == null ? null : pixelFormatEn.trim();
+    }
+
+    public String getDisplayAreaEn() {
+        return displayAreaEn;
+    }
+
+    public void setDisplayAreaEn(String displayAreaEn) {
+        this.displayAreaEn = displayAreaEn == null ? null : displayAreaEn.trim();
+    }
+
+    public String getOutlineSizeEn() {
+        return outlineSizeEn;
+    }
+
+    public void setOutlineSizeEn(String outlineSizeEn) {
+        this.outlineSizeEn = outlineSizeEn == null ? null : outlineSizeEn.trim();
+    }
+
+    public String getSurfaceEn() {
+        return surfaceEn;
+    }
+
+    public void setSurfaceEn(String surfaceEn) {
+        this.surfaceEn = surfaceEn == null ? null : surfaceEn.trim();
+    }
+
+    public String getContrastRatioEn() {
+        return contrastRatioEn;
+    }
+
+    public void setContrastRatioEn(String contrastRatioEn) {
+        this.contrastRatioEn = contrastRatioEn == null ? null : contrastRatioEn.trim();
+    }
+
+    public String getDisplayModeEn() {
+        return displayModeEn;
+    }
+
+    public void setDisplayModeEn(String displayModeEn) {
+        this.displayModeEn = displayModeEn == null ? null : displayModeEn.trim();
+    }
+
+    public String getBestViewEn() {
+        return bestViewEn;
+    }
+
+    public void setBestViewEn(String bestViewEn) {
+        this.bestViewEn = bestViewEn == null ? null : bestViewEn.trim();
+    }
+
+    public String getLampTypeEn() {
+        return lampTypeEn;
+    }
+
+    public void setLampTypeEn(String lampTypeEn) {
+        this.lampTypeEn = lampTypeEn == null ? null : lampTypeEn.trim();
+    }
+
+    public String getTouchScreenEn() {
+        return touchScreenEn;
+    }
+
+    public void setTouchScreenEn(String touchScreenEn) {
+        this.touchScreenEn = touchScreenEn == null ? null : touchScreenEn.trim();
+    }
+
+    public String getShapeStyleEn() {
+        return shapeStyleEn;
+    }
+
+    public void setShapeStyleEn(String shapeStyleEn) {
+        this.shapeStyleEn = shapeStyleEn == null ? null : shapeStyleEn.trim();
+    }
+
+    public String getApplicationEn() {
+        return applicationEn;
+    }
+
+    public void setApplicationEn(String applicationEn) {
+        this.applicationEn = applicationEn == null ? null : applicationEn.trim();
+    }
+
+    public String getSignalInterfaceEn() {
+        return signalInterfaceEn;
+    }
+
+    public void setSignalInterfaceEn(String signalInterfaceEn) {
+        this.signalInterfaceEn = signalInterfaceEn == null ? null : signalInterfaceEn.trim();
     }
 }

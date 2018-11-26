@@ -31,13 +31,30 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="product_name_en" jdbcType="VARCHAR" property="productNameEn" />
+    <result column="panel_brand_en" jdbcType="VARCHAR" property="panelBrandEn" />
+    <result column="panel_type_en" jdbcType="VARCHAR" property="panelTypeEn" />
+    <result column="pixel_format_en" jdbcType="VARCHAR" property="pixelFormatEn" />
+    <result column="display_area_en" jdbcType="VARCHAR" property="displayAreaEn" />
+    <result column="outline_size_en" jdbcType="VARCHAR" property="outlineSizeEn" />
+    <result column="surface_en" jdbcType="VARCHAR" property="surfaceEn" />
+    <result column="contrast_ratio_en" jdbcType="VARCHAR" property="contrastRatioEn" />
+    <result column="display_mode_en" jdbcType="VARCHAR" property="displayModeEn" />
+    <result column="best_view_en" jdbcType="VARCHAR" property="bestViewEn" />
+    <result column="lamp_type_en" jdbcType="VARCHAR" property="lampTypeEn" />
+    <result column="touch_screen_en" jdbcType="VARCHAR" property="touchScreenEn" />
+    <result column="shape_style_en" jdbcType="VARCHAR" property="shapeStyleEn" />
+    <result column="application_en" jdbcType="VARCHAR" property="applicationEn" />
+    <result column="signal_interface_en" jdbcType="VARCHAR" property="signalInterfaceEn" />
   </resultMap>
   <sql id="Base_Column_List">
     id, product_name, panel_brand, panel_model, panel_size, panel_type, resolution, pixel_format, 
     display__area, outline_size, surface, brightness, contrast_ratio, viewing_angle, 
     display_mode, best_view, response_time, display_color, lamp_type, frequency, touch_screen, 
     shape_style, application, signal_interface, input_voltage, app_type, status, add_time, 
-    content
+    content, product_name_en, panel_brand_en, panel_type_en, pixel_format_en, display_area_en, 
+    outline_size_en, surface_en, contrast_ratio_en, display_mode_en, best_view_en, lamp_type_en, 
+    touch_screen_en, shape_style_en, application_en, signal_interface_en
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -62,7 +79,12 @@
       frequency, touch_screen, shape_style, 
       application, signal_interface, input_voltage, 
       app_type, status, add_time, 
-      content)
+      content, product_name_en, panel_brand_en, 
+      panel_type_en, pixel_format_en, display_area_en, 
+      outline_size_en, surface_en, contrast_ratio_en, 
+      display_mode_en, best_view_en, lamp_type_en, 
+      touch_screen_en, shape_style_en, application_en, 
+      signal_interface_en)
     values (#{productName,jdbcType=VARCHAR}, #{panelBrand,jdbcType=VARCHAR}, #{panelModel,jdbcType=VARCHAR}, 
       #{panelSize,jdbcType=VARCHAR}, #{panelType,jdbcType=VARCHAR}, #{resolution,jdbcType=VARCHAR}, 
       #{pixelFormat,jdbcType=VARCHAR}, #{displayArea,jdbcType=VARCHAR}, #{outlineSize,jdbcType=VARCHAR}, 
@@ -72,7 +94,12 @@
       #{frequency,jdbcType=VARCHAR}, #{touchScreen,jdbcType=VARCHAR}, #{shapeStyle,jdbcType=VARCHAR}, 
       #{application,jdbcType=VARCHAR}, #{signalInterface,jdbcType=VARCHAR}, #{inputVoltage,jdbcType=VARCHAR}, 
       #{appType,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
-      #{content,jdbcType=VARCHAR})
+      #{content,jdbcType=VARCHAR}, #{productNameEn,jdbcType=VARCHAR}, #{panelBrandEn,jdbcType=VARCHAR}, 
+      #{panelTypeEn,jdbcType=VARCHAR}, #{pixelFormatEn,jdbcType=VARCHAR}, #{displayAreaEn,jdbcType=VARCHAR}, 
+      #{outlineSizeEn,jdbcType=VARCHAR}, #{surfaceEn,jdbcType=VARCHAR}, #{contrastRatioEn,jdbcType=VARCHAR}, 
+      #{displayModeEn,jdbcType=VARCHAR}, #{bestViewEn,jdbcType=VARCHAR}, #{lampTypeEn,jdbcType=VARCHAR}, 
+      #{touchScreenEn,jdbcType=VARCHAR}, #{shapeStyleEn,jdbcType=VARCHAR}, #{applicationEn,jdbcType=VARCHAR}, 
+      #{signalInterfaceEn,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="wfk.process.dao.sql.entity.WFKProduct">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -164,6 +191,51 @@
       <if test="content != null">
         content,
       </if>
+      <if test="productNameEn != null">
+        product_name_en,
+      </if>
+      <if test="panelBrandEn != null">
+        panel_brand_en,
+      </if>
+      <if test="panelTypeEn != null">
+        panel_type_en,
+      </if>
+      <if test="pixelFormatEn != null">
+        pixel_format_en,
+      </if>
+      <if test="displayAreaEn != null">
+        display_area_en,
+      </if>
+      <if test="outlineSizeEn != null">
+        outline_size_en,
+      </if>
+      <if test="surfaceEn != null">
+        surface_en,
+      </if>
+      <if test="contrastRatioEn != null">
+        contrast_ratio_en,
+      </if>
+      <if test="displayModeEn != null">
+        display_mode_en,
+      </if>
+      <if test="bestViewEn != null">
+        best_view_en,
+      </if>
+      <if test="lampTypeEn != null">
+        lamp_type_en,
+      </if>
+      <if test="touchScreenEn != null">
+        touch_screen_en,
+      </if>
+      <if test="shapeStyleEn != null">
+        shape_style_en,
+      </if>
+      <if test="applicationEn != null">
+        application_en,
+      </if>
+      <if test="signalInterfaceEn != null">
+        signal_interface_en,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productName != null">
@@ -249,6 +321,51 @@
       </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="productNameEn != null">
+        #{productNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="panelBrandEn != null">
+        #{panelBrandEn,jdbcType=VARCHAR},
+      </if>
+      <if test="panelTypeEn != null">
+        #{panelTypeEn,jdbcType=VARCHAR},
+      </if>
+      <if test="pixelFormatEn != null">
+        #{pixelFormatEn,jdbcType=VARCHAR},
+      </if>
+      <if test="displayAreaEn != null">
+        #{displayAreaEn,jdbcType=VARCHAR},
+      </if>
+      <if test="outlineSizeEn != null">
+        #{outlineSizeEn,jdbcType=VARCHAR},
+      </if>
+      <if test="surfaceEn != null">
+        #{surfaceEn,jdbcType=VARCHAR},
+      </if>
+      <if test="contrastRatioEn != null">
+        #{contrastRatioEn,jdbcType=VARCHAR},
+      </if>
+      <if test="displayModeEn != null">
+        #{displayModeEn,jdbcType=VARCHAR},
+      </if>
+      <if test="bestViewEn != null">
+        #{bestViewEn,jdbcType=VARCHAR},
+      </if>
+      <if test="lampTypeEn != null">
+        #{lampTypeEn,jdbcType=VARCHAR},
+      </if>
+      <if test="touchScreenEn != null">
+        #{touchScreenEn,jdbcType=VARCHAR},
+      </if>
+      <if test="shapeStyleEn != null">
+        #{shapeStyleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationEn != null">
+        #{applicationEn,jdbcType=VARCHAR},
+      </if>
+      <if test="signalInterfaceEn != null">
+        #{signalInterfaceEn,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -339,6 +456,51 @@
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
       </if>
+      <if test="productNameEn != null">
+        product_name_en = #{productNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="panelBrandEn != null">
+        panel_brand_en = #{panelBrandEn,jdbcType=VARCHAR},
+      </if>
+      <if test="panelTypeEn != null">
+        panel_type_en = #{panelTypeEn,jdbcType=VARCHAR},
+      </if>
+      <if test="pixelFormatEn != null">
+        pixel_format_en = #{pixelFormatEn,jdbcType=VARCHAR},
+      </if>
+      <if test="displayAreaEn != null">
+        display_area_en = #{displayAreaEn,jdbcType=VARCHAR},
+      </if>
+      <if test="outlineSizeEn != null">
+        outline_size_en = #{outlineSizeEn,jdbcType=VARCHAR},
+      </if>
+      <if test="surfaceEn != null">
+        surface_en = #{surfaceEn,jdbcType=VARCHAR},
+      </if>
+      <if test="contrastRatioEn != null">
+        contrast_ratio_en = #{contrastRatioEn,jdbcType=VARCHAR},
+      </if>
+      <if test="displayModeEn != null">
+        display_mode_en = #{displayModeEn,jdbcType=VARCHAR},
+      </if>
+      <if test="bestViewEn != null">
+        best_view_en = #{bestViewEn,jdbcType=VARCHAR},
+      </if>
+      <if test="lampTypeEn != null">
+        lamp_type_en = #{lampTypeEn,jdbcType=VARCHAR},
+      </if>
+      <if test="touchScreenEn != null">
+        touch_screen_en = #{touchScreenEn,jdbcType=VARCHAR},
+      </if>
+      <if test="shapeStyleEn != null">
+        shape_style_en = #{shapeStyleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationEn != null">
+        application_en = #{applicationEn,jdbcType=VARCHAR},
+      </if>
+      <if test="signalInterfaceEn != null">
+        signal_interface_en = #{signalInterfaceEn,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -371,7 +533,22 @@
       app_type = #{appType,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=TIMESTAMP},
-      content = #{content,jdbcType=VARCHAR}
+      content = #{content,jdbcType=VARCHAR},
+      product_name_en = #{productNameEn,jdbcType=VARCHAR},
+      panel_brand_en = #{panelBrandEn,jdbcType=VARCHAR},
+      panel_type_en = #{panelTypeEn,jdbcType=VARCHAR},
+      pixel_format_en = #{pixelFormatEn,jdbcType=VARCHAR},
+      display_area_en = #{displayAreaEn,jdbcType=VARCHAR},
+      outline_size_en = #{outlineSizeEn,jdbcType=VARCHAR},
+      surface_en = #{surfaceEn,jdbcType=VARCHAR},
+      contrast_ratio_en = #{contrastRatioEn,jdbcType=VARCHAR},
+      display_mode_en = #{displayModeEn,jdbcType=VARCHAR},
+      best_view_en = #{bestViewEn,jdbcType=VARCHAR},
+      lamp_type_en = #{lampTypeEn,jdbcType=VARCHAR},
+      touch_screen_en = #{touchScreenEn,jdbcType=VARCHAR},
+      shape_style_en = #{shapeStyleEn,jdbcType=VARCHAR},
+      application_en = #{applicationEn,jdbcType=VARCHAR},
+      signal_interface_en = #{signalInterfaceEn,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
