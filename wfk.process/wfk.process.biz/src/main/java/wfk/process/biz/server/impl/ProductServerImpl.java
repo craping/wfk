@@ -1,5 +1,6 @@
 package wfk.process.biz.server.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,48 +47,43 @@ public class ProductServerImpl implements IProductServer{
 	}
 
 	@Override
-	public WFKProduct getInfoById(int id) {
-		String sql ="SELECT * FROM wfk_product WHERE id=?";
-		return serviceDao.get(sql, WFKProduct.class, new Object[] { id });
+	public WFKProduct getSimpleInfo(Integer id, String model) {
+		String sql = "SELECT * FROM wfk_product WHERE id=" + id;
+		if (model != null) {
+			sql ="SELECT * FROM wfk_product WHERE panel_model='" + model +"';";
+		}
+		return serviceDao.get(sql, WFKProduct.class, null);
 	}
 
 	@Override
 	public DataResult getList(Map<String, String> params) {
-		String sql = "SELECT * FROM wfk_product WHERE 1=1";
+		String sql = "SELECT p.*,pl.file_url FROM wfk_product p LEFT JOIN wfk_product_file pl ON pl.pid = p.id AND pl.file_type=3 WHERE 1=1 ";
 		QueryBuilder builder = new QueryBuilder(sql,
 			new Condition(new SqlColumn(Logic.AND, "product_name").contanis(params.get("product_name")),
-				new SqlColumn(Logic.AND, "stock_id").equal(params.get("stock_id")),
 				new SqlColumn(Logic.AND, "panel_size").contanis(params.get("panel_size")),
 				new SqlColumn(Logic.AND, "resolution").contanis(params.get("resolution")),
-				new SqlColumn(Logic.AND, "brand").contanis(params.get("brand")),
+				new SqlColumn(Logic.AND, "panel_brand").contanis(params.get("panel_brand")),
 				new SqlColumn(Logic.AND, "status").equal(params.get("status")),
 				new SqlColumn(Logic.AND, "app_type").equal(params.get("app_type")),
-				new SqlColumn(Logic.AND, "model").contanis(params.get("model"))),
+				new SqlColumn(Logic.AND, "panel_model").contanis(params.get("panel_model"))),
 			new Profile(params));
-		DataResult result = serviceDao.queryForDataResult(builder, WFKProduct.class);
+		DataResult result = serviceDao.queryForMapDataResult(builder);
 		return result;
 	}
 
 	@Override
 	public DataResult getProductFileList(Map<String, String> params) {
-		String sql = "SELECT id,product_name,product_name_en,file_url FROM wfk_product WHERE file_url !='';";
+		String sql = "SELECT p.id,p.panel_model,pl.file_url from wfk_product p LEFT JOIN wfk_product_file pl ON pl.pid = p.id AND pl.file_type=1 WHERE pl.file_url != '';";
 		QueryBuilder builder = new QueryBuilder(sql, new Profile(params));
 		DataResult result = serviceDao.queryForMapDataResult(builder);
 		return result;
 	}
 
 	@Override
-	public WFKProduct getInfoByModel(String model) {
-		String sql ="SELECT * FROM wfk_product WHERE panel_model=?";
-		return serviceDao.get(sql, WFKProduct.class, new Object[] { model });
-	}
-
-	@Override
-	public DataResult getFileList(int id) {
+	public List<WFKProductFile> getFileList(Integer id) {
 		String sql = "SELECT * FROM wfk_product_file WHERE pid =" + id ;
-		
-		DataResult result = serviceDao.queryForMapDataResult(sql);
-		return result;
+		List<WFKProductFile> l = serviceDao.queryEntityList(sql, WFKProductFile.class);
+		return l;
 	}
 
 	@Override
