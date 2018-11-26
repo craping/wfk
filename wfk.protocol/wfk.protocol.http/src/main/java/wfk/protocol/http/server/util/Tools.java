@@ -758,9 +758,14 @@ public class Tools {
         return result.toLowerCase();  
     }
 
-	public static void main(String a[]) throws Exception {
-		System.out.println(getPrice("100000"));
-		System.out.println(UTF82Unicode("王大锤"));
+	public static void main(String args[]) throws Exception {
+		String a = "/uploadfile/NV156FHM-N48/NV156FHM-N48.doc";
+		String as[] = a.split("/");
+		//System.out.println(a.split("/").length);
+		for (int i = 0; i < as.length; i++) {
+			System.out.println(as[i]);
+		}
+		System.out.println(as[as.length-1]);
 	}
 
 	/**
