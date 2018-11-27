@@ -96,8 +96,12 @@ var informationInfo = new Vue({
                     var list = data.info;//查询页新闻内容
                     for (var n = 0; n < list.length; n++) {
                         let item = list[n];
+                        let url = item.file_url?item.file_url.split(",")[0]:"";
                         var ele = {
-                            text: urlData.lang == "EN"?item.productNameEn:item.productName,
+                            text: urlData.lang == "EN"?item.product_name_en:item.product_name,
+                            resolution: urlData.lang == "EN"?item.resolution_en:item.resolution,
+                            panelSize: urlData.lang == "EN"?item.panel_size_en:item.panel_size,
+                            src:url,
                             href:"javascript:trackFn('product.html?type=3&id="+item.id+"')"
                         };
                         tempArray.push(ele);

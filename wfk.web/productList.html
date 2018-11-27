@@ -13,6 +13,24 @@
     <link rel="stylesheet" href="css/news.css">
     <style type="text/css">
         #data_base_id,.data_unit{display:none;}
+        .thumbnail .label{
+            font-weight:normal;
+            padding: 1px;
+        }
+        .thumbnail p{
+            font-size: 13px;
+        }
+        @media (min-width: 768px) {
+            .thumbnail>img{height: 150px;}
+        }
+
+        @media (min-width: 992px) {
+            .thumbnail>img{height: 200px;}
+        }
+
+        @media (min-width: 1200px) {
+            .thumbnail>img{height: 200px;}
+        }
     </style>
     <link rel="icon" href="/_images/favicon.ico">
     <style></style>
@@ -40,13 +58,24 @@
         </div>
     </div>
     <div id="newsInformation" class="container latest-news newsData pctop pcbottom">
-        <ul class="list-unstyled newCenterText text-size dynamic" v-cloak="">
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-3" v-for="vv in infomationItems">
+                <a class="thumbnail" :href="vv.href" style="text-decoration:none">
+                    <img :src="vv.src">
+                    <div class="caption">
+                        <p>{{vv.text}}</p>
+                        <p><span class="label label-default">{{vv.panelSize}}</span> <span class="label label-warning">{{vv.resolution}}</span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- <ul class="list-unstyled newCenterText text-size dynamic" v-cloak="">
             <li class="row" v-for="vv in infomationItems">
                 <p class="col-md-12 col-sm-12 col-xs-12 title">
                     <a class="newsCenterLink" :href="vv.href" v-cloak="">{{vv.text}}</a>
                 </p>
             </li>
-        </ul>
+        </ul> -->
         <div id="pagination3"></div>
     </div>
     <div class="include_template" lang="portal_about_template_part_component_1.html">

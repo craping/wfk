@@ -82,6 +82,25 @@ var DICT = [{
 },
 
 {
+	CN: "产品图片",
+	EN: "Photo"
+},{
+	CN: "产品参数",
+	EN: "General Features"
+},{
+	CN: "产品详细",
+	EN: "Spesc"
+},{
+	CN: "规格书下载",
+	EN: "Datasheets Download"
+},{
+	CN: "验货标准(IIS)下载",
+	EN: "Inspection Standard (IIS) Download"
+},
+
+
+
+{
 	CN: "公司新闻",
 	EN: "Company News"
 }, {
@@ -148,8 +167,54 @@ var DICT = [{
 
 var NAVIP = {
 	stockId:["现货编号", "Stock ID"],
-	brand:["面板品牌", "Brand"],
-	model:["面板型号", "Model"],
+	panelBrand:["面板品牌", "Brand"],
+	PanelModel:["面板型号", "Model"],
+	panelSize: ["面板尺寸", "Panel Size"],
+	panelType: [
+		"面板类型", "Panel Type", 
+		"a-Si TFT-LCD：非晶硅薄膜晶体管液晶显示器<br />LTPS TFT-LCD：低温多晶硅薄膜晶体管液晶显示器<br />HTPS TFT-LCD：高温多晶硅薄膜晶体管液晶显示器<br />AM OLED：主动矩阵式有机发光二极体<br />PM OLED：被动矩阵式有机发光二极体<br />TOLED：透明有机发光二极体<br />STN LCD：STN液晶显示器<br />CSTN LCD：彩色STN液晶显示器<br />FSTN LCD：覆膜型STN液晶显示器<br />CG-Silicon：连续微粒硅 (是LTPS的变种)<br />EL：电致发光<br />EPD：电纸书显示器",
+		"a-Si TFT-LCD: a-Si Active Matrix TFT LCD<br />LTPS TFT-LCD: Low-temperature Polysilicon TFT LCD<br />HTPS TFT-LCD: High-temperature Polysilicon TFT LCD<br />AM OLED: Active Matrix Organic Light Emitting Diode<br />PM OLED: Passive Matrix Organic Light Emitting Diode<br />TOLED: Transparent Organic Light Emitting Diode<br />STN LCD: STN LCD<br />FSTN LCD: Film STN LCD<br />CSTN LCD: Color STN LCD<br />CG-Silicon: Continuous Grain Silicon, it's a variant of the LTPS<br />EL: EL display<br />EPD: Electronic Paper Display"
+	],
+	resolution: ["分辨率", "Resolution"],
+	pixelFormat: [
+		"像素排列", "Pixel Format",
+		"LCR Vertical Stripe：左中右 垂直条状<br />Rectangle：正方形<br />RGB Delta：红绿蓝 三角形<br />RGB Horizontal Stripe：红绿蓝 水平条状<br />RGB Vertical Stripe：红绿蓝 垂直条状<br />RGBW Rectangle：红绿蓝白 正方形<br />RG/BW PenTile：(红绿)(蓝白) 垂直条状<br />RG/BG PenTile：(红绿)(蓝绿) 垂直条状<br />RGBY Vertical Stripe：红绿蓝黄 垂直条状",
+		""
+	],
+	displayArea: ["显示区域", "Display Area"],
+	OutlineSize: ["外观尺寸", "Outline Size"],
+	surface: ["表面处理", "Surface"],
+	brightness: ["显示亮度", "Brightness"],
+	contrastRatio: ["对比度", "Contrast Ratio"],
+	viewingAngle: [
+		"可视角度", "Viewing Angle",
+		"左/右/上/下", "Left / Right / Up / Down"
+	],
+	displayMode: [
+		"显示模式", "Display Mode",
+		"IPS硬屏系列：AAS, ADS, AHVA, FFS, IPS, New Mode2, PLS, SFT, Vistarich<br />VA软屏系列：ASV, HVA, MVA, PVA, SVA, UV²A, VA",
+		"IPS Family: AAS, ADS, AHVA, FFS, IPS, New Mode2, PLS, SFT, Vistarich<br />VA Family: ASV, HVA, MVA, PVA, SVA, UV²A, VA"
+	],
+	bestView: ["最佳视角", "Best View on"],
+	responseTime: ["响应时间", "Response Time"],
+	displaycolor: ["显示颜色", "Display Color"],
+	lampType: [
+		"灯管类型", "Lamp Type", 
+		"CCFL、EEFL、HCFL、FFL数量：x pcs<br />WLED、RGB LED数量：x strings、xSxP<br />举例说明3S8P×2CN <br />3S：3 LED串联<br />8P：8串并联<br />2CN：2个端子",
+		"8S6P: 8 Serial, 6 Parallel"
+	],
+	frequency: [
+		"扫描频率", "Frequency", 
+		"120Hz (60HZ输入)：内置MEMC电路<br />120Hz+120Hz：120Hz面板+120Hz背光<br />240Hz (60HZ输入)：内置MEMC电路",
+		"120Hz (60HZ Input) : Embedded MEMC Circuit<br />120Hz+120Hz : 120Hz Panel+120Hz Backlight<br />240Hz (60HZ Input) : Embedded MEMC Circuit"
+	],
+	touchScreen: ["触摸面板", "Touch Screen"],
+	shapeStyle: ["物理形状", "Shape Style"],
+	application: ["应用产品", "Application"],
+	signalInterface: ["接口类型", "Signal Interface"],
+	inputVoltage: ["电压供应", "Input Voltage"],
+	environment: ["应用环境", "Environment"],
+
 	quality:["产品品质", "Quality"],
 	generalGrade:["通用等级", "General Grade", "业内通用的等级标准", "Grand Standard of Panel Manufacturer"],
 	zbdRate: ["ZBD比例", "ZBD Rate", "ZBD比例：无亮点屏所占比例", "Grade generally used in Industry"],
@@ -165,38 +230,14 @@ var NAVIP = {
 	unitPrice: ["销售单价", "Unit Price"],
 	postDate: ["发布日期", "Post Date"],
 	expirydate: ["有  效  期", "Expiry date"],
-	panelSize: ["面板尺寸", "Panel Size"],
-	panelType: [
-		"面板类型", "Panel Type", 
-		"a-Si TFT-LCD：非晶硅薄膜晶体管液晶显示器<br />LTPS TFT-LCD：低温多晶硅薄膜晶体管液晶显示器<br />HTPS TFT-LCD：高温多晶硅薄膜晶体管液晶显示器<br />AM OLED：主动矩阵式有机发光二极体<br />PM OLED：被动矩阵式有机发光二极体<br />TOLED：透明有机发光二极体<br />STN LCD：STN液晶显示器<br />CSTN LCD：彩色STN液晶显示器<br />FSTN LCD：覆膜型STN液晶显示器<br />CG-Silicon：连续微粒硅 (是LTPS的变种)<br />EL：电致发光<br />EPD：电纸书显示器",
-		"a-Si TFT-LCD: a-Si Active Matrix TFT LCD<br />LTPS TFT-LCD: Low-temperature Polysilicon TFT LCD<br />HTPS TFT-LCD: High-temperature Polysilicon TFT LCD<br />AM OLED: Active Matrix Organic Light Emitting Diode<br />PM OLED: Passive Matrix Organic Light Emitting Diode<br />TOLED: Transparent Organic Light Emitting Diode<br />STN LCD: STN LCD<br />FSTN LCD: Film STN LCD<br />CSTN LCD: Color STN LCD<br />CG-Silicon: Continuous Grain Silicon, it's a variant of the LTPS<br />EL: EL display<br />EPD: Electronic Paper Display"
-	],
 	composition: [
 		"面板组成", "Composition", 
 		"液晶片：TN/STN显示屏，不带边框和背光。<br />液晶模组：液晶模块，带边框，一般带背光。<br />液晶玻璃：TFT CELL/FOG/COG，不带背光和边框。<br />屏幕总成：液晶屏+触摸屏总成<br />双显示屏：多用于手机。",
 		"LCD: TN/STN without bezel & backlight<br />LCM: TN/STN/TFT with bezel & backlight<br />CELL: TFT CELL/FOG/COG without bezel & backlight<br />Assembly: Display+Touch Screen Digitizer Assembly<br />Dual: Dual pisplay"
 	],
-	resolution: ["分  辨  率", "Resolution"],
 	mode: ["显示模式", "Mode"],
-	surface: ["表面处理", "Surface"],
-	brightness: ["面板亮度", "Brightness"],
-	contrastRatio: ["对  比  度", "Contrast Ratio"],
-	displaycolor: ["显示颜色", "Display Color"],
-	responseTime: ["响应时间", "Response Time"],
-	viewingAngle: ["可视角度", "Viewing Angle"],
-	frequency: [
-		"扫描频率", "Frequency", 
-		"120Hz (60HZ输入)：内置MEMC电路<br />120Hz+120Hz：120Hz面板+120Hz背光<br />240Hz (60HZ输入)：内置MEMC电路",
-		"120Hz (60HZ Input) : Embedded MEMC Circuit<br />120Hz+120Hz : 120Hz Panel+120Hz Backlight<br />240Hz (60HZ Input) : Embedded MEMC Circuit"
-	],
-	lampType: [
-		"灯管类型", "Lamp Type", 
-		"CCFL、EEFL、HCFL、FFL数量：x pcs<br />WLED、RGB LED数量：x strings、xSxP<br />举例说明3S8P×2CN <br />3S：3 LED串联<br />8P：8串并联<br />2CN：2个端子",
-		"8S6P: 8 Serial, 6 Parallel"
-	],
 	signalType: ["信号类型", "Signal Type"],
 	rohsCompliance: ["RoHS", "RoHS Compliance"],
-	application: ["应用产品", "Application"],
 	datasheet: ["屏规格书", "Datasheet"]
 };
 var data = UTIL.getUrlData();
