@@ -20,7 +20,7 @@ $(window).load(function () {
 $(function () {
     var urlData = UTIL.getUrlData();
     if(urlData.id){
-        Web.Method.ajax("product/getInfoById", {
+        Web.Method.ajax("product/getInfo", {
             data:{
                 id:urlData.id
             },
@@ -38,7 +38,7 @@ $(function () {
                 });
 
                 new Vue({
-                    el: ".maxTableBox",
+                    el: "#param",
                     data:{
                         lang:urlData.lang,
                         product:product
@@ -53,36 +53,88 @@ $(function () {
                     }
                 }, 100);
 
-                var imgs = product.images.split(",");
+                var imgs = [], docs = [], iiss = [];
+                for (let i = 0; i < product.fileList.length; i++) {
+                    const el = product.fileList[i];
+                    if (el.fileType == 1) {
+                        docs.push({
+                            text:el.fileUrl.substr(el.fileUrl.lastIndexOf("/")+1),
+                            href:el.fileUrl
+                        });
+                    } else if (el.fileType == 2) {
+                        iiss.push({
+                            text:el.fileUrl.substr(el.fileUrl.lastIndexOf("/")+1),
+                            href:el.fileUrl,
+                            generalGrade:el.generalGrade
+                        });
+                    } else {
+                        imgs.push(el.fileUrl);
+                    }
+                }
+
                 var todos = [];
                 for (let i = 0; i < imgs.length; i++) {
                     const el = imgs[i];
+                    var img = new Image();
+                    img.src = el;
                     todos.push({
-                        imgSrc1: el,
-                        imgSrc2: el,
-                        href: "javascript:void(0);",
-                        text: "",
-                        text2: "",
-                        text3: ""
+                        src: el
                     });
                 }
-                var banner06 = new Vue({
-                    el: ".mobile-banner",
+
+                new Vue({
+                    el: "#preview",
                     data: {
-                        todos: todos/* [{
-                            imgSrc1: "http://portimg.boe.com/displayimages/f3c12438-8efc-4a18-9b5f-802d566a1d41.jpeg",
-                            imgSrc2: "http://portimg.boe.com/displayimages/a85c6329-38b1-4adb-8f08-b0a9f54f0177.jpeg",
-                            href: "javascript:void(0);",
-                            text: "",
-                            text2: "",
-                            text3: ""
-                        }] */
+                        todos: todos
                     }
                 });
+                $("#preview ul").css("min-width", (todos.length*155)+"px");
+                
+                $("#preview li").hover(function(){
+                    $("#preview li").removeClass("active");
+                    $(this).addClass("active");
+                });
+
+                $("#preview li").click(function(){
+                    var options = {
+                        index: $(this).index()
+                    };
+                    var items = [];
+                    $("#preview li img").each(function(){
+                        items.push({
+                            src:this.src,
+                            w:this.naturalWidth,
+                            h:this.naturalHeight
+                        });
+                    });
+
+                    var gallery = new PhotoSwipe($('.pswp')[0], PhotoSwipeUI_Default, items, options);
+                    gallery.init();
+                });
+
                 $('[data-toggle="tooltip"]').tooltip({
                     html:true
                 });
+
                 
+                new Vue({
+                    el: "#context",
+                    data: {
+                        content: product.content
+                    }
+                });
+                new Vue({
+                    el: "#doc",
+                    data: {
+                        todos: docs
+                    }
+                });
+                new Vue({
+                    el: "#iis",
+                    data: {
+                        todos: iiss
+                    }
+                });
                 setTimeout(function(){
                     advertRotation();
                 }, 100);

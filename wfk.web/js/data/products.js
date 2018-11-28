@@ -46,10 +46,15 @@ $(function () {
                 const item = data.info[i];
                 todos.push({
                     href: "javascript:trackFn('product.html?type=1&id="+item.id+"')",
-                    text: urlData.lang == "EN"?item.productNameEn:item.productName
+                    text: urlData.lang == "EN"?item.product_name_en:item.product_name
                 });
             }
-
+            if(todos.length == 0){
+                todos.push({
+                    href: "JavaScript:;",
+                    text: urlData.lang == "EN"?"No data":"暂无数据"
+                });
+            }
             var newCenter_data1 = new Vue({
                 el: "#newCenter_data1",
                 data: {
@@ -78,10 +83,15 @@ $(function () {
                 const item = data.info[i];
                 todos.push({
                     href: "javascript:trackFn('product.html?type=2&id="+item.id+"')",
-                    text: urlData.lang == "EN"?item.productNameEn:item.productName
+                    text: urlData.lang == "EN"?item.product_name_en:item.product_name
                 });
             }
-
+            if(todos.length == 0){
+                todos.push({
+                    href: "JavaScript:;",
+                    text: urlData.lang == "EN"?"No data":"暂无数据"
+                });
+            }
             var newCenter_data2 = new Vue({
                 el: "#newCenter_data2",
                 data: {
@@ -110,10 +120,15 @@ $(function () {
                 const item = data.info[i];
                 todos.push({
                     href: "javascript:trackFn('product.html?type=3&id="+item.id+"')",
-                    text: urlData.lang == "EN"?item.productNameEn:item.productName
+                    text: urlData.lang == "EN"?item.product_name_en:item.product_name
                 });
             }
-
+            if(todos.length == 0){
+                todos.push({
+                    href: "JavaScript:;",
+                    text: urlData.lang == "EN"?"No data":"暂无数据"
+                });
+            }
             var newCenter_data3 = new Vue({
                 el: "#newCenter_data3",
                 data: {
@@ -142,10 +157,15 @@ $(function () {
                 const item = data.info[i];
                 todos.push({
                     href: "javascript:trackFn('product.html?type=4&id="+item.id+"')",
-                    text: urlData.lang == "EN"?item.productNameEn:item.productName
+                    text: urlData.lang == "EN"?item.product_name_en:item.product_name
                 });
             }
-
+            if(todos.length == 0){
+                todos.push({
+                    href: "JavaScript:;",
+                    text: urlData.lang == "EN"?"No data":"暂无数据"
+                });
+            }
             var newCenter_data3 = new Vue({
                 el: "#newCenter_data4",
                 data: {
@@ -174,10 +194,15 @@ $(function () {
                 const item = data.info[i];
                 todos.push({
                     href: "javascript:trackFn('product.html?type=5&id="+item.id+"')",
-                    text: urlData.lang == "EN"?item.productNameEn:item.productName
+                    text: urlData.lang == "EN"?item.product_name_en:item.product_name
                 });
             }
-
+            if(todos.length == 0){
+                todos.push({
+                    href: "JavaScript:;",
+                    text: urlData.lang == "EN"?"No data":"暂无数据"
+                });
+            }
             var newCenter_data3 = new Vue({
                 el: "#newCenter_data5",
                 data: {
@@ -206,10 +231,15 @@ $(function () {
                 const item = data.info[i];
                 todos.push({
                     href: "javascript:trackFn('product.html?type=6&id="+item.id+"')",
-                    text: urlData.lang == "EN"?item.productNameEn:item.productName
+                    text: urlData.lang == "EN"?item.product_name_en:item.product_name
                 });
             }
-
+            if(todos.length == 0){
+                todos.push({
+                    href: "JavaScript:;",
+                    text: urlData.lang == "EN"?"No data":"暂无数据"
+                });
+            }
             var newCenter_data3 = new Vue({
                 el: "#newCenter_data6",
                 data: {

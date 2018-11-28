@@ -8,6 +8,8 @@
     <meta name="" three-size="description" content="我们的联系信息业务分别为：商城购物咨询服务、公共联系信息、业务联系信息、海外业务联系信息、社交媒体平台。具体联系方式请关注WUFK官网。">
     <title>WUFK官网_产品中心</title>
     <link rel="stylesheet" href="library/bootstrap.css">
+    <link rel="stylesheet" href="library/PhotoSwipe/photoswipe.css">
+    <link rel="stylesheet" href="library/PhotoSwipe/default-skin/default-skin.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="css/news.css">
@@ -15,6 +17,20 @@
         #data_base_id,.data_unit{display:none;}
         .tooltip-inner {
             max-width:none;
+        }
+        #preview li img{
+            height:100px;
+        }
+        #preview li{
+            height: 100px;
+            width: 150px;
+            padding: 0px;
+            margin-right: 5px;
+            overflow: hidden;
+            border:1px solid transparent;
+        }
+        #preview li.active{
+            border-color:#cd2426;
         }
     </style>
     <link rel="icon" href="/_images/favicon.ico">
@@ -36,33 +52,73 @@
         </div>
     </div>
     <!--第一屏大图-->
-    <div class="container-fluid focus-box tv-banner mobile-banner">
-        <div id="myCarousel" class="carousel slide focus-img dynamic">
-            <ol class="carousel-indicators ">
-                <li v-for="(v,index) in todos" data-target="#myCarousel" v-bind:data-slide-to="index"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div v-for="v in todos" class="item">
-                    <a v-bind:href="v.href">
-                        <img class="hidden-xs banner-lg-img" v-bind:src="v.imgSrc1" alt="">
-                        <img class="hidden-lg hidden-md hidden-sm " v-bind:src="v.imgSrc2" alt="">
-                    </a>
-                    <div class="focus-text">
-                        <div class="container first-size">
-                            <p class="p1" v-cloak="">{{v.text}}</p>
-                            <p class="p1" v-cloak="">{{v.text2}}</p>
-                            <p class="p1" v-cloak="">{{v.text3}}</p>
+    <div id="preview" class="container">
+        <br>
+        <div class=" text-center text-size icon products pcbottom ">
+            <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["产品图片"]}}</h3>
+        </div>
+
+        <div class="container" style="overflow-x:auto">
+            <ul class="list-unstyled list-inline">
+                <li v-for="(v,index) in todos">
+                    <img class="banner-lg-img" v-bind:src="v.src" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+    
+        <div class="pswp__scroll-wrap">
+    
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+    
+            <div class="pswp__ui pswp__ui--hidden">
+    
+                <div class="pswp__top-bar">
+    
+                    <div class="pswp__counter"></div>
+    
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
                         </div>
                     </div>
+                </div>
+    
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div> 
+                </div>
+    
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+    
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+    
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
                 </div>
             </div>
         </div>
     </div>
+
     <br/><br/>
     <!--产品参数-->
-    <div class="container text-center parameter text-size">
+    <div id="param" class="container text-center parameter text-size">
         <div class=" text-center text-size icon products pcbottom ">
-            <h3 class="two-size editable" style="word-break: break-all;">产品参数</h3>
+            <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["产品参数"]}}</h3>
         </div> <!-- pc and pad -->
         <div class="maxTableBox">
             <table class="borderTable">
@@ -79,6 +135,58 @@
         </div>
     </div>
     <br/><br/>
+    <div id="context" class="container parameter text-size">
+        <div class=" text-center text-size icon products pcbottom ">
+            <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["产品详细"]}}</h3>
+        </div>
+        <div v-html="content">
+
+        </div>
+    </div>
+    <br/><br/>
+    <div id="doc" class="container parameter text-size">
+        <div class=" text-center text-size icon products pcbottom ">
+            <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["规格书下载"]}}</h3>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>规格书</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="v in todos">
+                        <td><a :href="v.href" target="blank"><i class="glyphicon glyphicon-file"></i> {{v.text}}  </a></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/><br/>
+    <div id="iis" class="container parameter text-size">
+        <div class=" text-center text-size icon products pcbottom ">
+            <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["验货标准(IIS)下载"]}}</h3>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>IIS对应检验产品</td>
+                        <td>通用等级</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="v in todos">
+                        <td><a :href="v.href" target="blank"><i class="glyphicon glyphicon-file"></i> {{v.text}}  </a></td>
+                        <td>{{v.generalGrade}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <div class="include_template" lang="portal_about_template_part_component_1.html">
     </div><!-- 我们的业务文字 -->
     <div id="footer"></div>
@@ -88,6 +196,8 @@
     <script src="library/jquery.mobile.custom.min.js"></script>
     <script src="library/vue.min.js"></script>
     <script src="library/bootstrap.min.js"></script>
+    <script src="library/PhotoSwipe/photoswipe.min.js"></script>
+    <script src="library/PhotoSwipe/photoswipe-ui-default.min.js"></script>
     <script src="core/var.js"></script>
     <!--公用-->
     <script src="js/common/common.js"></script>
