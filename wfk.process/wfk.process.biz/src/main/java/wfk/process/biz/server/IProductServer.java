@@ -25,4 +25,5 @@ public interface IProductServer {
 	public List<WFKProductFile> getFileList(Integer id);
 	public Errcode addFile(WFKProductFile file);
 	public Errcode updateFile(WFKProductFile file);
+	public WFKProductFile getFileInfo(Integer pid, Integer fileType, Integer seq);
 }

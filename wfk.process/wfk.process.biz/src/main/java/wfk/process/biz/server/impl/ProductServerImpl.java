@@ -97,4 +97,12 @@ public class ProductServerImpl implements IProductServer{
 		serviceDao.getMapper().update(file);
 		return new Result(Errors.OK);
 	}
+
+	@Override
+	public WFKProductFile getFileInfo(Integer pid, Integer fileType, Integer seq) {
+		String sql = "SELECT * FROM wfk_product_file WHERE pid=" + pid + " AND file_type=" + fileType;
+		if (seq != null) 
+			sql += " AND seq=" + seq;
+		return serviceDao.get(sql, WFKProductFile.class, null);
+	}
 }
