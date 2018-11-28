@@ -735,9 +735,9 @@ label.system-advert-hint{ position: absolute; left:0; bottom: -30px; height: 30p
 .product-publish-table2 td{ padding:5px 0; }
 .product-publish-table3{ width: 100%;}
 .product-publish-table3 td{ padding:0; }
-.product-publish-input1,.product-publish-input2,.product-publish-input3{ width: 168px; border: 1px solid #a0a0a0; height: 30px; line-height: 43px;}
+.product-publish-input1,.product-publish-input2,.product-publish-input3{ width: 200px; border: 1px solid #a0a0a0; height: 30px; line-height: 43px;}
 .product-publish-input2{ width: 458px;}
-.product-publish-input3{ width: 108px;}
+.product-publish-input3{ width: 50px;}
 .product-publish-input4{ float: left; width: 78px; height: 23px; line-height: 23px; border: 1px solid #a0a0a0;}
 .product-publish-label,.product-publish-label2{ display:inline-block; margin-right: 60px;}
 .product-publish-label2{ margin-right: 0;}

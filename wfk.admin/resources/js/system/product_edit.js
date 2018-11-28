@@ -1,51 +1,13 @@
 var pid = Web.Method.GetQueryString("id");
 
 $(function(){
-	//添加商品主图
-	$("#mainPics").checkFileTypeAndSize({
-		allowedExtensions: ['jpg','png'],
-		maxSize: 2048,
-		widthAndHeight: 1920*1080,
-		extensionerror: function(val,target){
-			var li = target.prev();
-			li.html("").html(li.hasClass("main-ico")?"<i class='addPic-i'>商品主图</i>":"");
-			target.after(target.clone().removeClass("ignore").val(""));
-			target.remove(); 
-			alert("图片的格式只能为：jpg,png");
-			return false;
-		},
-		sizeerror: function(val,target){
-			var li = target.prev();
-			li.html("").html(li.hasClass("main-ico")?"<i class='addPic-i'>商品主图</i>":"");
-			target.after(target.clone().removeClass("ignore").val(""));
-			target.remove(); 
-			alert("图片大小不能超过2MB");
-			return false;
-		},
-		success: function(parent,path,target){
-			target.removeClass("ignore");
-			target.valid();
-			var li = target.prev();
-			var del_ico = li.hasClass("main-ico")?"":"<span class='addPic-delete-btn'></span>";
-			var img = "<img width='98' height='98' src="+path+" />";
-			var html = del_ico + img;
-			li.html(li.hasClass("main-ico")?"<i class='addPic-i'>产品主图</i>":"").append(html);
-	    }
-	},$("#mainPics"));
-	
-	//删除商品主属性图片
-	$(document).on("click",".addPic-li3 span",function(){
-		var $this = $(this);
-		var $file = $this.parent().next("input[type='file']")
-		$this.parent().html("");
-		$file.after($file.clone().val(""));
-		$file.remove(); 
-		return false;
-	});
-	
-	$(document).on("click","li.addPic-li3",function(){
-		$(this).next("input[type='file']").click();
-	});
+
+	$(document).on("click","dd[class='selectOption'] ul li",function(){
+		$(this).parent().parent().hide();
+		$(this).parent().parent().prev().removeClass("cur");
+		$(this).parent().parent().prev().html($(this).children("a").html())
+		$(this).parent().parent().prev().attr("value",$(this).attr("value"));
+	})
 	
 	//保存商品
 	$("#ok_btn").click(function(){
@@ -61,7 +23,7 @@ $(function(){
 
 //加载商品信息
 function ProductDetails(){
-	Web.Method.ajax("/product/getInfoById",{
+	Web.Method.ajax("/product/getSimpleInfo",{
 		async:false,
 		data:{
 			id: pid
@@ -70,32 +32,31 @@ function ProductDetails(){
 			if(data != null && data != undefined && data.info != null && data.info != undefined){
 				$.each(data.info, function(key, value){
 					Web.Method.setValue(key, value);
-					if (key == "images") {
-						loadDefPics(isNullOrEmpty(value)?"" : value.toString());
+					if (key == "content" && key != "" && key != null) {
+						$("#context").html(value);
+					}
+					if (key == "appType") {
+						$("#app_type").attr("value", value);
+						var msg = "未知异常";
+						if (value == "1") {
+							msg = "笔记本液晶屏";
+						} else if (value == "2") {
+							msg = "工控液晶屏";
+						} else if (value == "3") {
+							msg = "安防液晶屏";
+						} else if (value == "4") {
+							msg = "监控液晶屏";
+						} else if (value == "5") {
+							msg = "医疗设备屏";
+						} else if (value == "6") {
+							msg = "广告机液晶屏";
+						} 
+						$("#app_type").html(msg);
 					}
 				});
 			}
 		}
 	});
-}
-
-//加载默认图片
-function loadDefPics(pics){
-	var pic_array = [];
-	if(!isNullOrEmpty(pics)){
-		pic_array = pics.split(",");
-		for(var i=0;i<5;i++){
-			$.each(pic_array,function(m,n){
-				if(pic_array[m].indexOf("def_pic_"+i) >= 0){
-					var li = $("input[name='def_pic_" + i + "']").addClass("ignore").prev();
-					var del_ico = li.hasClass("main-ico")?"<input type='hidden' name='def_pic' value='" + pic_array[m] + "' />":"<input type='hidden' name='def_pic' value='" + pic_array[m] + "' /><span class='addPic-delete-btn'></span>";
-					var img = "<img width='98' height='98' src='" + pic_array[m] + "?" + new Date().getTime().toString() + "' />";
-					var html = del_ico + img;
-					li.html(li.hasClass("main-ico")?"<i class='addPic-i'>商品主图</i>":"").append(html);
-				}
-			});
-		}
-	}
 }
 
 function showLayer(){
@@ -114,12 +75,32 @@ function hideLayer(){
 
 //表单提交
 function formSubmit(){
+	if(isNullOrEmpty($("#productName").val())){
+		alert("请输入产品名称");
+		$("#productName").focus();
+		return false;
+	}
+
+	if(isNullOrEmpty($("#panelBrand").val())){
+		alert("请输入面板品牌");
+		$("#panelBrand").focus();
+		return false;
+	}
+
+	var model = $("#panelModel").val();
+	if(isNullOrEmpty(model)){
+		alert("请输入面板型号");
+		$("#panelModel").focus();
+		return false;
+	}
+	
+	var app_type = $("#app_type").attr("value");
 	showLayer();
 	$("#editForm").ajaxSubmit({
 		iframe:true,
 		dataType:"json",
 		data:{},
-		url:Web.Recource.serverURL +"/product/updateProduct?id="+ pid +"&" + $("#editForm").serializeJson(true),
+		url:Web.Recource.serverURL +"/product/updateProduct?id="+ pid +"&app_type=" + app_type + "&" + $("#editForm").serializeJson(true),
 		success: function(data){
 			hideLayer();	
 			if(data.errcode =="0"){

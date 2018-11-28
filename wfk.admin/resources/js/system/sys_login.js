@@ -2,6 +2,7 @@
 Web.Method.ajax("getPublicKey", {
 	url:Web.Recource.serverSysURL,
 	success:function(data){
+		console.log(data); 
 		Crypto.setRSAPublicKey(data.info.n);
 		Crypto.encryptFlag = data.info.id;
 	},
@@ -15,11 +16,11 @@ $(function(){
 		}
 	});
 	
-	Web.Method.ajax("user/adminLogin", {
+	Web.Method.ajax("user/userInfo", {
 		success:function(data){
 			var user = data.info;
 			Web.token.user = user;
-			window.location.href = '../system/index.html';
+			window.location.href = 'index.html';
 		},
 		fail:function(data){
 			console.log(data);
@@ -50,7 +51,7 @@ $(function(){
 					context:"登录成功",
 					noButton:false
 				})
-			   window.location.href = '../system/index.html';
+			   window.location.href = 'index.html';
 			},
 			fail:function(data){
 				$("#login_name").parent().next().html(data.msg);

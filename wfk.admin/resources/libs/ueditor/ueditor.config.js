@@ -188,7 +188,7 @@
                      '|', 'rowspacingtop', 'rowspacingbottom', 'lineheight', 
                      '|', 'customstyle', 'paragraph', 'fontfamily', 'fontsize', 
                      '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify',	
-                     '|', 'link', 'unlink',
+                     '|', 'link', 'unlink','insertvideo','insertframe',
                      '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', 
                      '|', 'insertimage', 'emotion',
                      '|', 'inserttable', 'deletetable', 

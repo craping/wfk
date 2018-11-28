@@ -200,6 +200,9 @@ var Web = {
 					format:"json"
 				},
 				url:Web.Recource.serverURL,
+				xhrFields: {
+					withCredentials: true
+				},
 				success:function(){},
 				fail:function(){},
 				error:function(){}
