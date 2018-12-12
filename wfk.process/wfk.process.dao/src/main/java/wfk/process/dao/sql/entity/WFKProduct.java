@@ -53,7 +53,7 @@ public class WFKProduct {
 
     private String inputVoltage;
 
-    private Integer appType;
+    private String appType;
 
     private Integer status;
 
@@ -291,12 +291,12 @@ public class WFKProduct {
         this.inputVoltage = inputVoltage == null ? null : inputVoltage.trim();
     }
 
-    public Integer getAppType() {
+    public String getAppType() {
         return appType;
     }
 
-    public void setAppType(Integer appType) {
-        this.appType = appType;
+    public void setAppType(String appType) {
+        this.appType = appType == null ? null : appType.trim();
     }
 
     public Integer getStatus() {

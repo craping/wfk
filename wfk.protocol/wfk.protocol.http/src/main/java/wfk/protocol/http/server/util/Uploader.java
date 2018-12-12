@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Base64;
+import java.util.Base64.Decoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,7 +27,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 
-import sun.misc.BASE64Decoder;
 import wfk.common.define.Configuration;
 /**
  * UEditor文件上传辅助类
@@ -141,11 +142,11 @@ public class Uploader {
 		String base64Data = this.request.getParameter(fieldName);
 		this.fileName = this.getName("test.png");
 		this.url = savePath + "/" + this.fileName;
-		BASE64Decoder decoder = new BASE64Decoder();
+		Decoder decoder = Base64.getDecoder();
 		try {
 			File outFile = new File(this.getPhysicalPath(this.url));
 			OutputStream ro = new FileOutputStream(outFile);
-			byte[] b = decoder.decodeBuffer(base64Data);
+			byte[] b = decoder.decode(base64Data);
 			for (int i = 0; i < b.length; ++i) {
 				if (b[i] < 0) {
 					b[i] += 256;

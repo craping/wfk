@@ -64,7 +64,7 @@ public class ProductServerImpl implements IProductServer{
 				new SqlColumn(Logic.AND, "resolution").contanis(params.get("resolution")),
 				new SqlColumn(Logic.AND, "panel_brand").contanis(params.get("panel_brand")),
 				new SqlColumn(Logic.AND, "status").equal(params.get("status")),
-				new SqlColumn(Logic.AND, "app_type").equal(params.get("app_type")),
+				new SqlColumn(Logic.AND, "app_type").contanis(params.get("app_type")),
 				new SqlColumn(Logic.AND, "panel_model").contanis(params.get("panel_model"))),
 			new Profile(params));
 		DataResult result = serviceDao.queryForMapDataResult(builder);

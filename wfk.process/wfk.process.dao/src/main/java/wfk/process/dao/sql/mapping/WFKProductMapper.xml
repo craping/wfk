@@ -27,7 +27,7 @@
     <result column="application" jdbcType="VARCHAR" property="application" />
     <result column="signal_interface" jdbcType="VARCHAR" property="signalInterface" />
     <result column="input_voltage" jdbcType="VARCHAR" property="inputVoltage" />
-    <result column="app_type" jdbcType="INTEGER" property="appType" />
+    <result column="app_type" jdbcType="VARCHAR" property="appType" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="content" jdbcType="VARCHAR" property="content" />
@@ -93,7 +93,7 @@
       #{responseTime,jdbcType=VARCHAR}, #{displayColor,jdbcType=VARCHAR}, #{lampType,jdbcType=VARCHAR}, 
       #{frequency,jdbcType=VARCHAR}, #{touchScreen,jdbcType=VARCHAR}, #{shapeStyle,jdbcType=VARCHAR}, 
       #{application,jdbcType=VARCHAR}, #{signalInterface,jdbcType=VARCHAR}, #{inputVoltage,jdbcType=VARCHAR}, 
-      #{appType,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{appType,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
       #{content,jdbcType=VARCHAR}, #{productNameEn,jdbcType=VARCHAR}, #{panelBrandEn,jdbcType=VARCHAR}, 
       #{panelTypeEn,jdbcType=VARCHAR}, #{pixelFormatEn,jdbcType=VARCHAR}, #{displayAreaEn,jdbcType=VARCHAR}, 
       #{outlineSizeEn,jdbcType=VARCHAR}, #{surfaceEn,jdbcType=VARCHAR}, #{contrastRatioEn,jdbcType=VARCHAR}, 
@@ -311,7 +311,7 @@
         #{inputVoltage,jdbcType=VARCHAR},
       </if>
       <if test="appType != null">
-        #{appType,jdbcType=INTEGER},
+        #{appType,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -445,7 +445,7 @@
         input_voltage = #{inputVoltage,jdbcType=VARCHAR},
       </if>
       <if test="appType != null">
-        app_type = #{appType,jdbcType=INTEGER},
+        app_type = #{appType,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -530,7 +530,7 @@
       application = #{application,jdbcType=VARCHAR},
       signal_interface = #{signalInterface,jdbcType=VARCHAR},
       input_voltage = #{inputVoltage,jdbcType=VARCHAR},
-      app_type = #{appType,jdbcType=INTEGER},
+      app_type = #{appType,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=VARCHAR},
