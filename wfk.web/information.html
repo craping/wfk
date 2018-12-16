@@ -25,7 +25,7 @@
     <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
     <div id="header"></div><!-- 点击路径 -->
     <div class="container-fluid path">
-        <div id="map" class="container  text-size">
+        <div id="map" class="container  text-size" v-cloak>
             <a href="javascript:trackFn('index.html')">{{NAVI["首页"]}}</a>
             <span>&gt;</span> <a href="javascript:trackFn('news.html')">{{NAVI["新闻中心"]}}</a>
             <span>&gt;</span> <a href="javascript:void(0)">{{NAVI[map[type]]}}</a>
@@ -39,7 +39,7 @@
             </ul>
         </div>
     </div>
-    <div id="newsInformation" class="container latest-news newsData pctop pcbottom">
+    <div id="newsInformation" class="container latest-news newsData pctop pcbottom" v-cloak>
         <ul class="list-unstyled newCenterText text-size dynamic" v-cloak="">
             <li class="row" v-for="vv in infomationItems">
                 <p class="col-md-8 col-md-offset-1 col-sm-12 col-xs-12 title"> <a class="newsCenterLink" :href="vv.newsMore" v-cloak="">{{vv.newsTitle}}</a> </p>

@@ -56,23 +56,6 @@ $(function () {
 
     //    延迟加载
     setTimeout(function () {
-        //二维码的left common
-
-        $(".wx-code").css("left", $(".weixin-box").find("span").offset().left - 10 + "px");
-
-        //底部微信二维码 common
-        $(".xin-icon").mouseover(function () {
-            $(".wx").css("display", "block");
-        }).mouseout(function () {
-            $(".wx").css("display", "none");
-        });
-        //领英
-        $(".yl-icon").mouseover(function () {
-            $(".yl").css("display", "block");
-        }).mouseout(function () {
-            $(".yl").css("display", "none");
-        });
-
 
 
         // 二级菜单上下滑动开关 common
@@ -1132,8 +1115,8 @@ window.trackFn = function(_url, _open) {
 };
 var Web = {
 	Resource:{
-        serverURL:"http://localhost:8080/wfk.protocol.http/api/",
-        // serverURL:"/web/api/",
+        // serverURL:"http://localhost:8080/wfk.protocol.http/api/",
+        serverURL:"/web/api/",
 		pageSize:10,//分页记录
 		maxPageSize:10//最大分页数
 	},

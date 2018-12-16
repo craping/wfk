@@ -4,7 +4,23 @@ setTimeout(function () {
 		path = "";
 	}
 	$("#footer").load("_template/footer.html", function () {
+		//二维码的left common
 
+        $(".wx-code").css("left", $(".weixin-box").find("span").offset().left - 10 + "px");
+
+        //底部微信二维码 common
+        $(".xin-icon").mouseover(function () {
+            $(".wx").css("display", "block");
+        }).mouseout(function () {
+            $(".wx").css("display", "none");
+        });
+        //领英
+        $(".yl-icon").mouseover(function () {
+            $(".yl").css("display", "block");
+        }).mouseout(function () {
+            $(".yl").css("display", "none");
+		});
+		
 
 		var footerArr1 = [
 			{

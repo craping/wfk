@@ -152,12 +152,12 @@ $(function () {
 
             var li_w = obj.width();
 
-            obj.eq(i).find("ul").css({
+            /* obj.eq(i).find("ul").css({
                 "width": obj.eq(i).find("li").length * li_w + "px"
             });
             obj.eq(i).find("ul").find("li").css({
                 "width": li_w + 'px'
-            });
+            }); */
         }
     };
 

@@ -81,7 +81,7 @@ $(function(){
 			"astate": "2",
 			"color": "",
 			"id": 69,
-			"link": "javascript:trackFn('index.html')",
+			"link": "javascript:trackFn('products.html', 'openNewWindow');",
 			"margin": "",
 			"name": "1",
 			"opentype": "标签页",

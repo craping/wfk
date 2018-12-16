@@ -24,7 +24,7 @@
     <div id="header"></div>
     <!------------------------轮播图-->
     <div class="container-fluid focus-box index-banner">
-        <div id="myCarousel" class="carousel slide focus-img dynamic">
+        <div id="myCarousel" class="carousel slide focus-img dynamic" v-cloak>
             <ol class="carousel-indicators">
                 <li v-for="(v,index) in todos" data-target="#myCarousel" v-bind:data-slide-to="index"></li>
             </ol>
@@ -48,14 +48,14 @@
     <div class="include_template" lang="portal_index_template_part_component_1.html">
         <input class="templateId" value="portal_index_template_part_component_1" type="hidden">
         <!-----------------------文字  产品与服务-->
-        <div class="container text-center products pctop pcbottom lang">
+        <div class="container text-center products pctop pcbottom lang" v-cloak>
             <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["公司简介"]}}</h3>
         </div>
         <!--下阴影-->
         <!-- <div class="container-fluid tv-shadow-b pcbottom"></div> -->
         <!----------------------三列图片-->
         <div class="container img-list-box">
-            <ul class="row list-unstyled list-inline ilb lang1">
+            <ul class="row list-unstyled list-inline ilb lang1" v-cloak>
                 <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12 index1129-li">
                     <a style="color: #333333;" href="javascript:trackFn('about.html');">
                         <div class="img-list index1129-margin-b">
@@ -90,7 +90,7 @@
     </div>
     <!--上阴影-->
     <div class="container-fluid tv-shadow-t pctop"></div>
-    <div class="container text-center products pcbottom shadowtop lang2">
+    <div class="container text-center products pcbottom shadowtop lang2" v-cloak>
         <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["产品中心"]}}</h3>
     </div>
     <!--视频轮播图-->
@@ -136,13 +136,13 @@
     <div class="include_template" lang="portal_index_template_part_component_2.html">
         <input class="templateId" value="portal_index_template_part_component_2" type="hidden">
         <!--热点新闻-->
-        <div class="container text-center products pctop pcbottom lang3">
+        <div class="container text-center products pctop pcbottom lang3" v-cloak>
             <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["新闻中心"]}}</h3>
         </div>
         <!--下阴影-->
         <!----------------------三列图片-->
         <div class="container new-box pcbottom">
-            <ul class="row list-unstyled Theight-box" id="hotNews">
+            <ul class="row list-unstyled Theight-box" id="hotNews" v-cloak>
                 <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12" v-for="v in todos">
                     <div class="new-body">
                         <img class="hidden-input" src="" alt="" style="display: none;">

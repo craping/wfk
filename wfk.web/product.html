@@ -32,6 +32,9 @@
         #preview li.active{
             border-color:#cd2426;
         }
+        img{
+            max-width: 100%;
+        }
     </style>
     <link rel="icon" href="/_images/favicon.ico">
     <style></style>
@@ -44,7 +47,7 @@
     <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
     <div id="header"></div><!-- 点击路径 -->
     <div class="container-fluid path">
-        <div id="map" class="container  text-size">
+        <div id="map" class="container  text-size" v-cloak>
             <a href="javascript:trackFn('index.html')">{{NAVI["首页"]}}</a> 
             <span>&gt;</span> <a href="javascript:trackFn('product.html')">{{NAVI["产品中心"]}}</a> 
             <span>&gt;</span> <a :href="href">{{NAVI[map[type]]}}</a>
@@ -60,7 +63,7 @@
 
         <div class="container" style="overflow-x:auto">
             <ul class="list-unstyled list-inline">
-                <li v-for="(v,index) in todos">
+                <li v-for="(v,index) in todos" class="text-center">
                     <img class="banner-lg-img" v-bind:src="v.src" alt="">
                 </li>
             </ul>
@@ -116,7 +119,7 @@
 
     <br/><br/>
     <!--产品参数-->
-    <div id="param" class="container text-center parameter text-size">
+    <div id="param" class="container text-center parameter text-size" v-cloak>
         <div class=" text-center text-size icon products pcbottom ">
             <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["产品参数"]}}</h3>
         </div> <!-- pc and pad -->
@@ -135,7 +138,7 @@
         </div>
     </div>
     <br/><br/>
-    <div id="context" class="container parameter text-size">
+    <div id="context" class="container parameter text-size" v-cloak>
         <div class=" text-center text-size icon products pcbottom ">
             <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["产品详细"]}}</h3>
         </div>
@@ -144,7 +147,7 @@
         </div>
     </div>
     <br/><br/>
-    <div id="doc" class="container parameter text-size">
+    <div id="doc" class="container parameter text-size" v-cloak>
         <div class=" text-center text-size icon products pcbottom ">
             <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["规格书下载"]}}</h3>
         </div>
@@ -166,7 +169,7 @@
         </div>
     </div>
     <br/><br/>
-    <div id="iis" class="container parameter text-size">
+    <div id="iis" class="container parameter text-size" v-cloak>
         <div class=" text-center text-size icon products pcbottom ">
             <h3 class="two-size editable" style="word-break: break-all;">{{NAVI["验货标准(IIS)下载"]}}</h3>
         </div>

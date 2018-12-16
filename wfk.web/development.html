@@ -32,13 +32,13 @@
     <!--导航-->
     <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
     <div id="header"></div><!-- 点击路径 -->
-    <div class="container-fluid path" id="map">
+    <div class="container-fluid path" id="map" v-cloak>
         <div class="container  text-size" >
             <a href="javascript:trackFn('index.html')">{{NAVI["首页"]}}</a> <span>&gt;</span> <a href="javascript:trackFn('development.html')">{{NAVI["发展"]}}</a>
         </div>
     </div><!-- 第一屏大图 -->
     <div class="container-fluid focus-box ab-box">
-        <div id="myCarousel" class="carousel slide focus-img dynamic">
+        <div id="myCarousel" class="carousel slide focus-img dynamic" v-cloak>
             <ol class="carousel-indicators ">
                 <li v-for="(v,index) in todos" data-target="#myCarousel" v-bind:data-slide-to="index"></li>
             </ol>
@@ -59,7 +59,7 @@
             </div>
         </div>
     </div><!-- 预览 -->
-    <div id="page-nav" class="container-fluid preview" style="">
+    <div id="page-nav" class="container-fluid preview" style="" v-cloak>
         <div class="container">
             <ul class="list-unstyled list-inline">
                 <li v-for="v in todos" class="text-size"><a :href="v.href">{{v.text}}</a></li>
@@ -79,7 +79,7 @@
             <h3 class="two-size editable" style="word-break: break-all;">发展</h3>
         </div>
         <div class="container pctop pcbottom">
-            <p class="text-size editable" style="word-break:break-all; line-height:200%">深圳微方凯科技电子有限公司成立于2013年，华南地区液晶屏产品的行业先驱之一，作为该领域的优秀企业拥有多年的专业知识，为全球数十万企业和个人用户提供专业的产品和服务。总部设在中国经济最前沿城市深圳。</p>
+            <p class="text-size editable" style="word-break:break-all; line-height:200%">深圳微方凯科技有限公司成立于2013年，华南地区液晶屏产品的行业先驱之一，作为该领域的优秀企业拥有多年的专业知识，为全球数十万企业和个人用户提供专业的产品和服务。总部设在中国经济最前沿城市深圳。</p>
             <p class="text-size editable" style="word-break:break-all; line-height:200%">公司具有丰富的专业经验和技术人才,在激烈的市场竞争中始终走在行业前列,凭借不懈的努力实现了持续稳定发展, 通过与全球知名行业领军企业合作，公司长期提供现货库存，为客户寻求最新最速最好的产品体验。</p>
             <p class="text-size editable" style="word-break:break-all; line-height:200%">我们将一如既往的为客户提供优质的液晶产品和服务。客户至上，服务一流</p>
         </div>

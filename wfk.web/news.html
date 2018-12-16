@@ -25,12 +25,12 @@
     <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
     <div id="header"></div><!-- 点击路径 -->
     <div class="container-fluid path">
-        <div id="map" class="container  text-size">
+        <div id="map" class="container  text-size" v-cloak>
             <a href="index.html">{{NAVI["首页"]}}</a> <span>&gt;</span> <a href="news.html">{{NAVI["新闻中心"]}}</a>
         </div>
     </div>
     <div id="page-nav"></div>
-    <div id="fixed-nav" class="container-fluid hidden-xs" style="top: -55px;">
+    <div id="fixed-nav" class="container-fluid hidden-xs" style="top: -55px;" v-cloak>
         <div class="container">
             <ul class="list-unstyled list-inline">
                 <li v-for="v in todos" class="text-size"><a :href="v.href">{{v.text}}</a></li>
@@ -40,7 +40,7 @@
     <div class="container pctop pcbottom newCenterRotation">
         <ul class="row list-unstyled dynamic">
             <li class="col-md-5 col-sm-6 col-xs-12 rotationBox">
-                <div class="newCenterRotationBox" id="rotationImg_data1">
+                <div class="newCenterRotationBox" id="rotationImg_data1" v-cloak>
                     <ul class="list-unstyled">
                         <li v-for="v in todos" class="newsCenter1205-li"> <a :href="v.href"> <img class="img" :src="v.imgSrc" alt=""> </a>
                             <p class="text-size newsCenter1205-p" v-text="v.text"></p>
@@ -63,7 +63,7 @@
     <div class="container pctop pcbottom newCenterRotation">
         <ul class="row list-unstyled dynamic">
             <li class="col-md-5 col-sm-6 col-xs-12 rotationBox">
-                <div class="newCenterRotationBox" id="rotationImg_data2">
+                <div class="newCenterRotationBox" id="rotationImg_data2" v-cloak>
                     <ul class="list-unstyled">
                         <li v-for="v in todos" class="newsCenter1205-li"> <a :href="v.href"> <img class="img" :src="v.imgSrc" alt=""> </a>
                             <p class="text-size newsCenter1205-p" v-text="v.text"></p>
@@ -86,7 +86,7 @@
     <div class="container pctop pcbottom newCenterRotation">
         <ul class="row list-unstyled dynamic">
             <li class="col-md-5 col-sm-6 col-xs-12 rotationBox">
-                <div class="newCenterRotationBox" id="rotationImg_data3">
+                <div class="newCenterRotationBox" id="rotationImg_data3" v-cloak>
                     <ul class="list-unstyled">
                         <li v-for="v in todos" class="newsCenter1205-li"> <a :href="v.href"> <img class="img" :src="v.imgSrc" alt=""> </a>
                             <p class="text-size newsCenter1205-p" v-text="v.text"></p>

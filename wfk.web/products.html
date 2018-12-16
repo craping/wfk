@@ -25,12 +25,12 @@
     <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
     <div id="header"></div><!-- 点击路径 -->
     <div class="container-fluid path">
-        <div id="map" class="container  text-size">
+        <div id="map" class="container  text-size" v-cloak>
             <a href="index.html">{{NAVI["首页"]}}</a> <span>&gt;</span> <a href="products.html">{{NAVI["产品中心"]}}</a>
         </div>
     </div>
     <div id="page-nav"></div>
-    <div id="fixed-nav" class="container-fluid hidden-xs" style="top: -55px;">
+    <div id="fixed-nav" class="container-fluid hidden-xs" style="top: -55px;" v-cloak>
         <div class="container">
             <ul class="list-unstyled list-inline">
                 <li v-for="v in todos" class="text-size"><a :href="v.href">{{v.text}}</a></li>
@@ -39,7 +39,7 @@
     </div>
     <div class="container pctop pcbottom newCenterRotation">
         <ul class="row list-unstyled dynamic">
-            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data1">
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data1" v-cloak>
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["笔记本液晶屏"]}}</h3>
                     <ul class="list-unstyled text-black text-size">
@@ -51,7 +51,7 @@
             <li class="col-md-12 col-sm-12 col-xs-12 hidden-lg hidden-md">
                 <br/><div class="container borderCCC"></div><br/>
             </li>
-            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data2">
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data2" v-cloak>
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["工控液晶屏"]}}</h3>
                     <ul class="list-unstyled text-black text-size">
@@ -63,7 +63,7 @@
             <li class="col-md-12 col-sm-12 col-xs-12">
                 <br/><div class="container borderCCC"></div><br/>
             </li>
-            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data3">
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data3" v-cloak>
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["安防液晶屏"]}}</h3>
                     <ul class="list-unstyled text-black text-size">
@@ -75,7 +75,7 @@
             <li class="col-md-12 col-sm-12 col-xs-12 hidden-lg hidden-md">
                 <br/><div class="container borderCCC"></div><br/>
             </li>
-            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data4">
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data4" v-cloak>
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["监控液晶屏"]}}</h3>
                     <ul class="list-unstyled text-black text-size">
@@ -87,7 +87,7 @@
             <li class="col-md-12 col-sm-12 col-xs-12">
                 <br/><div class="container borderCCC"></div><br/>
             </li>
-            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data5">
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data5" v-cloak>
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["医疗设备屏"]}}</h3>
                     <ul class="list-unstyled text-black text-size">
@@ -99,7 +99,7 @@
             <li class="col-md-12 col-sm-12 col-xs-12 hidden-lg hidden-md">
                 <br/><div class="container borderCCC"></div><br/>
             </li>
-            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data6">
+            <li class="col-md-6 col-sm-12 col-xs-12 rotationTitleBox" id="newCenter_data6" v-cloak>
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["广告机液晶屏"]}}</h3>
                     <ul class="list-unstyled text-black text-size">

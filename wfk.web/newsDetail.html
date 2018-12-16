@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/news.css">
     <style type="text/css">
         #data_base_id,.data_unit{display:none;}
+        #content *{max-width:100%}
     </style>
     <link rel="icon" href="/_images/favicon.ico">
     <style></style>
@@ -25,7 +26,7 @@
     <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
     <div id="header"></div><!-- 点击路径 -->
     <div class="container-fluid path">
-        <div id="map" class="container  text-size">
+        <div id="map" class="container  text-size" v-cloak>
             <a href="javascript:trackFn('index.html')">{{NAVI["首页"]}}</a>
             <span>&gt;</span> <a href="javascript:trackFn('news.html')">{{NAVI["新闻中心"]}}</a>
             <span>&gt;</span> <a :href="href">{{NAVI[map[type]]}}</a>
@@ -40,7 +41,7 @@
             </ul>
         </div>
     </div>
-    <div id="content-data">
+    <div id="content-data" v-cloak>
         <div class="container pctop pcbottom news-center-content">
             <div class=" text-center products pctop pcbottom ">
                 <h3 class="two-size data_base_title">{{info.title}}</h3>
@@ -49,7 +50,7 @@
         </div>
         <div lang="portal_news_gsdt_dynamic_template_part_component_1.html" class="include_template">
             <div class="container pcbottom text-size text-left">
-                <div v-html="info.content" class="container pcbottom newsText text-size text-left article  ckedit editable" id="content" style="word-break: break-all; position: relative;">
+                <div v-html="info.content" class="container pcbottom newsText text-size text-left article  ckedit editable" id="content" style="word-break: break-all; position: relative;max-width:100%">
                 </div>
             </div>
             <script src="library/jQuery.2.4.1.min.js"></script>

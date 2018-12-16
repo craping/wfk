@@ -28,9 +28,9 @@
         <ul class="row list-unstyled pctop text-size">
             <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12 search-result">
                 <div class="result-content dynamic ">
-                        <div class="title">
+                        <div class="title" v-cloak>
                             <h3 class="two-size">{{NAVI["约有"]}} <span id="totalcount">0</span> {{NAVI["个搜索结果"]}}</h3> </div>
-                        <div class="textBookList">
+                        <div class="textBookList" v-cloak>
                             <ul class="list-unstyled content-list">
                                 <li v-for="v in todos">
                                     <h3 class="three-size"><a :href="v.url" v-cloak>{{v.title}}</a></h3>

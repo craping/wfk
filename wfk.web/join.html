@@ -32,13 +32,13 @@
     <!--导航-->
     <div id="clear-nav" class="hidden-lg hidden-md hidden-sm" style="height: 90px; background: transparent none repeat scroll 0% 0%;"></div>
     <div id="header"></div><!-- 点击路径 -->
-    <div class="container-fluid path" id="map">
+    <div class="container-fluid path" id="map" v-cloak>
         <div class="container  text-size" >
             <a href="javascript:trackFn('index.html')">{{NAVI["首页"]}}</a> <span>&gt;</span> <a href="javascript:trackFn('join.html')">{{NAVI["加入我们"]}}</a>
         </div>
     </div><!-- 第一屏大图 -->
     <div class="container-fluid focus-box ab-box">
-        <div id="myCarousel" class="carousel slide focus-img dynamic">
+        <div id="myCarousel" class="carousel slide focus-img dynamic" v-cloak>
             <ol class="carousel-indicators ">
                 <li v-for="(v,index) in todos" data-target="#myCarousel" v-bind:data-slide-to="index"></li>
             </ol>
@@ -59,14 +59,14 @@
             </div>
         </div>
     </div><!-- 预览 -->
-    <div id="page-nav" class="container-fluid preview" style="">
+    <div id="page-nav" class="container-fluid preview" style="" v-cloak>
         <div class="container">
             <ul class="list-unstyled list-inline">
                 <li v-for="v in todos" class="text-size"><a :href="v.href">{{v.text}}</a></li>
             </ul>
         </div>
     </div>
-    <div id="fixed-nav" class="container-fluid hidden-xs" style="top: -55px;">
+    <div id="fixed-nav" class="container-fluid hidden-xs" style="top: -55px;" v-cloak>
         <div class="container">
             <ul class="list-unstyled list-inline">
                 <li v-for="v in todos" class="text-size"><a :href="v.href">{{v.text}}</a></li>

@@ -2454,7 +2454,7 @@ video {
 .rotationBorderTable,
 .borderTable{border:1px solid #cccccc;border-left:0;border-bottom:0;width:100%;}
 .rotationBorderTable td,.rotationBorderTable th,
-.borderTable td,.borderTable th{border:1px solid #cccccc;border-top:0;border-right:0;padding:7px 3px;}
+.borderTable td,.borderTable th{border:1px solid #cccccc;border-top:0;border-right:0;padding:7px 3px;min-width: 315px;}
 
 .delete-table td,.delete-table th{text-align:center;}
 .delete-table th.active{background:#f1f1f1;}
@@ -2615,7 +2615,7 @@ video::-webkit-media-controls-panel {
     text-align: left;
   }
   .borderTable{
-    min-width:767px;
+    /* min-width:767px; */
   }
   .textImgBox .img,
   .imgTextBox .img{
@@ -2736,4 +2736,8 @@ video::-webkit-media-controls-panel {
 .yewei2{
 	transform:rotate(0deg);
 	transition:all 0.5s linear;
+}
+
+[v-cloak] {
+  display: none;
 }

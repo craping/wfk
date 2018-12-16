@@ -68,7 +68,7 @@ $(function () {
                             generalGrade:el.generalGrade
                         });
                     } else {
-                        imgs.push(el.fileUrl);
+                        imgs = imgs.concat(el.fileUrl.split(","));
                     }
                 }
 
