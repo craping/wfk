@@ -52,7 +52,7 @@ public class NewsServerImpl implements INewsServer{
 
 	@Override
 	public DataResult getList(Map<String, String> params) {
-		String sql = "SELECT * FROM wfk_news WHERE 1=1";
+		String sql = "SELECT * FROM wfk_news WHERE 1=1 ";
 		QueryBuilder builder = new QueryBuilder(sql,
 			new Condition(new SqlColumn(Logic.AND, "title").contanis(params.get("title")),
 				new SqlColumn(Logic.AND, "type").equal(params.get("type")),
