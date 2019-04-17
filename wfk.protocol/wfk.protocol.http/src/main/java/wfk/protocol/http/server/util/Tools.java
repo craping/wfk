@@ -13,6 +13,9 @@ import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,9 +36,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 /**
  * 描述：基础操作函数集合
@@ -500,8 +500,8 @@ public class Tools {
 	 */
 	public static String base64Decoder(final String ss) {
 		try {
-			BASE64Decoder de = new BASE64Decoder(); // base64解码
-			return new String(de.decodeBuffer(ss), "gb2312");
+			Decoder decoder = Base64.getDecoder();
+			return new String(decoder.decode(ss));
 		} catch (Exception e) {
 			return "";
 		}
@@ -515,8 +515,8 @@ public class Tools {
 	 * @return String base64编码后的字符串
 	 */
 	public static String base64Encoder(final String ss) {
-		BASE64Encoder en = new BASE64Encoder(); // base64编码
-		return en.encode(ss.getBytes());
+		Encoder encoder = Base64.getEncoder(); // base64编码
+		return encoder.encodeToString(ss.getBytes());
 	}
 
 	/**
