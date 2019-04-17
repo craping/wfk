@@ -2,10 +2,8 @@ package wfk.protocol.http.core.web.handler;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.transaction.annotation.Transactional;
-
+import net.sf.json.JSONObject;
 import wfk.common.define.bean.result.Errcode;
-import wfk.protocol.http.core.asm.annotation.Reflect;
 
 /** 
  * @project Crap
@@ -17,11 +15,9 @@ import wfk.protocol.http.core.asm.annotation.Reflect;
  * @email 422655094@qq.com
  * 
  */
-@Reflect("execute")
-@Transactional
-public abstract class ServiceHandler<T> {
+public abstract class ServiceJSONHandler extends ServiceHandler<JSONObject> {
 	/**
 	 *  ASM reflect to custom method
 	 */
-	public Errcode execute (HttpServletRequest request, T params) {return null;}
+	public Errcode execute (HttpServletRequest request, JSONObject params) {return null;}
 }
