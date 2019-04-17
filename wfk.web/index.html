@@ -152,8 +152,8 @@
                         </div>
                         <div onclick="changePic(this)" class="changepic" style="display: none; width: 30px; height: 20px; cursor: pointer; border: 1px solid red; background: green none repeat scroll 0% 0%; position: absolute; bottom: 10px; right: 10px; z-index: 99;">图片</div>
                         <div onclick="changeVid(this)" class="changevid" style="display: none; width: 30px; height: 20px; cursor: pointer; border: 1px solid red; background: green none repeat scroll 0% 0%; position: absolute; bottom: 10px; right: 50px; z-index: 99;">视频</div>
-                        <img class="editable editimg" style="display: block; word-break: break-all; width: 360px; height: 203px;" src="images/215c064d-ea2b-4db5-b268-95b04a9284a4.jpeg" alt="" title="">
-                        <img class="editable editvideo" style="display: none; word-break: break-all;" src="images/g1/index/threeMax_05.jpg" alt="">
+                        <img class="editable editimg" style="display: block; word-break: break-all; width: 360px; height: 203px;" :src="v.imgSrc" alt="" title="">
+                        <img class="editable editvideo" style="display: none; word-break: break-all;" :src="v.imgSrc" alt="">
                         <div class="new-text">
                             <p class="editable text-black" style="font-size: 15px; word-break: break-all;">
                                 <span style="font-size:12.0pt;font-family:微软雅黑 sans-serif;">{{v.text}}</p>

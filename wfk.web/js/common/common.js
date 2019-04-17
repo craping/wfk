@@ -1126,7 +1126,7 @@ var Web = {
 				param= {};
 			var defaultParam = {
 				param:{},
-				type:"get",
+				type:"post",
 				timeout:20000,
 				safe:false,
 				data:{},
@@ -1139,13 +1139,13 @@ var Web = {
 			
 			$.ajax({
 				type:defaultParam.type,
-				data:defaultParam.type=="get"?defaultParam.data:JSON.stringify(defaultParam.data),
+				data:defaultParam.type=="get"?defaultParam.data:defaultParam.data,
 				async:defaultParam.async,
 				timeout:defaultParam.timeout,
 				url: defaultParam.url + method+"?format=json",
-				contentType : "application/json",
+				// contentType : "application/json",
 				// processData:false,
-				dataType: "jsonp",
+				dataType: "json",
 				success: function(data){
 					if(!data.result){
 						if(defaultParam.success)

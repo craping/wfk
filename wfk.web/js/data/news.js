@@ -44,7 +44,10 @@ $(function () {
                 el: "#rotationImg_data1",
                 data: {
                     todos: todos
-                }
+                },
+				mounted:function(){
+					new w($("#rotationImg_data1"))
+				}
             });
 
             var newCenter_data1 = new Vue({
@@ -84,7 +87,10 @@ $(function () {
                 el: "#rotationImg_data2",
                 data: {
                     todos: todos
-                }
+                },
+				mounted:function(){
+					new w($("#rotationImg_data2"))
+				}
             });
 
             var newCenter_data2 = new Vue({
@@ -124,7 +130,10 @@ $(function () {
                 el: "#rotationImg_data3",
                 data: {
                     todos: todos
-                }
+                },
+				mounted:function(){
+					new w($("#rotationImg_data3"))
+				}
             });
 
             var newCenter_data3 = new Vue({
@@ -152,64 +161,62 @@ $(function () {
 
             var li_w = obj.width();
 
-            /* obj.eq(i).find("ul").css({
+            obj.eq(i).find("ul").css({
                 "width": obj.eq(i).find("li").length * li_w + "px"
             });
             obj.eq(i).find("ul").find("li").css({
                 "width": li_w + 'px'
-            }); */
+            });
         }
+
+		 //左右按钮
+		var leftObj = obj.find(".rotationLeft");
+		var rightObj = obj.find(".rotationRight");
+
+		//向左点击
+		leftObj.click(function () {
+			// if(rotationType){
+			// rotationType = false;
+			var box = $(this).parent(".newCenterRotationBox");
+			box.find("ul").prepend(box.find("ul>li:last"));
+			box.find("ul").css({
+				"margin-left": -box.find("ul>li").eq(0).width() + "px"
+			});
+			box.find("ul").animate({
+				"margin-left": "0"
+			}, 500, function () {
+				// rotationType = true;
+			});
+			// }
+		});
+
+		//向右点击
+		rightObj.click(function () {
+
+			// if(rotationType){
+			// rotationType = false;
+
+			var box = $(this).parent(".newCenterRotationBox");
+
+			box.find("ul").animate({
+				"margin-left": -box.find("li").eq(0).width() + "px"
+
+			}, 500, function () {
+
+				$(this).append($(this).find("li").eq(0));
+
+				$(this).css({
+					"margin-left": "0"
+				});
+
+				// rotationType = true;
+			});
+			// }
+		});
     };
 
-    new w(rotationObj);
+    //new w(rotationObj);
 
-    //左右按钮
-    var leftObj = $(".rotationLeft");
-    var rightObj = $(".rotationRight");
-
-    //视频播放按钮
-    var videoPlay = $(".videoPlay");
-
-    //向左点击
-    leftObj.click(function () {
-        // if(rotationType){
-        // rotationType = false;
-        var box = $(this).parent(".newCenterRotationBox");
-        box.find("ul").prepend(box.find("ul>li:last"));
-        box.find("ul").css({
-            "margin-left": -box.find("ul>li").eq(0).width() + "px"
-        });
-        box.find("ul").animate({
-            "margin-left": "0"
-        }, 500, function () {
-            // rotationType = true;
-        });
-        // }
-    });
-
-    //向右点击
-    rightObj.click(function () {
-
-        // if(rotationType){
-        // rotationType = false;
-
-        var box = $(this).parent(".newCenterRotationBox");
-
-        box.find("ul").animate({
-            "margin-left": -box.find("li").eq(0).width() + "px"
-
-        }, 500, function () {
-
-            $(this).append($(this).find("li").eq(0));
-
-            $(this).css({
-                "margin-left": "0"
-            });
-
-            // rotationType = true;
-        });
-        // }
-    });
 
     //自动轮播
     t = setInterval(function () {

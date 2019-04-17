@@ -99,8 +99,8 @@ var informationInfo = new Vue({
                         let url = item.file_url?item.file_url.split(",")[0]:"";
                         var ele = {
                             text: urlData.lang == "EN"?item.product_name_en:item.product_name,
-                            resolution: urlData.lang == "EN"?item.resolution_en:item.resolution,
-                            panelSize: urlData.lang == "EN"?item.panel_size_en:item.panel_size,
+                            resolution: urlData.lang == "EN"?(item.resolution_en?item.resolution_en:item.resolution):item.resolution,
+                            panelSize: urlData.lang == "EN"?(item.panel_size_en?item.panel_size_en:item.panel_size):item.panel_size,
                             src:url,
                             href:"javascript:trackFn('product.html?type=3&id="+item.id+"')"
                         };

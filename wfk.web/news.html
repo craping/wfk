@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="css/news.css">
     <style type="text/css">
         #data_base_id,.data_unit{display:none;}
+        .newCenterRotationBox a{
+            overflow: hidden;
+            display: block;
+            max-height: 250px;
+        }
     </style>
     <link rel="icon" href="/_images/favicon.ico">
     <style></style>
@@ -40,7 +45,7 @@
     <div class="container pctop pcbottom newCenterRotation">
         <ul class="row list-unstyled dynamic">
             <li class="col-md-5 col-sm-6 col-xs-12 rotationBox">
-                <div class="newCenterRotationBox" id="rotationImg_data1" v-cloak>
+                <div class="newCenterRotationBox" id="rotationImg_data1">
                     <ul class="list-unstyled">
                         <li v-for="v in todos" class="newsCenter1205-li"> <a :href="v.href"> <img class="img" :src="v.imgSrc" alt=""> </a>
                             <p class="text-size newsCenter1205-p" v-text="v.text"></p>
@@ -52,7 +57,7 @@
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["公司新闻"]}}</h3>
                     <ul class="list-unstyled text-black text-size">
-                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}} <span v-cloak="">{{v.time}}</span></a> </li>
+                        <li v-for="v in todos"> <a :href="v.href"> {{v.text}} <span>{{v.time}}</span></a> </li>
                     </ul>
                 </div>
                 <a href="javascript:trackFn('information.html?type=1')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
@@ -63,7 +68,7 @@
     <div class="container pctop pcbottom newCenterRotation">
         <ul class="row list-unstyled dynamic">
             <li class="col-md-5 col-sm-6 col-xs-12 rotationBox">
-                <div class="newCenterRotationBox" id="rotationImg_data2" v-cloak>
+                <div class="newCenterRotationBox" id="rotationImg_data2">
                     <ul class="list-unstyled">
                         <li v-for="v in todos" class="newsCenter1205-li"> <a :href="v.href"> <img class="img" :src="v.imgSrc" alt=""> </a>
                             <p class="text-size newsCenter1205-p" v-text="v.text"></p>
@@ -75,7 +80,7 @@
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["行业新闻"]}}</h3>
                     <ul class="list-unstyled text-black text-size">
-                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}} <span v-cloak="">{{v.time}}</span> </a> </li>
+                        <li v-for="v in todos"> <a :href="v.href"> {{v.text}} <span>{{v.time}}</span> </a> </li>
                     </ul>
                 </div>
                 <a href="javascript:trackFn('information.html?type=2')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
@@ -86,7 +91,7 @@
     <div class="container pctop pcbottom newCenterRotation">
         <ul class="row list-unstyled dynamic">
             <li class="col-md-5 col-sm-6 col-xs-12 rotationBox">
-                <div class="newCenterRotationBox" id="rotationImg_data3" v-cloak>
+                <div class="newCenterRotationBox" id="rotationImg_data3">
                     <ul class="list-unstyled">
                         <li v-for="v in todos" class="newsCenter1205-li"> <a :href="v.href"> <img class="img" :src="v.imgSrc" alt=""> </a>
                             <p class="text-size newsCenter1205-p" v-text="v.text"></p>
@@ -98,7 +103,7 @@
                 <div class="newCenterTitleBox">
                     <h3 class="two-size h31205">{{NAVI["社会热点"]}}</h3>
                     <ul class="list-unstyled text-black text-size">
-                        <li v-for="v in todos" v-cloak=""> <a :href="v.href"> {{v.text}} <span v-cloak="">{{v.time}}</span> </a> </li>
+                        <li v-for="v in todos"> <a :href="v.href"> {{v.text}} <span>{{v.time}}</span> </a> </li>
                     </ul>
                 </div>
                 <a href="javascript:trackFn('information.html?type=3')" class="home-common-btn text-center text-size">{{NAVI["了解更多"]}}</a>
